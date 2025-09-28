@@ -12,6 +12,7 @@ extern IrqTable gIntrHandlers;
 extern u8 gUnknown_03004B14;
 extern u16 gUnknown_03004B0A;
 
+extern "C" s32 Div(s32, s32);
 extern "C" void sub_0803D474();
 extern "C" void sub_08005C38();
 extern "C" void sub_080019DC(void* dest, u32 size);
@@ -283,7 +284,14 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E8C.inc", void sub_08002E8C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002EE0.inc", void sub_08002EE0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002F8C.inc", void sub_08002F8C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FA4.inc", void sub_08002FA4());
-extern "C" ASM_FUNC("asm/non_matching/rom/Divide.inc", void Divide());
+
+extern "C" s32 Divide(s32 a, s32 b) {
+    if (b == 0)
+        return 0;
+
+    return Div(a, b);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", void sub_08002FD4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FE8.inc", void sub_08002FE8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003008.inc", void sub_08003008());
