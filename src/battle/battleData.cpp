@@ -359,7 +359,7 @@ Msg ROMStrFmt(s32 r0, const Msg& r1, const Msg& r2, const Msg& r3) {
     return StrFmt(sub_08073444(r0), r1, r2, r3);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/battleData/sub_080734A0.inc",
+extern "C" ASM_FUNC("asm/non_matching/battleData/StrFmt.inc",
                     Msg StrFmt(const Msg&, const Msg&, const Msg&, const Msg&));
 
 ASM_FUNC("asm/non_matching/battleData/print__3MsgRC13PrintSettingsb.inc",

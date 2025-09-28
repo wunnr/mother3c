@@ -274,7 +274,7 @@ void Battle::onLose() {
 
     sub_0807459C(battle_1f8(), 0x20, 0x20, 0);
     // The battle was lost...
-    ROMStrFmt(0x78, Msg(), Msg(), Msg()).print(Color(0, 0, 0), true);
+    ROMStrFmt(0x78, Msg(), Msg(), Msg()).print(Color::Black(), true);
     sub_0805E9BC();
 }
 
@@ -519,7 +519,7 @@ extern "C" ASM_FUNC("asm/non_matching/guest/tellExperience.inc", void tellExperi
 
 extern "C" bool metalMonkeyCheck(Unit* t) {
     if (sub_080725E8() == true && (sub_08072608()->_0[0] == Monster::MetalMonkey)) {
-        ROMStrFmt(0x87, Msg(), Msg(), Msg()).print(Color(0, 0, 0), true);
+        ROMStrFmt(0x87, Msg(), Msg(), Msg()).print(Color::Black(), true);
         return true;
     }
     return false;

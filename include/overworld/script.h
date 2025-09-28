@@ -48,7 +48,7 @@ struct Game {
     u8 room_enter_dir;
     u8 _595b[0x5960 - 0x595b];
     u16 _5960;
-    u8 _5952[0x5978 - 0x5962];
+    u8 _5962[0x5978 - 0x5962];
     u16 next_room;
     u16 _597a;
     u16 _597c;

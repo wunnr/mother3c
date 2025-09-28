@@ -266,8 +266,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B924.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B954.inc", void sub_0802B954());
 
 extern "C" bool is_equippable(u16 idx) {
-    if (gGoodsInfo[idx].item_type == Weapon || gGoodsInfo[idx].item_type == BodyArmor ||
-        gGoodsInfo[idx].item_type == Headgear || gGoodsInfo[idx].item_type == Armgear) {
+    u32 type = gGoodsInfo[idx].item_type;
+    if (type == Weapon || type == BodyArmor || type == Headgear || type == Armgear) {
         return true;
     }
     return false;
