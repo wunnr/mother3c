@@ -4599,7 +4599,15 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_DA.inc", void cmd_DA());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_E9.inc", void cmd_E9());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F3.inc", void cmd_F3());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F7.inc", void cmd_F7());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_FD.inc", void cmd_FD());
+
+extern "C" s32 cmd_FD(s32* sp) {
+    Object* obj = get_obj(scriptstack_peek(sp, 0));
+    
+    if (obj != NULL)
+        scriptstack_push(obj->_8b + 1);
+
+    return 0;
+}
 
 extern "C" s32 cmd_FE(s32* sp) {
     s32 idx = scriptstack_peek(sp, 1);
