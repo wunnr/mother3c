@@ -12,8 +12,8 @@ void sub_08072D0C();
 void sub_08073018(bool, bool);
 Player* sub_08072E18(s32);
 void sub_0807459C(u16, s32, s32, s32);
-extern "C" bool sub_080725E8();         
-extern "C" Struct160* sub_08072608();        
+extern "C" bool sub_080725E8();
+extern "C" Struct160* sub_08072608();
 extern "C" void sub_08074394(s32, s32, s32, bool, bool, bool);
 extern "C" s32 getPartyCount();
 extern "C" Player* GetPlayer(s32);
@@ -517,7 +517,7 @@ extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B14.inc", void sub_08060B14
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B20.inc", void sub_08060B20());
 extern "C" ASM_FUNC("asm/non_matching/guest/tellExperience.inc", void tellExperience());
 
-extern "C" bool metalMonkeyCheck(Unit *t) {
+extern "C" bool metalMonkeyCheck(Unit* t) {
     if (sub_080725E8() == true && (sub_08072608()->_0[0] == Monster::MetalMonkey)) {
         ROMStrFmt(0x87, Msg(), Msg(), Msg()).print(Color(0, 0, 0), true);
         return true;
@@ -547,7 +547,18 @@ extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061024.inc", void sub_08061024
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061048.inc", void sub_08061048());
 extern "C" ASM_FUNC("asm/non_matching/guest/tellPresent.inc", void tellPresent());
 extern "C" ASM_FUNC("asm/non_matching/guest/druggedPresentCheck.inc", void druggedPresentCheck());
-extern "C" ASM_FUNC("asm/non_matching/guest/reqInventorySlot.inc", void reqInventorySlot());
+
+extern "C" Player* reqInventorySlot() {
+    for (int i = 0; i < getPartyCount(); i++) {
+        Player* player = GetPlayer(i);
+        if (player->player_414() < 16) {
+            return player;
+        }
+    }
+
+    return NULL;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/guest/tellPlayerInventoryFull.inc", void tellPlayerInventoryFull());
 extern "C" ASM_FUNC("asm/non_matching/guest/throwAwayItem.inc", void throwAwayItem());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061678.inc", void sub_08061678());
