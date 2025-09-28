@@ -143,10 +143,10 @@ extern "C" Player* GetPlayer(s32 idx) {
     return getPartyInfo()->getPlayer(idx);
 }
 
-extern "C" Player* sub_08072A18(u16 idx) {
+extern "C" Player* sub_08072A18(u16 id) {
     PartyInfo* info = getPartyInfo();
     for (int i = 0; i < info->numPlayers(); i++) {
-        if (info->getPlayer(i)->id() == idx) {
+        if (info->getPlayer(i)->id() == id) {
             return info->getPlayer(i);
         }
     }
