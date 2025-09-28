@@ -12,6 +12,8 @@ void sub_08072D0C();
 void sub_08073018(bool, bool);
 Player* sub_08072E18(s32);
 void sub_0807459C(u16, s32, s32, s32);
+extern "C" bool sub_080725E8();         
+extern "C" Struct160* sub_08072608();        
 extern "C" void sub_08074394(s32, s32, s32, bool, bool, bool);
 extern "C" s32 getPartyCount();
 extern "C" Player* GetPlayer(s32);
@@ -514,7 +516,15 @@ extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B0C.inc", void sub_08060B0C
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B14.inc", void sub_08060B14());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B20.inc", void sub_08060B20());
 extern "C" ASM_FUNC("asm/non_matching/guest/tellExperience.inc", void tellExperience());
-extern "C" ASM_FUNC("asm/non_matching/guest/metalMonkeyCheck.inc", void metalMonkeyCheck());
+
+extern "C" bool metalMonkeyCheck(Unit *t) {
+    if (sub_080725E8() == true && (sub_08072608()->_0[0] == Monster::MetalMonkey)) {
+        ROMStrFmt(0x87, Msg(), Msg(), Msg()).print(Color(0, 0, 0), true);
+        return true;
+    }
+    return false;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060D78.inc", void sub_08060D78());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060DA0.inc", void sub_08060DA0());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060DC0.inc", void sub_08060DC0());
