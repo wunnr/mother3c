@@ -4600,7 +4600,19 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_E9.inc", void cmd_E9());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F3.inc", void cmd_F3());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F7.inc", void cmd_F7());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_FD.inc", void cmd_FD());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_FE.inc", void cmd_FE());
+
+extern "C" s32 cmd_FE(s32* sp) {
+    
+    s32 idx = scriptstack_peek(sp, 1);
+    s32 val = scriptstack_peek(sp, 0);
+    Object* obj = get_obj(idx);
+    
+    if (obj != NULL)
+        obj->_b8[3] = val;
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_96.inc", void cmd_96());
 
 extern "C" s32 cmd_set_fade(s32* sp) {
