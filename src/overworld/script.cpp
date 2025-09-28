@@ -4776,7 +4776,7 @@ extern "C" s32 cmd_set_volume(s32* sp) {
         unk = sub_0801B3A4(gGame.cur_room);
 
     if (volume == -1)
-        volume = 0x64;
+        volume = 100;
 
     if (unk < 0x80)
         gSave._582[unk] = volume;
