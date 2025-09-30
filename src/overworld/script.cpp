@@ -362,7 +362,7 @@ u16 cmd_06(s32* sp) {
 }
 
 u16 cmd_07() {
-    if (gGame._8495 / 128 != 0) {
+    if ((u8)gGame._8495 / 128 != 0) {
         scriptstack_push(3);
         return 0;
     }
@@ -4694,7 +4694,12 @@ extern "C" s32 cmd_75(s32* sp) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_76.inc", void cmd_76());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_stop_shake.inc", void cmd_stop_shake());
+
+extern "C" s32 cmd_stop_shake() {
+    gGame._8495 &= ~8;
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_anim_above.inc", void cmd_play_anim_above());
 
 extern "C" s32 cmd_79(s32* sp) {
