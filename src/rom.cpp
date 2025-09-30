@@ -334,7 +334,20 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D14.inc", void sub_08003D14()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D34.inc", void sub_08003D34());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D84.inc", void sub_08003D84());
+
+extern "C" s16 getMusicPlayerIndex(u16 songID) {
+
+    MusicPlayerInfo *mpInfo = gMPlayTable[gSongTable[songID].ms].info;
+
+    for (u16 i = 0; i < 10; i++) {
+        if (mpInfo == gMPlayTable[i].info) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DD0.inc", void sub_08003DD0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DF8.inc", void sub_08003DF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E20.inc", void sub_08003E20());

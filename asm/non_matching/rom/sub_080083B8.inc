@@ -22,7 +22,7 @@ sub_080083B8:
 	bne _08008434
 	movs r5, #0xac
 	movs r0, #0xac
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	asrs r0, r0, #0x10
@@ -151,7 +151,7 @@ _080084F8:
 	adds r0, r7, r3
 	ldrh r6, [r0]
 	adds r0, r5, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	asrs r0, r0, #0x10
@@ -236,11 +236,11 @@ _0800858C:
 	ldrh r2, [r2]
 	str r2, [sp, #8]
 	adds r0, r5, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	mov r0, r8
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sb, r0

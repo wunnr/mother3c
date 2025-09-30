@@ -3,6 +3,7 @@
 #include "battle/goods.h"
 #include "battle/guest.h"
 #include "functions.h"
+#include "enums.h"
 
 extern "C" {
 
@@ -4858,7 +4859,7 @@ extern "C" s32 cmd_91() {
 }
 
 extern "C" s32 cmd_set_gameover() {
-    sub_080038A4(3);
+    sub_080038A4(SONG_STAND_UP_STRONG);
     sub_080052E4(3);
     return 0;
 }

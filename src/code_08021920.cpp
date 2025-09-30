@@ -557,7 +557,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080361B0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080361DC.inc", void sub_080361DC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036238.inc", void sub_08036238());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080362C0.inc", void sub_080362C0());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036338.inc", void sub_08036338());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036338.inc", void sub_08036338(Object*, s32));
 
 extern "C" void sub_08036388(Object* obj) {
     if (obj->_3c != 0) {

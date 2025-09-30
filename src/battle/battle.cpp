@@ -4,6 +4,7 @@
 #include "battle/player.h"
 #include "battle/sndSystem.h"
 #include "battle/unit.h"
+#include "goods.h"
 #include "structs.h"
 
 s32 sub_08072DFC();

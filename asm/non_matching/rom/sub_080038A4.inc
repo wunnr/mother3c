@@ -28,7 +28,7 @@ _080038D8: .4byte gUnknown_02015EC0
 _080038DC: .4byte gUnknown_02015EF0
 _080038E0:
 	adds r0, r4, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	asrs r0, r0, #0x10

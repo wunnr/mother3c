@@ -21,7 +21,7 @@ cmd_play_sound:
 	cmp r0, r7
 	beq _08020E54
 	adds r0, r5, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	asrs r0, r0, #0x10
