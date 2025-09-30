@@ -2,8 +2,8 @@
 #include "battle.h"
 #include "battle/goods.h"
 #include "battle/guest.h"
-#include "functions.h"
 #include "enums.h"
+#include "functions.h"
 
 extern "C" {
 
@@ -37,7 +37,11 @@ extern void sub_080272F4(u16, u16, u16);
 extern s32 sub_08022354(s32);
 extern s32 sub_08039B24(s32);
 extern u16 sub_080031E0();
+extern void sub_08003C88(u16, u16);
+extern s32 sub_08003E20(u16);
 extern void DoReset();
+extern s16 getMusicPlayerIndex(u16);
+extern void play_sound(u16);
 
 // not functionally equivalent
 NONMATCH("asm/non_matching/script/exec_cmd.inc", void exec_cmd(void* script, u16* unk)) {
@@ -4603,7 +4607,7 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_F7.inc", void cmd_F7());
 
 extern "C" s32 cmd_FD(s32* sp) {
     Object* obj = get_obj(scriptstack_peek(sp, 0));
-    
+
     if (obj != NULL)
         scriptstack_push(obj->_8b + 1);
 
@@ -4753,7 +4757,22 @@ extern "C" s32 cmd_disp_staffroll() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound.inc", void cmd_play_sound());
+
+extern "C" s32 cmd_play_sound(s32* sp) {
+    u16 sound = scriptstack_peek(sp, 1);
+    s16 unk = scriptstack_peek(sp, 0);
+    play_sound(sound);
+
+    if (unk != -1) {
+        s16 playerIndex = getMusicPlayerIndex(sound);
+        u16 uPlayerIndex = (u16)playerIndex;
+
+        if (playerIndex != -1)
+            sub_08003C88(uPlayerIndex, (u16)sub_08003E20(unk));
+    }
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_84.inc", void cmd_84());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_85.inc", void cmd_85());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_86.inc", void cmd_86());
