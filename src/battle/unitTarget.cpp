@@ -1,20 +1,21 @@
 #include "battle/unitTarget.h"
 #include "battle/keypad.h"
 #include "battle/monster.h"
+#include "battle/player.h"
+#include "battle.h"
 
 extern "C" bool IsPlayer(Unit* u);
 extern "C" bool typeIsMonster(Unit* u);
 s32 sub_08072A88();
-Monster* sub_08072AA4(s32);
 extern "C" s32 getPartyCount();
-extern "C" Monster* GetPlayer(s32);
+extern "C" Player* GetPlayer(s32);
 extern "C" s32 GetMonsterCount();
-extern "C" Unit* GetMonster(s32);
-extern "C" Unit* sub_08072A18(u16);
+extern "C" Monster* GetMonster(s32);
+extern "C" Player* sub_08072A18(u16);
 extern "C" s32 sub_0807067C(s32, s32);
 extern "C" s32 randrange(s32, s32);
 extern "C" s32 randrange2(s32, s32);
-extern "C" Base* getPartyInfo();
+extern "C" PartyInfo* getPartyInfo();
 
 extern ClockData gUnknown_08107070;
 extern ClockData gUnknown_08107078;

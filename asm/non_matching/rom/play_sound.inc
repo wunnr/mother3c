@@ -7,7 +7,7 @@ play_sound:
 	cmp r4, #0
 	beq _080039E8
 	adds r0, r4, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	asrs r0, r0, #0x10

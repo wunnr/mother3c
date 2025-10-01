@@ -12,6 +12,8 @@ extern IrqTable gIntrHandlers;
 extern u8 gUnknown_03004B14;
 extern u16 gUnknown_03004B0A;
 
+extern "C" s32 Div(s32, s32);
+extern "C" s32 Divide(s32 a, s32 b);
 extern "C" void sub_0803D474();
 extern "C" void sub_08005C38();
 extern "C" void sub_080019DC(void* dest, u32 size);
@@ -278,12 +280,26 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002DB0.inc", void sub_08002DB0()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002DC8.inc", void sub_08002DC8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E00.inc", void sub_08002E00());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E34.inc", void sub_08002E34());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E60.inc", void sub_08002E60());
+
+extern "C" s32 sub_08002E60(s32 start, s32 end, u16 currentStep, u16 numSteps) {
+    if (numSteps == 0)
+        return start;
+
+    return Divide((start * (numSteps - currentStep)) + (end * currentStep), numSteps);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E8C.inc", void sub_08002E8C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002EE0.inc", void sub_08002EE0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002F8C.inc", void sub_08002F8C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FA4.inc", void sub_08002FA4());
-extern "C" ASM_FUNC("asm/non_matching/rom/Divide.inc", void Divide());
+
+extern "C" s32 Divide(s32 a, s32 b) {
+    if (b == 0)
+        return 0;
+
+    return Div(a, b);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", void sub_08002FD4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FE8.inc", void sub_08002FE8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003008.inc", void sub_08003008());
@@ -326,7 +342,18 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D14.inc", void sub_08003D14()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D34.inc", void sub_08003D34());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D84.inc", void sub_08003D84());
+
+extern "C" s16 getMusicPlayerIndex(u16 songID) {
+    MusicPlayerInfo* mpInfo = gMPlayTable[gSongTable[songID].ms].info;
+
+    for (u16 i = 0; i < 10; i++) {
+        if (mpInfo == gMPlayTable[i].info) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DD0.inc", void sub_08003DD0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DF8.inc", void sub_08003DF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E20.inc", void sub_08003E20());

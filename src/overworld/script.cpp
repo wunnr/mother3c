@@ -2,6 +2,7 @@
 #include "battle.h"
 #include "battle/goods.h"
 #include "battle/guest.h"
+#include "enums.h"
 #include "functions.h"
 
 extern "C" {
@@ -36,7 +37,11 @@ extern void sub_080272F4(u16, u16, u16);
 extern s32 sub_08022354(s32);
 extern s32 sub_08039B24(s32);
 extern u16 sub_080031E0();
+extern void sub_08003C88(u16, u16);
+extern s32 sub_08003E20(u16);
 extern void DoReset();
+extern s16 getMusicPlayerIndex(u16);
+extern void play_sound(u16);
 
 // not functionally equivalent
 NONMATCH("asm/non_matching/script/exec_cmd.inc", void exec_cmd(void* script, u16* unk)) {
@@ -357,7 +362,7 @@ u16 cmd_06(s32* sp) {
 }
 
 u16 cmd_07() {
-    if (gGame._8495 / 128 != 0) {
+    if ((u8)gGame._8495 / 128 != 0) {
         scriptstack_push(3);
         return 0;
     }
@@ -4599,8 +4604,27 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_DA.inc", void cmd_DA());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_E9.inc", void cmd_E9());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F3.inc", void cmd_F3());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_F7.inc", void cmd_F7());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_FD.inc", void cmd_FD());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_FE.inc", void cmd_FE());
+
+extern "C" s32 cmd_FD(s32* sp) {
+    Object* obj = get_obj(scriptstack_peek(sp, 0));
+
+    if (obj != NULL)
+        scriptstack_push(obj->_8b + 1);
+
+    return 0;
+}
+
+extern "C" s32 cmd_FE(s32* sp) {
+    s32 idx = scriptstack_peek(sp, 1);
+    s32 val = scriptstack_peek(sp, 0);
+    Object* obj = get_obj(idx);
+
+    if (obj != NULL)
+        obj->_b8[3] = val;
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_96.inc", void cmd_96());
 
 extern "C" s32 cmd_set_fade(s32* sp) {
@@ -4639,7 +4663,16 @@ extern "C" s32 cmd_play_fade(s32* sp) {
     return 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_71.inc", void cmd_71());
+extern "C" s32 cmd_71(s32* sp) {
+    u16 unkA = scriptstack_peek(sp, 2);
+    u16 unkB = scriptstack_peek(sp, 1);
+    u16 unkC = scriptstack_peek(sp, 0);
+    s32 unkD = unkA == 0 ? 4 : 5;
+
+    sub_080272F4(unkD, unkB, unkC);
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_72.inc", void cmd_72());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_73.inc", void cmd_73());
 
@@ -4661,7 +4694,12 @@ extern "C" s32 cmd_75(s32* sp) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_76.inc", void cmd_76());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_stop_shake.inc", void cmd_stop_shake());
+
+extern "C" s32 cmd_stop_shake() {
+    gGame._8495 &= ~8;
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_anim_above.inc", void cmd_play_anim_above());
 
 extern "C" s32 cmd_79(s32* sp) {
@@ -4724,7 +4762,22 @@ extern "C" s32 cmd_disp_staffroll() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound.inc", void cmd_play_sound());
+
+extern "C" s32 cmd_play_sound(s32* sp) {
+    u16 sound = scriptstack_peek(sp, 1);
+    s16 unk = scriptstack_peek(sp, 0);
+    play_sound(sound);
+
+    if (unk != -1) {
+        s16 playerIndex = getMusicPlayerIndex(sound);
+        u16 uPlayerIndex = (u16)playerIndex;
+
+        if (playerIndex != -1)
+            sub_08003C88(uPlayerIndex, (u16)sub_08003E20(unk));
+    }
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_84.inc", void cmd_84());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_85.inc", void cmd_85());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_86.inc", void cmd_86());
@@ -4748,7 +4801,7 @@ extern "C" s32 cmd_set_volume(s32* sp) {
         unk = sub_0801B3A4(gGame.cur_room);
 
     if (volume == -1)
-        volume = 0x64;
+        volume = 100;
 
     if (unk < 0x80)
         gSave._582[unk] = volume;
@@ -4830,7 +4883,7 @@ extern "C" s32 cmd_91() {
 }
 
 extern "C" s32 cmd_set_gameover() {
-    sub_080038A4(3);
+    sub_080038A4(SONG_STAND_UP_STRONG);
     sub_080052E4(3);
     return 0;
 }
