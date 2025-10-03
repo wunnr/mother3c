@@ -64,7 +64,7 @@ struct Game {
     u8 _67a2[0x67ac - 0x67a2];
     u16 cur_room;
     u8 _67ae[0x67b8 - 0x67ae];
-    u16 cam_target;
+    s16 cam_target;
     u8 _67ba[0x67c0 - 0x67ba];
     u16 _67c0;
     u16 _67c2;

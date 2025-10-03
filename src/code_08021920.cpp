@@ -3,7 +3,7 @@
 #include "script.h"
 #include "structs.h"
 
-extern Object gUnknown_0200C3C8[0x109];
+extern Object gUnknown_0200C3C8[];
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -213,7 +213,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029FC8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A038.inc", void sub_0802A038());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A05C.inc", void sub_0802A05C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A080.inc", void sub_0802A080());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0BC.inc", void sub_0802A0BC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0F8.inc", void sub_0802A0F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());

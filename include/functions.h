@@ -40,7 +40,7 @@ void sub_08028040();
 void sub_080029F8(u32, u32);
 u32 get_giftbox_flag(u32);
 void sub_0802AF24(u32);
-void sub_0802A05C(s32);
+void sub_0802A05C(u32);
 u32 sub_0802B954(u32);
 void sub_0802AD88(u32, u32);
 void set_ailment(u32, u32, u32);
