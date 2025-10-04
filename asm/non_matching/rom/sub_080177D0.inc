@@ -125,7 +125,7 @@ _080178B4:
 	adds r1, r2, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, sl
 	ands r0, r1
 	ldrb r1, [r4]
@@ -141,7 +141,7 @@ _080178B4:
 	adds r1, r5, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #5
@@ -158,7 +158,7 @@ _080178B4:
 	adds r1, r6, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r2, sl
 	ands r0, r2
 	b _0801796E
@@ -169,7 +169,7 @@ _08017918:
 	adds r0, r2, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, sl
 	ands r0, r1
 	ldrb r1, [r4]
@@ -185,7 +185,7 @@ _08017918:
 	adds r0, r5, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #5
@@ -202,7 +202,7 @@ _08017918:
 	adds r0, r6, #0
 	mov r2, sb
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, sl
 	ands r0, r1
 _0801796E:

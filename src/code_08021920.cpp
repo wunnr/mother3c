@@ -215,8 +215,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029E18.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029EF0.inc", void sub_08029EF0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029FC8.inc", void sub_08029FC8());
 
-// add dp to pocket
-extern "C" void sub_0802A038(u32 amount) {
+extern "C" void add_dp_to_pocket(u32 amount) {
     u32 newAmount = gSave.dp_pocket + amount;
     if (newAmount > 999999) {
         gSave.dp_pocket = 999999;
@@ -225,8 +224,7 @@ extern "C" void sub_0802A038(u32 amount) {
     gSave.dp_pocket = newAmount;
 }
 
-// add dp to bank
-extern "C" void sub_0802A05C(u32 amount) {
+extern "C" void add_dp_to_bank(u32 amount) {
     u32 newAmount = gSave.dp_bank + amount;
     if (newAmount > 999999) {
         gSave.dp_bank = 999999;
@@ -237,7 +235,7 @@ extern "C" void sub_0802A05C(u32 amount) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/withdraw_dp.inc", void withdraw_dp());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0F8.inc", void sub_0802A0F8());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/update_key_item_quantity.inc", void update_key_item_quantity());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A264.inc", void sub_0802A264());

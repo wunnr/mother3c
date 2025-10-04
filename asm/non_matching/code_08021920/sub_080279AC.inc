@@ -11,7 +11,7 @@ sub_080279AC:
 	ldrb r1, [r5, #6]
 	ldrh r2, [r5, #2]
 	ldrh r3, [r5]
-	bl sub_08002E60
+	bl lerp
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
@@ -19,7 +19,7 @@ sub_080279AC:
 	ldrb r1, [r5, #7]
 	ldrh r2, [r5, #2]
 	ldrh r3, [r5]
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	ldr r2, _08027A1C
 	ldr r1, _08027A20

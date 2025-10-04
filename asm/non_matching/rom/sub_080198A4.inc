@@ -56,7 +56,7 @@ _08019904:
 	ldrsh r1, [r4, r2]
 	adds r2, r6, #0
 	movs r3, #0x13
-	bl sub_08002E60
+	bl lerp
 	mov r2, r8
 	adds r1, r2, r6
 	strb r0, [r1]

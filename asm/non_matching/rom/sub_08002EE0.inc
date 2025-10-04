@@ -37,7 +37,7 @@ _08002F20:
 	movs r0, #0
 	movs r1, #0x40
 	adds r2, r4, #0
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_08002F8C
@@ -56,7 +56,7 @@ _08002F4A:
 	movs r0, #0x40
 	movs r1, #0
 	adds r2, r4, #0
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_08002F8C

@@ -31,7 +31,7 @@ _08016F94:
 	ldrh r3, [r7, #0x14]
 	movs r0, #0
 	movs r1, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov sb, r0
 	mov r4, sp
 	adds r4, #0xe
@@ -160,14 +160,14 @@ _0801709C:
 	movs r0, #0
 	adds r2, r4, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _080170DC
 	ldrh r1, [r7, #0x18]
 	movs r0, #0
 	adds r2, r4, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _080170E0
 	ldrh r1, [r7, #0x1a]
@@ -186,14 +186,14 @@ _080170E4:
 	movs r1, #0
 	adds r2, r4, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _08017128
 	ldrh r0, [r7, #0x18]
 	movs r1, #0
 	adds r2, r4, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _0801712C
 	ldrh r0, [r7, #0x1a]
@@ -201,7 +201,7 @@ _080170E4:
 _08017110:
 	adds r2, r4, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 _08017118:
 	strh r0, [r5]
 _0801711A:

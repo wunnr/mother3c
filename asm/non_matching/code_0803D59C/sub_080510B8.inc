@@ -10,7 +10,7 @@ sub_080510B8:
 	ldrh r3, [r6]
 	movs r0, #0
 	movs r1, #0x80
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_08002F8C

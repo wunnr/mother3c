@@ -11,7 +11,7 @@ extern "C" s32 getPartyCount();
 extern "C" Player* GetPlayer(s32);
 extern "C" s32 GetMonsterCount();
 extern "C" Monster* GetMonster(s32);
-extern "C" Player* sub_08072A18(u16);
+extern "C" Player* getPlayerByID(u16);
 extern "C" s32 sub_0807067C(s32, s32);
 extern "C" s32 randrange(s32, s32);
 extern "C" s32 randrange2(s32, s32);
@@ -196,8 +196,8 @@ bool UnitTarget::attackdata_68() {
     case 17:
     case 18:
     case 19:
-        if (sub_08072A18(getSelection() - 6)) {
-            addTarget(sub_08072A18(getSelection() - 6));
+        if (getPlayerByID(getSelection() - 6)) {
+            addTarget(getPlayerByID(getSelection() - 6));
         }
         break;
     }

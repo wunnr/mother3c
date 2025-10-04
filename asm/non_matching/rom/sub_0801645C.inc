@@ -40,7 +40,7 @@ _08016492:
 	ldrh r3, [r0]
 	movs r0, #0
 	movs r1, #0x78
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r7]
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10

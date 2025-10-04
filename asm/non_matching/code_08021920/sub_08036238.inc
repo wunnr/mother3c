@@ -43,7 +43,7 @@ _08036280:
 	ldrsh r1, [r3, r2]
 	ldrh r2, [r3, #0xa]
 	ldrh r3, [r3]
-	bl sub_08002E60
+	bl lerp
 	ldr r1, [r6, #0x38]
 	strh r0, [r1, #4]
 	ldr r3, [r6, #0x38]

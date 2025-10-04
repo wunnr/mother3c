@@ -26,7 +26,7 @@ sub_08015ED0:
 	ldrh r3, [r4]
 	movs r0, #0
 	movs r1, #0xf0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r6]
 	ldrh r0, [r5]
 	ldrh r4, [r4]

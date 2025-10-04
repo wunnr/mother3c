@@ -27,7 +27,7 @@ sub_08016984:
 	ldrh r3, [r0]
 	movs r0, #0x78
 	movs r1, #0x1e
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5, #4]
 	ldr r1, _080169F0
 	adds r4, r6, r1

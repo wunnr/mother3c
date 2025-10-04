@@ -23,7 +23,7 @@ sub_08015844:
 	ldrh r3, [r0]
 	movs r0, #0x3c
 	movs r1, #0xf0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4, #4]
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10

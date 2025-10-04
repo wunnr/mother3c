@@ -809,7 +809,7 @@ u16 cmd_push_map_id(s32* sp) {
 
 u16 cmd_add_pocket(s32* sp) {
     s32 amt = scriptstack_peek(sp, 0);
-    sub_0802A038(amt);
+    add_dp_to_pocket(amt);
     return 0;
 }
 
@@ -824,7 +824,7 @@ u16 cmd_set_key_item(s32* sp) {
 
     idx = scriptstack_peek(sp, 1);
     val = scriptstack_peek(sp, 0);
-    sub_0802A0F8(idx, val);
+    update_key_item_quantity(idx, val);
     return 0;
 }
 
@@ -1080,7 +1080,7 @@ u16 cmd_24(s32* sp) {
 
 u16 cmd_add_bank(s32* sp) {
     s32 val = scriptstack_peek(sp, 0);
-    sub_0802A05C(val);
+    add_dp_to_bank(val);
     return 0;
 }
 
@@ -1329,7 +1329,7 @@ u16 cmd_cfg_member_item(s32* sp) {
 	lsls r1, r6, #0x10\n\
 	asrs r1, r1, #0x10\n\
 	adds r0, r5, #0\n\
-	bl sub_0802A0F8\n\
+	bl update_key_item_quantity\n\
 	b _0801CDF4\n\
 	.align 2, 0\n\
 _0801CD68: .4byte gGoodsInfo\n\

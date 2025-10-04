@@ -55,7 +55,7 @@ _08057844:
 	movs r0, #0
 	movs r1, #0xc
 	movs r3, #0x18
-	bl sub_08002E60
+	bl lerp
 	ldr r2, _080578AC
 	adds r4, r5, r2
 	strh r0, [r4]
@@ -63,7 +63,7 @@ _08057844:
 	movs r0, #0xa0
 	movs r1, #0x88
 	movs r3, #0x18
-	bl sub_08002E60
+	bl lerp
 	ldr r2, _080578B0
 	adds r1, r5, r2
 	strh r0, [r1]
