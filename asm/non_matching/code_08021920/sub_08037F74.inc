@@ -43,7 +43,7 @@ _08037FC4:
 	b _08037FEA
 _08037FCC:
 	ldr r0, [r4]
-	bl sub_0802A080
+	bl withdraw_dp
 	b _08037FEA
 _08037FD4:
 	movs r0, #0xd2

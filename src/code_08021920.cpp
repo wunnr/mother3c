@@ -231,7 +231,7 @@ extern "C" void sub_0802A05C(u32 amount) {
     gSave.dp_bank = newAmount;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A080.inc", void sub_0802A080());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/withdraw_dp.inc", void withdraw_dp());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0F8.inc", void sub_0802A0F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
