@@ -5,6 +5,8 @@
 
 extern Object gUnknown_0200C3C8[];
 
+extern void sub_080012BC(void*, s32, s32, s32);
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021AFC.inc", void sub_08021AFC());
@@ -649,7 +651,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037958.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080379C0.inc", void sub_080379C0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A0C.inc", void sub_08037A0C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A7C.inc", void sub_08037A7C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037AF4.inc", void sub_08037AF4());
+
+extern "C" void sub_08037AF4() {
+
+    gGame.mode = gSomeBlend.pad_30B4[0x47e];
+    s8 *tmp = (s8 *)&gSomeBlend.pad_30B4[0x506];
+    *tmp &= -2;
+    gSomeBlend.pad_30B4[0x47c] = 0;
+    gSomeBlend.pad_30B4[0x47d] = 2;
+    sub_080012BC(&gSomeBlend._50, 0, 0, 1);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B4C.inc", void sub_08037B4C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B94.inc", void sub_08037B94());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C04.inc", void sub_08037C04());
