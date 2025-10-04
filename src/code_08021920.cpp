@@ -1,11 +1,13 @@
 // Auto-generated source file
 #include "global.h"
-#include "script.h"
+#include "overworld/script.h"
 #include "structs.h"
 
 extern Object gUnknown_0200C3C8[];
 
-extern void sub_080012BC(void*, s32, s32, s32);
+extern "C" void sub_080012BC(void*, s32, s32, s32);
+extern "C" Object* get_obj_direct(u16 idx);
+extern "C" void sub_0803B860();
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
