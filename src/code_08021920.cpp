@@ -2,7 +2,6 @@
 #include "global.h"
 #include "overworld/script.h"
 #include "structs.h"
-#include "overworld/script.h"
 
 extern Object gUnknown_0200C3C8[];
 

@@ -1,10 +1,10 @@
 #include "battle.h"
 #include "battle/fader.h"
+#include "battle/goods.h"
 #include "battle/monster.h"
 #include "battle/player.h"
 #include "battle/sndSystem.h"
 #include "battle/unit.h"
-#include "battle/goods.h"
 #include "structs.h"
 
 s32 sub_08072DFC();
