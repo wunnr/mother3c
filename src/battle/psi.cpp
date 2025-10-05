@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "base.h"
 #include "global.h"
 
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082484.inc", void sub_08082484());
@@ -40,7 +41,11 @@ extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082AD8.inc", void sub_08082AD8()
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082ADC.inc", void sub_08082ADC());
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082AE4.inc", void sub_08082AE4());
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082AF0.inc", void sub_08082AF0());
-extern "C" ASM_FUNC("asm/non_matching/psi/tellTurnAction.inc", void tellTurnAction());
+
+extern "C" Msg tellTurnAction(s32 unk) {
+    return ROMStrFmt((u16)(unk + 0xAD), Msg(), Msg(), Msg());
+}
+
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082B78.inc", void sub_08082B78());
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082BA8.inc", void sub_08082BA8());
 extern "C" ASM_FUNC("asm/non_matching/psi/sub_08082BBC.inc", void sub_08082BBC());

@@ -35,7 +35,7 @@ sub_0801603C:
 	adds r4, r4, r0
 	ldrh r3, [r4]
 	movs r0, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r7]
 	lsls r0, r0, #0x10
 	ldr r1, _080160D8

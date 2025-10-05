@@ -46,7 +46,7 @@ _0800AE80:
 	movs r0, #9
 	movs r1, #0
 	movs r3, #9
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _0800AEA8
 	ldrb r2, [r4]
@@ -66,7 +66,7 @@ _0800AEAC:
 	movs r0, #0
 	movs r1, #9
 	movs r3, #9
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 	ldr r5, _0800AF28
 	ldrb r2, [r4]
@@ -74,7 +74,7 @@ _0800AEAC:
 	movs r1, #0xd0
 _0800AECA:
 	movs r3, #9
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5]
 _0800AED2:
 	ldr r3, _0800AF2C

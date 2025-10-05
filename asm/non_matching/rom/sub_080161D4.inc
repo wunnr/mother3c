@@ -36,7 +36,7 @@ sub_080161D4:
 	ldrh r3, [r4]
 	movs r0, #0
 	movs r1, #0x50
-	bl sub_08002E60
+	bl lerp
 	mov r1, r8
 	strh r0, [r1]
 	ldr r2, _08016274

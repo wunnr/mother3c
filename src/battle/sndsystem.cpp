@@ -1,5 +1,6 @@
 // Auto-generated source file
 #include "global.h"
+#include "m4a.h"
 
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FD78.inc", void sub_0806FD78());
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FD80.inc", void sub_0806FD80());
@@ -14,6 +15,10 @@ extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FED4.inc", void sub_0806
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FEF0.inc", void sub_0806FEF0());
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FEF8.inc", void sub_0806FEF8());
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FEFC.inc", void sub_0806FEFC());
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FF04.inc", void sub_0806FF04());
+
+extern "C" void sub_0806FF04() {
+    m4aSoundMain();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FF10.inc", void sub_0806FF10());
 extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FF1C.inc", void sub_0806FF1C());

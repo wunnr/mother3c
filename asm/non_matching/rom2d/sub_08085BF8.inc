@@ -13,7 +13,7 @@ _08085C00:
 	bl sub_08070770
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #0
 	bne _08085C32
 	ldr r1, [r5, #0x1c]

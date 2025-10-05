@@ -108,7 +108,7 @@ _08016602:
 	movs r0, #0x78
 	movs r1, #0x20
 	movs r3, #0x2c
-	bl sub_08002E60
+	bl lerp
 	ldr r2, _08016644
 	adds r1, r5, r2
 	strh r0, [r1]
@@ -172,7 +172,7 @@ _0801668C:
 	movs r0, #0x78
 	movs r1, #0
 	movs r3, #0x3c
-	bl sub_08002E60
+	bl lerp
 	ldr r2, _080166B0
 	adds r1, r5, r2
 	strh r0, [r1]

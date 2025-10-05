@@ -103,7 +103,7 @@ _0808D2FC:
 	strb r0, [r5]
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_0807067C
+	bl Remainder
 	adds r4, r6, #0
 	adds r4, #0x29
 	strb r0, [r4]

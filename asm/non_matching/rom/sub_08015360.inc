@@ -78,7 +78,7 @@ _080153C2:
 	ldrh r3, [r0]
 	movs r0, #0x40
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4]
 _0801540C:
 	ldr r0, _08015420

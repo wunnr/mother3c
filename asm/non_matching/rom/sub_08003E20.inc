@@ -22,7 +22,7 @@ _08003E3A:
 	movs r1, #0xff
 	lsls r1, r1, #2
 	movs r0, #4
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	b _08003E56

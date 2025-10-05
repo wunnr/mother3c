@@ -29,13 +29,13 @@ sub_080155C0:
 	ldrh r3, [r4]
 	movs r0, #0
 	movs r1, #0x90
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r6, #0xa]
 	ldrh r2, [r5]
 	ldrh r3, [r4]
 	movs r0, #0
 	movs r1, #0x60
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r6, #0xc]
 	ldr r0, _0801563C
 	adds r3, r7, r0

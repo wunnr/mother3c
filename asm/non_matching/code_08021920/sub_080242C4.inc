@@ -113,7 +113,7 @@ _0802438A:
 	movs r1, #0x10
 	adds r2, r4, #0
 	movs r3, #0x20
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	movs r0, #0x10
@@ -135,7 +135,7 @@ _080243C8:
 	movs r1, #0
 	adds r2, r4, #0
 	movs r3, #0x20
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	movs r0, #0
@@ -143,7 +143,7 @@ _080243C8:
 _080243E6:
 	adds r2, r4, #0
 	movs r3, #0x20
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	b _080243F8

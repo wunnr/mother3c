@@ -43,7 +43,7 @@ _08017A86:
 	lsrs r1, r1, #0x1b
 	adds r2, r7, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, r8
 	ands r0, r1
 	ldrb r1, [r4]
@@ -61,7 +61,7 @@ _08017A86:
 	lsrs r1, r1, #0x1b
 	adds r2, r7, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #5
@@ -87,7 +87,7 @@ _08017AE8:
 	lsrs r1, r1, #0x1b
 	adds r2, r7, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, r8
 	ands r0, r1
 	ldrb r1, [r4]
@@ -105,7 +105,7 @@ _08017AE8:
 	lsrs r1, r1, #0x1b
 	adds r2, r7, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #5
@@ -124,7 +124,7 @@ _08017B3C:
 	lsrs r1, r1, #0x1b
 	adds r2, r7, #0
 	movs r3, #0x1f
-	bl sub_08002E60
+	bl lerp
 	mov r1, r8
 	ands r0, r1
 	lsls r0, r0, #2

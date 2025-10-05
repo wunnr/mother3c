@@ -23,8 +23,8 @@ Div: @ 0x08090F7C
 	svc #6
 	bx lr
 
-	thumb_func_start sub_08090F80
-sub_08090F80: @ 0x08090F80
+	thumb_func_start DivMod
+DivMod: @ 0x08090F80
 	svc #6
 	adds r0, r1, #0
 	bx lr

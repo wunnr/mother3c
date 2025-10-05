@@ -94,7 +94,7 @@ _080386B4:
 	asrs r1, r1, #0x10
 	ldrh r2, [r6, #8]
 	movs r3, #0x10
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r8, r0
@@ -104,7 +104,7 @@ _080386B4:
 	asrs r1, r5, #0x10
 	ldrh r2, [r6, #8]
 	movs r3, #0x10
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	ldrh r0, [r6, #8]
@@ -123,7 +123,7 @@ _080386F0:
 	asrs r1, r1, #0x10
 	ldrh r2, [r6, #8]
 	movs r3, #0x10
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r8, r0
@@ -133,7 +133,7 @@ _080386F0:
 	asrs r1, r1, #0x10
 	ldrh r2, [r6, #8]
 	movs r3, #0x10
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	ldrh r0, [r6, #8]

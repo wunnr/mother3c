@@ -198,7 +198,7 @@ _080258B2:
 	movs r5, #0xf2
 	ldr r0, [r4]
 	ldrh r0, [r0, #0xa]
-	bl sub_0802A038
+	bl add_dp_to_pocket
 	movs r0, #4
 	mov r3, sb
 	strh r0, [r3]

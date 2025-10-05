@@ -1,9 +1,13 @@
 // Auto-generated source file
 #include "global.h"
-#include "script.h"
+#include "overworld/script.h"
 #include "structs.h"
 
-extern Object gUnknown_0200C3C8[0x109];
+extern Object gUnknown_0200C3C8[];
+
+extern "C" void sub_080012BC(void*, s32, s32, s32);
+extern "C" Object* get_obj_direct(u16 idx);
+extern "C" void sub_0803B860();
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -210,11 +214,28 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029D9C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029E18.inc", void sub_08029E18());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029EF0.inc", void sub_08029EF0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029FC8.inc", void sub_08029FC8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A038.inc", void sub_0802A038());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A05C.inc", void sub_0802A05C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A080.inc", void sub_0802A080());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0BC.inc", void sub_0802A0BC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0F8.inc", void sub_0802A0F8());
+
+extern "C" void add_dp_to_pocket(u32 amount) {
+    u32 newAmount = gSave.dp_pocket + amount;
+    if (newAmount > 999999) {
+        gSave.dp_pocket = 999999;
+        return;
+    }
+    gSave.dp_pocket = newAmount;
+}
+
+extern "C" void add_dp_to_bank(u32 amount) {
+    u32 newAmount = gSave.dp_bank + amount;
+    if (newAmount > 999999) {
+        gSave.dp_bank = 999999;
+        return;
+    }
+    gSave.dp_bank = newAmount;
+}
+
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/withdraw_dp.inc", void withdraw_dp());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/update_key_item_quantity.inc", void update_key_item_quantity());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A264.inc", void sub_0802A264());
@@ -630,7 +651,16 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037958.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080379C0.inc", void sub_080379C0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A0C.inc", void sub_08037A0C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A7C.inc", void sub_08037A7C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037AF4.inc", void sub_08037AF4());
+
+extern "C" void sub_08037AF4() {
+    gGame.mode = gSomeBlend.pad_30B4[0x47e];
+    s8* tmp = (s8*)&gSomeBlend.pad_30B4[0x506];
+    *tmp &= -2;
+    gSomeBlend.pad_30B4[0x47c] = 0;
+    gSomeBlend.pad_30B4[0x47d] = 2;
+    sub_080012BC(&gSomeBlend._50, 0, 0, 1);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B4C.inc", void sub_08037B4C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B94.inc", void sub_08037B94());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C04.inc", void sub_08037C04());

@@ -58,7 +58,7 @@ _080A8112:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #6
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #0
 	bne _080A814E
 	movs r0, #0
@@ -86,7 +86,7 @@ _080A814E:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #6
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #1
 	beq _080A81F8
 	ldr r1, [r4, #0x1c]
@@ -98,7 +98,7 @@ _080A814E:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #6
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #2
 	bne _080A81A4
 	movs r0, #0
@@ -123,7 +123,7 @@ _080A81A4:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #6
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #3
 	beq _080A81F8
 	ldr r1, [r4, #0x1c]
@@ -135,7 +135,7 @@ _080A81A4:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #6
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #4
 	bne _080A81F8
 	movs r0, #0

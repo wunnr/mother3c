@@ -23,7 +23,7 @@ sub_080163E4:
 	ldrh r3, [r0]
 	movs r0, #0xf0
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4, #4]
 	ldrh r1, [r4, #6]
 	ldrh r2, [r4, #8]

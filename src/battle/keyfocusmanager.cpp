@@ -21,6 +21,8 @@ struct Sound : Base {
     u32 _34;
 };
 
+extern "C" s32 DivMod(s32, s32);
+
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0806FF38.inc", void sub_0806FF38());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0806FF6C.inc", void __5SoundUs());
 
@@ -53,7 +55,13 @@ extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080705A4.inc", void su
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070654.inc", void sub_08070654());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/randS32.inc", void randS32());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807066C.inc", void sub_0807066C());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807067C.inc", void sub_0807067C());
+
+extern "C" s32 Remainder(s32 a, s32 b) {
+    if (b != 0) {
+        return DivMod(a, b);
+    }
+    return a;
+}
 
 extern "C" void setsleep(s32 duration) {
     ClockManager::get()->sleep(duration);

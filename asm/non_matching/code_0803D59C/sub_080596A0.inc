@@ -32,14 +32,14 @@ _080596C8:
 	movs r1, #0
 	adds r2, r4, #0
 	movs r3, #0xf0
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	movs r0, #0
 	movs r1, #0x10
 	adds r2, r4, #0
 	movs r3, #0xf0
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	b _08059704
