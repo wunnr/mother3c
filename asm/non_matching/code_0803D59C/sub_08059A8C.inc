@@ -21,13 +21,13 @@ sub_08059A8C:
 	ldrh r3, [r4]
 	movs r0, #0x90
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4, #8]
 	ldrh r2, [r4, #2]
 	ldrh r3, [r4]
 	movs r0, #0x60
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4, #0xa]
 	ldrh r0, [r4, #8]
 	cmp r0, #0

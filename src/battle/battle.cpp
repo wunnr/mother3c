@@ -4,6 +4,7 @@
 #include "battle/player.h"
 #include "battle/sndSystem.h"
 #include "battle/unit.h"
+#include "battle/goods.h"
 #include "structs.h"
 
 s32 sub_08072DFC();
@@ -12,6 +13,8 @@ void sub_08072D0C();
 void sub_08073018(bool, bool);
 Player* sub_08072E18(s32);
 void sub_0807459C(u16, s32, s32, s32);
+extern "C" bool sub_080725E8();
+extern "C" Struct160* sub_08072608();
 extern "C" void sub_08074394(s32, s32, s32, bool, bool, bool);
 extern "C" s32 getPartyCount();
 extern "C" Player* GetPlayer(s32);
@@ -23,19 +26,6 @@ void sub_0807459C(u16, s32, s32, s32);
 void sub_08074414(s32, s32, s32, bool, bool, bool);
 
 extern MonsterData gMonsterData[];
-
-struct Encounter {
-    u8 _0;
-    u8 _1[3];
-    u8 _4;
-    u8 monster_count;
-    u8 _6[4];
-    u16 _a;
-    s16 _c;
-    u8 filler[0x2e];
-    u8 result;
-};
-extern Encounter gEncounter;
 
 void Battle::sub_0805DC1C() {
     switch (mBattleResult) {
@@ -285,7 +275,7 @@ void Battle::onLose() {
 
     sub_0807459C(battle_1f8(), 0x20, 0x20, 0);
     // The battle was lost...
-    ROMStrFmt(0x78, Msg(), Msg(), Msg()).print(Color(0, 0, 0), true);
+    ROMStrFmt(0x78, Msg(), Msg(), Msg()).print(Color::Black(), true);
     sub_0805E9BC();
 }
 
@@ -527,7 +517,15 @@ extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B0C.inc", void sub_08060B0C
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B14.inc", void sub_08060B14());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060B20.inc", void sub_08060B20());
 extern "C" ASM_FUNC("asm/non_matching/guest/tellExperience.inc", void tellExperience());
-extern "C" ASM_FUNC("asm/non_matching/guest/metalMonkeyCheck.inc", void metalMonkeyCheck());
+
+extern "C" bool metalMonkeyCheck(Unit* t) {
+    if (sub_080725E8() == true && (sub_08072608()->_0[0] == Monster::MetalMonkey)) {
+        ROMStrFmt(0x87, Msg(), Msg(), Msg()).print(Color::Black(), true);
+        return true;
+    }
+    return false;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060D78.inc", void sub_08060D78());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060DA0.inc", void sub_08060DA0());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08060DC0.inc", void sub_08060DC0());
@@ -550,7 +548,18 @@ extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061024.inc", void sub_08061024
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061048.inc", void sub_08061048());
 extern "C" ASM_FUNC("asm/non_matching/guest/tellPresent.inc", void tellPresent());
 extern "C" ASM_FUNC("asm/non_matching/guest/druggedPresentCheck.inc", void druggedPresentCheck());
-extern "C" ASM_FUNC("asm/non_matching/guest/reqInventorySlot.inc", void reqInventorySlot());
+
+extern "C" Player* reqInventorySlot() {
+    for (int i = 0; i < getPartyCount(); i++) {
+        Player* player = GetPlayer(i);
+        if (player->player_414() < 16) {
+            return player;
+        }
+    }
+
+    return NULL;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/guest/tellPlayerInventoryFull.inc", void tellPlayerInventoryFull());
 extern "C" ASM_FUNC("asm/non_matching/guest/throwAwayItem.inc", void throwAwayItem());
 extern "C" ASM_FUNC("asm/non_matching/guest/sub_08061678.inc", void sub_08061678());

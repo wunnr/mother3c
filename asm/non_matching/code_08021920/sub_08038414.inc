@@ -17,7 +17,7 @@ _0803842C:
 	movs r0, #0x18
 	movs r1, #0
 	movs r3, #0xc
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	ldrh r0, [r4, #8]
@@ -35,7 +35,7 @@ _08038450:
 	movs r0, #0
 	movs r1, #0x18
 	movs r3, #0xc
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	ldrh r0, [r4, #8]

@@ -32,7 +32,7 @@ _08003830: .4byte gUnknown_02015EF0
 _08003834: .4byte gMPlayTable
 _08003838:
 	adds r0, r7, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	asrs r0, r0, #0x10

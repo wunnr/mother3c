@@ -23,7 +23,7 @@ sub_0801591C:
 	ldrh r3, [r0]
 	movs r0, #0xf0
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r4, #4]
 	lsls r0, r0, #0x10
 	cmp r0, #0

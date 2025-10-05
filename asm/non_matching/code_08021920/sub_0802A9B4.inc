@@ -22,7 +22,7 @@ sub_0802A9B4:
 	bne _0802AA08
 	adds r0, r3, #0
 	adds r1, r4, #0
-	bl sub_0802A0F8
+	bl update_key_item_quantity
 	cmp r4, #1
 	bls _0802AA44
 	ldr r0, _0802AA00

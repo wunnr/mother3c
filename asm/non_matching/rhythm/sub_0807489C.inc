@@ -11,7 +11,7 @@ sub_0807489C:
 	bl _call_via_r1
 	adds r0, #1
 	movs r1, #0x18
-	bl sub_0807067C
+	bl Remainder
 	str r0, [r4, #0x44]
 	ldr r0, [r4, #0x40]
 	adds r0, #1

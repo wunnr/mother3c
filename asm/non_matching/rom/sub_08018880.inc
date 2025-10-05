@@ -53,7 +53,7 @@ _080188E4:
 	adds r2, r7, #0
 	mov r3, sl
 _080188EC:
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r0, _0801890C

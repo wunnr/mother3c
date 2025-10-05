@@ -7,7 +7,7 @@ sub_080B4414:
 	bl GetMonsterCount
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_0807067C
+	bl Remainder
 	bl GetMonster
 	adds r4, r0, #0
 	ldr r1, [r5, #0x1c]

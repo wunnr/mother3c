@@ -6,7 +6,7 @@ sub_08027C98:
 	ldrh r1, [r4, #6]
 	ldrh r2, [r4, #2]
 	ldrh r3, [r4]
-	bl sub_08002E60
+	bl lerp
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10

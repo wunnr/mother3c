@@ -39,11 +39,11 @@ _08037FBC: .4byte 0x000035BA
 _08037FC0: .4byte 0x0000351C
 _08037FC4:
 	ldr r0, [r4]
-	bl sub_0802A0BC
+	bl deposit_dp
 	b _08037FEA
 _08037FCC:
 	ldr r0, [r4]
-	bl sub_0802A080
+	bl withdraw_dp
 	b _08037FEA
 _08037FD4:
 	movs r0, #0xd2

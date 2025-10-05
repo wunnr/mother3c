@@ -67,7 +67,7 @@ _08020D90: .4byte 0x000067AC
 _08020D94:
 	lsrs r4, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	asrs r0, r0, #0x10

@@ -22,7 +22,7 @@ sub_0805B138:
 	ldrh r3, [r6, #0x14]
 	movs r0, #0
 	movs r1, #0x1f
-	bl sub_08002E60
+	bl lerp
 	adds r2, r0, #0
 	mov r4, r8
 	adds r0, r4, r7

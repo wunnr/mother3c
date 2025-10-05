@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0802A0F8:
+update_key_item_quantity:
 	push {lr}
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10

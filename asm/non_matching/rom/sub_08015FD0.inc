@@ -23,7 +23,7 @@ sub_08015FD0:
 	ldrh r3, [r0]
 	movs r0, #0x5a
 	movs r1, #0
-	bl sub_08002E60
+	bl lerp
 	strh r0, [r5, #4]
 	ldr r1, _08016030
 	adds r4, r4, r1

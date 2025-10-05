@@ -68,7 +68,9 @@ extern "C" void* getGoodsRTTI(void) {
     return &gUnknown_020038B0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/goods/sub_08064974.inc", void sub_08064974());
+extern "C" void* sub_08064974(void) {
+    return getGoodsRTTI();
+}
 
 Msg Goods::getName(u16 idx) {
     return Msg::genMisctextMsg(get_misctext_msg(2, idx), get_misctext_len(2));

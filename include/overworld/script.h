@@ -12,6 +12,8 @@ enum Mode {
     MODE_FADE_IN = 0x6,
     MODE_LOAD_ROOM = 0x7,
     MODE_PAUSE_MENU = 0xA,
+    MODE_LOGO_DISPLAY = 0xB,
+    MODE_STAFFROLL_DISPLAY = 0xC,
     MODE_MAP_VIEW = 0xD,
     MODE_DROPDOWN = 0xE,
     MODE_DEBUG_MENU = 0xF
@@ -44,7 +46,9 @@ struct Game {
     u8 _27;
     u8 _28[0x595a - 0x28];
     u8 room_enter_dir;
-    u8 _595b[0x5978 - 0x595b];
+    u8 _595b[0x5960 - 0x595b];
+    u16 _5960;
+    u8 _5962[0x5978 - 0x5962];
     u16 next_room;
     u16 _597a;
     u16 _597c;
@@ -53,10 +57,14 @@ struct Game {
     s16 _5982;
     s16 _5984;
     s16 _5986;
-    u8 _5988[0x67ac - 0x5988];
+    u8 _5988[0x679c - 0x5988];
+    u16 _679c;
+    u16 _679e;
+    u16 _67a0;
+    u8 _67a2[0x67ac - 0x67a2];
     u16 cur_room;
     u8 _67ae[0x67b8 - 0x67ae];
-    u16 cam_target;
+    s16 cam_target;
     u8 _67ba[0x67c0 - 0x67ba];
     u16 _67c0;
     u16 _67c2;
@@ -82,17 +90,22 @@ struct Game {
     s16 _82b6_4 : 7;
     u8 _82b8_1 : 5;
     u8 _82b8_20 : 1;
-    u8 _82b9[0x8450 - 0x82b9];
+    u8 _82b9[0x83a8 - 0x82b9];
+    u16 _83a8;
+    u16 _83aa;
+    u16 _83ac;
+    u8 _83ae[0x8450 - 0x83ae];
     s16 _8450;
     u8 _8452[0x846f - 0x8452];
     u8 _846f[0x8484 - 0x846f];
     u32 _8484;
-    u8 _8488[0xc];
+    u8 _8488[8];
+    u32 _8490;
     u8 disable_collision : 1;
     u8 _8494_2 : 1;
     u8 _8494_4 : 1;
     u8 _8494_5 : 1;
-    u8 _8495;
+    s8 _8495;
     u8 _8496[0x26];
     u8* script_pc;
     void* _84c0;

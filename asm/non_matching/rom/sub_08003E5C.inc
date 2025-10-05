@@ -24,7 +24,7 @@ _08003E78:
 	movs r3, #0xff
 	lsls r3, r3, #2
 	movs r0, #0
-	bl sub_08002E60
+	bl lerp
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	b _08003E9C

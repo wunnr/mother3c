@@ -34,7 +34,7 @@ _080AB9BC:
 	bl _call_via_r1
 	adds r0, #1
 	movs r1, #3
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #0
 	bne _080ABA00
 	movs r0, #0

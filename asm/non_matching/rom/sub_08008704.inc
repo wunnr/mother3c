@@ -36,11 +36,11 @@ _08008730:
 	adds r0, r0, r1
 	ldrh r6, [r0]
 	adds r0, r5, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	adds r0, r6, #0
-	bl sub_08003D84
+	bl getMusicPlayerIndex
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sl, r0

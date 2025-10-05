@@ -51,6 +51,7 @@ public:
     virtual void player_400();
     virtual void player_408(u32);
     virtual u8 player_410(u32);
+    virtual s32 player_414();
 
     enum {
         None = 0x0,

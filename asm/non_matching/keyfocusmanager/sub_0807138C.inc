@@ -72,7 +72,7 @@ _080713FC:
 _08071412:
 	adds r0, r4, #0
 	movs r1, #0xa
-	bl sub_08090F80
+	bl DivMod
 	adds r1, r6, r5
 	strb r0, [r1]
 	adds r0, r4, #0

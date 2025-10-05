@@ -107,7 +107,9 @@ typedef struct Object {
     u16 _22;
     u8 _24[0x10];
     u32 speed;
-    u8 _38[0x3c];
+    u8 _38[4];
+    u32 _3c;
+    u8 _40[0x34];
     s8 _74[0x11];  // size is a guess
     u8 character;
     u8 _86;

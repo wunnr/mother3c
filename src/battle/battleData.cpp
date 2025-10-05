@@ -143,10 +143,10 @@ extern "C" Player* GetPlayer(s32 idx) {
     return getPartyInfo()->getPlayer(idx);
 }
 
-extern "C" Player* sub_08072A18(u16 idx) {
+extern "C" Player* getPlayerByID(u16 id) {
     PartyInfo* info = getPartyInfo();
     for (int i = 0; i < info->numPlayers(); i++) {
-        if (info->getPlayer(i)->id() == idx) {
+        if (info->getPlayer(i)->id() == id) {
             return info->getPlayer(i);
         }
     }
@@ -359,7 +359,7 @@ Msg ROMStrFmt(s32 r0, const Msg& r1, const Msg& r2, const Msg& r3) {
     return StrFmt(sub_08073444(r0), r1, r2, r3);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/battleData/sub_080734A0.inc",
+extern "C" ASM_FUNC("asm/non_matching/battleData/StrFmt.inc",
                     Msg StrFmt(const Msg&, const Msg&, const Msg&, const Msg&));
 
 ASM_FUNC("asm/non_matching/battleData/print__3MsgRC13PrintSettingsb.inc",

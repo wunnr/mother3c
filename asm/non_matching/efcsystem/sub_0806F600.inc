@@ -50,7 +50,7 @@ _0806F652:
 	cmp r1, #0
 	beq _0806F662
 	adds r0, r2, #0
-	bl sub_08090F80
+	bl DivMod
 	adds r2, r0, #0
 _0806F662:
 	cmp r2, r4
@@ -79,7 +79,7 @@ _0806F688:
 	cmp r1, #0
 	beq _0806F69A
 	adds r0, r2, #0
-	bl sub_08090F80
+	bl DivMod
 	adds r2, r0, #0
 _0806F69A:
 	cmp r2, r4

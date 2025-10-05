@@ -1,9 +1,14 @@
 // Auto-generated source file
 #include "global.h"
+#include "overworld/script.h"
 #include "structs.h"
 #include "overworld/script.h"
 
+extern Object gUnknown_0200C3C8[];
+
+extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
+extern "C" void sub_0803B860();
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -125,10 +130,40 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270E8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270F8.inc", void sub_080270F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027138.inc", void sub_08027138());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027164.inc", void sub_08027164());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/get_obj.inc", void get_obj());
+
+extern "C" Object* get_obj(s32 idx) {
+    if (idx >= 0x19) {
+        idx -= 0x19;
+
+        if (gGame._82b9[0xc9] & 8) {
+            idx += gGame._82b9[0xb7] + ~gGame._82b9[0xba] + 5;
+        } else {
+            idx += gGame._82b9[0xb7] - gGame._82b9[0xba] + 5;
+        }
+
+        if (idx > 0x18) {
+            return NULL;
+        }
+
+    } else if (idx == -1) {
+        if (gGame._8450 == -1) {
+            return NULL;
+        }
+        idx = gGame._8450;
+    } else if (idx == -2) {
+        idx = 0;
+    } else if (idx == -3) {
+        return NULL;
+    } else if ((u32)idx <= 4 && idx >= gGame.party_count) {
+        return NULL;
+    }
+
+    return get_obj_direct((u16)idx);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802724C.inc", void sub_0802724C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080272F4.inc", void sub_080272F4());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080274AC.inc", void sub_080274AC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080272F4.inc", void sub_080272F4(u16, u16, u16));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080274AC.inc", void sub_080274AC(s32, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027680.inc", void sub_08027680());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802773C.inc", void sub_0802773C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802781C.inc", void sub_0802781C());
@@ -180,11 +215,28 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029D9C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029E18.inc", void sub_08029E18());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029EF0.inc", void sub_08029EF0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029FC8.inc", void sub_08029FC8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A038.inc", void sub_0802A038());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A05C.inc", void sub_0802A05C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A080.inc", void sub_0802A080());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0BC.inc", void sub_0802A0BC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A0F8.inc", void sub_0802A0F8());
+
+extern "C" void add_dp_to_pocket(u32 amount) {
+    u32 newAmount = gSave.dp_pocket + amount;
+    if (newAmount > 999999) {
+        gSave.dp_pocket = 999999;
+        return;
+    }
+    gSave.dp_pocket = newAmount;
+}
+
+extern "C" void add_dp_to_bank(u32 amount) {
+    u32 newAmount = gSave.dp_bank + amount;
+    if (newAmount > 999999) {
+        gSave.dp_bank = 999999;
+        return;
+    }
+    gSave.dp_bank = newAmount;
+}
+
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/withdraw_dp.inc", void withdraw_dp());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/update_key_item_quantity.inc", void update_key_item_quantity());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A264.inc", void sub_0802A264());
@@ -223,14 +275,26 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B53C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B57C.inc", void sub_0802B57C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B5D8.inc", void sub_0802B5D8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B844.inc", void sub_0802B844());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/get_char_stats.inc", void get_char_stats());
+
+extern "C" CharStats* get_char_stats(u16 idx) {
+    return &gCharStats[gSave.party[idx]];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_0802B874());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B88C.inc", void sub_0802B88C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8C4.inc", void sub_0802B8C4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8F4.inc", void sub_0802B8F4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B924.inc", void sub_0802B924());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B954.inc", void sub_0802B954());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/is_equippable.inc", void is_equippable());
+
+extern "C" bool is_equippable(u16 idx) {
+    u32 type = gGoodsInfo[idx].item_type;
+    if (type == Weapon || type == BodyArmor || type == Headgear || type == Armgear) {
+        return true;
+    }
+    return false;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B9E8.inc", void sub_0802B9E8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802BA28.inc", void sub_0802BA28());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802BA68.inc", void sub_0802BA68());
@@ -515,8 +579,15 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080361B0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080361DC.inc", void sub_080361DC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036238.inc", void sub_08036238());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080362C0.inc", void sub_080362C0());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036338.inc", void sub_08036338());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036388.inc", void sub_08036388());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036338.inc", void sub_08036338(Object*, s32));
+
+extern "C" void sub_08036388(Object* obj) {
+    if (obj->_3c != 0) {
+        sub_0803B860();
+        obj->_3c = 0;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080363A0.inc", void sub_080363A0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036450.inc", void sub_08036450());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_08036480());
@@ -590,7 +661,16 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037958.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080379C0.inc", void sub_080379C0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A0C.inc", void sub_08037A0C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A7C.inc", void sub_08037A7C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037AF4.inc", void sub_08037AF4());
+
+extern "C" void sub_08037AF4() {
+    gGame.mode = gSomeBlend.pad_30B4[0x47e];
+    s8* tmp = (s8*)&gSomeBlend.pad_30B4[0x506];
+    *tmp &= -2;
+    gSomeBlend.pad_30B4[0x47c] = 0;
+    gSomeBlend.pad_30B4[0x47d] = 2;
+    sub_080012BC(&gSomeBlend._50, 0, 0, 1);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B4C.inc", void sub_08037B4C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B94.inc", void sub_08037B94());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C04.inc", void sub_08037C04());

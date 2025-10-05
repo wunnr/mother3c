@@ -89,7 +89,7 @@ _08099D08:
 	cmp r7, r0
 	blt _08099C5C
 	movs r0, #2
-	bl sub_08072A18
+	bl getPlayerByID
 	movs r2, #0xf9
 	lsls r2, r2, #4
 	adds r1, r6, r2
