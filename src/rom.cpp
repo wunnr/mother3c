@@ -243,25 +243,164 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800268C.inc", void sub_0800268C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026C0.inc", void sub_080026C0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026F0.inc", void sub_080026F0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800272C.inc", void sub_0800272C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002760.inc", void sub_08002760());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800279C.inc", void sub_0800279C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080027E4.inc", void sub_080027E4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800282C.inc", void sub_0800282C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800289C.inc", void sub_0800289C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080028A8.inc", void sub_080028A8());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080028B8.inc", void sub_080028B8());
-extern "C" ASM_FUNC("asm/non_matching/rom/set_event_flag.inc", void set_event_flag());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080028F4.inc", void sub_080028F4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002938.inc", void sub_08002938());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002950.inc", void sub_08002950());
-extern "C" ASM_FUNC("asm/non_matching/rom/get_flag.inc", void get_flag());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002998.inc", void sub_08002998());
-extern "C" ASM_FUNC("asm/non_matching/rom/get_progression_flag.inc", void get_progression_flag());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080029D4.inc", void sub_080029D4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080029F8.inc", void sub_080029F8());
-extern "C" ASM_FUNC("asm/non_matching/rom/get_giftbox_flag.inc", void get_giftbox_flag());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002A58.inc", void sub_08002A58());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002A90.inc", void sub_08002A90());
+
+extern "C" u32 sub_08002760(u16 r0, u16 r1) {
+    extern u16 gUnknown_08CDB988[];
+    extern u16 gUnknown_08CDB990[];
+
+    switch (r0) {
+    case 0:
+        return gUnknown_08CDB988[r1];
+        break;
+    case 1:
+    case 2:
+        return gUnknown_08CDB990[r1];
+        break;
+    default:
+        return 0;
+    }
+}
+
+extern "C" u32 sub_0800279C(u16 r0, u16 r1) {
+    extern u16 gUnknown_08CDB998[];
+    extern u16 gUnknown_08CDB9A0[];
+    extern u16 gUnknown_08CDB9A8[];
+
+    switch (r0) {
+    case 0:
+        return gUnknown_08CDB998[r1];
+    case 1:
+        return gUnknown_08CDB9A0[r1];
+    case 2:
+        return gUnknown_08CDB9A8[r1];
+    default:
+        return 0;
+    }
+}
+
+extern "C" u32 sub_080027E4(u16 r0, u16 r1) {
+    extern u16 gUnknown_08CDB9B0[];
+    extern u16 gUnknown_08CDB9B8[];
+    extern u16 gUnknown_08CDB9C0[];
+
+    switch (r0) {
+    case 0:
+        return gUnknown_08CDB9B0[r1];
+    case 1:
+        return gUnknown_08CDB9B8[r1];
+    case 2:
+        return gUnknown_08CDB9C0[r1];
+    default:
+        return 0;
+    }
+}
+
+extern "C" void sub_0800282C(u16 r0, u16 r1, u16* r2, u16* r3) {
+    extern u16 gUnknown_08CDB9C8[];
+    extern u16 gUnknown_08CDB9D0[];
+    extern u16 gUnknown_08CDB9D8[];
+    extern u16 gUnknown_08CDB9E0[];
+    extern u16 gUnknown_08CDB9E8[];
+
+    switch (r0) {
+    case 0:
+        *r2 = *r3 = gUnknown_08CDB9C8[r1];
+        break;
+    case 1:
+        *r2 = gUnknown_08CDB9D0[r1];
+        *r3 = gUnknown_08CDB9D8[r1];
+        break;
+    case 2:
+        *r2 = gUnknown_08CDB9E0[r1];
+        *r3 = gUnknown_08CDB9E8[r1];
+        break;
+    default:
+        *r2 = *r3 = 0;
+        break;
+    }
+}
+
+extern "C" const void* sub_0800289C(const void* src, u16 index) {
+    uintptr_t base = (uintptr_t)src;
+    u32 offset = ((u32*)src)[index + 1];
+    return (const void*)(base + offset);
+}
+
+extern "C" u32 sub_080028A8(const void* src, u16 index) {
+    u32 next = ((u32*)src)[index + 2];
+    u32 offset = ((u32*)src)[index + 1];
+    return next - offset;
+}
+
+extern "C" u32 sub_080028B8(const void* src) {
+    return ((u32*)src)[0];
+}
+
+extern "C" void set_event_flag(u16 idx, u16 value) {
+    gSave.event_flags[idx / 8] =
+        (gSave.event_flags[idx / 8] & ~(1 << (idx % 8))) | ((value & 1) << (idx % 8));
+}
+
+extern "C" void sub_080028F4(u16 idx, u16 value) {
+    //! BUG: should be (value & 0x0F) << 4
+    gSave.shop_flags[idx / 2] = idx & 1 ? (gSave.shop_flags[idx / 2] & 0x0F) | (value << 4) :
+                                          (gSave.shop_flags[idx / 2] & 0xF0) | (value & 0x0F);
+}
+
+extern "C" void sub_08002938(u16 idx, u16 value) {
+    gSave._380[idx] = value;
+}
+
+extern "C" void sub_08002950(u16 idx, u16 value) {
+    gSave.mIQ0[idx * 2] = value & 0xFF;
+    gSave.mIQ0[idx * 2 + 1] = (value >> 8) & 0xFF;
+}
+
+extern "C" u32 get_flag(u16 idx) {
+    return (gSave.event_flags[idx / 8] >> (idx % 8)) & 1;
+}
+
+extern "C" u32 sub_08002998(u16 idx) {
+    return (gSave.shop_flags[idx / 2] >> ((idx & 1) * 4)) & 0xf;
+}
+
+extern "C" u32 get_progression_flag(u16 idx) {
+    return gSave._380[idx];
+}
+
+extern "C" u32 sub_080029D4(u16 idx) {
+    return gSave.mIQ0[idx * 2] | (gSave.mIQ0[idx * 2 + 1] << 8);
+}
+
+extern "C" void sub_080029F8(u16 idx, u16 value) {
+    gSave.giftbox_flags[idx / 8] =
+        (gSave.giftbox_flags[idx / 8] & ~(1 << (idx % 8))) | ((value & 1) << (idx % 8));
+}
+
+extern "C" u32 get_giftbox_flag(u16 idx) {
+    return (gSave.giftbox_flags[idx / 8] >> (idx % 8)) & 1;
+}
+
+extern "C" void sub_0805CD30(u16, u16, u8);
+extern "C" u32 sub_0805CDD8(u16, u8);
+
+extern "C" void sub_08002A58(u16 r0, u16 r1, vu16 r2) {
+    if (r2) {
+        sub_0805CD30(r0, 1, r1);
+    } else {
+        sub_0805CD30(r0, 0, r1);
+    }
+}
+
+extern "C" u8 sub_08002A90(u16 r0, vu16 r1) {
+    if (r1) {
+        return sub_0805CDD8(r0, 1);
+    } else {
+        return sub_0805CDD8(r0, 0);
+    }
+}
+
+// extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002A90.inc", void sub_08002A90());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002ABC.inc", void sub_08002ABC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002AF4.inc", void sub_08002AF4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002B1C.inc", void sub_08002B1C());
@@ -301,7 +440,14 @@ extern "C" s32 Divide(s32 a, s32 b) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", void sub_08002FD4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FE8.inc", void sub_08002FE8());
+
+extern "C" u16 sub_08002FE8() {
+    extern u32 gUnknown_02015EA8;
+
+    gUnknown_02015EA8 = (gUnknown_02015EA8 << 1) + REG_VCOUNT + ((gUnknown_02015EA8 << 1) >> 8);
+    return gUnknown_02015EA8;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003008.inc", void sub_08003008());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003024.inc", void sub_08003024());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800303C.inc", void sub_0800303C());

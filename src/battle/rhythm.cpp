@@ -1,10 +1,10 @@
 // Auto-generated source file
 #include "battle.h"
 #include "battle/fader.h"
+#include "battle/goods.h"
 #include "battle/monster.h"
 #include "battle/monsterSkill.h"
 #include "battle/unitTarget.h"
-#include "battle/goods.h"
 #include "global.h"
 
 extern "C" s32 sub_08069558(s32 min, s32 max, s32 step, s32 duration);
@@ -30,7 +30,7 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807404C.inc", void sub_0807404
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074098.inc", void sub_08074098());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080740AC.inc", void sub_080740AC());
 
-extern "C" bool IsGoodsAndType(Action *action, u16 id) {
+extern "C" bool IsGoodsAndType(Action* action, u16 id) {
     return action && action->getRTTI() == getGoodsRTTI() && action->id() == id;
 }
 

@@ -12,7 +12,7 @@ Object* get_obj(s32);
 void sub_0800AD6C();
 void sub_08023EF8();
 u16 sub_0801BF18();
-Object* get_obj_direct(s32);
+Object* get_obj_direct(u16);
 void sub_08025620(Object*, u32, u32);
 void sub_08024744();
 void sub_08005BFC();

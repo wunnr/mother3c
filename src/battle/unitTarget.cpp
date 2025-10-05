@@ -1,8 +1,8 @@
 #include "battle/unitTarget.h"
+#include "battle.h"
 #include "battle/keypad.h"
 #include "battle/monster.h"
 #include "battle/player.h"
-#include "battle.h"
 
 extern "C" bool IsPlayer(Unit* u);
 extern "C" bool typeIsMonster(Unit* u);
