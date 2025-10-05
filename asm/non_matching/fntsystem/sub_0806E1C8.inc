@@ -9,7 +9,7 @@ sub_0806E1C8:
 _0806E1D4:
 	adds r0, r4, #0
 	movs r1, #0xa
-	bl sub_08090F80
+	bl DivMod
 	adds r2, r5, #0
 	adds r1, r2, #1
 	lsls r1, r1, #0x18

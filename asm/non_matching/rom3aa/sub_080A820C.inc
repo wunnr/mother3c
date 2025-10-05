@@ -69,7 +69,7 @@ _080A827E:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #3
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #0
 	bne _080A82BA
 	movs r0, #0
@@ -97,7 +97,7 @@ _080A82BA:
 	bl _call_via_r1
 	subs r0, #1
 	movs r1, #3
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #1
 	bne _080A82F0
 	movs r0, #0

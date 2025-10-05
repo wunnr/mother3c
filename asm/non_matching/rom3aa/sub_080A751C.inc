@@ -23,7 +23,7 @@ sub_080A751C:
 	ldr r1, [r1, #4]
 	bl _call_via_r1
 	movs r1, #3
-	bl sub_0807067C
+	bl Remainder
 	cmp r0, #0
 	bne _080A756C
 	ldr r1, [r6, #0x1c]

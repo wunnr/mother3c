@@ -31,7 +31,7 @@ _0806E120:
 	bne _0806E144
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08090F80
+	bl DivMod
 	adds r5, r0, #0
 	b _0806E146
 _0806E144:

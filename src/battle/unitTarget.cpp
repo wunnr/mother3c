@@ -12,7 +12,7 @@ extern "C" Player* GetPlayer(s32);
 extern "C" s32 GetMonsterCount();
 extern "C" Monster* GetMonster(s32);
 extern "C" Player* getPlayerByID(u16);
-extern "C" s32 sub_0807067C(s32, s32);
+extern "C" s32 Remainder(s32, s32);
 extern "C" s32 randrange(s32, s32);
 extern "C" s32 randrange2(s32, s32);
 extern "C" PartyInfo* getPartyInfo();
@@ -247,7 +247,7 @@ NONMATCH("asm/non_matching/unitTarget/attackdata_70.inc", bool UnitTarget::attac
         break;
     case 1:
         for (int i = 0; i < attackdata_a0(); i++) {
-            attackdata_100(attackdata_f0(sub_0807067C(i, numTargets())));
+            attackdata_100(attackdata_f0(Remainder(i, numTargets())));
         }
         break;
     case 2:

@@ -17,7 +17,7 @@ sub_0809EBBC:
 	ldr r0, [r5, #0x50]
 	subs r0, #1
 	movs r1, #3
-	bl sub_0807067C
+	bl Remainder
 	adds r4, r4, r0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10

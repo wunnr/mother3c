@@ -126,7 +126,7 @@ _08076316:
 	bl _call_via_r1
 	adds r1, r0, #0
 	mov r0, sb
-	bl sub_0807067C
+	bl Remainder
 	adds r1, r0, #0
 	ldr r2, [r6, #4]
 	adds r0, r4, #0
