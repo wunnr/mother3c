@@ -10,6 +10,8 @@
 extern const IrqTable gUnknown_080C1A58;
 extern IrqTable gIntrHandlers;
 extern u8 gUnknown_03004B14;
+extern u16 gUnknown_03004B00;
+extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
 
 extern "C" s32 Div(s32, s32);
@@ -598,7 +600,11 @@ extern "C" void sub_08005BB4(volatile u16 arg0) {
         REG_IME = 1;
     }
 }
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005BFC.inc", void sub_08005BFC());
+extern "C" void sub_08005BFC() {
+    gUnknown_03004B00 = 1;
+    gUnknown_03004B02++;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C14.inc", void sub_08005C14());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C38.inc", void sub_08005C38());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C4C.inc", void sub_08005C4C());
