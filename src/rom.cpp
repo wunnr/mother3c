@@ -7,6 +7,7 @@
 #include "overworld/script.h"
 #include "structs.h"
 
+extern const char _binary_build_mother3_assets_misctext_bin_start;
 extern const IrqTable gUnknown_080C1A58;
 extern IrqTable gIntrHandlers;
 extern u8 gUnknown_03004B14;
@@ -22,6 +23,7 @@ extern "C" void sub_080019DC(void* dest, u32 size);
 extern "C" void sub_08090F74(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
+extern "C" const void* sub_0800289C(const void*, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -222,7 +224,11 @@ extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_msg.inc", void get_miscte
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D2C.inc", void sub_08001D2C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D58.inc", void sub_08001D58());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D70.inc", void sub_08001D70());
-extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_len.inc", void get_misctext_len());
+
+extern "C" u16 get_misctext_len(u16 index) {
+    return *(u16*)sub_0800289C(&_binary_build_mother3_assets_misctext_bin_start, index);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001DC8.inc", void sub_08001DC8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001DF8.inc", void sub_08001DF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001E40.inc", void sub_08001E40());
