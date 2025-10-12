@@ -4,10 +4,13 @@
 #include "structs.h"
 
 extern Object gUnknown_0200C3C8[];
+extern u16 gUnknown_020041EA;
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
 extern "C" void sub_0803B860();
+extern "C" s32 sub_080222C0(s32, u16*, u16);
+extern "C" u16 get_misctext_len(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -17,10 +20,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021BDC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021DC4.inc", void sub_08021DC4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021F40.inc", void sub_08021F40());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08022024.inc", void sub_08022024());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080220EC.inc", void sub_080220EC());
+
+extern "C" s32 sub_080220EC(s32 r0, s32 r1, s32 r2) {
+    if ((r0 << 0x10) == 0xFFE00000) {
+        return sub_080222C0(r2, &gUnknown_020041EA, get_misctext_len(6));
+    }
+    return r2;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08022120.inc", void sub_08022120());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08022194.inc", void sub_08022194());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080222C0.inc", void sub_080222C0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080222C0.inc", s32 sub_080222C0(s32, u16*, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080222F8.inc", void sub_080222F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08022354.inc", void sub_08022354());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08022368.inc", void sub_08022368());
