@@ -3,6 +3,8 @@
 #include "overworld/script.h"
 #include "structs.h"
 
+extern struct_200DE08 gUnknown_0200DE08[5];
+extern struct_200DE08 gUnknown_0200DE44[6];
 extern Object gUnknown_0200C3C8[];
 extern u16 gUnknown_020041EA;
 
@@ -290,7 +292,18 @@ extern "C" CharStats* get_char_stats(u16 idx) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_0802B874());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B88C.inc", void sub_0802B88C());
+
+extern "C" struct_200DE08* sub_0802B88C(u16 idx, u16 mode) {
+    switch (mode) {
+    case 0:
+        return &gUnknown_0200DE08[idx];
+    case 1:
+        return &gUnknown_0200DE44[idx];
+    default:
+        return NULL;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8C4.inc", void sub_0802B8C4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8F4.inc", void sub_0802B8F4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B924.inc", void sub_0802B924());

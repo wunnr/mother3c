@@ -474,4 +474,16 @@ typedef struct struct_020050C0 {
 } struct_020050C0;
 extern struct_020050C0 gUnknown_020050C0;
 
+typedef struct struct_200DE08 {
+    u8 _0;
+    u8 _1;
+    u8 _2;
+    u8 _3;
+    u8 _4;
+    u8 _5;
+    u16 _6;
+    u16 _8;
+    u16 _a;
+} struct_200DE08;
+
 #endif  // STRUCTS_H
