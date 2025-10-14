@@ -1199,7 +1199,7 @@ u16 cmd_cfg_member(s32* sp) {
                 b = sub_0802B874(temp);
                 sub_0802941C(a, b);
                 sub_080294DC(a, b);
-                sub_080295E8(a, temp);
+                initStatMeter(a, temp);
             }
         }
         if (sprNum != -1) {
@@ -1267,7 +1267,7 @@ u16 cmd_cfg_member(s32* sp) {
 	bl sub_080294DC\n\
 	adds r0, r5, #0\n\
 	adds r1, r4, #0\n\
-	bl sub_080295E8\n\
+	bl initStatMeter\n\
 _0801CCF4:\n\
 	mov r1, r8\n\
 	lsls r0, r1, #0x10\n\

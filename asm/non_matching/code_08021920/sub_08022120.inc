@@ -17,7 +17,7 @@ sub_08022120:
 	ldrh r2, [r0]
 	adds r0, r4, #0
 	adds r3, r6, #0
-	bl sub_08002634
+	bl breakIntoDigits
 	mov r1, sp
 	movs r0, #0
 	strh r0, [r1]

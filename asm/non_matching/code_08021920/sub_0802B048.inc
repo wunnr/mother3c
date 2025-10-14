@@ -33,7 +33,7 @@ _0802B07E:
 _0802B086:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_080295E8
+	bl initStatMeter
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

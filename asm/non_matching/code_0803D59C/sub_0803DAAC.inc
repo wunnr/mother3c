@@ -41,7 +41,7 @@ sub_0803DAAC:
 	adds r0, r4, #0
 	mov r1, ip
 	mov r2, sl
-	bl sub_08002634
+	bl breakIntoDigits
 	adds r6, r4, #0
 	mov r1, sp
 	movs r0, #0

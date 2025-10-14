@@ -35,7 +35,7 @@ _0802ABD4:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	movs r2, #0
 	movs r6, #0
 	adds r3, r4, #3

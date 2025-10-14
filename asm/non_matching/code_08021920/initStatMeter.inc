@@ -1,5 +1,5 @@
 	.syntax unified
-sub_080295E8:
+initStatMeter:
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -13,7 +13,7 @@ sub_080295E8:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	movs r2, #0
 	movs r6, #0
 	adds r3, r4, #3
@@ -47,7 +47,7 @@ _0802960E:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	movs r2, #0
 	movs r6, #0
 	adds r3, r4, #3

@@ -14,6 +14,7 @@ extern u8 gUnknown_03004B14;
 extern u16 gUnknown_03004B00;
 extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
+extern u32 gUnknown_08CDB95C[];
 
 extern "C" s32 Div(s32, s32);
 extern "C" s32 Divide(s32 a, s32 b);
@@ -23,6 +24,7 @@ extern "C" void sub_080019DC(void* dest, u32 size);
 extern "C" void sub_08090F74(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
+extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
@@ -246,7 +248,17 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800255C.inc", void sub_0800255C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025A0.inc", void sub_080025A0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025D8.inc", void sub_080025D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002604.inc", void sub_08002604());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002634.inc", void sub_08002634());
+
+extern "C" void breakIntoDigits(u16* digitBuffer, u32 value, u16 modifier, u16 numDigits) {
+    u32* ptr = &gUnknown_08CDB95C[numDigits];
+    u16 i;
+
+    for (i = 0; i < numDigits; i++, ptr--) {
+        digitBuffer[i] = Divide(value, *ptr) + modifier;
+        value = sub_08002FD4(value, *ptr);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800268C.inc", void sub_0800268C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026C0.inc", void sub_080026C0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026F0.inc", void sub_080026F0());
@@ -447,7 +459,7 @@ extern "C" s32 Divide(s32 a, s32 b) {
     return Div(a, b);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", void sub_08002FD4());
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", s32 sub_08002FD4(s32, s32));  // exact copy of "Remainder"
 
 extern "C" u16 sub_08002FE8() {
     extern u32 gUnknown_02015EA8;
