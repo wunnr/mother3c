@@ -271,7 +271,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A98C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A9B4.inc", void sub_0802A9B4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AA78.inc", void sub_0802AA78());
 
-extern "C" void updateStatMeter(u16 playerID, u16 statType, s16 delta) {
+extern "C" void updateStatMeter(u16 playerID, u16 statMeterType, s16 delta) {
     StatMeter* meter;
     CharStats* stats;
     s32 proposedValue;
@@ -283,9 +283,9 @@ extern "C" void updateStatMeter(u16 playerID, u16 statType, s16 delta) {
     }
 
     stats = get_char_stats(playerID);
-    meter = getStatMeter(playerID, statType);
+    meter = getStatMeter(playerID, statMeterType);
 
-    switch (statType) {
+    switch (statMeterType) {
     case HP:
         if (meter->target != meter->prevTarget) {
             return;
@@ -382,8 +382,8 @@ extern "C" CharStats* get_char_stats(u16 idx) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_0802B874());
 
-extern "C" StatMeter* getStatMeter(u16 playerID, u16 statType) {
-    switch (statType) {
+extern "C" StatMeter* getStatMeter(u16 playerID, u16 statMeterType) {
+    switch (statMeterType) {
     case HP:
         return &gHPStatMeters[playerID];
     case PP:
