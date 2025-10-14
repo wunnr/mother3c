@@ -475,14 +475,14 @@ typedef struct struct_020050C0 {
 extern struct_020050C0 gUnknown_020050C0;
 
 typedef struct StatMeter {
-    u8 _0;
-    u8 _1;
-    u8 _2;
-    u8 _3;
-    u8 _4;
-    u8 _5;
-    u16 _6;
-    u16 _8;
+    u8 hundreds;
+    u8 tens;
+    u8 ones;
+    u8 timerHundreds;
+    u8 timerTens;
+    u8 timerOnes;
+    u16 current;
+    u16 target;
     u16 _a;
 } StatMeter;
 

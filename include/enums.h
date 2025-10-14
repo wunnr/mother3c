@@ -1249,4 +1249,6 @@ enum Sound {
     SFX_PIGMASK_SALUTE4 = 0x30F
 };
 
+enum Stat { HP, PP };
+
 #endif  // ENUMS_H

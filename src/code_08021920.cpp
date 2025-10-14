@@ -1,10 +1,11 @@
 // Auto-generated source file
+#include "enums.h"
 #include "global.h"
 #include "overworld/script.h"
 #include "structs.h"
 
-extern StatMeter gUnknown_0200DE08[5];
-extern StatMeter gUnknown_0200DE44[6];
+extern StatMeter gHPStatMeters[5];
+extern StatMeter gPPStatMeters[6];
 extern Object gUnknown_0200C3C8[];
 extern u16 gUnknown_020041EA;
 
@@ -295,10 +296,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_
 
 extern "C" StatMeter* getStatMeter(u16 playerID, u16 statType) {
     switch (statType) {
-    case 0:
-        return &gUnknown_0200DE08[playerID];
-    case 1:
-        return &gUnknown_0200DE44[playerID];
+    case HP:
+        return &gHPStatMeters[playerID];
+    case PP:
+        return &gPPStatMeters[playerID];
     default:
         return NULL;
     }
