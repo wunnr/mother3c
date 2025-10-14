@@ -14,6 +14,8 @@ extern "C" Object* get_obj_direct(u16 idx);
 extern "C" void sub_0803B860();
 extern "C" s32 sub_080222C0(s32, u16*, u16);
 extern "C" u16 get_misctext_len(u16);
+extern "C" CharStats* get_char_stats(u16);
+extern "C" StatMeter* getStatMeter(u16 playerID, u16 statType);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -268,7 +270,93 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A8D4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A98C.inc", void sub_0802A98C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A9B4.inc", void sub_0802A9B4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AA78.inc", void sub_0802AA78());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AAEC.inc", void sub_0802AAEC());
+
+extern "C" void sub_0802AAEC(u16 playerID, u16 statType, s16 delta) {
+    StatMeter* meter;
+    CharStats* stats;
+    s32 proposedValue;
+    u16 i;
+    u8* timers;
+
+    if (delta == 0) {
+        return;
+    }
+
+    stats = get_char_stats(playerID);
+    meter = getStatMeter(playerID, statType);
+
+    switch (statType) {
+    case HP:
+        if (meter->target != meter->prevTarget) {
+            return;
+        }
+        proposedValue = stats->curHP + delta;
+        if (proposedValue <= 0) {
+            if (stats->curHP == 1) {
+                return;
+            }
+            meter->target = 1;
+        } else {
+            if (proposedValue > 999) {
+                meter->target = 999;
+            } else {
+                meter->target = stats->curHP + delta;
+            }
+        }
+        meter->current = stats->curHP;
+        break;
+    case PP:
+        if (meter->target != meter->prevTarget) {
+            return;
+        }
+        proposedValue = stats->curPP + delta;
+        if (proposedValue <= 0) {
+            if (stats->curPP == 1) {
+                return;
+            }
+            meter->target = 1;
+        } else {
+            if (proposedValue > 999) {
+                meter->target = 999;
+            } else {
+                meter->target = stats->curPP + delta;
+            }
+        }
+        meter->current = stats->curPP;
+        break;
+    default:
+        return;
+    }
+
+    for (i = 0, timers = &meter->timerHundreds; i < 3; i++) {
+        timers[i] = 0;
+    }
+
+    if (meter->current <= meter->target) {
+        return;
+    }
+
+    meter->timerOnes = 7;
+    if (meter->ones != 0) {
+        meter->ones--;
+        return;
+    }
+
+    meter->ones = 9;
+    if (meter->tens != 0) {
+        meter->tens--;
+        meter->timerTens = 7;
+        return;
+    }
+
+    meter->tens = 9;
+    if (meter->hundreds != 0) {
+        meter->hundreds--;
+        meter->timerHundreds = 7;
+        return;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802ABCC.inc", void sub_0802ABCC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AC64.inc", void sub_0802AC64());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AD88.inc", void sub_0802AD88());

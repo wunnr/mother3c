@@ -483,7 +483,7 @@ typedef struct StatMeter {
     u8 timerOnes;
     u16 current;
     u16 target;
-    u16 _a;
+    u16 prevTarget;
 } StatMeter;
 
 #endif  // STRUCTS_H
