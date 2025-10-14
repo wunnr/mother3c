@@ -24,7 +24,7 @@ _080293DA:
 	bl sub_080294DC
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl updateStatMeter
+	bl sub_080295E8
 	adds r0, r6, #1
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10

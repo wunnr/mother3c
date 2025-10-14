@@ -219,7 +219,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080293C8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802941C.inc", void sub_0802941C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029428.inc", void sub_08029428());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080294DC.inc", void sub_080294DC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/updateStatMeter.inc", void updateStatMeter());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080295E8.inc", void sub_080295E8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029684.inc", void sub_08029684());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080296E4.inc", void sub_080296E4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029B18.inc", void sub_08029B18());
@@ -271,7 +271,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A98C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A9B4.inc", void sub_0802A9B4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AA78.inc", void sub_0802AA78());
 
-extern "C" void sub_0802AAEC(u16 playerID, u16 statType, s16 delta) {
+extern "C" void updateStatMeter(u16 playerID, u16 statType, s16 delta) {
     StatMeter* meter;
     CharStats* stats;
     s32 proposedValue;
