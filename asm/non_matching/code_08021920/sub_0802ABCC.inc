@@ -18,14 +18,14 @@ _0802ABD4:
 	beq _0802AC42
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_0802B88C
+	bl getStatMeter
 	bl sub_0802AC64
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	str r0, [r5, #0x18]
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_0802B88C
+	bl getStatMeter
 	adds r4, r0, #0
 	ldrh r0, [r4, #6]
 	ldrh r1, [r4, #8]

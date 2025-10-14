@@ -474,7 +474,7 @@ typedef struct struct_020050C0 {
 } struct_020050C0;
 extern struct_020050C0 gUnknown_020050C0;
 
-typedef struct struct_200DE08 {
+typedef struct StatMeter {
     u8 _0;
     u8 _1;
     u8 _2;
@@ -484,6 +484,6 @@ typedef struct struct_200DE08 {
     u16 _6;
     u16 _8;
     u16 _a;
-} struct_200DE08;
+} StatMeter;
 
 #endif  // STRUCTS_H

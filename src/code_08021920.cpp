@@ -3,8 +3,8 @@
 #include "overworld/script.h"
 #include "structs.h"
 
-extern struct_200DE08 gUnknown_0200DE08[5];
-extern struct_200DE08 gUnknown_0200DE44[6];
+extern StatMeter gUnknown_0200DE08[5];
+extern StatMeter gUnknown_0200DE44[6];
 extern Object gUnknown_0200C3C8[];
 extern u16 gUnknown_020041EA;
 
@@ -216,7 +216,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080293C8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802941C.inc", void sub_0802941C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029428.inc", void sub_08029428());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080294DC.inc", void sub_080294DC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080295E8.inc", void sub_080295E8());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/updateStatMeter.inc", void updateStatMeter());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029684.inc", void sub_08029684());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080296E4.inc", void sub_080296E4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029B18.inc", void sub_08029B18());
@@ -293,12 +293,12 @@ extern "C" CharStats* get_char_stats(u16 idx) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_0802B874());
 
-extern "C" struct_200DE08* sub_0802B88C(u16 idx, u16 mode) {
-    switch (mode) {
+extern "C" StatMeter* getStatMeter(u16 playerID, u16 statType) {
+    switch (statType) {
     case 0:
-        return &gUnknown_0200DE08[idx];
+        return &gUnknown_0200DE08[playerID];
     case 1:
-        return &gUnknown_0200DE44[idx];
+        return &gUnknown_0200DE44[playerID];
     default:
         return NULL;
     }

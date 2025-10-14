@@ -52,7 +52,7 @@ _0802AAD0:
 _0802AAD2:
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_080295E8
+	bl updateStatMeter
 _0802AADA:
 	adds r0, r6, #1
 	lsls r0, r0, #0x10

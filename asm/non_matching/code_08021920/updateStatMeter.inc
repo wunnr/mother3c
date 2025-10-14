@@ -1,5 +1,5 @@
 	.syntax unified
-sub_080295E8:
+updateStatMeter:
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -7,7 +7,7 @@ sub_080295E8:
 	lsrs r7, r1, #0x10
 	adds r0, r7, #0
 	movs r1, #0
-	bl sub_0802B88C
+	bl getStatMeter
 	adds r4, r0, #0
 	ldr r1, [r5, #0x18]
 	mov r0, sp
@@ -40,7 +40,7 @@ _0802960E:
 	strh r0, [r4, #6]
 	adds r0, r7, #0
 	movs r1, #1
-	bl sub_0802B88C
+	bl getStatMeter
 	adds r4, r0, #0
 	movs r0, #0x1c
 	ldrsh r1, [r5, r0]

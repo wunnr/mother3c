@@ -38,7 +38,7 @@ _0802B032:
 _0802B03A:
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_080295E8
+	bl updateStatMeter
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0

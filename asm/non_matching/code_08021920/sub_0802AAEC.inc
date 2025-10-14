@@ -14,7 +14,7 @@ sub_0802AAEC:
 	adds r7, r0, #0
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_0802B88C
+	bl getStatMeter
 	adds r3, r0, #0
 	cmp r4, #0
 	beq _0802AB1A
