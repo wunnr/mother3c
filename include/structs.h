@@ -489,7 +489,9 @@ typedef struct StatMeter {
 typedef struct struct_200D818 {
     u8 pad[0x8];
     s32 _8;
-    u8 _c[0x24];
+    u8 _c[0x10 - 0xC];
+    s16 _10;
+    u8 _14[0x1F];
 } struct_200D818;
 
 #endif  // STRUCTS_H

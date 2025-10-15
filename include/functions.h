@@ -52,7 +52,7 @@ void sub_0805BC8C(u64*, u32, u32);
 u32 heal_hp(u32, s16);
 u32 sub_0802AF88(s16);
 void sub_0802AFBC(s16);
-void sub_0802B048(u32, s16);
+void restore_pp(u32, s16);
 void memclear(void*, u32);
 u16 sub_0802A98C();
 void sub_0800A240(u8*);

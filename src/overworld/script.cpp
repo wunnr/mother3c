@@ -1639,7 +1639,7 @@ u16 cmd_heal_pp(s32* sp) {
         spr = get_obj(idx);
         if (spr) {
             if (spr->character <= 4)
-                sub_0802B048(spr->character, pp);
+                restore_pp(spr->character, pp);
         }
     }
     return 0;

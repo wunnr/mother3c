@@ -381,7 +381,21 @@ extern "C" void heal_hp(u16 characterID, s16 amount) {
     initStatMeters(stats, characterID);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B048.inc", void sub_0802B048());
+extern "C" void restore_pp(u16 playerID, s16 amount) {
+    CharStats* stats = get_char_stats(playerID);
+    struct_200D818* s = sub_0802B874(playerID);
+
+    stats->curPP += amount;
+
+    if (stats->curPP > s->_10) {
+        stats->curPP = s->_10;
+    } else if (stats->curPP < 0) {
+        stats->curPP = 0;
+    }
+
+    initStatMeters(stats, playerID);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B094.inc", void sub_0802B094());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B0D0.inc", void sub_0802B0D0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B188.inc", void sub_0802B188());
