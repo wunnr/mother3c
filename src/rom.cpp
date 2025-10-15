@@ -26,6 +26,7 @@ extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
+extern "C" u16 sub_0801A638(u8);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -1059,9 +1060,13 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A57C.inc", void sub_0801A57C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A594.inc", void sub_0801A594());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A5C0.inc", void sub_0801A5C0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A5EC.inc", void sub_0801A5EC());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A604.inc", void sub_0801A604());
+
+extern "C" u16 sub_0801A604() {
+    return sub_0801A638(gGame._e >> 6);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A61C.inc", void sub_0801A61C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A638.inc", void sub_0801A638());
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A638.inc", u16 sub_0801A638(u8));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A650.inc", void sub_0801A650());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A678.inc", void sub_0801A678());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A694.inc", void sub_0801A694());
