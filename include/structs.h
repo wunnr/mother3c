@@ -486,4 +486,10 @@ typedef struct StatMeter {
     u16 prevTarget;
 } StatMeter;
 
+typedef struct struct_200D818 {
+    u8 pad[0x8];
+    s32 _8;
+    u8 _c[0x24];
+} struct_200D818;
+
 #endif  // STRUCTS_H

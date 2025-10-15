@@ -16,6 +16,7 @@ extern "C" s32 sub_080222C0(s32, u16*, u16);
 extern "C" u16 get_misctext_len(u16);
 extern "C" CharStats* get_char_stats(u16);
 extern "C" StatMeter* getStatMeter(u16 playerID, u16 statType);
+extern "C" struct_200D818* sub_0802B874(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -219,7 +220,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080293C8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802941C.inc", void sub_0802941C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029428.inc", void sub_08029428());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080294DC.inc", void sub_080294DC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/initStatMeter.inc", void initStatMeter());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/initStatMeters.inc", void initStatMeters(CharStats*, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029684.inc", void sub_08029684());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080296E4.inc", void sub_080296E4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029B18.inc", void sub_08029B18());
@@ -362,7 +363,24 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/set_ailment.inc", void set_a
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF24.inc", void sub_0802AF24());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF88.inc", void sub_0802AF88());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AFBC.inc", void sub_0802AFBC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/heal_hp.inc", void heal_hp());
+
+extern "C" void heal_hp(u16 characterID, s16 amount) {
+    CharStats* stats = get_char_stats(characterID);
+    struct_200D818* s = sub_0802B874(characterID);
+    Object* obj = get_obj_direct(characterID);
+
+    obj->_cc_10 = 0;
+    stats->curHP += amount;
+
+    if (stats->curHP > s->_8) {
+        stats->curHP = s->_8;
+    } else if (stats->curHP < 1) {
+        stats->curHP = 1;
+    }
+
+    initStatMeters(stats, characterID);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B048.inc", void sub_0802B048());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B094.inc", void sub_0802B094());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B0D0.inc", void sub_0802B0D0());
@@ -378,7 +396,7 @@ extern "C" CharStats* get_char_stats(u16 idx) {
     return &gCharStats[gSave.party[idx]];
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", void sub_0802B874());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", struct_200D818* sub_0802B874(u16));
 
 extern "C" StatMeter* getStatMeter(u16 playerID, u16 statMeterType) {
     switch (statMeterType) {
