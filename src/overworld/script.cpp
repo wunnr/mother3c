@@ -19,6 +19,7 @@ extern void sub_080517AC(s32);
 extern void sub_08037A7C();
 extern void sub_08019D04();
 extern void sub_0802781C();
+extern void sub_08004794();
 extern void sub_08003C20(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
@@ -4727,7 +4728,19 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_7D.inc", void cmd_7D());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_7E.inc", void cmd_7E());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_7F.inc", void cmd_7F());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_80.inc", void cmd_80());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_81.inc", void cmd_81());
+
+extern "C" s32 cmd_81(s32* sp) {
+    startSong(SFX_NULL);
+    u16 val = scriptstack_peek(sp, 0);
+
+    if (val != 0)
+        val--;
+
+    gGame._8462 = val;
+    sub_08004794();
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_disp_text_special.inc", void cmd_disp_text_special());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_B9.inc", void cmd_B9());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_BB.inc", void cmd_BB());
