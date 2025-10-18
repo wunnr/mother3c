@@ -1251,4 +1251,6 @@ enum Sound {
 
 enum StatMeterType { HP = 0, PP = 1 };
 
+enum EquipmentSlot { WEAPON = 0, HEAD = 1, BODY = 2, OTHER = 3 };
+
 #endif  // ENUMS_H
