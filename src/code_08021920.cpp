@@ -7,6 +7,7 @@
 extern StatMeter gHPStatMeters[5];
 extern StatMeter gPPStatMeters[6];
 extern Object gUnknown_0200C3C8[];
+extern struct_200D818 gUnknown_0200D818[];
 extern u16 gUnknown_020041EA;
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
@@ -410,7 +411,9 @@ extern "C" CharStats* get_char_stats(u16 idx) {
     return &gCharStats[gSave.party[idx]];
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B874.inc", struct_200D818* sub_0802B874(u16));
+extern "C" struct_200D818* sub_0802B874(u16 idx) {
+    return &gUnknown_0200D818[idx];
+}
 
 extern "C" StatMeter* getStatMeter(u16 playerID, u16 statMeterType) {
     switch (statMeterType) {

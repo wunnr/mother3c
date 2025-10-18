@@ -493,7 +493,7 @@ typedef struct struct_200D818 {
     s32 _8;
     u8 _c[0x10 - 0xC];
     s16 _10;
-    u8 _14[0x1F];
+    u8 _12[0x1E];
 } struct_200D818;
 
 #endif  // STRUCTS_H
