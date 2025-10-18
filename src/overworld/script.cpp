@@ -4783,7 +4783,30 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_85.inc", void cmd_85());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_86.inc", void cmd_86());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_87.inc", void cmd_87());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_88.inc", void cmd_88());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_bgm.inc", void cmd_set_bgm());
+
+extern "C" s32 cmd_set_bgm(s32* sp) {
+    u16 lower;
+    s16 trackID = scriptstack_peek(sp, 1);
+    s16 unk = scriptstack_peek(sp, 0);
+
+    if (trackID == -1) {
+        trackID = getMusicIDForRoom(gGame.cur_room);
+    }
+
+    if (unk == -1) {
+        lower = gGame._9c88[trackID];
+    } else {
+        lower = unk & 0xFF;
+    }
+
+    u16 upper = gSave._482[trackID] >> 8;
+    if (trackID < 0x80) {
+        gSave._482[trackID] = (upper << 8) | lower;
+    }
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_bgm_other.inc", void cmd_set_bgm_other());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_8A.inc", void cmd_8A());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_CB.inc", void cmd_CB());
