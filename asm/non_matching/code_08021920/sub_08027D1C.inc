@@ -35,7 +35,7 @@ _08027D36:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	movs r0, #0x8b
-	bl sub_080038A4
+	bl startSong
 	lsls r4, r4, #0x10
 	asrs r1, r4, #0x10
 	movs r0, #1
@@ -43,7 +43,7 @@ _08027D36:
 	cmp r1, r0
 	beq _08027D84
 	lsrs r0, r4, #0x10
-	bl sub_080038A4
+	bl startSong
 	movs r0, #1
 	movs r1, #0
 	bl sub_08003C88

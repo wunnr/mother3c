@@ -50,7 +50,7 @@ sub_08057B54:
 	orrs r0, r1
 	strb r0, [r4]
 	movs r0, #0x3a
-	bl sub_080038A4
+	bl startSong
 	add sp, #0x10
 	pop {r4, r5}
 	pop {r0}

@@ -25,7 +25,7 @@ sub_080567E0:
 	bl sub_080037D8
 	bl sub_0805685C
 	movs r0, #0x8b
-	bl sub_080038A4
+	bl startSong
 	bl sub_080037E4
 	mov r1, sb
 	strh r1, [r6]

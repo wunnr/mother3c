@@ -78,7 +78,7 @@ _080261A2:
 	bl sub_08005C38
 	movs r0, #0xf7
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 	pop {r4, r5}
 	pop {r0}
 	bx r0

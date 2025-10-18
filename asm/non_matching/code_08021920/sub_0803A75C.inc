@@ -25,7 +25,7 @@ _0803A784:
 	cmp r0, #0
 	beq _0803A7A8
 	movs r0, #0
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _0803A7A0
 	ldr r1, _0803A7A4
 	adds r0, r0, r1

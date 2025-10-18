@@ -11,25 +11,25 @@ sub_080592A8:
 	movs r0, #1
 	bl sub_08003B58
 	ldr r0, _08059304
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08059308
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0xf6
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _0805930C
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08059310
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08059314
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0xf7
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08059318
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0xe
-	bl sub_080038A4
+	bl startSong
 _080592FC:
 	pop {r0}
 	bx r0

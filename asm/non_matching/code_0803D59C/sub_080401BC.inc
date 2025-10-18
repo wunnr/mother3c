@@ -48,25 +48,25 @@ _08040220:
 	movs r0, #1
 	bl sub_08003B58
 	ldr r0, _08040268
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _0804026C
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0xf6
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08040270
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08040274
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _08040278
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0xf7
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 	ldr r0, _0804027C
-	bl sub_080038A4
+	bl startSong
 	movs r0, #0x53
-	bl sub_080038A4
+	bl startSong
 	b _08040292
 	.align 2, 0
 _08040268: .4byte 0x000003D6
@@ -78,11 +78,11 @@ _0804027C: .4byte 0x000003DD
 _08040280:
 	bl sub_0800377C
 	movs r0, #0x54
-	bl sub_080038A4
+	bl startSong
 	b _08040292
 _0804028C:
 	movs r0, #0x28
-	bl sub_080038A4
+	bl startSong
 _08040292:
 	pop {r0}
 	bx r0

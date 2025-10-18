@@ -66,7 +66,7 @@ _08008790: .4byte gSave
 _08008794: .4byte 0x00000582
 _08008798:
 	adds r0, r5, #0
-	bl sub_080038A4
+	bl startSong
 _0800879E:
 	cmp r6, #0
 	bne _080087C2
@@ -88,7 +88,7 @@ _080087BA:
 	b _080087CA
 _080087C2:
 	adds r0, r6, #0
-	bl sub_080038A4
+	bl startSong
 	lsls r4, r7, #0x10
 _080087CA:
 	mov r1, r8
@@ -129,7 +129,7 @@ _080087F6:
 _08008814:
 	movs r0, #0xf7
 	lsls r0, r0, #2
-	bl sub_080038A4
+	bl startSong
 _0800881C:
 	pop {r3, r4, r5}
 	mov r8, r3

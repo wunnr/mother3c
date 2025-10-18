@@ -22,7 +22,7 @@ extern void sub_0802781C();
 extern void sub_08003C20(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
-extern void sub_080038A4(s32);
+extern void startSong(s32);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
 extern void sub_08003BF8(u16);
@@ -4817,17 +4817,17 @@ extern "C" s32 cmd_D0(s32* sp) {
 }
 
 extern "C" s32 cmd_set_volume(s32* sp) {
-    s16 unk = scriptstack_peek(sp, 1);
+    s16 trackID = scriptstack_peek(sp, 1);
     s16 volume = scriptstack_peek(sp, 0);
 
-    if (unk == -1)
-        unk = getMusicIDForRoom(gGame.cur_room);
+    if (trackID == -1)
+        trackID = getMusicIDForRoom(gGame.cur_room);
 
     if (volume == -1)
         volume = 100;
 
-    if (unk < 0x80)
-        gSave._582[unk] = volume;
+    if (trackID < 0x80)
+        gSave._582[trackID] = volume;
 
     return 0;
 }
@@ -4906,7 +4906,7 @@ extern "C" s32 cmd_91() {
 }
 
 extern "C" s32 cmd_set_gameover() {
-    sub_080038A4(SONG_STAND_UP_STRONG);
+    startSong(SONG_STAND_UP_STRONG);
     sub_080052E4(3);
     return 0;
 }

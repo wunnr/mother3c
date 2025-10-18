@@ -491,7 +491,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/snd_main.inc", void snd_main());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037D8.inc", void sub_080037D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037E4.inc", void sub_080037E4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037F0.inc", void sub_080037F0());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080038A4.inc", void sub_080038A4());
+extern "C" ASM_FUNC("asm/non_matching/rom/startSong.inc", void startSong());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003928.inc", void sub_08003928());
 extern "C" ASM_FUNC("asm/non_matching/rom/play_sound.inc", void play_sound());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A00.inc", void sub_08003A00());
