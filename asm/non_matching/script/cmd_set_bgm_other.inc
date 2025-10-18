@@ -21,7 +21,7 @@ cmd_set_bgm_other:
 	ldr r1, _0802107C
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_0801B3A4
+	bl getMusicIDForRoom
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
 _0802106A:

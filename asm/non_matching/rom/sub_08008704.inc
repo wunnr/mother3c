@@ -24,7 +24,7 @@ sub_08008704:
 	beq _0800881C
 _08008730:
 	adds r0, r2, #0
-	bl sub_0801B3A4
+	bl getMusicIDForRoom
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18

@@ -26,7 +26,7 @@ _08027D36:
 	ldr r2, _08027DB8
 	adds r0, r0, r2
 	ldrh r0, [r0]
-	bl sub_0801B3A4
+	bl getMusicIDForRoom
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
 	movs r0, #1

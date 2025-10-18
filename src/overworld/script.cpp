@@ -29,7 +29,7 @@ extern void sub_08003BF8(u16);
 extern s16 sub_08003D14(u16);
 extern u16 sub_08003D48(u16);
 extern void sub_08033548(u8);
-extern u8 sub_0801B3A4(u16);
+extern u8 getMusicIDForRoom(u16);
 extern void sub_080274AC(s32, u16);
 extern u16 sub_08002FD4(u16, s32);
 extern s32 sub_08002474(s32, s32, s32);
@@ -4798,7 +4798,7 @@ extern "C" s32 cmd_set_volume(s32* sp) {
     s16 volume = scriptstack_peek(sp, 0);
 
     if (unk == -1)
-        unk = sub_0801B3A4(gGame.cur_room);
+        unk = getMusicIDForRoom(gGame.cur_room);
 
     if (volume == -1)
         volume = 100;
