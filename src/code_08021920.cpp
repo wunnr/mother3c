@@ -224,7 +224,26 @@ extern "C" void sub_0802941C(CharStats* stats, struct_200D818* unk) {
     sub_08029428(stats, unk);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029428.inc", void sub_08029428(CharStats*, struct_200D818*));
+extern "C" void sub_08029428(CharStats* stats, struct_200D818* unk) {
+    unk->hp = 0;
+    unk->pp = 0;
+    unk->offense = 0;
+    unk->defense = 0;
+    unk->iq = 0;
+    unk->speed = 0;
+    unk->kindness = 0;
+
+    for (u16 i = 0; i < 4; i++) {
+        unk->hp += gGoodsInfo[stats->equipment[i]].hp_mod;
+        unk->pp += gGoodsInfo[stats->equipment[i]].pp_mod;
+        unk->offense += gGoodsInfo[stats->equipment[i]].off_mod;
+        unk->defense += gGoodsInfo[stats->equipment[i]].def_mod;
+        unk->iq += gGoodsInfo[stats->equipment[i]].iq_mod;
+        unk->speed += gGoodsInfo[stats->equipment[i]].spd_mod;
+        unk->kindness += gGoodsInfo[stats->equipment[i]].kindness_mod;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080294DC.inc", void sub_080294DC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/initStatMeters.inc", void initStatMeters(CharStats*, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029684.inc", void sub_08029684());

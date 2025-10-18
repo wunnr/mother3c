@@ -46,10 +46,7 @@ typedef struct CharStats {
     u8 _2f;
     u16 ailments;
     u16 _32;
-    u8 weapon;
-    u8 body;
-    u8 head;
-    u8 other;
+    u8 equipment[4];
     u32 equip_lyt;
     u8 inventory[16];
     u16 item_timers[16];
@@ -446,12 +443,16 @@ typedef struct GoodsInfo {
     u16 sell_price;
     u32 equip_flags;
     s32 hp_mod;
-    s32 pp_mod;
+    s16 pp_mod;
+    s16 _14;
     s8 off_mod;
     s8 def_mod;
     s8 iq_mod;
     s8 spd_mod;
-    s32 kindness_mod;
+    s8 kindness_mod;
+    u8 _19;
+    u8 _1a;
+    u8 _1b;
     s16 ailment_resist[11];
     s8 element_resist[5];
     u8 attack_type[5];
@@ -489,11 +490,26 @@ typedef struct StatMeter {
 } StatMeter;
 
 typedef struct struct_200D818 {
-    u8 pad[0x8];
+    u8 _0[0x4];
+    s32 hp;
     s32 _8;
-    u8 _c[0x10 - 0xC];
+    u8 _c[0xE - 0xC];
+    s16 pp;
     s16 _10;
-    u8 _12[0x1E];
+    u8 _12[0x14 - 0x12];
+    s16 offense;
+    u8 _16[0x1A - 0x16];
+    s16 defense;
+    u8 _1c;
+    u8 _1d[0x20 - 0x1D];
+    s16 iq;
+    u16 _22;
+    u16 _24;
+    s16 speed;
+    u16 _28;
+    u16 _2a;
+    s16 kindness;
+    u16 _2e;
 } struct_200D818;
 
 #endif  // STRUCTS_H
