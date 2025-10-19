@@ -16,6 +16,9 @@ extern u16 gUnknown_03004B00;
 extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
 extern u32 gUnknown_08CDB95C[];
+extern u16 gUnknown_02015EC0[];
+extern u16 gUnknown_02015ED8[];
+extern u16 gUnknown_02015EF0[];
 
 extern "C" s32 Div(s32, s32);
 extern "C" s32 Divide(s32 a, s32 b);
@@ -499,7 +502,21 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A60.inc", void sub_08003A60()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AB8.inc", void sub_08003AB8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AE0.inc", void sub_08003AE0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003B30.inc", void sub_08003B30());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003B58.inc", void sub_08003B58());
+
+extern "C" void sub_08003B58(u16 index) {
+    s32 signedIndex = (s32)index;
+
+    if (signedIndex > 1)
+        return;
+    if (signedIndex < 0)
+        return;
+
+    MPlayStop(gMPlayTable[index].info);
+    gUnknown_02015ED8[index] = gUnknown_02015EC0[index];
+    gUnknown_02015EC0[index] = 0;
+    gUnknown_02015EF0[index] = 0x100;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BA8.inc", void sub_08003BA8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BF8.inc", void sub_08003BF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C20.inc", void sub_08003C20());
