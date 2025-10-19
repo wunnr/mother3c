@@ -2677,28 +2677,27 @@ u16 cmd_41(s32* sp) {
     u32 v2;
     u16 v3;
     Object* spr;
-    u32 v5;
     u16 i;
     Size y;
-    Size x;
+    CameraPos cam;
 
     v2 = scriptstack_peek(sp, 1);
     v3 = scriptstack_peek(sp, 0);
     spr = get_obj(v2);
     if (spr) {
         sub_08036BEC(spr, &y);
-        sub_08010528(&x, y.w, y.h);
-        sub_0801059C(&x);
+        sub_08010528(&cam, y.w, y.h);
+        sub_0801059C(&cam);
         switch (gGame.state_1) {
         case 2:
         case 3:
-            v5 = sub_0801A218(&x);
+            sub_0801A218(&cam);
             sub_0801084C();
             break;
         case 5:
             for (i = 0; i <= 2; ++i) {
                 if ((i || gGame._f << 31) && (i != 1 || (gGame._11 << 0x1c) >= 0))
-                    sub_08018988(i, v3, &x);
+                    sub_08018988(i, v3, &cam);
             }
             break;
         }

@@ -489,6 +489,11 @@ typedef struct StatMeter {
     u16 prevTarget;
 } StatMeter;
 
+typedef struct CameraPos {
+    s16 x;
+    s16 y;
+} CameraPos;
+
 typedef struct struct_200D818 {
     u8 _0[0x4];
     s32 hp;

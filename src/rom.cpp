@@ -31,6 +31,7 @@ extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 extern "C" u16 sub_0801A638(u8);
+extern "C" void sub_0801A238(s32, CameraPos*);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -1065,8 +1066,13 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F44.inc", void sub_08019F44()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F90.inc", void sub_08019F90());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019FE4.inc", void sub_08019FE4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A1B8.inc", void sub_0801A1B8());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A218.inc", void sub_0801A218());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238());
+
+extern "C" void sub_0801A218(CameraPos* cam) {
+    for (u16 i = 0; i < 3; i++)
+        sub_0801A238(i, cam);
+}
+
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, CameraPos*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2B4.inc", void sub_0801A2B4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2DC.inc", void sub_0801A2DC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A3AC.inc", void sub_0801A3AC());
