@@ -30,7 +30,7 @@ extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
-extern "C" u16 sub_0801A638(u8);
+extern "C" u16 sub_0801A638(u16);
 extern "C" void sub_0801A238(s32, CameraPos*);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
@@ -1090,7 +1090,12 @@ extern "C" u16 sub_0801A604() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A61C.inc", void sub_0801A61C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A638.inc", u16 sub_0801A638(u8));
+
+extern "C" u16 sub_0801A638(u16 index) {
+    u8 flags = gGame.bg_flags[index]._0_1;
+    return (flags + 1) << 8;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A650.inc", void sub_0801A650());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A678.inc", void sub_0801A678());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A694.inc", void sub_0801A694());
