@@ -299,7 +299,7 @@ typedef struct struct_02016028 {
     /* 0x4B1A */ u8 _4b1a[0x5778 - 0x4b1a];
     /* 0x5778 */ u8 _5778[0xC620 - 0x5778];
     /* 0xC620 */ void* _C620;  // pointer to OAM data
-    /* 0xC620 */ u8 pad_C624[0x11C80 - 0xC624];
+    /* 0xC624 */ u8 pad_C624[0x11C80 - 0xC624];
     /* 0x11C80 */ u16 _11c80;
     /* 0x11C82 */ u8 pad_11c82[0x121B8 - 0x11C82];
     /* 0x121B8 */ u8 _121b8_0 : 3;

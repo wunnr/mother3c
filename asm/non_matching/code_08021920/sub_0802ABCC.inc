@@ -12,7 +12,7 @@ _0802ABD4:
 	adds r7, r4, #1
 	cmp r0, #0
 	beq _0802AC42
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802AC42
