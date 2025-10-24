@@ -22,6 +22,11 @@ extern "C" struct_200D818* sub_0802B874(u16);
 extern "C" void sub_08029428(CharStats*, struct_200D818*);
 extern "C" void sub_080294DC(CharStats*, struct_200D818*);
 extern "C" void sub_0802941C(CharStats*, struct_200D818*);
+extern "C" void breakIntoDigits(u16*, u32, u16, u16);
+extern "C" StatMeter* getStatMeter(u16, u16);
+extern "C" CharStats* get_char_stats(u16);
+extern "C" u16 isCharOverworldPlayable(u16 index);
+extern "C" u16 tickStatMeter(StatMeter*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -393,7 +398,30 @@ extern "C" void updateStatMeter(u16 playerID, u16 statMeterType, s16 delta) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802ABCC.inc", void sub_0802ABCC());
+extern "C" void sub_0802ABCC() {
+    u16 digits[3];
+
+    for (u16 i = 0; i < gGame.party_count; i++) {
+        CharStats* stats = get_char_stats(i);
+        if (stats->charNo != 0 && isCharOverworldPlayable(stats->charNo)) {
+            stats->curHP = tickStatMeter(getStatMeter(i, HP));
+            StatMeter* meter = getStatMeter(i, PP);
+            if (meter->current != meter->target) {
+                breakIntoDigits(digits, meter->target, 0, 3);
+
+                for (u16 j = 0; j < 3; j++) {
+                    meter->digits[j] = digits[j];
+                    meter->timers[j] = 0;
+                }
+
+                meter->target = meter->target;  // ???
+                meter->current = meter->target;
+                stats->curPP = meter->target;
+            }
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/tickStatMeter.inc", u16 tickStatMeter(StatMeter*));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AD88.inc", void sub_0802AD88());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/set_ailment.inc", void set_ailment());
