@@ -364,37 +364,37 @@ extern "C" void updateStatMeter(u16 playerID, u16 statMeterType, s16 delta) {
         return;
     }
 
-    for (i = 0, timers = &meter->timerHundreds; i < 3; i++) {
-        timers[i] = 0;
+    for (i = 0; i < 3; i++) {
+        meter->timers[i] = 0;
     }
 
     if (meter->current <= meter->target) {
         return;
     }
 
-    meter->timerOnes = 7;
-    if (meter->ones != 0) {
-        meter->ones--;
+    meter->timers[2] = 7;
+    if (meter->digits[2] != 0) {
+        meter->digits[2]--;
         return;
     }
 
-    meter->ones = 9;
-    if (meter->tens != 0) {
-        meter->tens--;
-        meter->timerTens = 7;
+    meter->digits[2] = 9;
+    if (meter->digits[1] != 0) {
+        meter->digits[1]--;
+        meter->timers[1] = 7;
         return;
     }
 
-    meter->tens = 9;
-    if (meter->hundreds != 0) {
-        meter->hundreds--;
-        meter->timerHundreds = 7;
+    meter->digits[1] = 9;
+    if (meter->digits[0] != 0) {
+        meter->digits[0]--;
+        meter->timers[0] = 7;
         return;
     }
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802ABCC.inc", void sub_0802ABCC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AC64.inc", void sub_0802AC64());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/tickStatMeter.inc", u16 tickStatMeter(StatMeter*));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AD88.inc", void sub_0802AD88());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/set_ailment.inc", void set_ailment());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF24.inc", void sub_0802AF24());
@@ -856,7 +856,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037B94.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C04.inc", void sub_08037C04());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C54.inc", void sub_08037C54());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C84.inc", void sub_08037C84());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037CA4.inc", void sub_08037CA4());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/init_dp_transaction.inc", void init_dp_transaction());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037DB0.inc", void sub_08037DB0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037E54.inc", void sub_08037E54());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037ED0.inc", void sub_08037ED0());

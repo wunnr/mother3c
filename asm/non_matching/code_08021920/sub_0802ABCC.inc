@@ -19,7 +19,7 @@ _0802ABD4:
 	adds r0, r4, #0
 	movs r1, #0
 	bl getStatMeter
-	bl sub_0802AC64
+	bl tickStatMeter
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	str r0, [r5, #0x18]

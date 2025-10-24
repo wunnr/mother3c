@@ -230,11 +230,11 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BFC.inc", void sub_08001BFC()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001C2C.inc", void sub_08001C2C());
 extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_msg.inc", void get_misctext_msg());
 
-extern "C" bool isCharOverworldPlayable(u16 playerID) {
+extern "C" u16 isCharOverworldPlayable(u16 playerID) {
     if (gLevelStatTable[playerID].overworld_playable != 0) {
-        return false;
+        return 0;
     }
-    return true;
+    return 1;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D58.inc", void sub_08001D58());

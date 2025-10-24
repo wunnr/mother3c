@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0802AC64:
+tickStatMeter:
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r0, #0

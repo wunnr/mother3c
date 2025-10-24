@@ -245,73 +245,79 @@ typedef struct Unknown_02018CC8 {
 static_assert(sizeof(Unknown_02018CC8) == 0x10);
 
 typedef struct struct_02016028 {
-    /* 0x00 */ vu16 bldcnt;
-    /* 0x02 */ vu16 bldalpha;
-    /* 0x04 */ vu16 bldy;
-    /* 0x06 */ u8 pad_6[0x8 - 0x6];
-    /* 0x08 */ vu16 dispcnt;
-    /* 0x0A */ vu16 bgcnt[4];
-    /* 0x12 */ vu16 _12[4];
-    /* 0x1A */ vu16 _1A[4];
-    /* 0x22 */ vu16 _22;
-    /* 0x24 */ vu16 _24;
-    /* 0x26 */ vu16 _26;
-    /* 0x28 */ vu16 _28;
-    /* 0x2A */ vu16 _2A;
-    /* 0x2C */ vu16 _2C;
-    /* 0x2E */ vu16 _2E;
-    /* 0x30 */ vu16 _30;
-    /* 0x32 */ vu16 _32;
-    /* 0x34 */ vu16 _34;
-    /* 0x36 */ vu16 _36;
-    /* 0x38 */ vu16 _38;
-    /* 0x3A */ vu16 _3A;
-    /* 0x3C */ vu16 _3C;
-    /* 0x3E */ vu16 _3E;
-    /* 0x40 */ vu32 _40;
-    /* 0x44 */ vu32 _44;
-    /* 0x48 */ vu32 _48;
-    /* 0x4C */ vu32 _4C;
-    /* 0x50 */ Unknown_02016078 _50;
+    vu16 bldcnt;
+    vu16 bldalpha;
+    vu16 bldy;
+    u8 pad_6[0x8 - 0x6];
+    vu16 dispcnt;
+    vu16 bgcnt[4];
+    vu16 _12[4];
+    vu16 _1A[4];
+    vu16 _22;
+    vu16 _24;
+    vu16 _26;
+    vu16 _28;
+    vu16 _2A;
+    vu16 _2C;
+    vu16 _2E;
+    vu16 _30;
+    vu16 _32;
+    vu16 _34;
+    vu16 _36;
+    vu16 _38;
+    vu16 _3A;
+    vu16 _3C;
+    vu16 _3E;
+    vu32 _40;
+    vu32 _44;
+    vu32 _48;
+    vu32 _4C;
+    Unknown_02016078 _50;
 
-    /* 0x2CA0 */ Unknown_02018CC8 _2CA0;
+    Unknown_02018CC8 _2CA0;
 
-    // TODO: figure out if this is a pointer or an array
-    /* 0x2CB0 */ void* _2CB0;  // palette ptr?
-    /* 0x2CB4 */ u16 _2CB4[0x200];
+    void* _2CB0;
+    u16 _2CB4[0x200];
 
-    /* 0x30B4 */ u8 pad_30B4[0x4294 - 0x30B4];
-    /* 0x4294 */ u8 _4294;  // TODO: determine size
-    /* 0x4295 */ u8 pad_4295[0x4ad0 - 0x4295];
-    /* 0x4AD0 */ u32 char_names[0xd];
-    /* 0x4B04 */ u16 msg_type;
-    /* 0x4B06 */ u16 _4b06;
-    /* 0x4B08 */ u16 msg_choice;
-    /* 0x4B0A */ u16 _4b0a;
-    /* 0x4B0C */ u16 _4b0c;
-    /* 0x4B0E */ u16 _4b0e;
-    /* 0x4B10 */ u16 _4b10;
-    /* 0x4B12 */ u16 _4b12;
-    /* 0x4B14 */ u16 _4b14;
-    /* 0x4B16 */ u16 _4b16;
-    /* 0x4B18 */ u8 _4b18;
-    /* 0x4B19 */ u8 _4b19 : 2;
-    /* 0x4B1A */ u8 _4b1a[0x5778 - 0x4b1a];
-    /* 0x5778 */ u8 _5778[0xC620 - 0x5778];
-    /* 0xC620 */ void* _C620;  // pointer to OAM data
-    /* 0xC624 */ u8 pad_C624[0x11C80 - 0xC624];
-    /* 0x11C80 */ u16 _11c80;
-    /* 0x11C82 */ u8 pad_11c82[0x121B8 - 0x11C82];
-    /* 0x121B8 */ u8 _121b8_0 : 3;
-    /* ------- */ u8 _121b8_3 : 1;
-    /* ------- */ u8 _121b8_4 : 4;
-    /* 0x121B9 */ u8 _121b9;
-    /* 0x121BA */ u8 _121ba;
-    /* 0x121BB */ u8 _121bb_1 : 3;
-    /* ------- */ u8 _121bb_8 : 1;
-    /* ------- */ u8 _121bb_10 : 1;
-    /* 0x121BC */ u8 _121bc[0x121C8 - 0x121BC];
-#ifdef __cplusplus
+    u8 pad_30B4[0x351B - 0x30B4];
+    u32 _351C;
+    u32 _3520;
+    u16 _3524;
+    u16 _3526;
+    u8 pad_3528[0x3530 - 0x3528];
+    u8 _3530;
+    u8 pad_3531[0x35BA - 0x3531];
+    u8 _35ba;
+    u8 pad_35bb[0x4294 - 0x35BB];
+    u8 _4294;
+    u8 pad_4295[0x4ad0 - 0x4295];
+    u32 char_names[0xd];
+    u16 msg_type;
+    u16 _4b06;
+    u16 msg_choice;
+    u16 _4b0a;
+    u16 _4b0c;
+    u16 _4b0e;
+    u16 _4b10;
+    u16 _4b12;
+    u16 _4b14;
+    u16 _4b16;
+    u8 _4b18;
+    u8 _4b19 : 2;
+    u8 _4b1a[0x5778 - 0x4b1a];
+    u8 _5778[0xC620 - 0x5778];
+    void* _C620;
+    u8 pad_C624[0x121b8 - 0xC624];
+    u8 _121b8_0 : 3;
+    u8 _121b8_3 : 1;
+    u8 _121b8_4 : 4;
+    u8 _121b9;
+    u8 _121ba;
+    u8 _121bb_1 : 3;
+    u8 _121bb_8 : 1;
+    u8 _121bb_10 : 1;
+    u8 _121bc[0x121C8 - 0x121BC];
+
     union {
         u64 _121c8;
         struct {
@@ -325,9 +331,7 @@ typedef struct struct_02016028 {
             u8 b7;
         } _121c8_b;
     };
-#else
-    u64 _121c8;
-#endif
+
 } struct_02016028;
 
 typedef struct Save {
@@ -478,12 +482,8 @@ typedef struct struct_020050C0 {
 extern struct_020050C0 gUnknown_020050C0;
 
 typedef struct StatMeter {
-    u8 hundreds;
-    u8 tens;
-    u8 ones;
-    u8 timerHundreds;
-    u8 timerTens;
-    u8 timerOnes;
+    u8 digits[3];
+    u8 timers[3];
     u16 current;
     u16 target;
     u16 prevTarget;
