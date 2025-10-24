@@ -31,7 +31,10 @@ typedef struct BgFlags {
 
 struct Game {
     u8 mode;
-    u8 filler_1;
+    u8 _1_1 : 1;
+    u8 _1_2 : 5;
+    u8 _1_40 : 1;
+    u8 _1_80 : 1;
     u32 _2_1 : 7;
     u32 _2_2 : 4;
     u32 _2_3 : 5;

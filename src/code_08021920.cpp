@@ -27,6 +27,7 @@ extern "C" StatMeter* getStatMeter(u16, u16);
 extern "C" CharStats* get_char_stats(u16);
 extern "C" u16 isCharOverworldPlayable(u16 index);
 extern "C" u16 tickStatMeter(StatMeter*);
+extern "C" void sub_08030550(Object*, u16, u32);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -612,7 +613,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08030190.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08030354.inc", void sub_08030354());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803042C.inc", void sub_0803042C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803050C.inc", void sub_0803050C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08030550.inc", void sub_08030550());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08030550.inc", void sub_08030550(Object*, u16, u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080306C4.inc", void sub_080306C4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/draw_sprites.inc", void draw_sprites());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080307DC.inc", void sub_080307DC());
@@ -692,7 +693,7 @@ extern "C" void sub_080332AC(u16 id, u16 param2, u16 param3) {
     if (o->_8b != sel) {
         o->_8b = sel;
         o->_8c = 0xFFFF;
-        o->_90[1] = 0;
+        o->_92[0] = 0;
         o->_bf_3 = 0;
         o->_ca_8 = 0;
         o->_cc_8 = 0;
@@ -711,7 +712,25 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033578.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080335F0.inc", void sub_080335F0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033620.inc", void sub_08033620());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080337A8.inc", void sub_080337A8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080337F0.inc", void sub_080337F0());
+
+extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
+    Object* objA = get_obj_direct(indexA);
+    Object* objB = get_obj_direct(indexB);
+
+    objA->_cb_1 = 1;
+    objA->_91 = indexB;
+
+    if (unk == -1) {
+        if (objA->_88 != objB->_88) {
+            sub_08030550(objA, objB->_88, 1);
+        }
+    } else {
+        sub_08030550(objA, unk, 1);
+    }
+
+    gGame._1_40 = 1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338AC.inc", void sub_080338AC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());

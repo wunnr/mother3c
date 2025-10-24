@@ -4148,7 +4148,7 @@ u16 cmd_65(s32* sp) {
             if (b > -5 && b < 9) {
                 obj->_8e[0] = b;
                 if (b > 4)
-                    obj->_90[1] = sub_08036960(obj, obj->_8b) - 1;
+                    obj->_92[0] = sub_08036960(obj, obj->_8b) - 1;
             }
         } while (0);
     }
@@ -4492,7 +4492,7 @@ u16 cmd_C5(s32* sp) {
             obj2 = get_obj_direct(gGame._82b9[0xb7] + 4);
             sub_08033374(obj2->character, 16);
             sub_08033484(obj2->character);
-            obj2->_90[1] = 0x3c;
+            obj2->_92[0] = 0x3c;
             break;
         }
         gSomeBlend._121b8_3 = 1;
@@ -5001,8 +5001,7 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_movement_property.inc", voi
 
 extern "C" s32 cmd_AC(s32* sp) {
     scriptstack_peek(sp, 0);
-    u8 temp = gGame.filler_1;
-    gGame.filler_1 = temp | 1;
+    gGame._1_1 = 1;
     return 0;
 }
 
