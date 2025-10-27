@@ -77,15 +77,15 @@ extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, u16 index, u16 s
     sub_08090F74(src, (void*)dest->_2700[index], size / 4);
 }
 
-extern "C" void sub_08001630(Unknown_02018CC8* arg0, s16 arg1) {
-    arg0->_E_0 = 0;
-    arg0->_0 = 0;
-    arg0->_2 = 0;
-    arg0->_4 = 0;
-    arg0->_6 = arg1;
-    arg0->_8 = 0;
-    arg0->_A = 0;
-    arg0->_C = 0;
+extern "C" void resetInputState(InputState* input, s16 arg1) {
+    input->gotInput = 0;
+    input->buttonsJustPressed = 0;
+    input->buttonsPressed = 0;
+    input->debounceTimer = 0;
+    input->_6[0] = arg1;
+    input->_6[1] = 0;
+    input->_6[2] = 0;
+    input->numRepeats = 0;
 }
 
 extern "C" void pollInput(InputState* input) {

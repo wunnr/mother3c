@@ -983,7 +983,7 @@ extern "C" void sub_0805AE64();
 extern "C" void sub_08001778(void* arg1, u16 arg2, u16 arg3, u16 arg4);
 extern "C" void sub_080013D0(void*);
 extern "C" void sub_08001454(void*);
-extern "C" void sub_08001630(Unknown_02018CC8*, s16);
+extern "C" void resetInputState(InputState*, s16);
 extern "C" void sub_080019A4(void*);
 
 extern "C" void sub_0805AE94(struct_02016028*, void*);
@@ -1086,7 +1086,7 @@ extern "C" void sub_0805AEEC(void) {
     gUnknown_02015E00._8 = 0;
     sub_080013D0(&gSomeBlend);
     sub_08001454(&gSomeBlend._50);
-    sub_08001630(&gSomeBlend._2CA0, 2);
+    resetInputState(&gSomeBlend.input, 2);
 }
 
 // GB player logo init

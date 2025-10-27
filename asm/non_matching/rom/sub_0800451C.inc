@@ -69,7 +69,7 @@ _080045A2:
 	bne _080045A2
 	ldr r0, _08004650
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	movs r5, #0
 _080045BA:
 	bl sub_08001960

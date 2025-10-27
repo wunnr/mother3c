@@ -156,7 +156,7 @@ _08007844:
 	ldr r1, _080078E8
 	adds r0, r5, r1
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r5, #0
 	bl sub_08007CC0
 	adds r0, r4, #0
@@ -187,7 +187,7 @@ _080078EC:
 	ldr r2, _08007A38
 	adds r0, r5, r2
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r5, #0
 	bl sub_08007CC0
 	adds r0, r4, #0

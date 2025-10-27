@@ -172,7 +172,7 @@ _080074E4:
 	ldr r0, _08007570
 	add r0, sl
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	mov r0, sl
 	bl sub_08007CC0
 	adds r0, r4, #0

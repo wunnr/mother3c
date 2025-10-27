@@ -234,18 +234,16 @@ typedef struct Unknown_02016078 {
     /* 0x2C4F / 0x2C9F */ u8 pad_2C4F[0x2C50 - 0x2C4F];
 } Unknown_02016078;
 
-typedef struct Unknown_02018CC8 {
-    u16 _0;
-    u16 _2;
-    s16 _4;
-    u16 _6;
-    u16 _8;
-    u16 _A;
-    u16 _C;
-    u8 _E_0 : 1;
-    u8 pad_F[0x10 - 0xF];
-} Unknown_02018CC8;
-static_assert(sizeof(Unknown_02018CC8) == 0x10);
+typedef struct InputState {
+    u16 buttonsJustPressed;
+    u16 buttonsPressed;
+    u16 debounceTimer;
+    u16 _6[3];
+    u16 numRepeats;
+    u8 gotInput : 1;
+    u8 _e_2 : 1;
+    u8 _e_4 : 6;
+} InputState;
 
 typedef struct struct_02016028 {
     /* 0x00 */ vu16 bldcnt;
@@ -277,7 +275,7 @@ typedef struct struct_02016028 {
     /* 0x4C */ vu32 _4C;
     /* 0x50 */ Unknown_02016078 _50;
 
-    /* 0x2CA0 */ Unknown_02018CC8 _2CA0;
+    /* 0x2CA0 */ InputState input;
 
     // TODO: figure out if this is a pointer or an array
     /* 0x2CB0 */ void* _2CB0;  // palette ptr?
@@ -395,17 +393,6 @@ typedef struct Save {
     u8 _80e[0x10];
     u8 _81e;
 } Save;
-
-typedef struct InputState {
-    u16 buttonsJustPressed;
-    u16 buttonsPressed;
-    u16 debounceTimer;
-    u16 _6[3];
-    u16 numRepeats;
-    u8 gotInput : 1;
-    u8 _e_2 : 1;
-    u8 _e_4 : 6;
-} InputState;
 
 // extern ItemData gGoodsInfo[];
 extern Save gSave;
