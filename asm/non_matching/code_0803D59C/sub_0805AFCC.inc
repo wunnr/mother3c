@@ -98,7 +98,7 @@ _0805B07C:
 	strh r2, [r7]
 _0805B096:
 	ldr r0, _0805B0C4
-	bl sub_0800164C
+	bl pollInput
 	bl sub_0805B0DC
 	bl sub_08001960
 	bl sub_0805AE64

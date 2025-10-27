@@ -4,7 +4,7 @@ sub_08004FB4:
 	bl sub_0800519C
 	ldr r4, _08004FE8
 	adds r0, r4, #0
-	bl sub_0800164C
+	bl pollInput
 	ldr r1, _08004FEC
 	ldrb r0, [r1]
 	cmp r0, #2

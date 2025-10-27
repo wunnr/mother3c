@@ -88,7 +88,46 @@ extern "C" void sub_08001630(Unknown_02018CC8* arg0, s16 arg1) {
     arg0->_C = 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800164C.inc", void sub_0800164C());
+extern "C" void pollInput(InputState* input) {
+    u16 buttonState = ((u32)(~REG_KEYINPUT << 0x16) >> 0x16);
+    input->gotInput = 1;
+
+    if (buttonState == 0) {
+        input->debounceTimer = 0;
+        input->gotInput = 0;
+        input->numRepeats = 0;
+    } else {
+        if (input->debounceTimer == 0) {
+            input->debounceTimer = 20;
+        } else {
+            input->debounceTimer--;
+            if (input->debounceTimer == 0) {
+                input->debounceTimer = 6;
+            } else {
+                input->gotInput = 0;
+            }
+        }
+    }
+
+    if (input->gotInput) {
+        if (input->buttonsPressed == input->_6[2]) {
+            input->numRepeats++;
+        } else {
+            input->numRepeats = 0;
+        }
+        input->_6[2] = input->buttonsPressed;
+    }
+
+    input->buttonsJustPressed = buttonState & ~input->buttonsPressed;
+    input->buttonsPressed = buttonState;
+    if (input->gotInput) {
+        input->buttonsJustPressed |= input->_6[1];
+        input->_6[1] = 0;
+        return;
+    }
+    input->_6[1] |= input->buttonsJustPressed;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080016E4.inc", void sub_080016E4());
 
 extern "C" void DoReset(void) {

@@ -396,6 +396,17 @@ typedef struct Save {
     u8 _81e;
 } Save;
 
+typedef struct InputState {
+    u16 buttonsJustPressed;
+    u16 buttonsPressed;
+    u16 debounceTimer;
+    u16 _6[3];
+    u16 numRepeats;
+    u8 gotInput : 1;
+    u8 _e_2 : 1;
+    u8 _e_4 : 6;
+} InputState;
+
 // extern ItemData gGoodsInfo[];
 extern Save gSave;
 extern struct_02016028 gSomeBlend;
