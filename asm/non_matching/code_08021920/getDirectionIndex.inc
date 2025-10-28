@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0802706C:
+getDirectionIndex:
 	push {lr}
 	lsls r0, r0, #0x10
 	movs r2, #0

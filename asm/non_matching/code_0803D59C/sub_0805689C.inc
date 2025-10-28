@@ -20,5 +20,5 @@ _080568BA:
 	bx r0
 	.align 2, 0
 _080568C8: .4byte gUnknown_02015DA0
-_080568CC: .4byte gUnknown_02018CC8
+_080568CC: .4byte gInputState
 	.syntax divided

@@ -6,5 +6,5 @@ sub_08058630:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805863C: .4byte gUnknown_02018CC8
+_0805863C: .4byte gInputState
 	.syntax divided
