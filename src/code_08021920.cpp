@@ -1,9 +1,11 @@
 // Auto-generated source file
+#include "gba/io_reg.h"
 #include "global.h"
 #include "overworld/script.h"
 #include "structs.h"
 
 extern Object gUnknown_0200C3C8[];
+extern u16 gDirectionTable[];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -120,7 +122,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026CE4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026DA8.inc", void sub_08026DA8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026DE0.inc", void sub_08026DE0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026E3C.inc", void sub_08026E3C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/getDirectionIndex.inc", void getDirectionIndex());
+
+extern "C" u16 getDirectionIndex(u16 buttonsPressed) {
+    for (u16 i = 0; i < 9; i++) {
+        if (gDirectionTable[i * 8] == (buttonsPressed & DPAD_ANY)) {
+            return i;
+        }
+    }
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270A0.inc", void sub_080270A0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270B8.inc", void sub_080270B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
