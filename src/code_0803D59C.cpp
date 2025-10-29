@@ -48,6 +48,7 @@ extern "C" void nullsub_11();
 extern "C" void pollInput(InputState*);
 extern "C" void sub_08058614();
 extern "C" void sub_08058630();
+extern "C" void sub_08059500(InputState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -838,7 +839,10 @@ extern "C" void sub_08058614(void) {
         sub_08000E5C(&gSomeBlend._50);
     }
 }
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08058630.inc", void sub_08058630());
+extern "C" void sub_08058630() {
+    sub_08059500(&gInputState);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_11.inc", void nullsub_11());
 
 extern "C" void sub_08058644(void) {
@@ -892,7 +896,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805931C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059358.inc", void sub_08059358());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080593B8.inc", void sub_080593B8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059404.inc", void sub_08059404());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059500.inc", void sub_08059500());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059500.inc", void sub_08059500(InputState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059548.inc", void sub_08059548());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059594.inc", void sub_08059594());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080595D8.inc", void sub_080595D8());
