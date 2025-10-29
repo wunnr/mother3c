@@ -5,11 +5,12 @@
 #include "structs.h"
 
 extern Object gUnknown_0200C3C8[];
-extern u16 gDirectionTable[];
+extern Direction gDirectionTable[];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
 extern "C" void sub_0803B860();
+extern "C" u16 sub_08002FE8();
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -125,7 +126,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026E3C.inc", void sub_
 
 extern "C" u16 getDirectionIndex(u16 buttonsPressed) {
     for (u16 i = 0; i < 9; i++) {
-        if (gDirectionTable[i * 8] == (buttonsPressed & DPAD_ANY)) {
+        if (gDirectionTable[i]._0 == (buttonsPressed & DPAD_ANY)) {
             return i;
         }
     }
@@ -138,7 +139,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270B8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270D8.inc", void sub_080270D8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270E8.inc", void sub_080270E8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270F8.inc", void sub_080270F8());
+
+extern "C" u16 sub_080270F8(u16 index, u16 unk) {
+    if (unk << 0x10 < 0)
+        unk = sub_08002FE8() & 1;
+
+    if (unk == 0)
+        return gDirectionTable[index]._a;
+
+    return gDirectionTable[index]._c;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027138.inc", void sub_08027138());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027164.inc", void sub_08027164());
 

@@ -243,7 +243,18 @@ typedef struct InputState {
     u8 gotInput : 1;
     u8 _e_2 : 1;
     u8 _e_4 : 6;
+    u8 _f;
 } InputState;
+
+typedef struct Direction {
+    u16 _0;
+    u8 _2[4];
+    u16 _6;
+    u16 _8;
+    u16 _a;
+    u16 _c;
+    u16 _e;
+} Direction;
 
 typedef struct struct_02016028 {
     /* 0x00 */ vu16 bldcnt;
