@@ -1,7 +1,7 @@
 	.syntax unified
 sub_08059500:
 	push {r4, lr}
-	bl sub_0805980C
+	bl checkSoftReset
 	ldr r0, _08059538
 	ldrb r0, [r0]
 	cmp r0, #0

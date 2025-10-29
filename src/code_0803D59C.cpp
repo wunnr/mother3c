@@ -902,7 +902,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059594.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080595D8.inc", void sub_080595D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059608.inc", void sub_08059608());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080596A0.inc", void sub_080596A0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805980C.inc", void sub_0805980C());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/checkSoftReset.inc", void checkSoftReset());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059828.inc", void sub_08059828());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059840.inc", void sub_08059840());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059898.inc", void sub_08059898());
