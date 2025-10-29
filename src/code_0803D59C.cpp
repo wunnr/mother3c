@@ -28,6 +28,7 @@ extern u8 gUnknown_02015DC0;
 extern const u8 gUnknown_09C8DE98;  // Some sort of "archive" with sprites, palettes, etc.
 extern u8 gMenuTextPalette;
 extern const u8 gUnknown_09BCDD8C;
+extern InputState gInputState;
 
 extern "C" void* sub_0800289C(const void* src, int index);
 extern "C" void sub_08090F88(void* src, void* dest);  // lz-decompress
@@ -43,6 +44,10 @@ extern "C" void sub_08001A14(void* src, void* dest, u32 size);
 extern "C" void sub_08001A38(void* dest, u32 size, int value);
 extern "C" void sub_08001B18(void*, void*, int);
 extern "C" void sub_08000E5C(void*);
+extern "C" void nullsub_11();
+extern "C" void pollInput(InputState*);
+extern "C" void sub_08058614();
+extern "C" void sub_08058630();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -820,7 +825,13 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08058548.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080585C4.inc", void sub_080585C4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_9.inc", void nullsub_9());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_10.inc", void nullsub_10());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080585F8.inc", void sub_080585F8());
+
+extern "C" void sub_080585F8() {
+    sub_08058614();
+    pollInput(&gInputState);
+    sub_08058630();
+    nullsub_11();
+}
 
 extern "C" void sub_08058614(void) {
     if (gUnknown_02015DC0 != 0) {
