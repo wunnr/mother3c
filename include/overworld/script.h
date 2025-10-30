@@ -19,9 +19,22 @@ enum Mode {
     MODE_DEBUG_MENU = 0xF
 };
 
+typedef struct BgFlags {
+    u8 _0_0 : 3;
+    u8 _0_1 : 3;
+    u8 _0_2 : 2;
+    u8 _1_0 : 2;
+    u8 _1_1 : 6;
+    u8 _2;
+    u8 _3;
+} BgFlags;
+
 struct Game {
     u8 mode;
-    u8 filler_1;
+    u8 _1_1 : 1;
+    u8 _1_2 : 5;
+    u8 _1_40 : 1;
+    u8 _1_80 : 1;
     u32 _2_1 : 7;
     u32 _2_2 : 4;
     u32 _2_3 : 5;
@@ -32,18 +45,7 @@ struct Game {
     u8 _10;
     u8 _11;
     u8 _12[0x1c - 0x12];
-    u8 bg0_flags;
-    u8 _1d;
-    u8 _1e;
-    u8 _1f;
-    u8 bg1_flags;
-    u8 _21;
-    u8 _22;
-    u8 _23;
-    u8 bg2_flags;
-    u8 _25;
-    u8 _26;
-    u8 _27;
+    BgFlags bg_flags[3];
     u8 _28[0x595a - 0x28];
     u8 room_enter_dir;
     u8 _595b[0x5960 - 0x595b];
@@ -96,7 +98,9 @@ struct Game {
     u16 _83ac;
     u8 _83ae[0x8450 - 0x83ae];
     s16 _8450;
-    u8 _8452[0x846f - 0x8452];
+    u8 _8452[0x8462 - 0x8452];
+    u16 _8462;
+    u8 _8464[0x846f - 0x8464];
     u8 _846f[0x8484 - 0x846f];
     u32 _8484;
     u8 _8488[8];
@@ -134,7 +138,8 @@ struct Game {
     u8 _9486_2 : 1;
     u8 _9487;
     u32 _9488;
-    u16 _948c[1086];
+    u16 _948c[1022];
+    u8 _9c88[0x80];
     u32 _9d08;
     u16 _9d0c;
     u16 _9d0e;

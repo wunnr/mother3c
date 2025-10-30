@@ -93,7 +93,7 @@ _08029124:
 	adds r1, #1
 	strb r1, [r0]
 	adds r0, r4, #0
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08029154

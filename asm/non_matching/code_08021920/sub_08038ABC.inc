@@ -134,5 +134,5 @@ _08038B0A:
 _08038BCC: .4byte gSomeBlend
 _08038BD0: .4byte 0x000035BA
 _08038BD4: .4byte 0x0000FFFD
-_08038BD8: .4byte gUnknown_0200DE08
+_08038BD8: .4byte gHPStatMeters
 	.syntax divided

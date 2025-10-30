@@ -89,7 +89,7 @@ _080282DE:
 	cmp r0, #0
 	bne _0802832C
 	adds r0, r6, #0
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802832C

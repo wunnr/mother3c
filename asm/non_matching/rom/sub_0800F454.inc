@@ -126,7 +126,7 @@ _0800F506:
 	rsbs r2, r2, #0
 	movs r0, #0
 	movs r1, #0
-	bl sub_0802AAEC
+	bl updateStatMeter
 	ldr r0, _0800F56C
 	ldr r1, _0800F570
 	adds r0, r0, r1

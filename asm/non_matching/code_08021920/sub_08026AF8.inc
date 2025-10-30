@@ -88,7 +88,7 @@ _08026B96:
 	lsrs r2, r0, #0x10
 _08026BB2:
 	adds r0, r2, #0
-	bl sub_080038A4
+	bl startSong
 	pop {r4}
 	pop {r0}
 	bx r0

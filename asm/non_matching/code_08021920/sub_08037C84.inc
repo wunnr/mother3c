@@ -7,7 +7,7 @@ sub_08037C84:
 	movs r2, #3
 	strb r2, [r1]
 	movs r1, #1
-	bl sub_08037CA4
+	bl init_dp_transaction
 	pop {r0}
 	bx r0
 	.align 2, 0

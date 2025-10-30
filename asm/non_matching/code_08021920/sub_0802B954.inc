@@ -18,7 +18,7 @@ _0802B96A:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _0802B9AA
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B9AA

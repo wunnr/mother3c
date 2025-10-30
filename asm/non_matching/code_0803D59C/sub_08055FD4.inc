@@ -21,7 +21,7 @@ sub_08055FD4:
 	lsls r0, r0, #4
 	adds r0, r0, r2
 	ldrh r0, [r0, #0xc]
-	bl sub_080038A4
+	bl startSong
 	pop {r0}
 	bx r0
 	.align 2, 0

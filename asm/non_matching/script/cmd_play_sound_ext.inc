@@ -38,7 +38,7 @@ cmd_play_sound_ext:
 	cmp r0, #0
 	beq _08020DEE
 	mov r0, r8
-	bl sub_080038A4
+	bl startSong
 	b _08020DEE
 	.align 2, 0
 _08020D5C: .4byte gGame
@@ -74,7 +74,7 @@ _08020D94:
 	cmp r0, r6
 	beq _08020DEE
 	adds r0, r4, #0
-	bl sub_080038A4
+	bl startSong
 	lsls r1, r7, #0x10
 	asrs r0, r1, #0x10
 	lsls r5, r5, #0x10

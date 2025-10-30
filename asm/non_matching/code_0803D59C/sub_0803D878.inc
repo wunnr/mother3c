@@ -47,7 +47,7 @@ sub_0803D878:
 	adds r0, r4, #0
 	mov r1, ip
 	ldr r2, [sp, #0x20]
-	bl sub_08002634
+	bl breakIntoDigits
 	adds r5, r4, #0
 	mov r1, sp
 	movs r0, #0

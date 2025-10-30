@@ -101,14 +101,14 @@ _0802B42C:
 	movs r1, #0
 	movs r2, #2
 	rsbs r2, r2, #0
-	bl sub_0802AAEC
+	bl updateStatMeter
 	b _0802B44C
 _0802B440:
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #1
 	rsbs r2, r2, #0
-	bl sub_0802AAEC
+	bl updateStatMeter
 _0802B44C:
 	mov r1, sp
 	movs r0, #1

@@ -25,7 +25,7 @@ sub_08057CB4:
 	movs r3, #0x20
 	bl sub_080031F0
 	movs r0, #0x3a
-	bl sub_080038A4
+	bl startSong
 	add sp, #0x10
 	pop {r4}
 	pop {r0}

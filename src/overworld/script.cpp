@@ -19,17 +19,18 @@ extern void sub_080517AC(s32);
 extern void sub_08037A7C();
 extern void sub_08019D04();
 extern void sub_0802781C();
+extern void sub_08004794();
 extern void sub_08003C20(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
-extern void sub_080038A4(s32);
+extern void startSong(s32);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
 extern void sub_08003BF8(u16);
 extern s16 sub_08003D14(u16);
 extern u16 sub_08003D48(u16);
 extern void sub_08033548(u8);
-extern u8 sub_0801B3A4(u16);
+extern u8 getMusicIDForRoom(u16);
 extern void sub_080274AC(s32, u16);
 extern u16 sub_08002FD4(u16, s32);
 extern s32 sub_08002474(s32, s32, s32);
@@ -845,7 +846,7 @@ u16 cmd_get_item_count(s32* sp) {
     for (u16 i = 0; i < gGame.party_count; ++i) {
         item = get_char_stats(i);
         if (item->charNo != 0) {
-            temp = sub_08001D2C(item->charNo);
+            temp = isCharOverworldPlayable(item->charNo);
             if (temp != 0) {
                 cnt += sub_0802A3D0(item, idx);
             }
@@ -1199,7 +1200,7 @@ u16 cmd_cfg_member(s32* sp) {
                 b = sub_0802B874(temp);
                 sub_0802941C(a, b);
                 sub_080294DC(a, b);
-                sub_080295E8(a, temp);
+                initStatMeters(a, temp);
             }
         }
         if (sprNum != -1) {
@@ -1267,7 +1268,7 @@ u16 cmd_cfg_member(s32* sp) {
 	bl sub_080294DC\n\
 	adds r0, r5, #0\n\
 	adds r1, r4, #0\n\
-	bl sub_080295E8\n\
+	bl initStatMeters\n\
 _0801CCF4:\n\
 	mov r1, r8\n\
 	lsls r0, r1, #0x10\n\
@@ -1524,7 +1525,7 @@ u16 cmd_E7(s32* sp) {
         chr = spr->character;
         if (chr < 5) {
             cd = get_char_stats(chr);
-            c = sub_08001D2C(cd->charNo);
+            c = isCharOverworldPlayable(cd->charNo);
             if (c != 0) {
                 sub_0805BC8C(&t, cd->charNo, b);
                 gSomeBlend._121c8 = t;
@@ -1639,7 +1640,7 @@ u16 cmd_heal_pp(s32* sp) {
         spr = get_obj(idx);
         if (spr) {
             if (spr->character <= 4)
-                sub_0802B048(spr->character, pp);
+                restore_pp(spr->character, pp);
         }
     }
     return 0;
@@ -1849,7 +1850,7 @@ u16 cmd_put_ocho(s32* sp) {
     cnt = 0;
     for (u16 i = 0; i < gGame.party_count; ++i) {
         cd = get_char_stats(i);
-        if (cd->charNo != 0 && sub_08001D2C(cd->charNo) != 0) {
+        if (cd->charNo != 0 && isCharOverworldPlayable(cd->charNo) != 0) {
             sub_0802A7F8(cd, cnt);
             cnt++;
         }
@@ -1865,7 +1866,7 @@ u16 cmd_get_ocho(s32* sp) {
     } else {
         for (u16 i = 0; i < gGame.party_count; ++i) {
             cd = get_char_stats(i);
-            if (cd->charNo != 0 && sub_08001D2C(cd->charNo) != 0) {
+            if (cd->charNo != 0 && isCharOverworldPlayable(cd->charNo) != 0) {
                 sub_0802A8D4(cd);
             }
         }
@@ -2676,28 +2677,27 @@ u16 cmd_41(s32* sp) {
     u32 v2;
     u16 v3;
     Object* spr;
-    u32 v5;
     u16 i;
     Size y;
-    Size x;
+    CameraPos cam;
 
     v2 = scriptstack_peek(sp, 1);
     v3 = scriptstack_peek(sp, 0);
     spr = get_obj(v2);
     if (spr) {
         sub_08036BEC(spr, &y);
-        sub_08010528(&x, y.w, y.h);
-        sub_0801059C(&x);
+        sub_08010528(&cam, y.w, y.h);
+        sub_0801059C(&cam);
         switch (gGame.state_1) {
         case 2:
         case 3:
-            v5 = sub_0801A218(&x);
+            sub_0801A218(&cam);
             sub_0801084C();
             break;
         case 5:
             for (i = 0; i <= 2; ++i) {
                 if ((i || gGame._f << 31) && (i != 1 || (gGame._11 << 0x1c) >= 0))
-                    sub_08018988(i, v3, &x);
+                    sub_08018988(i, v3, &cam);
             }
             break;
         }
@@ -4148,7 +4148,7 @@ u16 cmd_65(s32* sp) {
             if (b > -5 && b < 9) {
                 obj->_8e[0] = b;
                 if (b > 4)
-                    obj->_90[1] = sub_08036960(obj, obj->_8b) - 1;
+                    obj->_92[0] = sub_08036960(obj, obj->_8b) - 1;
             }
         } while (0);
     }
@@ -4492,7 +4492,7 @@ u16 cmd_C5(s32* sp) {
             obj2 = get_obj_direct(gGame._82b9[0xb7] + 4);
             sub_08033374(obj2->character, 16);
             sub_08033484(obj2->character);
-            obj2->_90[1] = 0x3c;
+            obj2->_92[0] = 0x3c;
             break;
         }
         gSomeBlend._121b8_3 = 1;
@@ -4727,7 +4727,19 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_7D.inc", void cmd_7D());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_7E.inc", void cmd_7E());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_7F.inc", void cmd_7F());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_80.inc", void cmd_80());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_81.inc", void cmd_81());
+
+extern "C" s32 cmd_81(s32* sp) {
+    startSong(SFX_NULL);
+    u16 val = scriptstack_peek(sp, 0);
+
+    if (val != 0)
+        val--;
+
+    gGame._8462 = val;
+    sub_08004794();
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_disp_text_special.inc", void cmd_disp_text_special());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_B9.inc", void cmd_B9());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_BB.inc", void cmd_BB());
@@ -4783,7 +4795,30 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_85.inc", void cmd_85());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_86.inc", void cmd_86());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_87.inc", void cmd_87());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_88.inc", void cmd_88());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_bgm.inc", void cmd_set_bgm());
+
+extern "C" s32 cmd_set_bgm(s32* sp) {
+    u16 lower;
+    s16 trackID = scriptstack_peek(sp, 1);
+    s16 unk = scriptstack_peek(sp, 0);
+
+    if (trackID == -1) {
+        trackID = getMusicIDForRoom(gGame.cur_room);
+    }
+
+    if (unk == -1) {
+        lower = gGame._9c88[trackID];
+    } else {
+        lower = unk & 0xFF;
+    }
+
+    u16 upper = gSave._482[trackID] >> 8;
+    if (trackID < 0x80) {
+        gSave._482[trackID] = (upper << 8) | lower;
+    }
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_bgm_other.inc", void cmd_set_bgm_other());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_8A.inc", void cmd_8A());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_CB.inc", void cmd_CB());
@@ -4794,17 +4829,17 @@ extern "C" s32 cmd_D0(s32* sp) {
 }
 
 extern "C" s32 cmd_set_volume(s32* sp) {
-    s16 unk = scriptstack_peek(sp, 1);
+    s16 trackID = scriptstack_peek(sp, 1);
     s16 volume = scriptstack_peek(sp, 0);
 
-    if (unk == -1)
-        unk = sub_0801B3A4(gGame.cur_room);
+    if (trackID == -1)
+        trackID = getMusicIDForRoom(gGame.cur_room);
 
     if (volume == -1)
         volume = 100;
 
-    if (unk < 0x80)
-        gSave._582[unk] = volume;
+    if (trackID < 0x80)
+        gSave._582[trackID] = volume;
 
     return 0;
 }
@@ -4883,7 +4918,7 @@ extern "C" s32 cmd_91() {
 }
 
 extern "C" s32 cmd_set_gameover() {
-    sub_080038A4(SONG_STAND_UP_STRONG);
+    startSong(SONG_STAND_UP_STRONG);
     sub_080052E4(3);
     return 0;
 }
@@ -4966,8 +5001,7 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_movement_property.inc", voi
 
 extern "C" s32 cmd_AC(s32* sp) {
     scriptstack_peek(sp, 0);
-    u8 temp = gGame.filler_1;
-    gGame.filler_1 = temp | 1;
+    gGame._1_1 = 1;
     return 0;
 }
 

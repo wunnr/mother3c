@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0802AC64:
+tickStatMeter:
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -7,7 +7,7 @@ sub_0802AC64:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	ldrh r0, [r4, #6]
 	ldrh r1, [r4, #8]
 	cmp r0, r1
@@ -28,7 +28,7 @@ sub_0802AC64:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	ldrb r0, [r4, #2]
 	cmp r0, #9
 	bne _0802ACAC
@@ -92,7 +92,7 @@ _0802ACFA:
 	mov r0, sp
 	movs r2, #0
 	movs r3, #3
-	bl sub_08002634
+	bl breakIntoDigits
 	mov r0, sp
 	ldrh r1, [r0, #2]
 	ldrb r0, [r4, #1]
