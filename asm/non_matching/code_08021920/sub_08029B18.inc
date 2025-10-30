@@ -111,7 +111,7 @@ _08029BE4:
 	adds r0, #1
 	strb r0, [r6]
 	adds r0, r7, #0
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08029C0E

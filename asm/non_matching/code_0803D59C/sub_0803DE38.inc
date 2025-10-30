@@ -66,7 +66,7 @@ _0803DEC4:
 	b _0803DED0
 _0803DECA:
 	movs r0, #0
-	bl sub_080038A4
+	bl startSong
 _0803DED0:
 	bl sub_080037E4
 	ldr r4, _0803DF2C

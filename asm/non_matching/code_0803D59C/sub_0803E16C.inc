@@ -103,7 +103,7 @@ _0803E226:
 	cmp r0, #0
 	beq _0803E226
 	movs r0, #0x8b
-	bl sub_080038A4
+	bl startSong
 _0803E24C:
 	add sp, #0x10
 	pop {r4, r5, r6}

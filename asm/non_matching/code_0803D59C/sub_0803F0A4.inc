@@ -35,7 +35,7 @@ _0803F0D6:
 	bl sub_08054FCC
 	str r0, [r4]
 	ldrb r0, [r0]
-	bl sub_08001D2C
+	bl isCharOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0803F0FE

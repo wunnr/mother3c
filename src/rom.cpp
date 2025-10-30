@@ -7,10 +7,18 @@
 #include "overworld/script.h"
 #include "structs.h"
 
+extern const char _binary_build_mother3_assets_misctext_bin_start;
 extern const IrqTable gUnknown_080C1A58;
+extern const u8 gMapMusicTable[0x3E8];
 extern IrqTable gIntrHandlers;
 extern u8 gUnknown_03004B14;
+extern u16 gUnknown_03004B00;
+extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
+extern u32 gUnknown_08CDB95C[];
+extern u16 gUnknown_02015EC0[];
+extern u16 gUnknown_02015ED8[];
+extern u16 gUnknown_02015EF0[];
 
 extern "C" s32 Div(s32, s32);
 extern "C" s32 Divide(s32 a, s32 b);
@@ -20,6 +28,10 @@ extern "C" void sub_080019DC(void* dest, u32 size);
 extern "C" void sub_08090F74(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
+extern "C" s32 sub_08002FD4(s32, s32);
+extern "C" const void* sub_0800289C(const void*, u16);
+extern "C" u16 sub_0801A638(u16);
+extern "C" void sub_0801A238(s32, CameraPos*);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -217,10 +229,21 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BCC.inc", void sub_08001BCC()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BFC.inc", void sub_08001BFC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001C2C.inc", void sub_08001C2C());
 extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_msg.inc", void get_misctext_msg());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D2C.inc", void sub_08001D2C());
+
+extern "C" u16 isCharOverworldPlayable(u16 playerID) {
+    if (gLevelStatTable[playerID].overworld_playable != 0) {
+        return 0;
+    }
+    return 1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D58.inc", void sub_08001D58());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D70.inc", void sub_08001D70());
-extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_len.inc", void get_misctext_len());
+
+extern "C" u16 get_misctext_len(u16 index) {
+    return *(u16*)sub_0800289C(&_binary_build_mother3_assets_misctext_bin_start, index);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001DC8.inc", void sub_08001DC8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001DF8.inc", void sub_08001DF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001E40.inc", void sub_08001E40());
@@ -238,7 +261,17 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800255C.inc", void sub_0800255C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025A0.inc", void sub_080025A0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025D8.inc", void sub_080025D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002604.inc", void sub_08002604());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002634.inc", void sub_08002634());
+
+extern "C" void breakIntoDigits(u16* digitBuffer, u32 value, u16 modifier, u16 numDigits) {
+    u32* ptr = &gUnknown_08CDB95C[numDigits];
+    u16 i;
+
+    for (i = 0; i < numDigits; i++, ptr--) {
+        digitBuffer[i] = Divide(value, *ptr) + modifier;
+        value = sub_08002FD4(value, *ptr);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800268C.inc", void sub_0800268C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026C0.inc", void sub_080026C0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080026F0.inc", void sub_080026F0());
@@ -439,7 +472,7 @@ extern "C" s32 Divide(s32 a, s32 b) {
     return Div(a, b);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", void sub_08002FD4());
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002FD4.inc", s32 sub_08002FD4(s32, s32));  // exact copy of "Remainder"
 
 extern "C" u16 sub_08002FE8() {
     extern u32 gUnknown_02015EA8;
@@ -469,7 +502,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/snd_main.inc", void snd_main());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037D8.inc", void sub_080037D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037E4.inc", void sub_080037E4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037F0.inc", void sub_080037F0());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080038A4.inc", void sub_080038A4());
+extern "C" ASM_FUNC("asm/non_matching/rom/startSong.inc", void startSong());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003928.inc", void sub_08003928());
 extern "C" ASM_FUNC("asm/non_matching/rom/play_sound.inc", void play_sound());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A00.inc", void sub_08003A00());
@@ -477,7 +510,21 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A60.inc", void sub_08003A60()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AB8.inc", void sub_08003AB8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AE0.inc", void sub_08003AE0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003B30.inc", void sub_08003B30());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003B58.inc", void sub_08003B58());
+
+extern "C" void sub_08003B58(u16 index) {
+    s32 signedIndex = (s32)index;
+
+    if (signedIndex > 1)
+        return;
+    if (signedIndex < 0)
+        return;
+
+    MPlayStop(gMPlayTable[index].info);
+    gUnknown_02015ED8[index] = gUnknown_02015EC0[index];
+    gUnknown_02015EC0[index] = 0;
+    gUnknown_02015EF0[index] = 0x100;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BA8.inc", void sub_08003BA8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BF8.inc", void sub_08003BF8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C20.inc", void sub_08003C20());
@@ -598,7 +645,11 @@ extern "C" void sub_08005BB4(volatile u16 arg0) {
         REG_IME = 1;
     }
 }
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005BFC.inc", void sub_08005BFC());
+extern "C" void sub_08005BFC() {
+    gUnknown_03004B00 = 1;
+    gUnknown_03004B02++;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C14.inc", void sub_08005C14());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C38.inc", void sub_08005C38());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08005C4C.inc", void sub_08005C4C());
@@ -1022,8 +1073,13 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F44.inc", void sub_08019F44()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F90.inc", void sub_08019F90());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019FE4.inc", void sub_08019FE4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A1B8.inc", void sub_0801A1B8());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A218.inc", void sub_0801A218());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238());
+
+extern "C" void sub_0801A218(CameraPos* cam) {
+    for (u16 i = 0; i < 3; i++)
+        sub_0801A238(i, cam);
+}
+
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, CameraPos*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2B4.inc", void sub_0801A2B4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2DC.inc", void sub_0801A2DC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A3AC.inc", void sub_0801A3AC());
@@ -1035,9 +1091,18 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A57C.inc", void sub_0801A57C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A594.inc", void sub_0801A594());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A5C0.inc", void sub_0801A5C0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A5EC.inc", void sub_0801A5EC());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A604.inc", void sub_0801A604());
+
+extern "C" u16 sub_0801A604() {
+    return sub_0801A638(gGame._e >> 6);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A61C.inc", void sub_0801A61C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A638.inc", void sub_0801A638());
+
+extern "C" u16 sub_0801A638(u16 index) {
+    u8 flags = gGame.bg_flags[index]._0_1;
+    return (flags + 1) << 8;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A650.inc", void sub_0801A650());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A678.inc", void sub_0801A678());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A694.inc", void sub_0801A694());
@@ -1072,7 +1137,11 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B144.inc", void sub_0801B144()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B1BC.inc", void sub_0801B1BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B2D4.inc", void sub_0801B2D4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B314.inc", void sub_0801B314());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B3A4.inc", void sub_0801B3A4());
+
+extern "C" u8 getMusicIDForRoom(u16 roomIndex) {
+    return gMapMusicTable[roomIndex];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B3B4.inc", void sub_0801B3B4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B3D8.inc", void sub_0801B3D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801B3F8.inc", void sub_0801B3F8());

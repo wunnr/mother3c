@@ -16,7 +16,7 @@ _0802AFC2:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	asrs r1, r5, #0x10
-	bl sub_0802B048
+	bl restore_pp
 _0802AFE0:
 	adds r0, r4, #1
 	lsls r0, r0, #0x10

@@ -119,7 +119,7 @@ _08038048:
 	beq _08038098
 	ldrh r1, [r4, #0xa]
 	adds r0, r4, #0
-	bl sub_08037CA4
+	bl init_dp_transaction
 	ldr r2, _08038088
 	ldr r1, _0803808C
 	adds r3, r2, r1
