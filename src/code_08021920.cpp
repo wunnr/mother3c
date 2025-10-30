@@ -153,7 +153,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08026E3C.inc", void sub_
 
 extern "C" u16 getDirectionIndex(u16 buttonsPressed) {
     for (u16 i = 0; i < 9; i++) {
-        if (gDirectionTable[i]._0 == (buttonsPressed & DPAD_ANY)) {
+        if (gDirectionTable[i].buttonCombo == (buttonsPressed & DPAD_ANY)) {
             return i;
         }
     }
@@ -162,7 +162,11 @@ extern "C" u16 getDirectionIndex(u16 buttonsPressed) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270A0.inc", void sub_080270A0());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270B8.inc", void sub_080270B8());
+
+extern "C" u16 sub_080270B8(u16 index) {
+    return gDirectionTable[index]._6;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270D8.inc", void sub_080270D8());
 

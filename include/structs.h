@@ -246,14 +246,16 @@ typedef struct InputState {
 } InputState;
 
 typedef struct Direction {
-    u16 _0;
-    u8 _2[4];
+    u16 buttonCombo;
+    s16 xVel;
+    s16 yVel;
     u16 _6;
     u16 _8;
     u16 _a;
     u16 _c;
-    u16 _e;
+    // u8 pad[2];
 } Direction;
+// static_assert(sizeof(Direction) == 0x10);
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
