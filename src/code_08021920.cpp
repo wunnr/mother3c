@@ -138,7 +138,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270A0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270B8.inc", void sub_080270B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270D8.inc", void sub_080270D8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270E8.inc", void sub_080270E8());
+
+extern "C" u16 sub_080270E8(u16 index) {
+    return gDirectionTable[index]._8;
+}
 
 extern "C" u16 sub_080270F8(u16 index, u16 unk) {
     if (unk << 0x10 < 0)
