@@ -32,6 +32,13 @@ extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 extern "C" u16 sub_0801A638(u16);
 extern "C" void sub_0801A238(s32, CameraPos*);
+extern "C" void sub_080016E4();
+extern "C" void mode_debug_menu(InputState*);
+extern "C" void sub_0800B00C(InputState*);
+extern "C" void sub_0800BB54(InputState*);
+extern "C" void sub_08026DE0(InputState*);
+extern "C" void sub_08026E3C(InputState*);
+extern "C" void sub_08037DB0(InputState*);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -609,7 +616,33 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08004F7C.inc", void sub_08004F7C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08004FB4.inc", void sub_08004FB4());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_1.inc", void nullsub_1());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_2.inc", void nullsub_2());
-extern "C" ASM_FUNC("asm/non_matching/rom/exec_mode.inc", void exec_mode());
+
+extern "C" void exec_mode(InputState* input) {
+    sub_080016E4();
+    switch (gGame.mode) {
+    case MODE_NORMAL:
+        sub_0800B00C(input);
+        return;
+    case MODE_SCRIPT:
+        sub_0800BB54(input);
+        return;
+    case 8:
+        sub_08026DE0(input);
+        return;
+    case MODE_MAP_VIEW:
+        sub_08026E3C(input);
+        return;
+    case MODE_DROPDOWN:
+        sub_08037DB0(input);
+        return;
+    case MODE_DEBUG_MENU:
+        mode_debug_menu(input);
+        return;
+    default:
+        return;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800519C.inc", void sub_0800519C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080051E0.inc", void sub_080051E0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080052D0.inc", void sub_080052D0());
