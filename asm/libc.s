@@ -3,8 +3,8 @@
 .syntax unified
 .section .text
 
-	thumb_func_start sub_08090F70
-sub_08090F70: @ 0x08090F70
+	thumb_func_start ArcTan2
+ArcTan2: @ 0x08090F70
 	svc #0xa
 	bx lr
 

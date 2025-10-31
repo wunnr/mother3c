@@ -13,7 +13,7 @@ sub_080367D8:
 	subs r1, r1, r2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_08090F70
+	bl ArcTan2
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	movs r2, #0x80
