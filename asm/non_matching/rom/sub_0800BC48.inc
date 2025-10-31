@@ -47,7 +47,7 @@ _0800BCA0:
 	mov r2, sp
 	adds r2, #0xe
 	add r1, sp, #0xc
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, [r5, #0x34]
 	ldrb r0, [r0, #0x14]
 	lsls r0, r0, #0x19

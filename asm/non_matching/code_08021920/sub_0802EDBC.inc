@@ -70,7 +70,7 @@ _0802EE14:
 	adds r4, #2
 	mov r1, sp
 	adds r2, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	b _0802EE6E
 _0802EE4E:
 	bl sub_080031E0
@@ -85,7 +85,7 @@ _0802EE4E:
 	adds r4, #2
 	mov r1, sp
 	adds r2, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 _0802EE6E:
 	ldrh r1, [r5]
 	strh r1, [r5, #8]

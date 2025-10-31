@@ -97,7 +97,7 @@ _0802FEB2:
 	mov r2, sp
 	adds r2, #6
 	adds r1, r5, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl sub_0800C694

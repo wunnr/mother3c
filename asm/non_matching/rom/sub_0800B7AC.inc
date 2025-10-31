@@ -170,7 +170,7 @@ _0800B8FE:
 	mov r2, sp
 	adds r2, #0xa
 	adds r1, r7, #0
-	bl sub_080270A0
+	bl getVelocity
 	ldr r6, _0800B964
 	ldr r3, _0800B968
 	adds r2, r6, r3
@@ -318,7 +318,7 @@ _0800BA3C:
 	adds r2, #0xa
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r6, #0
 	adds r1, r4, #0
 	bl sub_080343B8

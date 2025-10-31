@@ -161,7 +161,10 @@ extern "C" u16 getDirectionIndex(u16 buttonsPressed) {
     return 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270A0.inc", void sub_080270A0());
+extern "C" void getVelocity(u16 index, s16* xVel, s16* yVel) {
+    *xVel = gDirectionTable[index].xVel;
+    *yVel = gDirectionTable[index].yVel;
+}
 
 extern "C" u16 sub_080270B8(u16 index) {
     return gDirectionTable[index]._6;

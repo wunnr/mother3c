@@ -74,7 +74,7 @@ _0802F088:
 	mov r2, sp
 	adds r2, #2
 	mov r1, sp
-	bl sub_080270A0
+	bl getVelocity
 	mov r0, sp
 	movs r1, #0
 	ldrsh r0, [r0, r1]
