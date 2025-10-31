@@ -49,6 +49,9 @@ extern "C" void pollInput(InputState*);
 extern "C" void sub_08058614();
 extern "C" void sub_08058630();
 extern "C" void sub_08059500(InputState*);
+extern "C" void sub_08059548(void*);
+extern "C" void sub_080596A0(void*);
+extern "C" void checkSoftReset(InputState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -896,13 +899,22 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805931C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059358.inc", void sub_08059358());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080593B8.inc", void sub_080593B8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059404.inc", void sub_08059404());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059500.inc", void sub_08059500(InputState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059548.inc", void sub_08059548());
+
+extern "C" void sub_08059500(InputState* input) {
+    checkSoftReset(input);
+    if (gUnknown_02015DC0 == 0) {
+        gSomeBlend.dispcnt |= (DISPCNT_OBJ_ON | DISPCNT_BG3_ON | DISPCNT_BG0_ON);
+        sub_08059548(&gSomeBlend._2CB0);
+        sub_080596A0(&gSomeBlend._2CB4[0x32]);
+    }
+}
+
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059548.inc", void sub_08059548(void*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059594.inc", void sub_08059594());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080595D8.inc", void sub_080595D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059608.inc", void sub_08059608());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080596A0.inc", void sub_080596A0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/checkSoftReset.inc", void checkSoftReset());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080596A0.inc", void sub_080596A0(void*));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/checkSoftReset.inc", void checkSoftReset(InputState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059828.inc", void sub_08059828());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059840.inc", void sub_08059840());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08059898.inc", void sub_08059898());
