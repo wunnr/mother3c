@@ -45,7 +45,7 @@ _0802E514:
 	adds r0, r4, #0
 	adds r0, #0x85
 	ldrb r0, [r0]
-	bl sub_08036A1C
+	bl updateObjDirection
 _0802E51E:
 	ldr r1, _0802E52C
 	movs r0, #1

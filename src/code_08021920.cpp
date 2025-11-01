@@ -776,7 +776,7 @@ extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338AC.inc", void sub_080338AC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/lookCounterClockwiseFromTarget.inc", void lookCounterClockwiseFromTarget());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033948.inc", void sub_08033948());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033A54.inc", void sub_08033A54());
@@ -875,7 +875,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036904.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036960.inc", void sub_08036960());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803699C.inc", void sub_0803699C());
 
-extern "C" void sub_08036A1C(u16 index, u16 direction) {
+extern "C" void updateObjDirection(u16 index, u16 direction) {
     Object* obj = get_obj_direct(index);
     if ((s8)obj->_cc_10 == 0) {
         obj->_bc_2 = direction;

@@ -67,7 +67,7 @@ _08036156:
 	cmp r1, #7
 	bgt _08036166
 	ldrb r0, [r5]
-	bl sub_08036A1C
+	bl updateObjDirection
 _08036166:
 	ldrb r1, [r4]
 	movs r0, #0xf

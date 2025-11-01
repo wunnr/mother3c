@@ -1,5 +1,5 @@
 	.syntax unified
-sub_080338AC:
+lookCounterClockwiseFromTarget:
 	push {r4, lr}
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
@@ -15,7 +15,7 @@ sub_080338AC:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08036A1C
+	bl updateObjDirection
 	pop {r4}
 	pop {r0}
 	bx r0

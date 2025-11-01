@@ -17,7 +17,7 @@ sub_08033868:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08036A1C
+	bl updateObjDirection
 	b _080338A4
 _08033892:
 	adds r0, r1, #0
@@ -26,7 +26,7 @@ _08033892:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08036A1C
+	bl updateObjDirection
 _080338A4:
 	add sp, #4
 	pop {r4}

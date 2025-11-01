@@ -4019,16 +4019,16 @@ u16 cmd_5C(s32* sp) {
 
 u16 cmd_set_member_sprite(s32* sp) {
     s32 idx = scriptstack_peek(sp, 1);
-    u16 a = scriptstack_peek(sp, 0);
+    u16 direction = scriptstack_peek(sp, 0);
     Object* obj = get_obj(idx);
     if (obj == 0) {
         return 0;
     }
-    if (a < 8) {
+    if (direction < 8) {
         if (idx == -2) {
-            sub_08036B34(a);
+            sub_08036B34(direction);
         } else {
-            sub_08036A1C(obj->character, a);
+            updateObjDirection(obj->character, direction);
         }
     }
     return 0;
@@ -4297,7 +4297,7 @@ u16 cmd_B4(s32* sp) {
     obj->xpos = unkStruct.unk0 * 16;
     obj->ypos = unkStruct.unk2 * 16;
     if (e < 8)
-        sub_08036A1C(obj->character, e);
+        updateObjDirection(obj->character, e);
     if (f < 17)
         sub_08033620(obj->character, f);
 
