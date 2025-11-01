@@ -34,7 +34,7 @@ extern "C" CharStats* get_char_stats(u16);
 extern "C" u16 isCharOverworldPlayable(u16 index);
 extern "C" u16 tickStatMeter(StatMeter*);
 extern "C" void sub_08030550(Object*, u16, u32);
-extern "C" u16 getStepCounterClockwise(u16);
+extern "C" u16 getPrevDirection(u16);
 extern "C" u16 directionToTargetByID(u16, u16);
 extern "C" void updateObjDirection(u16, u16);
 
@@ -172,8 +172,8 @@ extern "C" void getVelocity(u16 index, s16* xVel, s16* yVel) {
     *yVel = gDirectionTable[index].yVel;
 }
 
-extern "C" u16 getStepCounterClockwise(u16 index) {
-    return gDirectionTable[index].stepCounterClockwise;
+extern "C" u16 getPrevDirection(u16 index) {
+    return gDirectionTable[index].previousDirection;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
@@ -183,12 +183,12 @@ extern "C" u16 getOppositeDirection(u16 index) {
     return gDirectionTable[index].oppositeDirection;
 }
 
-extern "C" u16 getStepClockwise(u16 index, u16 unk) {
+extern "C" u16 get90DegreeTurn(u16 index, u16 unk) {
     if (unk << 0x10 < 0)
         unk = sub_08002FE8() & 1;
 
     if (unk == 0)
-        return gDirectionTable[index].stepClockwise;
+        return gDirectionTable[index].stepCounterClockwise90;
 
     return gDirectionTable[index].stepClockwise90;
 }
@@ -783,8 +783,8 @@ extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
 
-extern "C" void lookCounterClockwiseFromTarget(u16 indexA, u16 indexB) {
-    updateObjDirection(indexA, getStepCounterClockwise(directionToTargetByID(indexA, indexB)));
+extern "C" void faceNearTarget(u16 indexA, u16 indexB) {
+    updateObjDirection(indexA, getPrevDirection(directionToTargetByID(indexA, indexB)));
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());

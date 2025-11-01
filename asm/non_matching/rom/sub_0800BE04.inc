@@ -72,7 +72,7 @@ _0800BE70:
 	cmp r0, #0
 	blt _0800BEB4
 	ldrb r0, [r1]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

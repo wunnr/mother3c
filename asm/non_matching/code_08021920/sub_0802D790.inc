@@ -69,7 +69,7 @@ _0802D7F4:
 	cmp r0, #0
 	blt _0802D836
 	ldrb r0, [r1]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

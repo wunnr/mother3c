@@ -126,7 +126,7 @@ _0802FB66:
 	cmp r0, #0
 	blt _0802FC86
 	ldrb r0, [r7]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r6, r5, #0
@@ -184,7 +184,7 @@ _0802FC12:
 	b _0802FC86
 _0802FC1C:
 	ldrb r0, [r7]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r4, r5, #0

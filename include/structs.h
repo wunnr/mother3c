@@ -249,9 +249,9 @@ typedef struct Direction {
     u16 buttonCombo;
     s16 xVel;
     s16 yVel;
-    u16 stepCounterClockwise;
+    u16 previousDirection;
     u16 oppositeDirection;
-    u16 stepClockwise;
+    u16 stepCounterClockwise90;
     u16 stepClockwise90;
     u8 pad[2];
 } Direction;

@@ -102,7 +102,7 @@ _0800C72C:
 	mov r2, r8
 	ldrb r4, [r2]
 	ldrb r0, [r1]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10

@@ -340,7 +340,7 @@ _0800BA6C:
 	adds r0, #0x8f
 	strb r6, [r0]
 	ldrb r0, [r0]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r5, #0

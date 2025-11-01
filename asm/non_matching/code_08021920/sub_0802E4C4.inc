@@ -25,7 +25,7 @@ _0802E4EA:
 	bl directionToTargetByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 _0802E4FA:

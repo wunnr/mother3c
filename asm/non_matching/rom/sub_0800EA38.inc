@@ -144,7 +144,7 @@ _0800EB30:
 	adds r1, #0x8f
 	strb r0, [r1]
 	ldrb r0, [r1]
-	bl getStepCounterClockwise
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r5, #0
