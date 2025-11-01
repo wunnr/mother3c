@@ -31,6 +31,9 @@ extern "C" CharStats* get_char_stats(u16);
 extern "C" u16 isCharOverworldPlayable(u16 index);
 extern "C" u16 tickStatMeter(StatMeter*);
 extern "C" void sub_08030550(Object*, u16, u32);
+extern "C" u16 getStepCounterClockwise(u16);
+extern "C" u16 calcFacingDirectionByID(u16, u16);
+extern "C" void updateObjDirection(u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -776,7 +779,11 @@ extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/lookCounterClockwiseFromTarget.inc", void lookCounterClockwiseFromTarget());
+
+extern "C" void lookCounterClockwiseFromTarget(u16 indexA, u16 indexB) {
+    updateObjDirection(indexA, getStepCounterClockwise(calcFacingDirectionByID(indexA, indexB)));
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033948.inc", void sub_08033948());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033A54.inc", void sub_08033A54());
@@ -865,10 +872,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036650.inc", void sub_08036650());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirectionByID.inc", void calcFacingDirectionByID());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirectionByID.inc", u16 calcFacingDirectionByID(u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036734.inc", void sub_08036734());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803677C.inc", void sub_0803677C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirection.inc", void calcFacingDirection());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirection.inc", u16 calcFacingDirection(Object*, Object*));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036830.inc", void sub_08036830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036864.inc", void sub_08036864());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036904.inc", void sub_08036904());
