@@ -166,25 +166,25 @@ extern "C" void getVelocity(u16 index, s16* xVel, s16* yVel) {
     *yVel = gDirectionTable[index].yVel;
 }
 
-extern "C" u16 sub_080270B8(u16 index) {
-    return gDirectionTable[index]._6;
+extern "C" u16 getStepCounterClockwise(u16 index) {
+    return gDirectionTable[index].stepCounterClockwise;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270D8.inc", void sub_080270D8());
 
-extern "C" u16 sub_080270E8(u16 index) {
-    return gDirectionTable[index]._8;
+extern "C" u16 getOppositeDirection(u16 index) {
+    return gDirectionTable[index].oppositeDirection;
 }
 
-extern "C" u16 sub_080270F8(u16 index, u16 unk) {
+extern "C" u16 getStepClockwise(u16 index, u16 unk) {
     if (unk << 0x10 < 0)
         unk = sub_08002FE8() & 1;
 
     if (unk == 0)
-        return gDirectionTable[index]._a;
+        return gDirectionTable[index].stepClockwise;
 
-    return gDirectionTable[index]._c;
+    return gDirectionTable[index].stepClockwise90;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027138.inc", void sub_08027138());

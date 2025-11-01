@@ -36,7 +36,7 @@ sub_0800C030:
 	cmp r0, #0
 	blt _0800C096
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getStepCounterClockwise
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

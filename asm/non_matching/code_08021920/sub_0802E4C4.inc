@@ -25,7 +25,7 @@ _0802E4EA:
 	bl calcFacingDirectionByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080270B8
+	bl getStepCounterClockwise
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 _0802E4FA:

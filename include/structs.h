@@ -249,13 +249,13 @@ typedef struct Direction {
     u16 buttonCombo;
     s16 xVel;
     s16 yVel;
-    u16 _6;
-    u16 _8;
-    u16 _a;
-    u16 _c;
-    // u8 pad[2];
+    u16 stepCounterClockwise;
+    u16 oppositeDirection;
+    u16 stepClockwise;
+    u16 stepClockwise90;
+    u8 pad[2];
 } Direction;
-// static_assert(sizeof(Direction) == 0x10);
+static_assert(sizeof(Direction) == 0x10);
 
 typedef struct struct_02016028 {
     vu16 bldcnt;

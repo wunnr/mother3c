@@ -75,7 +75,7 @@ _0802FE8C:
 	strb r1, [r6]
 _0802FE92:
 	ldrb r0, [r6]
-	bl sub_080270B8
+	bl getStepCounterClockwise
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r4, #0
