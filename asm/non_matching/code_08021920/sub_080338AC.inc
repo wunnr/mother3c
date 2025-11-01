@@ -7,7 +7,7 @@ sub_080338AC:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_080366C0
+	bl calcFacingDirectionByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_080270B8

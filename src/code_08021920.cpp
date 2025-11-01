@@ -865,10 +865,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036650.inc", void sub_08036650());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080366C0.inc", void sub_080366C0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirectionByID.inc", void calcFacingDirectionByID());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036734.inc", void sub_08036734());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803677C.inc", void sub_0803677C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080367D8.inc", void sub_080367D8());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirection.inc", void calcFacingDirection());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036830.inc", void sub_08036830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036864.inc", void sub_08036864());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036904.inc", void sub_08036904());

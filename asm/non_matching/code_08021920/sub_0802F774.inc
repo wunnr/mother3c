@@ -12,7 +12,7 @@ sub_0802F774:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	movs r1, #0
-	bl sub_080366C0
+	bl calcFacingDirectionByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_080270E8
