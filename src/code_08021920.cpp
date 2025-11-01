@@ -552,7 +552,18 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802C8A8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802CED4.inc", void sub_0802CED4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802CF14.inc", void sub_0802CF14());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D294.inc", void sub_0802D294());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D3F8.inc", void sub_0802D3F8());
+
+extern "C" void sub_0802D3F8() {
+    gGame._8372 = gGame._8371;
+    gGame._8371 = 0;
+
+    for (u16 i = 0; i < gGame._8370; i++) {
+        if ((s8)get_obj_direct(i + 5)->_bc_0 != 0) {
+            gGame._8371++;
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D458.inc", void sub_0802D458());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D5D0.inc", void sub_0802D5D0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D618.inc", void sub_0802D618());
