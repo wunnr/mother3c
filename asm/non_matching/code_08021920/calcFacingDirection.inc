@@ -31,7 +31,7 @@ _08036808:
 	ldrh r0, [r0]
 	b _0803682A
 	.align 2, 0
-_08036814: .4byte gUnknown_08D2E0FE
+_08036814: .4byte gSectorToDirectionExt
 _08036818:
 	adds r0, r2, r4
 	lsls r0, r0, #0x10

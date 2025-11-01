@@ -692,12 +692,12 @@ gUnknown_08D2E0E2:
 gUnknown_08D2E0E8:
     .incbin "baserom.gba", 0x00D2E0E8, 0x6
 
-    .global gUnknown_08D2E0EE
-gUnknown_08D2E0EE:
+    .global gSectorToDirection
+gSectorToDirection:
     .incbin "baserom.gba", 0x00D2E0EE, 0x10
 
-    .global gUnknown_08D2E0FE
-gUnknown_08D2E0FE:
+    .global gSectorToDirectionExt
+gSectorToDirectionExt:
     .incbin "baserom.gba", 0x00D2E0FE, 0x16
 
     .global gUnknown_08D2E114

@@ -1,6 +1,7 @@
 // Auto-generated source file
 #include "enums.h"
 #include "gba/io_reg.h"
+#include "gba/syscall.h"
 #include "global.h"
 #include "overworld/script.h"
 #include "structs.h"
@@ -11,6 +12,7 @@ extern Object gUnknown_0200C3C8[];
 extern Direction gDirectionTable[];
 extern struct_200D818 gUnknown_0200D818[];
 extern u16 gUnknown_020041EA;
+extern const u16 gSectorToDirection[];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -872,7 +874,25 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036650.inc", void sub_08036650());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirectionByID.inc", u16 calcFacingDirectionByID(u16, u16));
+
+extern "C" u16 calcFacingDirectionByID(u16 sourceID, u16 targetID) {
+    if (sourceID == targetID) {
+        return DIR_NONE;
+    }
+
+    Object* source = get_obj_direct(sourceID);
+    Object* target = get_obj_direct(targetID);
+    u16 theta = ArcTan2(source->xpos - target->xpos, source->ypos - target->ypos);
+
+    for (u16 sectorEnd = _22_5_DEGREES, i = 0; i < 8; sectorEnd += _45_DEGREES, i++) {
+        if (theta < sectorEnd) {
+            return gSectorToDirection[i];
+        }
+    }
+
+    return DIR_LEFT;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036734.inc", void sub_08036734());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803677C.inc", void sub_0803677C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirection.inc", u16 calcFacingDirection(Object*, Object*));
