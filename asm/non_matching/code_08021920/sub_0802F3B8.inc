@@ -93,7 +93,7 @@ _0802F42A:
 	bls _0802F49A
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl calcFacingDirection
+	bl directionToTarget
 	strb r0, [r7]
 	ldrb r0, [r7]
 	bl getStepCounterClockwise
@@ -177,7 +177,7 @@ _0802F502:
 	bls _0802F54C
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl calcFacingDirection
+	bl directionToTarget
 	strb r0, [r7]
 	ldrb r0, [r7]
 	bl getStepCounterClockwise

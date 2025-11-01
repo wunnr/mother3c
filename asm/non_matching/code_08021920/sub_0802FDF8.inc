@@ -53,7 +53,7 @@ _0802FE14:
 	bgt _0802FE72
 	adds r0, r4, #0
 	mov r1, sp
-	bl calcFacingDirection
+	bl directionToTarget
 	strb r0, [r6]
 	b _0802FE92
 _0802FE72:

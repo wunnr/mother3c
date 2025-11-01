@@ -35,7 +35,7 @@ extern "C" u16 isCharOverworldPlayable(u16 index);
 extern "C" u16 tickStatMeter(StatMeter*);
 extern "C" void sub_08030550(Object*, u16, u32);
 extern "C" u16 getStepCounterClockwise(u16);
-extern "C" u16 calcFacingDirectionByID(u16, u16);
+extern "C" u16 directionToTargetByID(u16, u16);
 extern "C" void updateObjDirection(u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
@@ -784,7 +784,7 @@ extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
 
 extern "C" void lookCounterClockwiseFromTarget(u16 indexA, u16 indexB) {
-    updateObjDirection(indexA, getStepCounterClockwise(calcFacingDirectionByID(indexA, indexB)));
+    updateObjDirection(indexA, getStepCounterClockwise(directionToTargetByID(indexA, indexB)));
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());
@@ -876,7 +876,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036650.inc", void sub_08036650());
 
-extern "C" u16 calcFacingDirectionByID(u16 sourceID, u16 targetID) {
+extern "C" u16 directionToTargetByID(u16 sourceID, u16 targetID) {
     if (sourceID == targetID) {
         return DIR_NONE;
     }
@@ -897,7 +897,7 @@ extern "C" u16 calcFacingDirectionByID(u16 sourceID, u16 targetID) {
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036734.inc", void sub_08036734());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803677C.inc", void sub_0803677C());
 
-extern "C" u16 calcFacingDirection(Object* source, Object* target) {
+extern "C" u16 directionToTarget(Object* source, Object* target) {
     u16 theta = ArcTan2(source->xpos - target->xpos, source->ypos - target->ypos);
 
     for (u16 sectorEnd = _22_5_DEGREES, i = 0; i < 8; sectorEnd += _45_DEGREES, i++) {

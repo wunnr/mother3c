@@ -63,7 +63,7 @@ _0802EE14:
 	bl sub_08036C24
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl calcFacingDirection
+	bl directionToTarget
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r4, sp
@@ -267,7 +267,7 @@ _0802EFCA:
 	adds r0, #8
 	adds r1, r5, #0
 	adds r1, #0xc
-	bl calcFacingDirection
+	bl directionToTarget
 	adds r1, r5, #0
 	adds r1, #0x8f
 	strb r0, [r1]

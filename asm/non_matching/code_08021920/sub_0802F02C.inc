@@ -67,7 +67,7 @@ _0802F088:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	movs r1, #0
-	bl calcFacingDirectionByID
+	bl directionToTargetByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r4, sp
@@ -182,7 +182,7 @@ _0802F196:
 	adds r0, #8
 	adds r1, r5, #0
 	adds r1, #0xc
-	bl calcFacingDirection
+	bl directionToTarget
 	adds r1, r5, #0
 	adds r1, #0x8f
 	strb r0, [r1]
