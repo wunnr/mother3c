@@ -31,7 +31,7 @@ extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 extern "C" u16 sub_0801A638(u16);
-extern "C" void sub_0801A238(s32, CameraPos*);
+extern "C" void sub_0801A238(s32, MovementVector*);
 extern "C" void sub_080016E4();
 extern "C" void mode_debug_menu(InputState*);
 extern "C" void sub_0800B00C(InputState*);
@@ -1146,12 +1146,12 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F90.inc", void sub_08019F90()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019FE4.inc", void sub_08019FE4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A1B8.inc", void sub_0801A1B8());
 
-extern "C" void sub_0801A218(CameraPos* cam) {
+extern "C" void sub_0801A218(MovementVector* vec) {
     for (u16 i = 0; i < 3; i++)
-        sub_0801A238(i, cam);
+        sub_0801A238(i, vec);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, CameraPos*));
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, MovementVector*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2B4.inc", void sub_0801A2B4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2DC.inc", void sub_0801A2DC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A3AC.inc", void sub_0801A3AC());

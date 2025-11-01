@@ -502,10 +502,10 @@ typedef struct StatMeter {
     u16 prevTarget;
 } StatMeter;
 
-typedef struct CameraPos {
+typedef struct MovementVector {
     s16 x;
     s16 y;
-} CameraPos;
+} MovementVector;
 
 typedef struct struct_200D818 {
     u8 _0[0x4];

@@ -559,7 +559,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D618.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D660.inc", void sub_0802D660());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D6A0.inc", void sub_0802D6A0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D790.inc", void sub_0802D790());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802D9F8.inc", void sub_0802D9F8());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/updateObjectPosition.inc", void updateObjectPosition());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802DA58.inc", void sub_0802DA58());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802DB9C.inc", void sub_0802DB9C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/enemy_move.inc", void enemy_move());
@@ -734,7 +734,7 @@ extern "C" void sub_080332AC(u16 id, u16 param2, u16 param3) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033374.inc", void sub_08033374());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033414.inc", void sub_08033414());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033414.inc", void sub_08033414(u8));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033460.inc", void sub_08033460());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033484.inc", void sub_08033484());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803349C.inc", void sub_0803349C());
