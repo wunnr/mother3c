@@ -13,6 +13,7 @@ extern Direction gDirectionTable[];
 extern struct_200D818 gUnknown_0200D818[];
 extern u16 gUnknown_020041EA;
 extern const u16 gSectorToDirection[];
+extern const u16 gSectorToDirectionExt[];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -895,7 +896,19 @@ extern "C" u16 calcFacingDirectionByID(u16 sourceID, u16 targetID) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036734.inc", void sub_08036734());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803677C.inc", void sub_0803677C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/calcFacingDirection.inc", u16 calcFacingDirection(Object*, Object*));
+
+extern "C" u16 calcFacingDirection(Object* source, Object* target) {
+    u16 theta = ArcTan2(source->xpos - target->xpos, source->ypos - target->ypos);
+
+    for (u16 sectorEnd = _22_5_DEGREES, i = 0; i < 8; sectorEnd += _45_DEGREES, i++) {
+        if (theta < sectorEnd) {
+            return gSectorToDirectionExt[i];
+        }
+    }
+
+    return DIR_LEFT;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036830.inc", void sub_08036830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036864.inc", void sub_08036864());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036904.inc", void sub_08036904());
