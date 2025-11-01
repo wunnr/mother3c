@@ -10,7 +10,8 @@ u16 gSectorToDirection[] = {
   DIR_RIGHT, 
   DIR_DOWN_RIGHT, 
   DIR_DOWN, 
-  DIR_DOWN_LEFT };
+  DIR_DOWN_LEFT 
+};
 
 u16 gSectorToDirectionExt[] = { 
   DIR_LEFT, 
@@ -23,7 +24,8 @@ u16 gSectorToDirectionExt[] = {
   DIR_DOWN_LEFT,
   DIR_DOWN_LEFT,
   DIR_DOWN,
-  DIR_NONE };
+  DIR_NONE 
+};
 
 const Direction gDirectionTable[] = {
     {
@@ -116,4 +118,4 @@ const Direction gDirectionTable[] = {
        DIR_DOWN_LEFT,
        0,
     },
-};;
+};
