@@ -873,7 +873,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080363A0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036450.inc", void sub_08036450());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_08036480());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
+
+extern "C" Object* sub_080365EC(u16 arg0, u16 arg1) {
+    for (u16 i = 0; i < gGame._8370; i++) {
+        Object* obj = get_obj_direct(i + 5);
+        if (obj->character != arg0 && (s8)obj->_bc_0 == 0 && obj->_88 == arg1) {
+            return obj;
+        }
+    }
+
+    return NULL;
+}
 
 extern "C" u16 coarseDirectionToTarget(u16 indexA, u16 indexB) {
     u16 direction;
