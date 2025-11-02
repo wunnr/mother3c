@@ -719,10 +719,10 @@ extern "C" void sub_080332AC(u16 id, u16 param2, u16 param3) {
         switch (param2) {
         case 0:
         case 9:
-            sel = o->_bc_2 + 0x50;
+            sel = o->direction + 0x50;
             break;
         default:
-            sel = o->_bc_2 + 0x58;
+            sel = o->direction + 0x58;
             break;
         }
     } else {
@@ -874,7 +874,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036450.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_08036480());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036650.inc", void sub_08036650());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/coarseDirectionToTarget.inc", void coarseDirectionToTarget());
 
 extern "C" u16 directionToTargetByID(u16 sourceID, u16 targetID) {
     if (sourceID == targetID) {
@@ -918,7 +918,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803699C.inc", void sub_
 extern "C" void updateObjDirection(u16 index, u16 direction) {
     Object* obj = get_obj_direct(index);
     if ((s8)obj->_cc_10 == 0) {
-        obj->_bc_2 = direction;
+        obj->direction = direction;
         sub_080332AC(index, obj->_8b >> 3, direction);
     }
 }

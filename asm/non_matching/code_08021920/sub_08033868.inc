@@ -12,7 +12,7 @@ sub_08033868:
 	cmp r0, #0
 	beq _08033892
 	adds r0, r4, #0
-	bl sub_08036650
+	bl coarseDirectionToTarget
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10

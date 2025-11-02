@@ -3382,7 +3382,7 @@ u16 cmd_50(s32* sp) {
     if (idx == -2) {
         sub_08033948(c, b);
     } else {
-        obj->_bc_2 = b;
+        obj->direction = b;
         sub_080332AC(obj->character, c, b);
     }
     if (!a) {
@@ -4061,7 +4061,7 @@ u16 cmd_5F(s32* sp) {
     if (a->_8b >> 3 < 13)
         scriptstack_push(a->_8b & 7);
     else
-        scriptstack_push(a->_bc_2);
+        scriptstack_push(a->direction);
 
     return 0;
 }
@@ -4940,7 +4940,7 @@ extern "C" s32 cmd_open_save() {
     if (obj)
         obj->_bf_2 = 0;
 
-    sub_080028F4(0x5A, obj->_bc_2);
+    sub_080028F4(0x5A, obj->direction);
     sub_0803C4DC(1);
 
     gUnknown_02004100[0] = 7;

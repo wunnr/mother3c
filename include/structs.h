@@ -129,7 +129,7 @@ typedef struct Object {
     u8 _b8[4];
     u8 _bc_0 : 1;
     u8 _bc_1 : 1;
-    u8 _bc_2 : 3;
+    u8 direction : 3;
     u8 _bc_3 : 1;
     u8 _bc_4 : 1;
     u8 _bc_5 : 1;
