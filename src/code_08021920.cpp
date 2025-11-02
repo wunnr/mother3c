@@ -874,7 +874,32 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036450.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036480.inc", void sub_08036480());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080364B8.inc", void sub_080364B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080365EC.inc", void sub_080365EC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/coarseDirectionToTarget.inc", void coarseDirectionToTarget());
+
+extern "C" u16 coarseDirectionToTarget(u16 indexA, u16 indexB) {
+    u16 direction;
+
+    Object* objA = get_obj_direct(indexA);
+    Object* objB = get_obj_direct(indexB);
+
+    u16 deltaX = abs(objA->xpos - objB->xpos);
+    u16 deltaY = abs(objA->ypos - objB->ypos);
+
+    if (deltaX > deltaY) {
+        if (objA->xpos > objB->xpos) {
+            direction = DIR_DOWN_LEFT;
+        } else {
+            direction = DIR_UP_RIGHT;
+        }
+    } else {
+        if (objA->ypos > objB->ypos) {
+            direction = DIR_UP_LEFT;
+        } else {
+            direction = DIR_NONE;
+        }
+    }
+
+    return direction;
+}
 
 extern "C" u16 directionToTargetByID(u16 sourceID, u16 targetID) {
     if (sourceID == targetID) {
