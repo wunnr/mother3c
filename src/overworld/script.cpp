@@ -848,7 +848,7 @@ u16 cmd_get_item_count(s32* sp) {
         if (item->charNo != 0) {
             temp = isCharOverworldPlayable(item->charNo);
             if (temp != 0) {
-                cnt += sub_0802A3D0(item, idx);
+                cnt += heldItemQty(item, idx);
             }
         }
     }
@@ -1889,7 +1889,7 @@ u16 cmd_FF(s32* sp) {
     if (gGoodsInfo[idx].item_type == Key) {
         scriptstack_push(gSave.key_items[idx]);
     } else if (tmp < 5) {
-        u16 tmp2 = sub_0802A3D0(get_char_stats(tmp), idx);
+        u16 tmp2 = heldItemQty(get_char_stats(tmp), idx);
         scriptstack_push(tmp2);
     }
     return 0;

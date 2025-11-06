@@ -338,7 +338,19 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A264.inc", void sub_0802A264());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A310.inc", void sub_0802A310());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A3D0.inc", void sub_0802A3D0());
+
+extern "C" u16 heldItemQty(CharStats* stats, u16 item) {
+    u16 count = 0;
+
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] == item) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A400.inc", void sub_0802A400());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A42C.inc", void sub_0802A42C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A454.inc", void sub_0802A454());

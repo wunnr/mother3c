@@ -55,7 +55,7 @@ _0802B632:
 _0802B63E:
 	adds r0, r4, #0
 	movs r1, #0x60
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B67C
@@ -85,7 +85,7 @@ _0802B63E:
 _0802B67C:
 	adds r0, r4, #0
 	movs r1, #0x61
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B6BA
@@ -115,7 +115,7 @@ _0802B67C:
 _0802B6BA:
 	adds r0, r4, #0
 	movs r1, #0x66
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B6F8
@@ -145,7 +145,7 @@ _0802B6BA:
 _0802B6F8:
 	adds r0, r4, #0
 	movs r1, #0xaa
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B762
@@ -193,7 +193,7 @@ _0802B750:
 _0802B762:
 	adds r0, r4, #0
 	movs r1, #0xab
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802B782
