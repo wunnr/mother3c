@@ -61,7 +61,7 @@ _0802B63E:
 	beq _0802B67C
 	adds r0, r4, #0
 	movs r1, #0x60
-	bl sub_0802A400
+	bl heldItemIndex
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	lsls r1, r3, #1
@@ -91,7 +91,7 @@ _0802B67C:
 	beq _0802B6BA
 	adds r0, r4, #0
 	movs r1, #0x61
-	bl sub_0802A400
+	bl heldItemIndex
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	lsls r1, r3, #1
@@ -121,7 +121,7 @@ _0802B6BA:
 	beq _0802B6F8
 	adds r0, r4, #0
 	movs r1, #0x66
-	bl sub_0802A400
+	bl heldItemIndex
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	lsls r1, r3, #1
@@ -151,7 +151,7 @@ _0802B6F8:
 	beq _0802B762
 	adds r0, r4, #0
 	movs r1, #0xaa
-	bl sub_0802A400
+	bl heldItemIndex
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	lsls r1, r3, #1
