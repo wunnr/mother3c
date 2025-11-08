@@ -15,6 +15,7 @@ extern u8 gUnknown_03004B14;
 extern u16 gUnknown_03004B00;
 extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
+extern u16 gAudioSynced;
 extern u32 gUnknown_08CDB95C[];
 extern u16 gUnknown_02015EC0[];
 extern u16 gUnknown_02015ED8[];
@@ -495,7 +496,18 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_080034C8.inc", void sub_080034C8()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003554.inc", void sub_08003554());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080035C4.inc", void sub_080035C4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080036E8.inc", void sub_080036E8());
-extern "C" ASM_FUNC("asm/non_matching/rom/init_audio.inc", void init_audio());
+
+extern "C" void init_audio() {
+    for (u16 i = 0; i < 10; i++) {
+        gUnknown_02015EC0[i] = 0xFFFF;
+        gUnknown_02015ED8[i] = 0xFFFF;
+        gUnknown_02015EF0[i] = 0x100;
+    }
+
+    m4aSoundInit();
+    gAudioSynced = 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800377C.inc", void sub_0800377C());
 extern "C" ASM_FUNC("asm/non_matching/rom/snd_vsync.inc", void snd_vsync());
 extern "C" ASM_FUNC("asm/non_matching/rom/snd_main.inc", void snd_main());
