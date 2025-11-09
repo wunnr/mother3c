@@ -552,7 +552,10 @@ extern "C" s16 getCurrentTrack(u16 playerIndex) {
     return gMPlayTrackTable[playerIndex];
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/getPrevTrack.inc", void getPrevTrack());
+extern "C" s16 getPrevTrack(u16 playerIndex) {
+    return gMPlayPrevTrackTable[playerIndex];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
 
