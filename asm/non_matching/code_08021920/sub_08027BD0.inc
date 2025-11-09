@@ -18,7 +18,7 @@ sub_08027BD0:
 	bhi _08027BFA
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_08003CD0
+	bl setMPlayPanpotClamped
 	b _08027C16
 _08027BFA:
 	lsls r0, r4, #1

@@ -33,6 +33,7 @@ extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 extern "C" u16 sub_0801A638(u16);
 extern "C" void sub_0801A238(s32, CameraPos*);
+extern "C" MusicPlayerInfo* sub_08003DF8(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -542,7 +543,22 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BF8.inc", void sub_08003BF8()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C20.inc", void sub_08003C20());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C48.inc", void sub_08003C48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C88.inc", void sub_08003C88());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003CD0.inc", void sub_08003CD0());
+
+extern "C" void setMPlayPanpotClamped(u16 index, s16 pan) {
+    MusicPlayerInfo* mpInfo = sub_08003DF8(index);
+
+    if (mpInfo == NULL) {
+        return;
+    }
+
+    if (pan > 127) {
+        pan = 127;
+    } else if (pan < -128) {
+        pan = -128;
+    }
+
+    m4aMPlayPanpotControl(mpInfo, 0xFFFF, pan);
+}
 
 extern "C" s16 getCurrentTrack(u16 playerIndex) {
     if (!gMPlayTrackTable[playerIndex]) {
@@ -571,7 +587,7 @@ extern "C" s16 getMusicPlayerIndex(u16 songID) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DD0.inc", void sub_08003DD0());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DF8.inc", void sub_08003DF8());
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DF8.inc", MusicPlayerInfo* sub_08003DF8(u16));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E20.inc", void sub_08003E20());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E5C.inc", void sub_08003E5C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003EA0.inc", void sub_08003EA0());
