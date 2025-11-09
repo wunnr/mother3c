@@ -344,7 +344,13 @@ typedef struct struct_02016028 {
             u8 b7;
         } _121c8_b;
     };
-
+    u8 pad_121d0[0x1ED10 - 0x121D0];
+    u8 _1ed10_1 : 1;
+    u8 _1ed10_2 : 1;
+    u8 _1ed10_4 : 1;
+    u8 _1ed10_8 : 1;
+    u8 _1ed10_10 : 1;
+    u8 _1ed10_20 : 1;
 } struct_02016028;
 
 typedef struct Save {
