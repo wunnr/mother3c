@@ -543,7 +543,15 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C20.inc", void sub_08003C20()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C48.inc", void sub_08003C48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C88.inc", void sub_08003C88());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003CD0.inc", void sub_08003CD0());
-extern "C" ASM_FUNC("asm/non_matching/rom/getCurrentTrack.inc", void getCurrentTrack());
+
+extern "C" s16 getCurrentTrack(u16 playerIndex) {
+    if (!gMPlayTrackTable[playerIndex]) {
+        return -1;
+    }
+
+    return gMPlayTrackTable[playerIndex];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/getPrevTrack.inc", void getPrevTrack());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
