@@ -31,5 +31,5 @@ _08003CBC:
 	.align 2, 0
 _08003CC4: .4byte gMPlayTable
 _08003CC8: .4byte 0x0000FFFF
-_08003CCC: .4byte gUnknown_02015EF0
+_08003CCC: .4byte gMPlayVolumeTable
 	.syntax divided

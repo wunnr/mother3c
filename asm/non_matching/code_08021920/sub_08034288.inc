@@ -72,7 +72,7 @@ _0803431C:
 	beq _08034334
 _08034320:
 	movs r0, #5
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, r4

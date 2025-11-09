@@ -33,7 +33,7 @@ _08003BE0:
 	bx r0
 	.align 2, 0
 _08003BE8: .4byte gMPlayTable
-_08003BEC: .4byte gUnknown_02015ED8
-_08003BF0: .4byte gUnknown_02015EC0
-_08003BF4: .4byte gUnknown_02015EF0
+_08003BEC: .4byte gMPlayPrevTrackTable
+_08003BF0: .4byte gMPlayTrackTable
+_08003BF4: .4byte gMPlayVolumeTable
 	.syntax divided

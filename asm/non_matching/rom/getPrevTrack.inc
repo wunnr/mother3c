@@ -8,5 +8,5 @@ sub_08003D34:
 	ldrsh r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_08003D44: .4byte gUnknown_02015ED8
+_08003D44: .4byte gMPlayPrevTrackTable
 	.syntax divided

@@ -33,6 +33,6 @@ _08003B22:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003B28: .4byte gUnknown_02015EC0
+_08003B28: .4byte gMPlayTrackTable
 _08003B2C: .4byte 0x0000FFFF
 	.syntax divided

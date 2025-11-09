@@ -28,5 +28,5 @@ _08003C74:
 	.align 2, 0
 _08003C7C: .4byte gMPlayTable
 _08003C80: .4byte 0x0000FFFF
-_08003C84: .4byte gUnknown_02015EF0
+_08003C84: .4byte gMPlayVolumeTable
 	.syntax divided

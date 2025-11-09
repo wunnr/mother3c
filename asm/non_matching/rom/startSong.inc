@@ -23,9 +23,9 @@ startSong:
 	bl m4aSongNumStart
 	b _08003916
 	.align 2, 0
-_080038D4: .4byte gUnknown_02015ED8
-_080038D8: .4byte gUnknown_02015EC0
-_080038DC: .4byte gUnknown_02015EF0
+_080038D4: .4byte gMPlayPrevTrackTable
+_080038D8: .4byte gMPlayTrackTable
+_080038DC: .4byte gMPlayVolumeTable
 _080038E0:
 	adds r0, r4, #0
 	bl getMusicPlayerIndex
@@ -57,7 +57,7 @@ _08003916:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800391C: .4byte gUnknown_02015ED8
-_08003920: .4byte gUnknown_02015EC0
-_08003924: .4byte gUnknown_02015EF0
+_0800391C: .4byte gMPlayPrevTrackTable
+_08003920: .4byte gMPlayTrackTable
+_08003924: .4byte gMPlayVolumeTable
 	.syntax divided

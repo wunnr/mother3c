@@ -79,7 +79,7 @@ _0800844A:
 	bne _080084F8
 _0800845C:
 	movs r0, #0
-	bl sub_08003D14
+	bl getCurrentTrack
 	ldr r1, _080084E4
 	lsls r2, r4, #1
 	ldr r3, _080084E8
@@ -212,12 +212,12 @@ _08008584: .4byte 0x0000FFFF
 _08008588: .4byte 0x0000847C
 _0800858C:
 	movs r0, #0
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sl, r0
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	str r0, [sp, #4]

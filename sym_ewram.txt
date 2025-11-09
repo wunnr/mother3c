@@ -306,9 +306,9 @@
 . = 0x00015E38; gUnknown_02015E38 = .;
 . = 0x00015EA8; gUnknown_02015EA8 = .;
 . = 0x00015EB0; gUnknown_02015EB0 = .;
-. = 0x00015EC0; gUnknown_02015EC0 = .;
-. = 0x00015ED8; gUnknown_02015ED8 = .;
-. = 0x00015EF0; gUnknown_02015EF0 = .;
+. = 0x00015EC0; gMPlayTrackTable = .;
+. = 0x00015ED8; gMPlayPrevTrackTable = .;
+. = 0x00015EF0; gMPlayVolumeTable = .;
 . = 0x00015F08; gUnknown_02015F08 = .;
 . = 0x00015F1C; gAudioSynced = .;
 . = 0x00015F20; gUnknown_02015F20 = .;

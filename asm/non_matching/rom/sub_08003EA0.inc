@@ -20,5 +20,5 @@ _08003EA8:
 	bx r0
 	.align 2, 0
 _08003EC4: .4byte gUnknown_02015F08
-_08003EC8: .4byte gUnknown_02015EF0
+_08003EC8: .4byte gMPlayVolumeTable
 	.syntax divided

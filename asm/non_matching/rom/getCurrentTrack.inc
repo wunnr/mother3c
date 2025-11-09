@@ -1,5 +1,5 @@
 	.syntax unified
-sub_08003D14:
+getCurrentTrack:
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r1, _08003D30
@@ -15,5 +15,5 @@ _08003D2A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08003D30: .4byte gUnknown_02015EC0
+_08003D30: .4byte gMPlayTrackTable
 	.syntax divided

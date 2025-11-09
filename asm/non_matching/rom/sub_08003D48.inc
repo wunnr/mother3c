@@ -12,5 +12,5 @@ sub_08003D48:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08003D60: .4byte gUnknown_02015EF0
+_08003D60: .4byte gMPlayVolumeTable
 	.syntax divided

@@ -8,7 +8,7 @@ sub_08039B5C:
 	cmp r0, #0
 	beq _08039B7E
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0xb7

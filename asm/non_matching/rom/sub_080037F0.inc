@@ -26,9 +26,9 @@ sub_080037F0:
 	bl MPlayStop
 	b _0800388A
 	.align 2, 0
-_08003828: .4byte gUnknown_02015ED8
-_0800382C: .4byte gUnknown_02015EC0
-_08003830: .4byte gUnknown_02015EF0
+_08003828: .4byte gMPlayPrevTrackTable
+_0800382C: .4byte gMPlayTrackTable
+_08003830: .4byte gMPlayVolumeTable
 _08003834: .4byte gMPlayTable
 _08003838:
 	adds r0, r7, #0
@@ -73,9 +73,9 @@ _0800388A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003890: .4byte gUnknown_02015ED8
-_08003894: .4byte gUnknown_02015EC0
-_08003898: .4byte gUnknown_02015EF0
+_08003890: .4byte gMPlayPrevTrackTable
+_08003894: .4byte gMPlayTrackTable
+_08003898: .4byte gMPlayVolumeTable
 _0800389C: .4byte gMPlayTable
 _080038A0: .4byte 0x0000FFFF
 	.syntax divided

@@ -42,7 +42,7 @@ _080039E8:
 	bx r0
 	.align 2, 0
 _080039F0: .4byte 0x000003DA
-_080039F4: .4byte gUnknown_02015ED8
-_080039F8: .4byte gUnknown_02015EC0
-_080039FC: .4byte gUnknown_02015EF0
+_080039F4: .4byte gMPlayPrevTrackTable
+_080039F8: .4byte gMPlayTrackTable
+_080039FC: .4byte gMPlayVolumeTable
 	.syntax divided

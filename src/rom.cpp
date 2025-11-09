@@ -17,9 +17,9 @@ extern u16 gUnknown_03004B02;
 extern u16 gUnknown_03004B0A;
 extern u16 gAudioSynced;
 extern u32 gUnknown_08CDB95C[];
-extern u16 gUnknown_02015EC0[];
-extern u16 gUnknown_02015ED8[];
-extern u16 gUnknown_02015EF0[];
+extern s16 gMPlayTrackTable[];
+extern s16 gMPlayPrevTrackTable[];
+extern s16 gMPlayVolumeTable[];
 
 extern "C" s32 Div(s32, s32);
 extern "C" s32 Divide(s32 a, s32 b);
@@ -499,9 +499,9 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_080036E8.inc", void sub_080036E8()
 
 extern "C" void init_audio() {
     for (u16 i = 0; i < 10; i++) {
-        gUnknown_02015EC0[i] = 0xFFFF;
-        gUnknown_02015ED8[i] = 0xFFFF;
-        gUnknown_02015EF0[i] = 0x100;
+        gMPlayTrackTable[i] = -1;
+        gMPlayPrevTrackTable[i] = -1;
+        gMPlayVolumeTable[i] = 0x100;
     }
 
     m4aSoundInit();
@@ -532,9 +532,9 @@ extern "C" void sub_08003B58(u16 index) {
         return;
 
     MPlayStop(gMPlayTable[index].info);
-    gUnknown_02015ED8[index] = gUnknown_02015EC0[index];
-    gUnknown_02015EC0[index] = 0;
-    gUnknown_02015EF0[index] = 0x100;
+    gMPlayPrevTrackTable[index] = gMPlayTrackTable[index];
+    gMPlayTrackTable[index] = 0;
+    gMPlayVolumeTable[index] = 0x100;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003BA8.inc", void sub_08003BA8());
@@ -543,8 +543,8 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C20.inc", void sub_08003C20()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C48.inc", void sub_08003C48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003C88.inc", void sub_08003C88());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003CD0.inc", void sub_08003CD0());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D14.inc", void sub_08003D14());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D34.inc", void sub_08003D34());
+extern "C" ASM_FUNC("asm/non_matching/rom/getCurrentTrack.inc", void getCurrentTrack());
+extern "C" ASM_FUNC("asm/non_matching/rom/getPrevTrack.inc", void getPrevTrack());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
 

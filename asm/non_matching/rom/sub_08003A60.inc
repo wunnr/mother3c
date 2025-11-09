@@ -35,7 +35,7 @@ _08003AA6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003AAC: .4byte gUnknown_02015EC0
+_08003AAC: .4byte gMPlayTrackTable
 _08003AB0: .4byte 0x0000FFFF
-_08003AB4: .4byte gUnknown_02015EF0
+_08003AB4: .4byte gMPlayVolumeTable
 	.syntax divided

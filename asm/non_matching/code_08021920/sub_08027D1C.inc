@@ -30,7 +30,7 @@ _08027D36:
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10

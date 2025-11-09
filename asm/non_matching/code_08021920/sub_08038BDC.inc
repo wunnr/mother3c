@@ -62,7 +62,7 @@ _08038C2A:
 	b _08038E64
 _08038C4C:
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0xb7
@@ -84,7 +84,7 @@ _08038C80: .4byte 0x0000012B
 _08038C84: .4byte 0x00008495
 _08038C88:
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0xb7
@@ -110,7 +110,7 @@ _08038CA0:
 	cmp r0, #0
 	blt _08038CF8
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0xb7
@@ -126,7 +126,7 @@ _08038CE0:
 	movs r2, #0x15
 	mov r8, r2
 	movs r0, #1
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0xb7

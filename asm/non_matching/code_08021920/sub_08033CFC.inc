@@ -56,7 +56,7 @@ _08033D60:
 	cmp r4, #0
 	bne _08033D7E
 	adds r0, r5, #0
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	cmp r4, #0xd9
@@ -75,7 +75,7 @@ _08033D7E:
 	cmp r4, #0
 	beq _08033DA0
 	adds r0, r5, #0
-	bl sub_08003D14
+	bl getCurrentTrack
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, r4

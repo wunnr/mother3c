@@ -27,7 +27,7 @@ extern void startSong(s32);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
 extern void sub_08003BF8(u16);
-extern s16 sub_08003D14(u16);
+extern s16 getCurrentTrack(u16);
 extern u16 sub_08003D48(u16);
 extern void sub_08033548(u8);
 extern u8 getMusicIDForRoom(u16);
@@ -4867,7 +4867,7 @@ extern "C" s32 cmd_DC(s32* sp) {
 }
 
 extern "C" s32 cmd_E1(s32* sp) {
-    scriptstack_push(sub_08003D14(scriptstack_peek(sp, 0)));
+    scriptstack_push(getCurrentTrack(scriptstack_peek(sp, 0)));
     return 0;
 }
 
