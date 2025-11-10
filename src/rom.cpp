@@ -44,6 +44,8 @@ extern "C" void sub_0800BC48(Object*);
 extern "C" void sub_0800BBF4(InputState*);
 extern "C" void sub_08036BA4(Object*);
 extern "C" void sub_0800BE04(Object*);
+extern "C" void sub_080052E4(s32);
+extern "C" void sub_0802610C(s32);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -893,7 +895,17 @@ extern "C" void sub_0800BB54(InputState* input) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BBF4.inc", void sub_0800BBF4(InputState*));
+extern "C" void sub_0800BBF4(InputState* input) {
+    if (input->buttonsPressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
+        sub_0802610C(0);
+        sub_080052E4(4);
+        gGame._595b[1] = 0x15;
+        gGame._595b[0] = 0x15;
+        gGame._598c_2 = 1;
+        gGame._5960 = 0x28;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BC48.inc", void sub_0800BC48(Object*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BE04.inc", void sub_0800BE04(Object*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C030.inc", void sub_0800C030());
