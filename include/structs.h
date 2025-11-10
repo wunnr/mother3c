@@ -137,9 +137,12 @@ typedef struct Object {
     u8 _bd_1 : 2;
     u8 _bd_2 : 3;
     u8 _be;
-    u8 _bf_1 : 6;
-    u8 _bf_2 : 1;
-    u8 _bf_3 : 1;
+    u8 _bf_1 : 3;
+    u8 _bf_8 : 1;
+    u8 _bf_10 : 1;
+    u8 _bf_20 : 1;
+    u8 _bf_40 : 1;
+    u8 _bf_80 : 1;
     u8 _c0[7];
     u8 _c7_0 : 1;
     u8 _c7_1 : 1;
@@ -317,7 +320,9 @@ typedef struct struct_02016028 {
     u16 _4b16;
     u8 _4b18;
     u8 _4b19 : 2;
-    u8 _4b1a[0x5778 - 0x4b1a];
+    u8 _4b1a[0x566C - 0x4b1a];
+    u8 _566c_1 : 1;
+    u8 _566d[0x5778 - 0x566D];
     u8 _5778[0xC620 - 0x5778];
     void* _C620;
     u8 pad_C624[0x121b8 - 0xC624];

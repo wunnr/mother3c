@@ -39,6 +39,11 @@ extern "C" void sub_0800BB54(InputState*);
 extern "C" void sub_08026DE0(InputState*);
 extern "C" void sub_08026E3C(InputState*);
 extern "C" void sub_08037DB0(InputState*);
+extern "C" Object* get_obj_direct(u16);
+extern "C" void sub_0800BC48(Object*);
+extern "C" void sub_0800BBF4(InputState*);
+extern "C" void sub_08036BA4(Object*);
+extern "C" void sub_0800BE04(Object*);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -856,10 +861,41 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B614.inc", void sub_0800B614()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B63C.inc", void sub_0800B63C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B660.inc", void sub_0800B660());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B7AC.inc", void sub_0800B7AC());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BB54.inc", void sub_0800BB54());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BBF4.inc", void sub_0800BBF4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BC48.inc", void sub_0800BC48());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BE04.inc", void sub_0800BE04());
+
+extern "C" void sub_0800BB54(InputState* input) {
+    if ((s8)gGame._1_10 != 0) {
+        sub_0800BBF4(input);
+        return;
+    }
+
+    if (gSomeBlend._566c_1) {
+        return;
+    }
+
+    Object* obj = get_obj_direct(0);
+
+    obj->_bf_8 = 0;
+    obj->_bf_10 = 0;
+
+    if (obj->_87 == 3 && obj->speed != 0) {
+        sub_0800BC48(obj);
+        return;
+    }
+
+    for (u16 i = 0; i < 5; i++) {
+        obj = get_obj_direct(i);
+        if ((s8)obj->_bc_0 != 0) {
+            sub_08036BA4(obj);
+            if (obj->speed != 0) {
+                sub_0800BE04(obj);
+            }
+        }
+    }
+}
+
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BBF4.inc", void sub_0800BBF4(InputState*));
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BC48.inc", void sub_0800BC48(Object*));
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BE04.inc", void sub_0800BE04(Object*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C030.inc", void sub_0800C030());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C10C.inc", void sub_0800C10C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C694.inc", void sub_0800C694());

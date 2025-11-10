@@ -769,7 +769,7 @@ extern "C" void sub_080332AC(u16 id, u16 param2, u16 param3) {
         o->_8b = sel;
         o->_8c = 0xFFFF;
         o->_92[0] = 0;
-        o->_bf_3 = 0;
+        o->_bf_80 = 0;
         o->_ca_8 = 0;
         o->_cc_8 = 0;
     }

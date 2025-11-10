@@ -4093,9 +4093,9 @@ u16 cmd_62(s32* sp) {
 
     if (obj) {
         if (b == 1)
-            obj->_bf_2 = 1;
+            obj->_bf_40 = 1;
         else if (b == 0)
-            obj->_bf_2 = 0;
+            obj->_bf_40 = 0;
     }
 
     return 0;
@@ -4938,7 +4938,7 @@ extern "C" s32 cmd_open_save() {
     Object* obj = get_obj(-1);
 
     if (obj)
-        obj->_bf_2 = 0;
+        obj->_bf_40 = 0;
 
     sub_080028F4(0x5A, obj->direction);
     sub_0803C4DC(1);
