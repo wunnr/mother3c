@@ -94,6 +94,11 @@ typedef struct Size {
     s16 h;
 } Size;
 
+typedef struct MovementVector {
+    s16 x;
+    s16 y;
+} MovementVector;
+
 typedef struct Object {
     s16 xpos;
     s16 ypos;
@@ -103,7 +108,7 @@ typedef struct Object {
     u16 _20;
     u16 _22;
     u8 _24[0x10];
-    u32 speed;
+    MovementVector* speed;
     u8 _38[4];
     u32 _3c;
     u8 _40[0x34];
@@ -135,7 +140,8 @@ typedef struct Object {
     u8 _bc_5 : 1;
     u8 _bd_0 : 3;
     u8 _bd_1 : 2;
-    u8 _bd_2 : 3;
+    u8 _bd_2 : 2;
+    u8 _bd_3 : 1;
     u8 _be;
     u8 _bf_1 : 3;
     u8 _bf_8 : 1;
@@ -512,11 +518,6 @@ typedef struct StatMeter {
     u16 target;
     u16 prevTarget;
 } StatMeter;
-
-typedef struct MovementVector {
-    s16 x;
-    s16 y;
-} MovementVector;
 
 typedef struct struct_200D818 {
     u8 _0[0x4];

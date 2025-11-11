@@ -193,7 +193,7 @@ _0800BDB4:
 _0800BDCE:
 	movs r2, #2
 	ldrsh r1, [r6, r2]
-	bl sub_08034A8C
+	bl walkObjectTowardPosition
 	b _0800BDEA
 	.align 2, 0
 _0800BDD8: .4byte 0x000067A4
@@ -203,7 +203,7 @@ _0800BDDC:
 	ldrsh r0, [r0, r7]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_08034A8C
+	bl walkObjectTowardPosition
 _0800BDEA:
 	adds r0, r5, #0
 	bl sub_080360E0

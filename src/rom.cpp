@@ -879,7 +879,7 @@ extern "C" void sub_0800BB54(InputState* input) {
     obj->_bf_8 = 0;
     obj->_bf_10 = 0;
 
-    if (obj->_87 == 3 && obj->speed != 0) {
+    if (obj->_87 == 3 && obj->speed) {
         sub_0800BC48(obj);
         return;
     }
@@ -888,7 +888,7 @@ extern "C" void sub_0800BB54(InputState* input) {
         obj = get_obj_direct(i);
         if ((s8)obj->_bc_0 != 0) {
             sub_08036BA4(obj);
-            if (obj->speed != 0) {
+            if (obj->speed) {
                 sub_0800BE04(obj);
             }
         }
