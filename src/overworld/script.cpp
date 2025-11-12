@@ -4445,7 +4445,7 @@ u16 cmd_C5(s32* sp) {
     (u32) obj--;  // FAKEMATCH
     if (c == 1) {
         gGame._829b = 6;
-        gGame._82b6_2 = 0;
+        gGame._82b6_20 = 0;
 
         switch (d) {
         case 0:

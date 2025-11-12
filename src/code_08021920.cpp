@@ -839,7 +839,37 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033FEC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080340F8.inc", void sub_080340F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034158.inc", void sub_08034158());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034260.inc", void sub_08034260());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034288.inc", void sub_08034288());
+
+extern "C" void sub_08034288(void) {
+    s32 soundID = SFX_NULL;
+
+    switch ((u16)get_shop_flag(0x41)) {
+    case 0:
+        soundID = (s8)gGame._82b6_20 == 0 ? 0x31E : 0x31F;
+        break;
+    case 1:
+    case 2:
+    case 4:
+        if ((s8)gGame._82b6_20 == 0) {
+            sub_08003BA8(5);
+            return;
+        }
+        soundID = 0x6A3;
+        break;
+    case 3:
+        soundID = (s8)gGame._82b6_20 == 0 ? 0x576 : 0x577;
+        break;
+    default:
+        return;
+    }
+
+    if (soundID == SFX_NULL)
+        return;
+
+    if (sub_08003D14(5) != soundID)
+        play_sound(soundID);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034348.inc", void sub_08034348());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080343B8.inc", void sub_080343B8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080344CC.inc", void sub_080344CC());
