@@ -2,7 +2,7 @@
 sub_08034288:
 	push {r4, lr}
 	movs r0, #0x41
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #4

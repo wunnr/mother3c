@@ -77,7 +77,7 @@ sub_08007760:
 	ands r1, r4
 	strb r1, [r6, #1]
 	movs r0, #0x18
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0xf

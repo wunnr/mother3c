@@ -71,7 +71,7 @@ _0802C928:
 	ldrh r6, [r0]
 _0802C92C:
 	movs r0, #0x41
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #4

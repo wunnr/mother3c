@@ -765,7 +765,7 @@ u16 cmd_DE(s32* sp) {
 
     idx = scriptstack_peek(sp, 0);
     if (idx < 0x80) {
-        val = sub_08002998(idx);
+        val = get_shop_flag(idx);
         scriptstack_push(val);
     }
     return 0;
@@ -777,7 +777,7 @@ u16 cmd_DF(s32* sp) {
 
     idx = scriptstack_peek(sp, 1);
     if (idx < 0x80) {
-        val = sub_08002998(idx);
+        val = get_shop_flag(idx);
         idx = scriptstack_peek(sp, 0);
         sub_080218B0(val, idx);
     }
@@ -1608,7 +1608,6 @@ u16 cmd_heal_hp(s32* sp) {
     s32 hp;
     s32 v4;
     Object* spr;
-    s32 v7;
 
     idx = scriptstack_peek(sp, 1);
     hp = scriptstack_peek(sp, 0);
@@ -1619,7 +1618,7 @@ u16 cmd_heal_hp(s32* sp) {
         spr = get_obj(idx);
         if (spr) {
             if (spr->character <= 4) {
-                v7 = heal_hp(spr->character, hp);
+                heal_hp(spr->character, hp);
                 sub_0802B4D8();
             }
         }
@@ -4441,7 +4440,7 @@ u16 cmd_C5(s32* sp) {
 
     if (b != 0)
         return 0;
-    d = sub_08002998(65);
+    d = get_shop_flag(65);
     (u32) obj++;
     (u32) obj--;  // FAKEMATCH
     if (c == 1) {

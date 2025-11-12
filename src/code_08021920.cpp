@@ -1,5 +1,6 @@
 // Auto-generated source file
 #include "enums.h"
+#include "functions.h"
 #include "gba/io_reg.h"
 #include "gba/syscall.h"
 #include "global.h"
@@ -31,7 +32,6 @@ extern "C" void sub_0802941C(CharStats*, struct_200D818*);
 extern "C" void breakIntoDigits(u16*, u32, u16, u16);
 extern "C" StatMeter* getStatMeter(u16, u16);
 extern "C" CharStats* get_char_stats(u16);
-extern "C" u16 isCharOverworldPlayable(u16 index);
 extern "C" u16 tickStatMeter(StatMeter*);
 extern "C" void sub_08030550(Object*, u16, u32);
 extern "C" u16 getPrevDirection(u16);
@@ -41,8 +41,11 @@ extern "C" void sub_08034EB8(Object*);
 extern "C" u16 sub_0801A7CC(s16, u32, s32);
 extern "C" u16 sub_0801A868(s16, u32, s32);
 extern "C" void sub_08034BAC();
+extern "C" void play_sound(u16);
+extern "C" void sub_08003BA8(s32);
+extern "C" s16 sub_08003D14(u16);
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", void sub_08021920());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021AFC.inc", void sub_08021AFC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021B64.inc", void sub_08021B64());
@@ -139,7 +142,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08025ED8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08025F98.inc", void sub_08025F98());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080260C8.inc", void sub_080260C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802610C.inc", void sub_0802610C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080261D0.inc", void sub_080261D0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080261D0.inc", void sub_080261D0(Object*, s16, s32, s32, s32));
 
 extern "C" void sub_080262F0() {
     gSomeBlend._1ed10_20 = 0;
@@ -256,7 +259,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DC4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DE4.inc", void sub_08027DE4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DF4.inc", void sub_08027DF4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027E0C.inc", void sub_08027E0C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027E60.inc", void sub_08027E60());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027E60.inc", void* sub_08027E60());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027E74.inc", void sub_08027E74());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027EF8.inc", void sub_08027EF8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027F38.inc", void sub_08027F38());
@@ -321,7 +324,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029E18.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029EF0.inc", void sub_08029EF0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08029FC8.inc", void sub_08029FC8());
 
-extern "C" void add_dp_to_pocket(u32 amount) {
+extern "C" void add_dp_to_pocket(s32 amount) {
     u32 newAmount = gSave.dp_pocket + amount;
     if (newAmount > 999999) {
         gSave.dp_pocket = 999999;
@@ -341,8 +344,8 @@ extern "C" void add_dp_to_bank(u32 amount) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/withdraw_dp.inc", void withdraw_dp());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/deposit_dp.inc", void deposit_dp());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/update_key_item_quantity.inc", void update_key_item_quantity());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", void sub_0802A124());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/update_key_item_quantity.inc", void update_key_item_quantity(u32, u32));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A124.inc", u16 sub_0802A124(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A180.inc", void sub_0802A180());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A264.inc", void sub_0802A264());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A310.inc", void sub_0802A310());
@@ -379,7 +382,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A670.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A74C.inc", void sub_0802A74C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A7F8.inc", void sub_0802A7F8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A8D4.inc", void sub_0802A8D4());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A98C.inc", void sub_0802A98C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A98C.inc", u16 sub_0802A98C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802A9B4.inc", void sub_0802A9B4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AA78.inc", void sub_0802AA78());
 
@@ -495,8 +498,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/tickStatMeter.inc", u16 tick
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AD88.inc", void sub_0802AD88());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/set_ailment.inc", void set_ailment());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF24.inc", void sub_0802AF24());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF88.inc", void sub_0802AF88());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AFBC.inc", void sub_0802AFBC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AF88.inc", u32 sub_0802AF88(s16));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AFBC.inc", void sub_0802AFBC(s16));
 
 extern "C" void heal_hp(u16 characterID, s16 amount) {
     CharStats* stats = get_char_stats(characterID);
@@ -530,8 +533,8 @@ extern "C" void restore_pp(u16 playerID, s16 amount) {
     initStatMeters(stats, playerID);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B094.inc", void sub_0802B094());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B0D0.inc", void sub_0802B0D0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B094.inc", void sub_0802B094(u16, s16));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B0D0.inc", void sub_0802B0D0(u32, u32, s16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B188.inc", void sub_0802B188());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B370.inc", void sub_0802B370());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B4D8.inc", void sub_0802B4D8());
@@ -559,10 +562,10 @@ extern "C" StatMeter* getStatMeter(u16 playerID, u16 statMeterType) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8C4.inc", void sub_0802B8C4());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8C4.inc", u32 sub_0802B8C4(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B8F4.inc", void sub_0802B8F4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B924.inc", void sub_0802B924());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B954.inc", void sub_0802B954());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802B954.inc", u32 sub_0802B954(u32));
 
 extern "C" bool is_equippable(u16 idx) {
     u32 type = gGoodsInfo[idx].item_type;
@@ -779,7 +782,7 @@ extern "C" void sub_080332AC(u16 id, u16 param2, u16 param3) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033374.inc", void sub_08033374());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033374.inc", void sub_08033374(u32, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033414.inc", void sub_08033414(u8));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033460.inc", void sub_08033460());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033484.inc", void sub_08033484());
@@ -790,7 +793,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033548.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033578.inc", void sub_08033578());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080335F0.inc", void sub_080335F0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033620.inc", void sub_08033620());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080337A8.inc", void sub_080337A8());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080337A8.inc", void sub_080337A8(u8, u16));
 
 extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
     Object* objA = get_obj_direct(indexA);
@@ -810,20 +813,20 @@ extern "C" void sub_080337F0(u16 indexA, u16 indexB, s16 unk) {
     gGame._1_40 = 1;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033868.inc", void sub_08033868(u8, u8, s32));
 
 extern "C" void faceNearTarget(u16 indexA, u16 indexB) {
     updateObjDirection(indexA, getPrevDirection(directionToTargetByID(indexA, indexB)));
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033948.inc", void sub_08033948());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033A54.inc", void sub_08033A54());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080338D8.inc", void sub_080338D8(u8, s32));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033948.inc", void sub_08033948(u16, s16));
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033A54.inc", void sub_08033A54(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033A8C.inc", void sub_08033A8C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033ABC.inc", void sub_08033ABC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033AEC.inc", void sub_08033AEC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B20.inc", void sub_08033B20());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B58.inc", void sub_08033B58());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B58.inc", void sub_08033B58(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B90.inc", void sub_08033B90());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033BCC.inc", void sub_08033BCC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033C14.inc", void sub_08033C14());
@@ -898,7 +901,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034FC8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034FE4.inc", void sub_08034FE4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034FFC.inc", void sub_08034FFC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035114.inc", void sub_08035114());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035138.inc", void sub_08035138());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035138.inc", Object* sub_08035138(u8));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035170.inc", void sub_08035170());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035298.inc", void sub_08035298());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035384.inc", void sub_08035384());
@@ -914,10 +917,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080359DC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035A88.inc", void sub_08035A88());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035AEC.inc", void sub_08035AEC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035B78.inc", void sub_08035B78());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035C0C.inc", void sub_08035C0C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035C0C.inc", u16 sub_08035C0C(u32, u32, u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035C64.inc", void sub_08035C64());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035C8C.inc", void sub_08035C8C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035D40.inc", void sub_08035D40());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035D40.inc", void sub_08035D40(Object*, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035DFC.inc", void sub_08035DFC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035E98.inc", void sub_08035E98());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08035F4C.inc", void sub_08035F4C());
@@ -1017,7 +1020,7 @@ extern "C" u16 directionToTarget(Object* source, Object* target) {
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036830.inc", void sub_08036830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036864.inc", void sub_08036864());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036904.inc", void sub_08036904());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036960.inc", void sub_08036960());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036960.inc", u32 sub_08036960(Object*, u8));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803699C.inc", void sub_0803699C());
 
 extern "C" void updateObjDirection(u16 index, u16 direction) {
@@ -1029,7 +1032,7 @@ extern "C" void updateObjDirection(u16 index, u16 direction) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036A68.inc", void sub_08036A68());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036A90.inc", void sub_08036A90());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036A90.inc", void sub_08036A90(u8, s32, s32, s32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036B34.inc", void sub_08036B34());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036B6C.inc", void sub_08036B6C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036BA4.inc", void sub_08036BA4());
@@ -1058,7 +1061,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036CD0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036CE0.inc", void sub_08036CE0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D00.inc", void sub_08036D00());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D18.inc", void sub_08036D18());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D3C.inc", void sub_08036D3C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D3C.inc", struct C2Struct* sub_08036D3C(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D60.inc", void sub_08036D60());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036D78.inc", void sub_08036D78());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08036DDC.inc", void sub_08036DDC());

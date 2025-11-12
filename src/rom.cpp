@@ -446,7 +446,7 @@ extern "C" u32 get_flag(u16 idx) {
     return (gSave.event_flags[idx / 8] >> (idx % 8)) & 1;
 }
 
-extern "C" u32 sub_08002998(u16 idx) {
+extern "C" u32 get_shop_flag(u16 idx) {
     return (gSave.shop_flags[idx / 2] >> ((idx & 1) * 4)) & 0xf;
 }
 

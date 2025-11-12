@@ -11,7 +11,7 @@ sub_0809E910:
 	ldr r4, [r5, #0x50]
 	subs r4, #1
 	movs r0, #0x1e
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r4, r0
