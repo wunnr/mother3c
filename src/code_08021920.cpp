@@ -15,6 +15,7 @@ extern struct_200D818 gUnknown_0200D818[];
 extern u16 gUnknown_020041EA;
 extern const u16 gSectorToDirection[];
 extern const u16 gSectorToDirectionExt[];
+extern const DebugModeFunc gUnknown_08D2E190[6];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -44,6 +45,7 @@ extern "C" void sub_08034BAC();
 extern "C" void play_sound(u16);
 extern "C" void sub_08003BA8(s32);
 extern "C" s16 sub_08003D14(u16);
+extern "C" void sub_0803B278();
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -1187,7 +1189,29 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039F40.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039F80.inc", void sub_08039F80());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039FBC.inc", void sub_08039FBC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039FFC.inc", void sub_08039FFC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/mode_debug_menu.inc", void mode_debug_menu());
+
+extern "C" void mode_debug_menu(InputState* input) {
+    if (gSomeBlend._3668_4 == 1) {
+        gSomeBlend._3668_2 = 1;
+    } else {
+        gSomeBlend._3668_2 = input->gotInput;
+    }
+
+    if (gSomeBlend._3668_2 && gSomeBlend._3612 < 6) {
+        gUnknown_08D2E190[gSomeBlend._3612](input, &gSomeBlend._35bc[gSomeBlend._3612]);
+    }
+
+    if (gSomeBlend._3668_8 == 1) {
+        gSomeBlend._3668_8 = 0;
+        return;
+    }
+
+    if (gSomeBlend._3668_10 == 1) {
+        gSomeBlend._3668_10 = 0;
+        sub_0803B278();
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A0EC.inc", void sub_0803A0EC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A198.inc", void sub_0803A198());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A224.inc", void sub_0803A224());

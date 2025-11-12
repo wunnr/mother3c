@@ -3,6 +3,8 @@
 
 #include "structs.h"
 
+typedef void (*DebugModeFunc)(InputState*, Unk_35bc*);
+
 extern "C" {
 
 void scriptstack_push(s32);

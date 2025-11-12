@@ -266,6 +266,11 @@ typedef struct Direction {
 } Direction;
 static_assert(sizeof(Direction) == 0x10);
 
+typedef struct Unk_35bc {
+    u8 _0[0xC];
+} Unk_35bc;
+static_assert(sizeof(Unk_35bc) == 0xC);
+
 typedef struct struct_02016028 {
     vu16 bldcnt;
     vu16 bldalpha;
@@ -310,7 +315,19 @@ typedef struct struct_02016028 {
     u8 _3530;
     u8 pad_3531[0x35BA - 0x3531];
     u8 _35ba;
-    u8 pad_35bb[0x4294 - 0x35BB];
+    u8 pad_35bb;
+    Unk_35bc _35bc[7];
+    u8 _3610[2];
+    u16 _3612;
+    u8 pad_35b4[0x3668 - 0x3614];
+    u8 _3668_1 : 1;
+    u8 _3668_2 : 1;
+    u8 _3668_4 : 1;
+    u8 _3668_8 : 1;
+    u8 _3668_10 : 1;
+    u8 _3668_20 : 1;
+    u8 _3668_40 : 2;
+    u8 pad_3669[0x4294 - 0x3669];
     u8 _4294;
     u8 pad_4295[0x4ad0 - 0x4295];
     u32 char_names[0xd];

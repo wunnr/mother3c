@@ -115,7 +115,7 @@ extern "C" void resetInputState(InputState* input, s16 arg1) {
 }
 
 extern "C" void pollInput(InputState* input) {
-    u16 buttonState = ((u32)(~REG_KEYINPUT << 0x16) >> 0x16);
+    u16 buttonState = (u32)(~REG_KEYINPUT << 0x16) >> 0x16;
     input->gotInput = 1;
 
     if (buttonState == 0) {
