@@ -390,8 +390,6 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802AA78.inc", void sub_
 
 extern "C" void updateStatMeter(u16 playerID, u16 statMeterType, s16 delta) {
     s32 proposedValue;
-    u16 i;
-    u8* timers;
 
     if (delta == 0) {
         return;
@@ -443,7 +441,7 @@ extern "C" void updateStatMeter(u16 playerID, u16 statMeterType, s16 delta) {
         return;
     }
 
-    for (i = 0; i < 3; i++) {
+    for (u16 i = 0; i < 3; i++) {
         meter->timers[i] = 0;
     }
 
