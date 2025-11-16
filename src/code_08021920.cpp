@@ -924,7 +924,35 @@ extern "C" void walkObjectTowardPosition(s16 dx, s16 dy) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034BAC.inc", void sub_08034BAC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034CE8.inc", void sub_08034CE8());
+
+extern "C" void sub_08034CE8(Object* obj, s16 x, s16 y) {
+    s16 xVel, yVel;
+
+    if (x == 0) {
+        if (y == 0)
+            return;
+
+        xVel = 0;
+    } else {
+        xVel = x > 0 ? 1 : -1;
+    }
+
+    if (y != 0) {
+        yVel = y > 0 ? 1 : -1;
+    } else {
+        yVel = 0;
+    }
+
+    s16 greaterAxis = abs(x) <= abs(y) ? y : x;
+    u16 numSteps = abs(greaterAxis);
+
+    for (u16 i = 0; i < numSteps; i++) {
+        obj->xpos += obj->speed->y * xVel;
+        obj->ypos += obj->speed->y * yVel;
+        sub_08034EB8(obj);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034DA8.inc", void sub_08034DA8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034EB8.inc", void sub_08034EB8(Object*));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08034FC8.inc", void sub_08034FC8());
