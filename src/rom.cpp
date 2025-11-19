@@ -105,12 +105,12 @@ extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, u16 index, u16 s
 
 extern "C" void resetInputState(InputState* input, s16 arg1) {
     input->gotInput = 0;
-    input->buttonsJustPressed = 0;
-    input->buttonsPressed = 0;
+    input->justPressed = 0;
+    input->pressed = 0;
     input->debounceTimer = 0;
     input->_6[0] = arg1;
     input->_6[1] = 0;
-    input->_6[2] = 0;
+    input->lastPressed = 0;
     input->numRepeats = 0;
 }
 
@@ -136,22 +136,22 @@ extern "C" void pollInput(InputState* input) {
     }
 
     if (input->gotInput) {
-        if (input->buttonsPressed == input->_6[2]) {
+        if (input->pressed == input->lastPressed) {
             input->numRepeats++;
         } else {
             input->numRepeats = 0;
         }
-        input->_6[2] = input->buttonsPressed;
+        input->lastPressed = input->pressed;
     }
 
-    input->buttonsJustPressed = buttonState & ~input->buttonsPressed;
-    input->buttonsPressed = buttonState;
+    input->justPressed = buttonState & ~input->pressed;
+    input->pressed = buttonState;
     if (input->gotInput) {
-        input->buttonsJustPressed |= input->_6[1];
+        input->justPressed |= input->_6[1];
         input->_6[1] = 0;
         return;
     }
-    input->_6[1] |= input->buttonsJustPressed;
+    input->_6[1] |= input->justPressed;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080016E4.inc", void sub_080016E4());
@@ -896,7 +896,7 @@ extern "C" void sub_0800BB54(InputState* input) {
 }
 
 extern "C" void sub_0800BBF4(InputState* input) {
-    if (input->buttonsPressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
+    if (input->pressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
         sub_0802610C(0);
         sub_080052E4(4);
         gGame._595b[1] = 0x15;

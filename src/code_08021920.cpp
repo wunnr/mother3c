@@ -15,7 +15,7 @@ extern struct_200D818 gUnknown_0200D818[];
 extern u16 gUnknown_020041EA;
 extern const u16 gSectorToDirection[];
 extern const u16 gSectorToDirectionExt[];
-extern const DebugModeFunc gUnknown_08D2E190[6];
+extern const DebugModeFunc gDebugFuncTable[6];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -1195,7 +1195,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_71.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_72.inc", void nullsub_72());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_73.inc", void nullsub_73());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_74.inc", void nullsub_74());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039544.inc", void sub_08039544());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/menuTabNavigate.inc", void menuTabNavigate());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803960C.inc", void sub_0803960C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039694.inc", void sub_08039694());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039738.inc", void sub_08039738());
@@ -1224,7 +1224,7 @@ extern "C" void mode_debug_menu(InputState* input) {
     }
 
     if (gSomeBlend._3668_2 && gSomeBlend._3612 < 6) {
-        gUnknown_08D2E190[gSomeBlend._3612](input, &gSomeBlend._35bc[gSomeBlend._3612]);
+        gDebugFuncTable[gSomeBlend._3612](input, &gSomeBlend.menuStates[gSomeBlend._3612]);
     }
 
     if (gSomeBlend._3668_8 == 1) {

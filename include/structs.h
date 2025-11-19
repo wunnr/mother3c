@@ -243,10 +243,11 @@ typedef struct Unknown_02016078 {
 } Unknown_02016078;
 
 typedef struct InputState {
-    u16 buttonsJustPressed;
-    u16 buttonsPressed;
+    u16 justPressed;
+    u16 pressed;
     u16 debounceTimer;
-    u16 _6[3];
+    u16 _6[2];
+    u16 lastPressed;
     u16 numRepeats;
     u8 gotInput : 1;
     u8 _e_2 : 1;
@@ -266,10 +267,14 @@ typedef struct Direction {
 } Direction;
 static_assert(sizeof(Direction) == 0x10);
 
-typedef struct Unk_35bc {
-    u8 _0[0xC];
-} Unk_35bc;
-static_assert(sizeof(Unk_35bc) == 0xC);
+typedef struct MenuState {
+    u16 _0;
+    u16 numTabs;
+    u16 tabIndex;
+    u16 _6[2];
+    u16 transactionType;
+} MenuState;
+static_assert(sizeof(MenuState) == 0xC);
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
@@ -316,7 +321,7 @@ typedef struct struct_02016028 {
     u8 pad_3531[0x35BA - 0x3531];
     u8 _35ba;
     u8 pad_35bb;
-    Unk_35bc _35bc[7];
+    MenuState menuStates[7];
     u8 _3610[2];
     u16 _3612;
     u8 pad_35b4[0x3668 - 0x3614];

@@ -3,7 +3,7 @@
 
 #include "structs.h"
 
-typedef void (*DebugModeFunc)(InputState*, Unk_35bc*);
+typedef void (*DebugModeFunc)(InputState*, MenuState*);
 
 extern "C" {
 

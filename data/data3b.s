@@ -58,8 +58,8 @@ gUnknown_08D2E178:
         .4byte sub_08039FFC+1
 
 
-    .global gUnknown_08D2E190
-gUnknown_08D2E190:
+    .global gDebugFuncTable
+gDebugFuncTable:
         .4byte sub_0803A0EC+1
         .4byte sub_0803A2D4+1
         .4byte sub_0803A4D0+1
