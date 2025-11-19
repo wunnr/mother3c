@@ -246,7 +246,8 @@ typedef struct InputState {
     u16 justPressed;
     u16 pressed;
     u16 debounceTimer;
-    u16 _6[2];
+    u16 _6;
+    u16 pressedPending;
     u16 lastPressed;
     u16 numRepeats;
     u8 gotInput : 1;

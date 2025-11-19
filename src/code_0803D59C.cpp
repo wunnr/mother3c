@@ -1010,7 +1010,7 @@ extern "C" void sub_0805AE64();
 extern "C" void sub_08001778(void* arg1, u16 arg2, u16 arg3, u16 arg4);
 extern "C" void sub_080013D0(void*);
 extern "C" void sub_08001454(void*);
-extern "C" void resetInputState(InputState*, s16);
+extern "C" void resetInputState(InputState*, u16);
 extern "C" void sub_080019A4(void*);
 
 extern "C" void sub_0805AE94(struct_02016028*, void*);

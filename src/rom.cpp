@@ -103,13 +103,13 @@ extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, u16 index, u16 s
     sub_08090F74(src, (void*)dest->_2700[index], size / 4);
 }
 
-extern "C" void resetInputState(InputState* input, s16 arg1) {
+extern "C" void resetInputState(InputState* input, u16 arg1) {
     input->gotInput = 0;
     input->justPressed = 0;
     input->pressed = 0;
     input->debounceTimer = 0;
-    input->_6[0] = arg1;
-    input->_6[1] = 0;
+    input->_6 = arg1;
+    input->pressedPending = 0;
     input->lastPressed = 0;
     input->numRepeats = 0;
 }
@@ -147,11 +147,11 @@ extern "C" void pollInput(InputState* input) {
     input->justPressed = buttonState & ~input->pressed;
     input->pressed = buttonState;
     if (input->gotInput) {
-        input->justPressed |= input->_6[1];
-        input->_6[1] = 0;
+        input->justPressed |= input->pressedPending;
+        input->pressedPending = 0;
         return;
     }
-    input->_6[1] |= input->justPressed;
+    input->pressedPending |= input->justPressed;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080016E4.inc", void sub_080016E4());
