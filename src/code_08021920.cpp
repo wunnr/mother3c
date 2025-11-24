@@ -1224,7 +1224,7 @@ extern "C" void mode_debug_menu(InputState* input) {
     }
 
     if (gSomeBlend._3668_2 && gSomeBlend._3612 < 6) {
-        gDebugFuncTable[gSomeBlend._3612](input, &gSomeBlend.menuStates[gSomeBlend._3612]);
+        gDebugFuncTable[gSomeBlend._3612](input, &gSomeBlend._35bc[gSomeBlend._3612]);
     }
 
     if (gSomeBlend._3668_8 == 1) {

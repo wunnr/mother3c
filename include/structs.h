@@ -315,12 +315,9 @@ typedef struct struct_02016028 {
     vu32 _48;
     vu32 _4C;
     Unknown_02016078 _50;
-
     InputState input;
-
     void* _2CB0;
     u16 _2CB4[0x200];
-
     u8 pad_30B4[0x351B - 0x30B4];
     u32 _351C;
     u32 _3520;
@@ -331,7 +328,7 @@ typedef struct struct_02016028 {
     u8 pad_3531[0x35BA - 0x3531];
     u8 _35ba;
     u8 pad_35bb;
-    TransactionState menuStates[7];
+    TransactionState _35bc[7];
     u8 _3610[2];
     u16 _3612;
     u8 pad_35b4[0x3668 - 0x3614];
@@ -344,7 +341,9 @@ typedef struct struct_02016028 {
     u8 _3668_40 : 2;
     u8 pad_3669[0x4294 - 0x3669];
     u8 _4294;
-    u8 pad_4295[0x4ad0 - 0x4295];
+    u8 pad_4295[0x44F2 - 0x4295];
+    u8 _44f2_1 : 1;
+    u8 pad_44f3[0x4ad0 - 0x44F3];
     u32 char_names[0xd];
     u16 msg_type;
     u16 _4b06;
