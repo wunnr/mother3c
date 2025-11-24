@@ -267,7 +267,8 @@ typedef struct Direction {
 } Direction;
 
 typedef struct MenuState {
-    u8 _0[4];
+    u8 _0[2];
+    u16 _2;
     u16 cursorPos;
     u8 _6[0xA - 0x6];
     u16 _a;
@@ -346,7 +347,9 @@ typedef struct struct_02016028 {
     u8 _41da_1 : 1;
     u8 pad_41db[0x4260 - 0x41DB];
     u8 _4260;
-    u8 pad_4261[0x4294 - 0x4261];
+    u8 pad_4261[0x4264 - 0x4261];
+    u8 _4264;
+    u8 pad_4265[0x4294 - 0x4265];
     u8 _4294;
     u8 pad_4295[0x44F2 - 0x4295];
     u8 _44f2_1 : 1;
