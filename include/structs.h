@@ -269,13 +269,22 @@ typedef struct Direction {
 static_assert(sizeof(Direction) == 0x10);
 
 typedef struct MenuState {
+    u8 _0[4];
+    u16 _4;
+    u8 _6[0xA - 0x6];
+    u16 _a;
+    u8 _c[0x20 - 0xC];
+} MenuState;
+static_assert(sizeof(MenuState) == 0x20);
+
+typedef struct TransactionState {
     u16 _0;
     u16 numTabs;
     u16 tabIndex;
     u16 _6[2];
     u16 transactionType;
-} MenuState;
-static_assert(sizeof(MenuState) == 0xC);
+} TransactionState;
+static_assert(sizeof(TransactionState) == 0xC);
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
@@ -322,7 +331,7 @@ typedef struct struct_02016028 {
     u8 pad_3531[0x35BA - 0x3531];
     u8 _35ba;
     u8 pad_35bb;
-    MenuState menuStates[7];
+    TransactionState menuStates[7];
     u8 _3610[2];
     u16 _3612;
     u8 pad_35b4[0x3668 - 0x3614];

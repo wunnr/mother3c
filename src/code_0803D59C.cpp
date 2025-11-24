@@ -1,5 +1,6 @@
 // Auto-generated source file
 #include "battle/irc.h"
+#include "enums.h"
 #include "gba/gba.h"
 #include "global.h"
 #include "structs.h"
@@ -52,6 +53,9 @@ extern "C" void sub_08059500(InputState*);
 extern "C" void sub_08059548(void*);
 extern "C" void sub_080596A0(void*);
 extern "C" void checkSoftReset(InputState*);
+extern "C" void play_sound(u16);
+extern "C" void sub_080506CC(u16);
+extern "C" void sub_08054108();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -488,7 +492,22 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F1D8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F294.inc", void sub_0804F294());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F334.inc", void sub_0804F334());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F3EC.inc", void sub_0804F3EC());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F4E4.inc", void sub_0804F4E4());
+
+extern "C" void sub_0804F4E4(MenuState* menu) {
+    switch (menu->_4) {
+    case 0:
+        play_sound(SFX_STAT_MENU_ENTER);
+        menu->_a = 1;
+        sub_08054108();
+        return;
+    case 1:
+        play_sound(SFX_STAT_MENU_LEAVE);
+        menu->_a = 2;
+        sub_080506CC(5);
+        return;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F51C.inc", void sub_0804F51C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F6C8.inc", void sub_0804F6C8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F7B0.inc", void sub_0804F7B0());
@@ -508,7 +527,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050458.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080505D8.inc", void sub_080505D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050628.inc", void sub_08050628());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506A4.inc", void sub_080506A4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506CC.inc", void sub_080506CC());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506CC.inc", void sub_080506CC(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050734.inc", void sub_08050734());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050738.inc", void sub_08050738());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050790.inc", void sub_08050790());
