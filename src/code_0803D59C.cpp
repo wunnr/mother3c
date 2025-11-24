@@ -1,6 +1,7 @@
 // Auto-generated source file
 #include "battle/irc.h"
 #include "enums.h"
+#include "functions.h"
 #include "gba/gba.h"
 #include "global.h"
 #include "structs.h"
@@ -30,6 +31,7 @@ extern const u8 gUnknown_09C8DE98;  // Some sort of "archive" with sprites, pale
 extern u8 gMenuTextPalette;
 extern const u8 gUnknown_09BCDD8C;
 extern InputState gInputState;
+extern MenuFunc gMenuFuncTable[0x13];
 
 extern "C" void* sub_0800289C(const void* src, int index);
 extern "C" void sub_08090F88(void* src, void* dest);  // lz-decompress
@@ -43,7 +45,7 @@ extern "C" void sub_080018F4();
 extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, int index, u32 size);
 extern "C" void sub_08001A14(void* src, void* dest, u32 size);
 extern "C" void sub_08001A38(void* dest, u32 size, int value);
-extern "C" void sub_08001B18(void*, void*, int);
+extern "C" void sub_08001B18(u32*, u16*, u32);
 extern "C" void sub_08000E5C(void*);
 extern "C" void nullsub_11();
 extern "C" void pollInput(InputState*);
@@ -58,6 +60,10 @@ extern "C" void sub_080506CC(u16);
 extern "C" void sub_08054108();
 extern "C" void sub_08053804(u16*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804F4E4(MenuState*);
+extern "C" void sub_0804E078(void*, void*);
+extern "C" void sub_0804E16C(void*);
+extern "C" void sub_080506A4();
+extern "C" u16 sub_08050734(InputState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -430,7 +436,35 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C68C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_23.inc", void nullsub_23());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C8C0.inc", void sub_0804C8C0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C944.inc", void sub_0804C944());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/exec_menu.inc", void exec_menu());
+
+extern "C" void exec_menu(InputState* input) {
+    sub_080506A4();
+
+    if (sub_08050734(input) != 0) {
+        return;
+    }
+
+    if ((s8)gSomeBlend._44f2_2 != 0) {
+        gSomeBlend._44f2_1 = 1;
+    } else {
+        gSomeBlend._44f2_1 = input->gotInput;
+    }
+
+    if ((s8)gSomeBlend._41da_1 != 0) {
+        sub_0804E16C(input);
+        return;
+    }
+
+    if (gSomeBlend._41c6_1) {
+        sub_0804E078(input, &gSomeBlend._3060);
+        return;
+    }
+
+    if (gSomeBlend._4260 < 0x13) {
+        gMenuFuncTable[gSomeBlend._4260](input, &gSomeBlend.menus[gSomeBlend._4260]);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CAB0.inc", void sub_0804CAB0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CC48.inc", void sub_0804CC48());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CCF4.inc", void sub_0804CCF4());
@@ -464,12 +498,12 @@ extern "C" void sub_0804DBE8(InputState* input, MenuState* menu) {
     u16 isCancel = input->justPressed & B_BUTTON;
 
     if (isCancel) {
-        if (menu->_4 != 1) {
+        if (menu->cursorPos != 1) {
             play_sound(SFX_MENU_CANCEL);
-            menu->_4 = 1;
+            menu->cursorPos = 1;
         }
     } else {
-        sub_08053804(&menu->_4, input, 2, 1, 2, isCancel);
+        sub_08053804(&menu->cursorPos, input, 2, 1, 2, isCancel);
     }
 }
 
@@ -518,7 +552,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F334.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F3EC.inc", void sub_0804F3EC());
 
 extern "C" void sub_0804F4E4(MenuState* menu) {
-    switch (menu->_4) {
+    switch (menu->cursorPos) {
     case 0:
         play_sound(SFX_STAT_MENU_ENTER);
         menu->_a = 1;
@@ -552,7 +586,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080505D8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050628.inc", void sub_08050628());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506A4.inc", void sub_080506A4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506CC.inc", void sub_080506CC(u16));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050734.inc", void sub_08050734());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050734.inc", u16 sub_08050734(InputState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050738.inc", void sub_08050738());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050790.inc", void sub_08050790());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050948.inc", void sub_08050948());
@@ -929,9 +963,9 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08058FE4.inc", void sub_
 
 extern "C" void sub_08059094(void) {
     sub_08090F88(sub_0800289C(&gUnknown_09C5FD2C, 0x4C), (void*)0x06008000);
-    void* ptr = sub_0800289C(&gUnknown_09C5FD2C, 0x4D);
+    u32* ptr = (u32*)sub_0800289C(&gUnknown_09C5FD2C, 0x4D);
     sub_0800160C(&gSomeBlend._50, ptr, 0xE, 0x40);
-    sub_08001B18(ptr, &gSomeBlend._4294, 0x40);
+    sub_08001B18(ptr, (u16*)&gSomeBlend._4294, 0x40);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080590E4.inc", void sub_080590E4());

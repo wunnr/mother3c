@@ -264,13 +264,11 @@ typedef struct Direction {
     u16 oppositeDirection;
     u16 stepCounterClockwise90;
     u16 stepClockwise90;
-    u8 pad[2];
 } Direction;
-static_assert(sizeof(Direction) == 0x10);
 
 typedef struct MenuState {
     u8 _0[4];
-    u16 _4;
+    u16 cursorPos;
     u8 _6[0xA - 0x6];
     u16 _a;
     u8 _c[0x20 - 0xC];
@@ -317,7 +315,10 @@ typedef struct struct_02016028 {
     Unknown_02016078 _50;
     InputState input;
     void* _2CB0;
-    u16 _2CB4[0x200];
+    u16 _2CB4[0xA6];
+    MenuState menus[0x13];
+    u8 _3060;
+    u8 pad_3061[0x30B4 - 0x3061];
     u8 pad_30B4[0x351B - 0x30B4];
     u32 _351C;
     u32 _3520;
@@ -339,10 +340,17 @@ typedef struct struct_02016028 {
     u8 _3668_10 : 1;
     u8 _3668_20 : 1;
     u8 _3668_40 : 2;
-    u8 pad_3669[0x4294 - 0x3669];
+    u8 pad_3669[0x41C6 - 0x3669];
+    u8 _41c6_1 : 1;
+    u8 pad_41c7[0x41DA - 0x41C7];
+    u8 _41da_1 : 1;
+    u8 pad_41db[0x4260 - 0x41DB];
+    u8 _4260;
+    u8 pad_4261[0x4294 - 0x4261];
     u8 _4294;
     u8 pad_4295[0x44F2 - 0x4295];
     u8 _44f2_1 : 1;
+    u8 _44f2_2 : 1;
     u8 pad_44f3[0x4ad0 - 0x44F3];
     u32 char_names[0xd];
     u16 msg_type;

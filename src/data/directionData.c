@@ -36,7 +36,6 @@ const Direction gDirectionTable[] = {
        DIR_NONE,
        DIR_NONE,
        DIR_NONE,
-       0,
     },
     {
        DPAD_DOWN,
@@ -46,7 +45,6 @@ const Direction gDirectionTable[] = {
        DIR_UP,
        DIR_RIGHT,
        DIR_LEFT,
-       0,
     },
     {
        DPAD_DOWN | DPAD_LEFT,
@@ -56,7 +54,6 @@ const Direction gDirectionTable[] = {
        DIR_UP_RIGHT,
        DIR_DOWN_RIGHT,
        DIR_UP_LEFT,
-       0,
     },
     {
        DPAD_LEFT,
@@ -66,7 +63,6 @@ const Direction gDirectionTable[] = {
        DIR_RIGHT,
        DIR_DOWN,
        DIR_UP,
-       0,
     },
     {
        DPAD_UP | DPAD_LEFT,
@@ -76,7 +72,6 @@ const Direction gDirectionTable[] = {
        DIR_DOWN_RIGHT,
        DIR_DOWN_LEFT,
        DIR_UP_RIGHT,
-       0,
     },
     {
        DPAD_UP,
@@ -86,7 +81,6 @@ const Direction gDirectionTable[] = {
        DIR_DOWN,
        DIR_LEFT,
        DIR_RIGHT,
-       0,
     },
     {
        DPAD_UP | DPAD_RIGHT,
@@ -96,7 +90,6 @@ const Direction gDirectionTable[] = {
        DIR_DOWN_LEFT,
        DIR_UP_LEFT,
        DIR_DOWN_RIGHT,
-       0,
     },
     {
        DPAD_RIGHT,
@@ -106,7 +99,6 @@ const Direction gDirectionTable[] = {
        DIR_LEFT,
        DIR_UP,
        DIR_DOWN,
-       0,
     },
     {
        DPAD_DOWN | DPAD_RIGHT,
@@ -116,6 +108,5 @@ const Direction gDirectionTable[] = {
        DIR_UP_LEFT,
        DIR_UP_RIGHT,
        DIR_DOWN_LEFT,
-       0,
     },
 };
