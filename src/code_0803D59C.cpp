@@ -570,7 +570,21 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F190.inc", void sub_0804F190(MenuState*));
+
+extern "C" void sub_0804F190(MenuState* menu) {
+    play_sound(SFX_MENU_SELECT);
+    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+
+    if (gSomeBlend.menus[0xC].cursorPos == 0) {
+        sub_0804C35C();
+    } else {
+        sub_0804C398();
+    }
+
+    sub_08049DC4();
+    sub_08046D90();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F1D8.inc", void sub_0804F1D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F294.inc", void sub_0804F294());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F334.inc", void sub_0804F334());
