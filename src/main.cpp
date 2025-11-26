@@ -446,39 +446,50 @@ void init_save() {
     for (i = 0; i < 5; ++i) {
         gSave.party[i] = 0;
     }
+
     gSave.dp_pocket = 0;
     gSave.dp_bank = 0;
+
     for (i = 0; i < 0x100; ++i) {
         gSave.key_items[i] = 0;
         gSave.item_guy[i] = 0;
     }
+
     gSave.playtime = 0;
     gSave._214 = 0;
     gSave._218 = 0;
     gSave._21c = 0;
     gSave._220 = 0;
+
     for (i = 0; i < 5; ++i) {
         gSave._222[i] = 0;
         gSave._22c[i] = 0;
         gSave._236[i] = 0;
     }
+
     for (i = 0; i < 0x100; ++i) {
         gSave.event_flags[i] = 0;
     }
+
     for (i = 0; i < 0x40; ++i) {
         gSave.shop_flags[i] = 0;
         gSave._380[i] = 0;
         gSave.mIQ0[i] = 0;
     }
+
     for (i = 0; i < 0x80; ++i) {
         gSave.giftbox_flags[i] = 0;
     }
+
     gSave._480 = 1;
+
     for (i = 0; i < 0x80; ++i) {
         gSave._482[i] = 0;
         gSave._582[i] = 100;
     }
+
     u16 tmp = get_misctext_len(5);
+
     sub_08001B54(gSave.hinawa_name, sizeof gSave.hinawa_name, -1);
     sub_08002420(gSave.hinawa_name, get_misctext_msg(5, 8), tmp);
     sub_08001B54(gSave.claus_name, sizeof gSave.claus_name, -1);
@@ -487,6 +498,7 @@ void init_save() {
     sub_08001B54(gSave.fav_thing, sizeof gSave.fav_thing, -1);
     sub_08001B54(gSave.playername_short, sizeof gSave.playername_short, -1);
     sub_08001B54(gSave.playername, sizeof gSave.playername, -1);
+
     gSave._6f8 = 0;
     gSave._6fa = 0;
     gSave._6fc = 0;
@@ -506,25 +518,32 @@ void init_save() {
     gSave._734 = 0;
     gSave._735 = 0;
     gSave._736 = 0;
+
     for (i = 0; i < 10; ++i) {
         gSave._710[i] = 0;
         gSave._72a[i] = 0;
     }
+
     sub_0800272C();
+
     for (i = 0; i < 0x20; ++i) {
         gSave.enemy_seen_front[i] = 0;
         gSave.enemy_seen_back[i] = 0;
     }
+
     gSave._78a = 0;
     gSave._78b = 0;
     gSave._78c = 0;
     gSave._78d = 0;
+
     for (i = 0; i < 0x40; ++i) {
         gSave._78e[i] = 0;
     }
+
     for (i = 0; i < 0x10; ++i) {
         gSave._80e[i] = 0;
     }
+
     gSave._81e = 0;
 }
 
@@ -578,7 +597,7 @@ extern "C" void sub_08000D64(volatile u16 a) {
 }
 
 extern "C" void sub_08000D88(void) {
-    char* dest = (char*)0x03000000;
+    char* dest = (char*)IWRAM_START;
 
     for (u16 i = 0; i < 8; ++i, ++dest) {
         u32 tmp = gUnknown_02004848.flags_u8._1;
@@ -591,7 +610,7 @@ extern "C" void sub_08000D88(void) {
 }
 
 extern "C" void copy_ram_magic() {
-    char* dest = (char*)0x03000000;
+    char* dest = (char*)IWRAM_START;
 
     for (u16 i = 0; i < 8; ++i, ++dest) {
         if (*dest != gUnknown_08CDB8A8[i]) {
@@ -603,14 +622,14 @@ extern "C" void copy_ram_magic() {
 }
 
 void clear_ram(void) {
-    sub_080019DC((void*)0x2000000, 0x40000);
+    sub_080019DC((void*)EWRAM_START, EWRAM_SIZE);
     sub_080019DC(&gUnknown_03000008, 0x7D98);
 }
 
 void clear_gfx() {
-    memclear((void*)0x6000000, 0x18000);
-    memclear((void*)0x5000000, 0x400);
-    memclear((void*)0x7000000, 0x400);
+    memclear((void*)VRAM, VRAM_SIZE);
+    memclear((void*)PLTT, PLTT_SIZE);
+    memclear((void*)OAM, OAM_SIZE);
 }
 
 extern "C" void sub_08000E5C(Unknown_02016078* arg0) {
