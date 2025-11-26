@@ -347,7 +347,7 @@ typedef struct struct_02016028 {
     u8 pad_41c7[0x41DA - 0x41C7];
     u8 _41da_1 : 1;
     u8 pad_41db[0x4260 - 0x41DB];
-    u8 _4260;
+    u8 currentMenu;
     u8 pad_4261[0x4264 - 0x4261];
     u8 _4264;
     u8 pad_4265[0x4294 - 0x4265];
