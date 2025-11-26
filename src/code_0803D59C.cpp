@@ -67,6 +67,8 @@ extern "C" u16 sub_08050734(InputState*);
 extern "C" s8 sub_08053E98(u16);
 extern "C" void sub_0804F190(MenuState*);
 extern "C" void sub_080534C8(u16*, InputState*, s32, u16, s32, s32, s32);
+extern "C" void sub_08053148();
+extern "C" void sub_08054FE0(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -428,7 +430,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C254.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2A4.inc", void sub_0804C2A4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C330.inc", void sub_0804C330());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C35C.inc", void sub_0804C35C());
+
+extern "C" void sub_0804C35C() {
+    gSomeBlend._4260 = 0xE;
+    MenuState* menu = &gSomeBlend.menus[gSomeBlend._4260];
+    menu->cursorPos = 0;
+    menu->_a = gSomeBlend._4264;
+    menu->_8 = 0;
+    sub_08054FE0(menu->_a);
+    sub_08053148();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C398.inc", void sub_0804C398());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C3E0.inc", void sub_0804C3E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C408.inc", void sub_0804C408());
@@ -788,7 +800,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F34.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F5C.inc", void sub_08054F5C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_08054FB8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", void sub_08054FE0());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", void sub_08054FE0(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FF0.inc", void sub_08054FF0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055008.inc", void sub_08055008());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055038.inc", void sub_08055038());

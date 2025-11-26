@@ -270,7 +270,8 @@ typedef struct MenuState {
     u8 _0[2];
     u16 _2;
     u16 cursorPos;
-    u8 _6[0xA - 0x6];
+    u16 _6;
+    u16 _8;
     u16 _a;
     u8 _c[0x20 - 0xC];
 } MenuState;
