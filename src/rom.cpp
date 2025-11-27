@@ -317,9 +317,8 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002604.inc", void sub_08002604()
 
 extern "C" void breakIntoDigits(u16* digitBuffer, u32 value, u16 modifier, u16 numDigits) {
     u32* ptr = &gUnknown_08CDB95C[numDigits];
-    u16 i;
 
-    for (i = 0; i < numDigits; i++, ptr--) {
+    for (u16 i = 0; i < numDigits; i++, ptr--) {
         digitBuffer[i] = Divide(value, *ptr) + modifier;
         value = sub_08002FD4(value, *ptr);
     }

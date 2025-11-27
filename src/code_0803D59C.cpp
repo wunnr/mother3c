@@ -71,6 +71,7 @@ extern "C" void sub_08053148();
 extern "C" s32 sub_08054FE0(u16);
 extern "C" void sub_080524EC();
 extern "C" void sub_080531C8(s32);
+extern "C" void sub_0804EF9C(MenuState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -501,7 +502,26 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CF20.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D070.inc", void sub_0804D070());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D118.inc", void sub_0804D118());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D18C.inc", void sub_0804D18C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D394.inc", void sub_0804D394());
+
+extern "C" void sub_0804D394(InputState* input, MenuState* menu) {
+    if ((s8)gSomeBlend._44f2_1 == 0) {
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        sub_0804EF9C(menu);
+        return;
+    }
+
+    if (input->justPressed & B_BUTTON) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    }
+
+    sub_080534C8(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D3F4.inc", void sub_0804D3F4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D474.inc", void sub_0804D474());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804D5E0.inc", void sub_0804D5E0());
@@ -589,7 +609,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_21.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EE64.inc", void sub_0804EE64());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
