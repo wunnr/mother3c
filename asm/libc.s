@@ -8,8 +8,8 @@ ArcTan2: @ 0x08090F70
 	svc #0xa
 	bx lr
 
-	thumb_func_start sub_08090F74
-sub_08090F74: @ 0x08090F74
+	thumb_func_start CpuFastSet
+CpuFastSet: @ 0x08090F74
 	svc #0xc
 	bx lr
 

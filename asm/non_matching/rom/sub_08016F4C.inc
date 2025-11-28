@@ -7,7 +7,7 @@ sub_08016F4C:
 	ldr r3, _08016F64
 	adds r1, r1, r3
 	lsrs r2, r2, #0x12
-	bl sub_08090F74
+	bl CpuFastSet
 	pop {r0}
 	bx r0
 	.align 2, 0

@@ -25,7 +25,7 @@ extern "C" s32 Divide(s32 a, s32 b);
 extern "C" void sub_0803D474();
 extern "C" void sub_08005C38();
 extern "C" void sub_080019DC(void* dest, u32 size);
-extern "C" void sub_08090F74(const void* src, void* dest, u32 control);
+extern "C" void CpuFastSet(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
@@ -100,7 +100,7 @@ extern "C" void sub_08001454(Unknown_02016078* arg0) {
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001530.inc", void sub_08001530());
 
 extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, u16 index, u16 size) {
-    sub_08090F74(src, (void*)dest->_2700[index], size / 4);
+    CpuFastSet(src, (void*)dest->_2700[index], size / 4);
 }
 
 extern "C" void resetInputState(InputState* input, u16 arg1) {
