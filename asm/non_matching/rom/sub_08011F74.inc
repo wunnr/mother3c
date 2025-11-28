@@ -14,7 +14,7 @@ sub_08011F74:
 	lsrs r5, r5, #0x10
 	ldr r0, _08012018
 	adds r1, r2, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	mov sl, r0
 	ldr r4, _0801201C
 	adds r0, r4, #0

@@ -35,7 +35,7 @@ _08015D1E:
 	ldr r1, [r4]
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _08015DE8
 	ldr r1, [r4]
 	movs r2, #1

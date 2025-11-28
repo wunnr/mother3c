@@ -18,7 +18,7 @@ void sub_08024744();
 void sub_08005BFC();
 void sub_0801B5E8(u32);
 void sub_08005C14();
-void sub_08001B18(u32*, u16*, u32);
+void CpuSmartSet(u32*, u16*, u32);
 void sub_08013D38();
 void sub_0802610C(u32);
 void set_event_flag(u32, u32);

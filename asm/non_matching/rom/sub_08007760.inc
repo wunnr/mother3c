@@ -323,7 +323,7 @@ _080079C0:
 	ldr r1, _08007A84
 	adds r0, r4, #0
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08007A94
 	.align 2, 0
 _08007A38: .4byte 0x00002CA0

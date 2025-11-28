@@ -6,7 +6,7 @@ sub_080080DC:
 	lsrs r4, r4, #0x10
 	ldr r0, _08008108
 	movs r1, #0xa
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	lsls r4, r4, #9
 	movs r1, #0x80
 	lsls r1, r1, #4
@@ -15,7 +15,7 @@ sub_080080DC:
 	ldr r1, _0800810C
 	movs r2, #0x80
 	lsls r2, r2, #2
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

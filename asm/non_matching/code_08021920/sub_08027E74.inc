@@ -19,14 +19,14 @@ sub_08027E74:
 	lsrs r4, r4, #0x10
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r4, r0, #0
 	adds r5, #1
 	lsls r5, r5, #0x10
 	lsrs r5, r5, #0x10
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	cmp r4, r6
 	beq _08027EE4
 	cmp r0, r6

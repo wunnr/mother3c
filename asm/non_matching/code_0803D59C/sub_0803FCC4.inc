@@ -4,7 +4,7 @@ sub_0803FCC4:
 	ldr r4, _0803FD00
 	adds r0, r4, #0
 	movs r1, #0x27
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _0803FD04
 	bl sub_08090F88
 	ldr r0, _0803FD08
@@ -13,7 +13,7 @@ sub_0803FCC4:
 	ldrb r1, [r0]
 	adds r1, #0x28
 	adds r0, r4, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FD10
 	movs r2, #2

@@ -23,12 +23,12 @@ sub_080491F0:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x60
 	adds r1, r7, #0
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08049274
 _08049234:
 	ldrh r1, [r1]
@@ -39,12 +39,12 @@ _08049234:
 	adds r0, #0x20
 	adds r1, r6, #0
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x80
 	adds r1, r7, #0
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08049274
 _08049256:
 	adds r0, r1, #2
@@ -54,12 +54,12 @@ _08049256:
 	adds r0, #0x40
 	adds r1, r6, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0xa0
 	adds r1, r7, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 _08049274:
 	pop {r3}
 	mov r8, r3

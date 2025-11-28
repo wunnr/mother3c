@@ -25,7 +25,7 @@ _0804699E:
 	ldr r0, _080469C8
 	mov r1, sp
 	movs r2, #0x14
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	strh r6, [r0, #0x10]
 	strh r5, [r0, #0x12]

@@ -34,7 +34,7 @@ sub_0800AF44:
 	strh r0, [r5, #6]
 	ldr r0, _0800AFB8
 	movs r1, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r6, r0, #0
 	ldr r0, _0800AFBC
 	ldrh r0, [r0, #0x10]
@@ -47,7 +47,7 @@ _0800AF98:
 	adds r1, r5, r1
 	adds r0, r6, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #1
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10

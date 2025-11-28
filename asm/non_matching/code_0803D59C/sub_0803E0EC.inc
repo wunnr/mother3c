@@ -17,7 +17,7 @@ _0803E0FC:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl memclear

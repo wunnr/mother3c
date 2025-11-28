@@ -13,7 +13,7 @@ sub_080082DC:
 	lsls r2, r2, #0xe
 	adds r1, r1, r2
 	lsrs r1, r1, #0x10
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r6, r0, #0
 	ldr r4, _08008398
 	adds r0, r4, #0

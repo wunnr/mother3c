@@ -25,7 +25,7 @@ sub_08022694:
 	lsrs r2, r2, #0x10
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r1, _08022708
 	adds r0, r4, r1
 	ldrh r1, [r0]

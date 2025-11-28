@@ -121,7 +121,7 @@ _0800AC60: .4byte 0x77777777
 _0800AC64:
 	ldr r0, _0800AC98
 	movs r1, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r6, r0, #0
 	ldr r0, _0800AC9C
 	ldrh r0, [r0, #0x10]
@@ -134,7 +134,7 @@ _0800AC78:
 	adds r1, r5, r1
 	adds r0, r6, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #1
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10

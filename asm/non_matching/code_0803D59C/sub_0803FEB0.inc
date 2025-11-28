@@ -4,14 +4,14 @@ sub_0803FEB0:
 	ldr r4, _0803FEE8
 	adds r0, r4, #0
 	movs r1, #0x52
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _0803FEEC
 	movs r2, #0x80
 	lsls r2, r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	movs r1, #0x53
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FEF0
 	movs r2, #2

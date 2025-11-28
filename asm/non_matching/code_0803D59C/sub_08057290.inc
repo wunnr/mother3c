@@ -4,12 +4,12 @@ sub_08057290:
 	ldr r4, _080572E4
 	adds r0, r4, #0
 	movs r1, #0x34
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _080572E8
 	bl sub_08090F88
 	adds r0, r4, #0
 	movs r1, #0x35
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r4, _080572EC
 	adds r0, r4, #0
@@ -24,7 +24,7 @@ sub_08057290:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _080572F4
 	ldrb r0, [r0]
 	cmp r0, #2

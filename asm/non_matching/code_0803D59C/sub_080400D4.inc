@@ -9,7 +9,7 @@ sub_080400D4:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _08040158
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r6, r0, #0
 	ldr r0, _0804015C
 	movs r1, #0

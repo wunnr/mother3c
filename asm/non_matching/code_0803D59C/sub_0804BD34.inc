@@ -27,7 +27,7 @@ _0804BD3A:
 	strh r0, [r4, #8]
 	ldr r0, _0804BD80
 	movs r1, #0x24
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	str r0, [r4]
 	adds r0, r5, #1
 	lsls r0, r0, #0x10

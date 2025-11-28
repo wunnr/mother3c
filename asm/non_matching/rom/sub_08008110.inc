@@ -3,7 +3,7 @@ sub_08008110:
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _080081D8
 	movs r1, #0xe
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _080081DC
 	movs r2, #0xc0
 	lsls r2, r2, #5
@@ -74,20 +74,20 @@ _0800817E:
 	ldrb r1, [r0]
 	adds r1, #0xf
 	adds r0, r4, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	movs r1, #0xd
 	movs r2, #0x20
 	bl sub_08016F4C
 	adds r0, r4, #0
 	movs r1, #0x1e
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _080081FC
 	movs r2, #0xc0
 	lsls r2, r2, #4
 	bl sub_08001A14
 	adds r0, r4, #0
 	movs r1, #0x1f
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	movs r1, #0x1e
 	movs r2, #0x20
 	bl sub_08016F4C

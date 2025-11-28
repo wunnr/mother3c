@@ -36,7 +36,7 @@ sub_0802724C:
 	lsls r2, r2, #2
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, r8
 	bl sub_0803B860
 	ldr r1, _080272E8

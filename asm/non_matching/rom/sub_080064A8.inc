@@ -220,7 +220,7 @@ _08006678:
 	adds r1, r3, #0
 	adds r2, r7, #0
 	str r3, [sp, #4]
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r5, r5, r7
 	ldr r3, [sp, #4]
 	movs r0, #0x80

@@ -11,14 +11,14 @@ sub_08040024:
 	ldr r6, _08040084
 	ldrb r1, [r4]
 	adds r0, r6, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _08040088
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrb r1, [r4, #1]
 	adds r0, r6, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r2, _0804008C
 	adds r0, r5, r2

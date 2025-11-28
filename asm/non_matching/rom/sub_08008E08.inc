@@ -23,11 +23,11 @@ sub_08008E08:
 	adds r0, r4, #0
 	adds r1, r7, #0
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	mov r1, r8
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 _08008E44:
 	adds r0, r5, #0
 	adds r0, #0xc2
@@ -44,12 +44,12 @@ _08008E44:
 	adds r0, r5, #0
 	adds r1, r7, #0
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r5, #0
 	adds r0, #0x60
 	mov r1, r8
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08008EC0
 	.align 2, 0
 _08008E74: .4byte gSomeBlend
@@ -64,12 +64,12 @@ _08008E80:
 	adds r0, #0x20
 	adds r1, r7, #0
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r5, #0
 	adds r0, #0x80
 	mov r1, r8
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08008EC0
 _08008EA2:
 	adds r0, r1, #2
@@ -79,12 +79,12 @@ _08008EA2:
 	adds r0, #0x40
 	adds r1, r7, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r5, #0
 	adds r0, #0xa0
 	mov r1, r8
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 _08008EC0:
 	pop {r3, r4}
 	mov r8, r3

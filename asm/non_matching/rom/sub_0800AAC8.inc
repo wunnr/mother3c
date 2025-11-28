@@ -51,7 +51,7 @@ _0800AB28:
 	lsrs r4, r0, #0x10
 	ldr r0, _0800AB5C
 	movs r1, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	lsls r1, r6, #5
 	adds r0, r0, r1
 	ldr r1, _0800AB60
@@ -64,7 +64,7 @@ _0800AB28:
 	adds r3, r2, r3
 	adds r1, r3, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 _0800AB54:
 	pop {r4, r5, r6, r7}
 	pop {r0}

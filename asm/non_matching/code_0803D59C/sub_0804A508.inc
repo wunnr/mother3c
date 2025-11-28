@@ -5,7 +5,7 @@ sub_0804A508:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0804A544
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r5, r0, #0
 	ldr r4, _0804A548
 	adds r0, r4, #0
@@ -17,7 +17,7 @@ sub_0804A508:
 	movs r2, #0x80
 	lsls r2, r2, #4
 	adds r0, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0804A54C
 	adds r4, r4, r0
 	ldrh r0, [r4]

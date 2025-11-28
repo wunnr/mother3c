@@ -21,7 +21,7 @@ _0805900C:
 	ldr r4, _0805903C
 	adds r0, r4, #0
 	movs r1, #0x48
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r5, _08059040
 	adds r0, r5, #0
@@ -30,7 +30,7 @@ _0805900C:
 	bl sub_0800160C
 	adds r0, r4, #0
 	movs r1, #0x49
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	movs r3, #0xa0
 	lsls r3, r3, #1
@@ -45,7 +45,7 @@ _08059044:
 	ldr r4, _08059084
 	adds r0, r4, #0
 	movs r1, #0x4a
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	ldr r5, _08059088
 	adds r0, r5, #0
@@ -54,7 +54,7 @@ _08059044:
 	bl sub_0800160C
 	adds r0, r4, #0
 	movs r1, #0x4b
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r1, r0, #0
 	movs r3, #0xa0
 	lsls r3, r3, #1

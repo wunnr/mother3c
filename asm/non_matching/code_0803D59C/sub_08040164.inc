@@ -4,7 +4,7 @@ sub_08040164:
 	ldr r6, _080401B0
 	adds r0, r6, #0
 	movs r1, #0x19
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r7, r0, #0
 	movs r1, #0xc0
 	lsls r1, r1, #5
@@ -25,7 +25,7 @@ sub_08040164:
 	bl sub_08001A14
 	adds r0, r6, #0
 	movs r1, #0x1b
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	adds r7, r0, #0
 	ldr r1, _080401B8
 	bl sub_08090F88

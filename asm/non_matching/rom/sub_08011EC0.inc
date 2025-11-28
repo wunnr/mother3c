@@ -11,7 +11,7 @@ sub_08011EC0:
 	ldr r6, _08011F10
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	ldr r1, _08011F14
 	movs r2, #0xa0
 	lsls r2, r2, #7
@@ -21,7 +21,7 @@ sub_08011EC0:
 	lsrs r4, r4, #0x10
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	movs r1, #0xc
 	movs r2, #0x80
 	bl sub_08016F4C

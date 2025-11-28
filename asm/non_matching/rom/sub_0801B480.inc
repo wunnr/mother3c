@@ -5,7 +5,7 @@ sub_0801B480:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0801B494
-	bl sub_0800289C
+	bl OffsetTable_GetEntry
 	pop {r1}
 	bx r1
 	.align 2, 0
