@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0804CE5C:
+menuStatus:
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r2, r0, #0

@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0804CF20:
+menuSkills:
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
