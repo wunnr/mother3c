@@ -81,6 +81,7 @@ extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
 extern "C" void sub_08050628();
+extern "C" void sub_0804EFD4(MenuState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -569,10 +570,31 @@ extern "C" void menuShopTransactionSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopCharacterSelect.inc", void menuShopCharacterSelect());
+extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
+    if ((s8)gSomeBlend._44f2_1 == 0) {
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        sub_0804EFD4(menu);
+        return;
+    }
+
+    if (input->justPressed & B_BUTTON) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_0804C1E8();
+        sub_08049DC4();
+        sub_08046D90();
+        return;
+    }
+
+    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, 1);
+    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopItemSelectBuy.inc", void menuShopItemSelectBuy());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopItemSelectSell.inc", void menuShopItemSelectSell());
 
@@ -592,7 +614,7 @@ extern "C" void menuItemGuyTransactionSelect(InputState* input, MenuState* menu)
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
 }
 
 extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
@@ -613,7 +635,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, true);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -708,7 +730,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EE64.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158(MenuState*));
