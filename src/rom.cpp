@@ -48,6 +48,7 @@ extern "C" void sub_08036BA4(Object*);
 extern "C" void sub_0800BE04(Object*);
 extern "C" void sub_080052E4(s32);
 extern "C" void sub_0802610C(s32);
+extern "C" MusicPlayerInfo* sub_08003DD0(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -570,7 +571,22 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_080037F0.inc", void sub_080037F0()
 extern "C" ASM_FUNC("asm/non_matching/rom/startSong.inc", void startSong());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003928.inc", void sub_08003928());
 extern "C" ASM_FUNC("asm/non_matching/rom/play_sound.inc", void play_sound());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A00.inc", void sub_08003A00());
+
+extern "C" void conditionalTrackFadeIn(u16 song, u16 speed) {
+    MusicPlayerInfo* mpInfo = sub_08003DD0(song);
+
+    if (mpInfo != NULL) {
+        u16 currentTrack = gMPlayTrackTable[song];
+        if ((s32)mpInfo->status < 0) {
+            m4aMPlayImmInit(mpInfo);
+            m4aMPlayVolumeControl(mpInfo, 0xFFFF, 0);
+            m4aSongNumStop(currentTrack);
+            m4aMPlayFadeIn(mpInfo, speed);
+            gMPlayVolumeTable[song] = 0x100;
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003A60.inc", void sub_08003A60());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AB8.inc", void sub_08003AB8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003AE0.inc", void sub_08003AE0());
@@ -638,7 +654,7 @@ extern "C" s16 getMusicPlayerIndex(u16 songID) {
     return -1;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DD0.inc", void sub_08003DD0());
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DD0.inc", MusicPlayerInfo* sub_08003DD0(u16));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003DF8.inc", MusicPlayerInfo* sub_08003DF8(u16));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E20.inc", void sub_08003E20());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003E5C.inc", void sub_08003E5C());

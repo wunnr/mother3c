@@ -20,7 +20,7 @@ cmd_84:
 	cmp r4, #0
 	bne _08020E90
 	adds r0, r6, #0
-	bl sub_08003A00
+	bl conditionalTrackFadeIn
 	b _08020E96
 _08020E90:
 	adds r0, r6, #0
