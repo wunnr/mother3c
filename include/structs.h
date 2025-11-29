@@ -361,7 +361,12 @@ typedef struct struct_02016028 {
     u8 pad_4295[0x44F2 - 0x4295];
     u8 _44f2_1 : 1;
     u8 _44f2_2 : 1;
-    u8 pad_44f3[0x4ad0 - 0x44F3];
+    u8 pad_44f3[0x4501 - 0x44F3];
+    u8 _4501_1 : 1;
+    u8 _4501_2 : 1;
+    u8 pad_4502[0x4a30 - 0x4502];
+    u8 _4a30;
+    u8 pad_4a31[0x4ad0 - 0x4A31];
     u32 char_names[0xd];
     u16 msg_type;
     u16 _4b06;
@@ -375,7 +380,10 @@ typedef struct struct_02016028 {
     u16 _4b16;
     u8 _4b18;
     u8 _4b19 : 2;
-    u8 _4b1a[0x566C - 0x4b1a];
+    u8 _4b1a[0x4ECF - 0x4B1A];
+    u8 _4ecf_1 : 4;
+    u8 _4ecf_10 : 1;
+    u8 _4ed0[0x566C - 0x4ED0];
     u8 _566c_1 : 1;
     u8 _566d[0x5778 - 0x566D];
     u8 _5778[0xC5AD - 0x5778];
