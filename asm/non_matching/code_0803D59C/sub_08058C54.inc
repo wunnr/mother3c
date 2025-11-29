@@ -35,7 +35,7 @@ sub_08058C54:
 	ldr r1, _08058CDC
 	adds r0, r4, r1
 	movs r1, #2
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r4, #0
 	bl sub_08058CE4
 	adds r0, r6, #0

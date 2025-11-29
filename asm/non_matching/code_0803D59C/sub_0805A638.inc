@@ -95,7 +95,7 @@ _0805A6EE:
 	bl sub_08000E5C
 	ldr r1, _0805A764
 	adds r0, r4, r1
-	bl sub_0800164C
+	bl pollInput
 	cmp r5, #2
 	beq _0805A70A
 	cmp r5, #1

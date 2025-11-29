@@ -12,12 +12,12 @@ sub_08026DE0:
 	cmp r0, #0
 	beq _08026E34
 	ldrh r0, [r4, #2]
-	bl sub_0802706C
+	bl getDirectionIndex
 	adds r1, r5, #0
 	adds r1, #0x8f
 	strb r0, [r1]
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r5, #0

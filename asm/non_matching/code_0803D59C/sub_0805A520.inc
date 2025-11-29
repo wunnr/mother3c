@@ -22,7 +22,7 @@ sub_0805A520:
 	adds r4, r4, r0
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08001630
+	bl resetInputState
 	pop {r4}
 	pop {r0}
 	bx r0

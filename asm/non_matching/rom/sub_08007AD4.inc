@@ -85,7 +85,7 @@ sub_08007AD4:
 	ldr r1, _08007C90
 	adds r0, r7, r1
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r7, #0
 	bl sub_08007CC0
 	adds r0, r4, #0

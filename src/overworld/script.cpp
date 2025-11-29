@@ -336,11 +336,11 @@ u16 cmd_05(s32* sp) {
         return 0;
 
     temp = scriptstack_peek(sp, 0);
-    if ((gSomeBlend._2CA0._2 & temp) == 0) {
+    if ((gSomeBlend.input.pressed & temp) == 0) {
         scriptstack_pop();
         return 1;
     } else {
-        scriptstack_push(gSomeBlend._2CA0._2 & temp);
+        scriptstack_push(gSomeBlend.input.pressed & temp);
         return 0;
     }
 }
@@ -765,7 +765,7 @@ u16 cmd_DE(s32* sp) {
 
     idx = scriptstack_peek(sp, 0);
     if (idx < 0x80) {
-        val = sub_08002998(idx);
+        val = get_shop_flag(idx);
         scriptstack_push(val);
     }
     return 0;
@@ -777,7 +777,7 @@ u16 cmd_DF(s32* sp) {
 
     idx = scriptstack_peek(sp, 1);
     if (idx < 0x80) {
-        val = sub_08002998(idx);
+        val = get_shop_flag(idx);
         idx = scriptstack_peek(sp, 0);
         sub_080218B0(val, idx);
     }
@@ -848,7 +848,7 @@ u16 cmd_get_item_count(s32* sp) {
         if (item->charNo != 0) {
             temp = isCharOverworldPlayable(item->charNo);
             if (temp != 0) {
-                cnt += sub_0802A3D0(item, idx);
+                cnt += heldItemQty(item, idx);
             }
         }
     }
@@ -1608,7 +1608,6 @@ u16 cmd_heal_hp(s32* sp) {
     s32 hp;
     s32 v4;
     Object* spr;
-    s32 v7;
 
     idx = scriptstack_peek(sp, 1);
     hp = scriptstack_peek(sp, 0);
@@ -1619,7 +1618,7 @@ u16 cmd_heal_hp(s32* sp) {
         spr = get_obj(idx);
         if (spr) {
             if (spr->character <= 4) {
-                v7 = heal_hp(spr->character, hp);
+                heal_hp(spr->character, hp);
                 sub_0802B4D8();
             }
         }
@@ -1889,7 +1888,7 @@ u16 cmd_FF(s32* sp) {
     if (gGoodsInfo[idx].item_type == Key) {
         scriptstack_push(gSave.key_items[idx]);
     } else if (tmp < 5) {
-        u16 tmp2 = sub_0802A3D0(get_char_stats(tmp), idx);
+        u16 tmp2 = heldItemQty(get_char_stats(tmp), idx);
         scriptstack_push(tmp2);
     }
     return 0;
@@ -2679,25 +2678,25 @@ u16 cmd_41(s32* sp) {
     Object* spr;
     u16 i;
     Size y;
-    CameraPos cam;
+    MovementVector vec;
 
     v2 = scriptstack_peek(sp, 1);
     v3 = scriptstack_peek(sp, 0);
     spr = get_obj(v2);
     if (spr) {
         sub_08036BEC(spr, &y);
-        sub_08010528(&cam, y.w, y.h);
-        sub_0801059C(&cam);
+        sub_08010528(&vec, y.w, y.h);
+        sub_0801059C(&vec);
         switch (gGame.state_1) {
         case 2:
         case 3:
-            sub_0801A218(&cam);
+            sub_0801A218(&vec);
             sub_0801084C();
             break;
         case 5:
             for (i = 0; i <= 2; ++i) {
                 if ((i || gGame._f << 31) && (i != 1 || (gGame._11 << 0x1c) >= 0))
-                    sub_08018988(i, v3, &cam);
+                    sub_08018988(i, v3, &vec);
             }
             break;
         }
@@ -3382,7 +3381,7 @@ u16 cmd_50(s32* sp) {
     if (idx == -2) {
         sub_08033948(c, b);
     } else {
-        obj->_bc_2 = b;
+        obj->direction = b;
         sub_080332AC(obj->character, c, b);
     }
     if (!a) {
@@ -4019,16 +4018,16 @@ u16 cmd_5C(s32* sp) {
 
 u16 cmd_set_member_sprite(s32* sp) {
     s32 idx = scriptstack_peek(sp, 1);
-    u16 a = scriptstack_peek(sp, 0);
+    u16 direction = scriptstack_peek(sp, 0);
     Object* obj = get_obj(idx);
     if (obj == 0) {
         return 0;
     }
-    if (a < 8) {
+    if (direction < 8) {
         if (idx == -2) {
-            sub_08036B34(a);
+            sub_08036B34(direction);
         } else {
-            sub_08036A1C(obj->character, a);
+            updateObjDirection(obj->character, direction);
         }
     }
     return 0;
@@ -4061,7 +4060,7 @@ u16 cmd_5F(s32* sp) {
     if (a->_8b >> 3 < 13)
         scriptstack_push(a->_8b & 7);
     else
-        scriptstack_push(a->_bc_2);
+        scriptstack_push(a->direction);
 
     return 0;
 }
@@ -4093,9 +4092,9 @@ u16 cmd_62(s32* sp) {
 
     if (obj) {
         if (b == 1)
-            obj->_bf_2 = 1;
+            obj->_bf_40 = 1;
         else if (b == 0)
-            obj->_bf_2 = 0;
+            obj->_bf_40 = 0;
     }
 
     return 0;
@@ -4297,7 +4296,7 @@ u16 cmd_B4(s32* sp) {
     obj->xpos = unkStruct.unk0 * 16;
     obj->ypos = unkStruct.unk2 * 16;
     if (e < 8)
-        sub_08036A1C(obj->character, e);
+        updateObjDirection(obj->character, e);
     if (f < 17)
         sub_08033620(obj->character, f);
 
@@ -4441,12 +4440,12 @@ u16 cmd_C5(s32* sp) {
 
     if (b != 0)
         return 0;
-    d = sub_08002998(65);
+    d = get_shop_flag(65);
     (u32) obj++;
     (u32) obj--;  // FAKEMATCH
     if (c == 1) {
         gGame._829b = 6;
-        gGame._82b6_2 = 0;
+        gGame._82b6_20 = 0;
 
         switch (d) {
         case 0:
@@ -4938,9 +4937,9 @@ extern "C" s32 cmd_open_save() {
     Object* obj = get_obj(-1);
 
     if (obj)
-        obj->_bf_2 = 0;
+        obj->_bf_40 = 0;
 
-    sub_080028F4(0x5A, obj->_bc_2);
+    sub_080028F4(0x5A, obj->direction);
     sub_0803C4DC(1);
 
     gUnknown_02004100[0] = 7;

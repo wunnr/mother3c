@@ -102,12 +102,12 @@ _0800C72C:
 	mov r2, r8
 	ldrb r4, [r2]
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08036A1C
+	bl updateObjDirection
 	b _0800C786
 _0800C780:
 	mov r0, sp

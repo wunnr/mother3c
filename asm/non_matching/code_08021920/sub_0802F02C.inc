@@ -67,14 +67,14 @@ _0802F088:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	movs r1, #0
-	bl sub_080366C0
+	bl directionToTargetByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r4, sp
 	mov r2, sp
 	adds r2, #2
 	mov r1, sp
-	bl sub_080270A0
+	bl getVelocity
 	mov r0, sp
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -182,12 +182,12 @@ _0802F196:
 	adds r0, #8
 	adds r1, r5, #0
 	adds r1, #0xc
-	bl sub_080367D8
+	bl directionToTarget
 	adds r1, r5, #0
 	adds r1, #0x8f
 	strb r0, [r1]
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r5, #0

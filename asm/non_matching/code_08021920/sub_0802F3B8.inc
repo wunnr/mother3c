@@ -59,7 +59,7 @@ _0802F42A:
 	adds r7, r5, #0
 	adds r7, #0x8f
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r2, r5, #0
@@ -93,10 +93,10 @@ _0802F42A:
 	bls _0802F49A
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080367D8
+	bl directionToTarget
 	strb r0, [r7]
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r1, sl
@@ -121,7 +121,7 @@ _0802F4A8:
 	mov r2, sp
 	adds r2, #0xa
 	adds r1, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl sub_0800C694
@@ -177,10 +177,10 @@ _0802F502:
 	bls _0802F54C
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080367D8
+	bl directionToTarget
 	strb r0, [r7]
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7
@@ -215,7 +215,7 @@ _0802F56E:
 	strb r1, [r7]
 _0802F574:
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7
@@ -230,7 +230,7 @@ _0802F574:
 	b _0802F5B6
 _0802F592:
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	ldrb r2, [r6]

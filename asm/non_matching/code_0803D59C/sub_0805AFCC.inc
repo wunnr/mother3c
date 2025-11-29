@@ -98,7 +98,7 @@ _0805B07C:
 	strh r2, [r7]
 _0805B096:
 	ldr r0, _0805B0C4
-	bl sub_0800164C
+	bl pollInput
 	bl sub_0805B0DC
 	bl sub_08001960
 	bl sub_0805AE64
@@ -117,7 +117,7 @@ _0805B0B4:
 	bl sub_0805AE4C
 	b _0805B0D2
 	.align 2, 0
-_0805B0C4: .4byte gUnknown_02018CC8
+_0805B0C4: .4byte gInputState
 _0805B0C8: .4byte gUnknown_0200105C
 _0805B0CC:
 	movs r0, #1

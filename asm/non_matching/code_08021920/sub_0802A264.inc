@@ -33,7 +33,7 @@ _0802A28C:
 	beq _0802A2EE
 	adds r0, r5, #0
 	mov r1, sb
-	bl sub_0802A3D0
+	bl heldItemQty
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	cmp r4, #0

@@ -83,7 +83,7 @@ _0803ED52:
 	ldr r1, _0803EDA4
 	adds r0, r5, r1
 	movs r1, #2
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r5, #0
 	bl sub_0803EE20
 	adds r0, r4, #0
@@ -107,7 +107,7 @@ _0803EDA8:
 	ldr r1, _0803EE0C
 	adds r0, r5, r1
 	movs r1, #2
-	bl sub_08001630
+	bl resetInputState
 	adds r0, r5, #0
 	bl sub_0803EE20
 	adds r0, r4, #0

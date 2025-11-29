@@ -40,7 +40,7 @@ _0802F8DA:
 	mov r8, r0
 	adds r2, r6, #2
 	adds r1, r6, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl sub_0800C694
@@ -58,7 +58,7 @@ _0802F900:
 	ldrb r0, [r0]
 	adds r2, r6, #2
 	adds r1, r6, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl sub_0800C694
@@ -112,7 +112,7 @@ _0802F96A:
 	mov r0, r8
 	adds r1, r4, #0
 	mov r2, sb
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl sub_0800C694
@@ -126,7 +126,7 @@ _0802F96A:
 	cmp r0, #0
 	blt _0802FA8A
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r6, r5, #0
@@ -143,7 +143,7 @@ _0802F96A:
 	ldrb r0, [r7]
 	adds r1, r4, #0
 	mov r2, sb
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl sub_0800C694
@@ -184,7 +184,7 @@ _0802FA16:
 	b _0802FA8A
 _0802FA20:
 	ldrb r0, [r7]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r4, r5, #0

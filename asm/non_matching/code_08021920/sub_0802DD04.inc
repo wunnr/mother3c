@@ -3,7 +3,7 @@ sub_0802DD04:
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x28
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	cmp r1, #0

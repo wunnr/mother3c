@@ -94,6 +94,11 @@ typedef struct Size {
     s16 h;
 } Size;
 
+typedef struct MovementVector {
+    s16 x;
+    s16 y;
+} MovementVector;
+
 typedef struct Object {
     s16 xpos;
     s16 ypos;
@@ -103,7 +108,7 @@ typedef struct Object {
     u16 _20;
     u16 _22;
     u8 _24[0x10];
-    u32 speed;
+    MovementVector* speed;
     u8 _38[4];
     u32 _3c;
     u8 _40[0x34];
@@ -129,17 +134,21 @@ typedef struct Object {
     u8 _b8[4];
     u8 _bc_0 : 1;
     u8 _bc_1 : 1;
-    u8 _bc_2 : 3;
+    u8 direction : 3;
     u8 _bc_3 : 1;
     u8 _bc_4 : 1;
     u8 _bc_5 : 1;
     u8 _bd_0 : 3;
     u8 _bd_1 : 2;
-    u8 _bd_2 : 3;
+    u8 _bd_2 : 2;
+    u8 _bd_3 : 1;
     u8 _be;
-    u8 _bf_1 : 6;
-    u8 _bf_2 : 1;
-    u8 _bf_3 : 1;
+    u8 _bf_1 : 3;
+    u8 _bf_8 : 1;
+    u8 _bf_10 : 1;
+    u8 _bf_20 : 1;
+    u8 _bf_40 : 1;
+    u8 _bf_80 : 1;
     u8 _c0[7];
     u8 _c7_0 : 1;
     u8 _c7_1 : 1;
@@ -233,18 +242,49 @@ typedef struct Unknown_02016078 {
     /* 0x2C4F / 0x2C9F */ u8 pad_2C4F[0x2C50 - 0x2C4F];
 } Unknown_02016078;
 
-typedef struct Unknown_02018CC8 {
-    u16 _0;
+typedef struct InputState {
+    u16 justPressed;
+    u16 pressed;
+    u16 debounceTimer;
+    u16 _6;
+    u16 pressedPending;
+    u16 lastPressed;
+    u16 numRepeats;
+    u8 gotInput : 1;
+    u8 _e_2 : 1;
+    u8 _e_4 : 6;
+    u8 _f;
+} InputState;
+
+typedef struct Direction {
+    u16 buttonCombo;
+    s16 xVel;
+    s16 yVel;
+    u16 previousDirection;
+    u16 oppositeDirection;
+    u16 stepCounterClockwise90;
+    u16 stepClockwise90;
+} Direction;
+
+typedef struct MenuState {
+    u8 _0[2];
     u16 _2;
-    s16 _4;
+    u16 cursorPos;
     u16 _6;
     u16 _8;
-    u16 _A;
-    u16 _C;
-    u8 _E_0 : 1;
-    u8 pad_F[0x10 - 0xF];
-} Unknown_02018CC8;
-static_assert(sizeof(Unknown_02018CC8) == 0x10);
+    u16 _a;
+    u8 _c[0x20 - 0xC];
+} MenuState;
+static_assert(sizeof(MenuState) == 0x20);
+
+typedef struct TransactionState {
+    u16 _0;
+    u16 numTabs;
+    u16 tabIndex;
+    u16 _6[2];
+    u16 transactionType;
+} TransactionState;
+static_assert(sizeof(TransactionState) == 0xC);
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
@@ -275,12 +315,12 @@ typedef struct struct_02016028 {
     vu32 _48;
     vu32 _4C;
     Unknown_02016078 _50;
-
-    Unknown_02018CC8 _2CA0;
-
+    InputState input;
     void* _2CB0;
-    u16 _2CB4[0x200];
-
+    u16 _2CB4[0xA6];
+    MenuState menus[0x13];
+    u8 _3060;
+    u8 pad_3061[0x30B4 - 0x3061];
     u8 pad_30B4[0x351B - 0x30B4];
     u32 _351C;
     u32 _3520;
@@ -290,9 +330,32 @@ typedef struct struct_02016028 {
     u8 _3530;
     u8 pad_3531[0x35BA - 0x3531];
     u8 _35ba;
-    u8 pad_35bb[0x4294 - 0x35BB];
+    u8 pad_35bb;
+    TransactionState _35bc[7];
+    u8 _3610[2];
+    u16 _3612;
+    u8 pad_35b4[0x3668 - 0x3614];
+    u8 _3668_1 : 1;
+    u8 _3668_2 : 1;
+    u8 _3668_4 : 1;
+    u8 _3668_8 : 1;
+    u8 _3668_10 : 1;
+    u8 _3668_20 : 1;
+    u8 _3668_40 : 2;
+    u8 pad_3669[0x41C6 - 0x3669];
+    u8 _41c6_1 : 1;
+    u8 pad_41c7[0x41DA - 0x41C7];
+    u8 _41da_1 : 1;
+    u8 pad_41db[0x4260 - 0x41DB];
+    u8 currentMenu;
+    u8 pad_4261[0x4264 - 0x4261];
+    u8 _4264;
+    u8 pad_4265[0x4294 - 0x4265];
     u8 _4294;
-    u8 pad_4295[0x4ad0 - 0x4295];
+    u8 pad_4295[0x44F2 - 0x4295];
+    u8 _44f2_1 : 1;
+    u8 _44f2_2 : 1;
+    u8 pad_44f3[0x4ad0 - 0x44F3];
     u32 char_names[0xd];
     u16 msg_type;
     u16 _4b06;
@@ -306,7 +369,9 @@ typedef struct struct_02016028 {
     u16 _4b16;
     u8 _4b18;
     u8 _4b19 : 2;
-    u8 _4b1a[0x5778 - 0x4b1a];
+    u8 _4b1a[0x566C - 0x4b1a];
+    u8 _566c_1 : 1;
+    u8 _566d[0x5778 - 0x566D];
     u8 _5778[0xC620 - 0x5778];
     void* _C620;
     u8 pad_C624[0x121b8 - 0xC624];
@@ -333,7 +398,13 @@ typedef struct struct_02016028 {
             u8 b7;
         } _121c8_b;
     };
-
+    u8 pad_121d0[0x1ED10 - 0x121D0];
+    u8 _1ed10_1 : 1;
+    u8 _1ed10_2 : 1;
+    u8 _1ed10_4 : 1;
+    u8 _1ed10_8 : 1;
+    u8 _1ed10_10 : 1;
+    u8 _1ed10_20 : 1;
 } struct_02016028;
 
 typedef struct Save {
@@ -490,11 +561,6 @@ typedef struct StatMeter {
     u16 target;
     u16 prevTarget;
 } StatMeter;
-
-typedef struct CameraPos {
-    s16 x;
-    s16 y;
-} CameraPos;
 
 typedef struct struct_200D818 {
     u8 _0[0x4];
