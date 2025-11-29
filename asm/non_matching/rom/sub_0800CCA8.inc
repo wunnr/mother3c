@@ -130,7 +130,7 @@ _0800CDA0:
 	ldrsh r0, [r4, r1]
 	movs r2, #2
 	ldrsh r1, [r5, r2]
-	bl sub_08034A8C
+	bl walkObjectTowardPosition
 _0800CDC2:
 	add sp, #0x14
 	pop {r4, r5, r6}

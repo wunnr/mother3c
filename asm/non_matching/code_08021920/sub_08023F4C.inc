@@ -32,7 +32,7 @@ sub_08023F4C:
 	ldrh r1, [r5]
 	lsls r1, r1, #0x17
 	lsrs r1, r1, #0x1c
-	bl sub_08036A1C
+	bl updateObjDirection
 _08023F94:
 	pop {r4, r5}
 	pop {r0}

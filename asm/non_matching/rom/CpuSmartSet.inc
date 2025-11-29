@@ -1,5 +1,5 @@
 	.syntax unified
-sub_08001B18:
+CpuSmartSet:
 	push {r4, lr}
 	adds r3, r0, #0
 	movs r0, #0x1f
@@ -25,7 +25,7 @@ _08001B42:
 	lsls r2, r2, #9
 	lsrs r2, r2, #0xb
 	adds r0, r3, #0
-	bl sub_08090F74
+	bl CpuFastSet
 _08001B4C:
 	pop {r4}
 	pop {r0}

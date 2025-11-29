@@ -98,7 +98,7 @@ _0803445E:
 	ldrh r0, [r0]
 	adds r2, r7, #2
 	adds r1, r7, #0
-	bl sub_080270A0
+	bl getVelocity
 _08034482:
 	ldr r0, _080344C4
 	adds r2, r6, r0

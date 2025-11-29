@@ -9,7 +9,7 @@ sub_0805689C:
 	bge _080568BA
 	ldr r4, _080568CC
 	adds r0, r4, #0
-	bl sub_0800164C
+	bl pollInput
 	adds r0, r4, #0
 	bl sub_08057DA0
 _080568BA:
@@ -20,5 +20,5 @@ _080568BA:
 	bx r0
 	.align 2, 0
 _080568C8: .4byte gUnknown_02015DA0
-_080568CC: .4byte gUnknown_02018CC8
+_080568CC: .4byte gInputState
 	.syntax divided

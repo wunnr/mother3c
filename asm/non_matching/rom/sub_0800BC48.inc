@@ -47,7 +47,7 @@ _0800BCA0:
 	mov r2, sp
 	adds r2, #0xe
 	add r1, sp, #0xc
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, [r5, #0x34]
 	ldrb r0, [r0, #0x14]
 	lsls r0, r0, #0x19
@@ -62,7 +62,7 @@ _0800BCA0:
 	cmp r0, #0
 	blt _0800BCE4
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7
@@ -193,7 +193,7 @@ _0800BDB4:
 _0800BDCE:
 	movs r2, #2
 	ldrsh r1, [r6, r2]
-	bl sub_08034A8C
+	bl walkObjectTowardPosition
 	b _0800BDEA
 	.align 2, 0
 _0800BDD8: .4byte 0x000067A4
@@ -203,7 +203,7 @@ _0800BDDC:
 	ldrsh r0, [r0, r7]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_08034A8C
+	bl walkObjectTowardPosition
 _0800BDEA:
 	adds r0, r5, #0
 	bl sub_080360E0

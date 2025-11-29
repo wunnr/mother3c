@@ -92,7 +92,7 @@ _0803E042:
 	bls _0803E042
 	ldr r4, _0803E090
 	adds r0, r4, #0
-	bl sub_0800164C
+	bl pollInput
 	ldrh r1, [r4]
 	movs r0, #3
 	ands r0, r1
@@ -113,7 +113,7 @@ _0803E042:
 _0803E084: .4byte gUnknown_0200F920
 _0803E088: .4byte 0x00006470
 _0803E08C: .4byte gUnknown_02015D92
-_0803E090: .4byte gUnknown_02018CC8
+_0803E090: .4byte gInputState
 _0803E094:
 	subs r0, r6, #1
 	lsls r0, r0, #0x10

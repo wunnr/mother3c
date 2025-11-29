@@ -182,7 +182,7 @@ gUnknown_09B8FE9C::
     .4byte sub_0804BA60+1
     .4byte sub_0804BA6C+1
 
-gUnknown_09B8FEC8::
+gMenuFuncTable::
     .4byte sub_0804CAB0+1
     .4byte sub_0804CC48+1
     .4byte sub_0804CD04+1

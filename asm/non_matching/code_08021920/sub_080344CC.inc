@@ -52,7 +52,7 @@ _08034536:
 	mov r2, sp
 	adds r2, #2
 	mov r1, sp
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, _0803455C
 	ldrh r0, [r0]
 	cmp r0, #0

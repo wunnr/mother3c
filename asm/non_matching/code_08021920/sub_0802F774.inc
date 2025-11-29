@@ -12,15 +12,15 @@ sub_0802F774:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	movs r1, #0
-	bl sub_080366C0
+	bl directionToTargetByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080270E8
+	bl getOppositeDirection
 	adds r1, r4, #0
 	adds r1, #0x8f
 	strb r0, [r1]
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r4, #0
@@ -51,7 +51,7 @@ _0802F7D0:
 	mov r2, sp
 	adds r2, #2
 	mov r1, sp
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r4, #0
 	mov r1, sp
 	bl sub_0800C694
