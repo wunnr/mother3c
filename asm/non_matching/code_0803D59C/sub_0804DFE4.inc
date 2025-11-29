@@ -61,7 +61,7 @@ _0804E054:
 	str r2, [sp, #8]
 	adds r1, r6, #0
 	movs r2, #0
-	bl sub_080534C8
+	bl handleMenuNavigate
 _0804E070:
 	add sp, #0xc
 	pop {r4, r5, r6}

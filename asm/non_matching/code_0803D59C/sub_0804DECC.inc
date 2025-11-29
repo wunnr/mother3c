@@ -43,7 +43,7 @@ _0804DF0E:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #2
-	bl sub_080534C8
+	bl handleMenuNavigate
 _0804DF26:
 	add sp, #0xc
 	pop {r4}

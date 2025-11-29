@@ -19,7 +19,7 @@ _0804E3F2:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #2
-	bl sub_080534C8
+	bl handleMenuNavigate
 _0804E40A:
 	add sp, #0xc
 	pop {r0}

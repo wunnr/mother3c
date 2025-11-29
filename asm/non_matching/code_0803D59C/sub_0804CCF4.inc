@@ -2,7 +2,7 @@
 sub_0804CCF4:
 	movs r2, #0
 	movs r3, #3
-	bl sub_080534C8
+	bl handleMenuNavigate
 _0804CCFC:
 	add sp, #0xc
 	pop {r4, r5, r6}

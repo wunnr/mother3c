@@ -45,7 +45,7 @@ _0804D43C:
 	str r1, [sp, #8]
 	adds r1, r2, #0
 	movs r2, #0
-	bl sub_080534C8
+	bl handleMenuNavigate
 	ldrh r0, [r4, #4]
 	bl sub_08053E98
 	ldr r2, _0804D470

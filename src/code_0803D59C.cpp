@@ -59,14 +59,14 @@ extern "C" void play_sound(u16);
 extern "C" void sub_080506CC(u16);
 extern "C" void sub_08054108();
 extern "C" void sub_08053804(u16*, InputState*, u16, u16, u16, u16);
-extern "C" void sub_0804F4E4(MenuState*);
+extern "C" void handleTryAgain(MenuState*);
 extern "C" void sub_0804E078(void*, void*);
 extern "C" void sub_0804E16C(void*);
 extern "C" void sub_080506A4();
 extern "C" u16 sub_08050734(InputState*);
 extern "C" s8 sub_08053E98(u16);
 extern "C" void sub_0804F190(MenuState*);
-extern "C" void sub_080534C8(u16*, InputState*, s32, u16, s32, s32, s32);
+extern "C" void handleMenuNavigate(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
 extern "C" void sub_08053148();
 extern "C" s32 sub_08054FE0(u16);
@@ -565,7 +565,7 @@ extern "C" void menuShopTransactionSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    sub_080534C8(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopCharacterSelect.inc", void menuShopCharacterSelect());
@@ -588,7 +588,7 @@ extern "C" void menuItemGuyTransactionSelect(InputState* input, MenuState* menu)
         return;
     }
 
-    sub_080534C8(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
 }
 
 extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
@@ -609,7 +609,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    sub_080534C8(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, 1);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -624,7 +624,7 @@ extern "C" void menuTryAgain(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed & (L_BUTTON | A_BUTTON)) {
-        sub_0804F4E4(menu);
+        handleTryAgain(menu);
         return;
     }
 
@@ -698,14 +698,14 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F294.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F334.inc", void sub_0804F334());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F3EC.inc", void sub_0804F3EC());
 
-extern "C" void sub_0804F4E4(MenuState* menu) {
+extern "C" void handleTryAgain(MenuState* menu) {
     switch (menu->cursorPos) {
-    case 0:
+    case 0:  // Yes
         play_sound(SFX_STAT_MENU_ENTER);
         menu->_a = 1;
         sub_08054108();
         return;
-    case 1:
+    case 1:  // No
         play_sound(SFX_STAT_MENU_LEAVE);
         menu->_a = 2;
         sub_080506CC(5);
@@ -849,7 +849,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080532E0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053384.inc", void sub_08053384());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_080533F0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080534C8.inc", void sub_080534C8(u16*, InputState*, s32, u16, s32, s32, s32));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 minPos, u16 maxPos, u16 buttonPosUp, u16 buttonPosDown, u16 canCursorWrap));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053598.inc", void sub_08053598());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_08053620());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());

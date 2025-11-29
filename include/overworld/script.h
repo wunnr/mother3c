@@ -9,9 +9,9 @@
 extern u16 (*gScriptCmdTable[])(s32* sp);
 
 enum Mode {
-    MODE_NORMAL,
-    MODE_SCRIPT = 1,
-    MODE_TITLE_CARD = 4,
+    MODE_NORMAL = 0x0,
+    MODE_SCRIPT = 0x1,
+    MODE_TITLE_CARD = 0x4,
     MODE_FADE_IN = 0x6,
     MODE_LOAD_ROOM = 0x7,
     MODE_PAUSE_MENU = 0xA,

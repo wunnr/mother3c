@@ -22,7 +22,7 @@ _0804E8FA:
 	str r0, [sp, #8]
 	adds r0, r4, #0
 	movs r2, #0
-	bl sub_080534C8
+	bl handleMenuNavigate
 	ldrh r0, [r4]
 	bl sub_08053E98
 	strh r0, [r4, #6]
