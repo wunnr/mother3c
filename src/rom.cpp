@@ -26,14 +26,28 @@ extern "C" s32 Divide(s32 a, s32 b);
 extern "C" void sub_0803D474();
 extern "C" void sub_08005C38();
 extern "C" void sub_080019DC(void* dest, u32 size);
-extern "C" void sub_08090F74(const void* src, void* dest, u32 control);
+extern "C" void CpuFastSet(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
 extern "C" const void* sub_0800289C(const void*, u16);
 extern "C" u16 sub_0801A638(u16);
-extern "C" void sub_0801A238(s32, CameraPos*);
 extern "C" MusicPlayerInfo* sub_08003DF8(u16);
+extern "C" void sub_0801A238(s32, MovementVector*);
+extern "C" void sub_080016E4();
+extern "C" void mode_debug_menu(InputState*);
+extern "C" void sub_0800B00C(InputState*);
+extern "C" void sub_0800BB54(InputState*);
+extern "C" void sub_08026DE0(InputState*);
+extern "C" void sub_08026E3C(InputState*);
+extern "C" void sub_08037DB0(InputState*);
+extern "C" Object* get_obj_direct(u16);
+extern "C" void sub_0800BC48(Object*);
+extern "C" void sub_0800BBF4(InputState*);
+extern "C" void sub_08036BA4(Object*);
+extern "C" void sub_0800BE04(Object*);
+extern "C" void sub_080052E4(s32);
+extern "C" void sub_0802610C(s32);
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -88,21 +102,60 @@ extern "C" void sub_08001454(Unknown_02016078* arg0) {
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001530.inc", void sub_08001530());
 
 extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, u16 index, u16 size) {
-    sub_08090F74(src, (void*)dest->_2700[index], size / 4);
+    CpuFastSet(src, (void*)dest->_2700[index], size / 4);
 }
 
-extern "C" void sub_08001630(Unknown_02018CC8* arg0, s16 arg1) {
-    arg0->_E_0 = 0;
-    arg0->_0 = 0;
-    arg0->_2 = 0;
-    arg0->_4 = 0;
-    arg0->_6 = arg1;
-    arg0->_8 = 0;
-    arg0->_A = 0;
-    arg0->_C = 0;
+extern "C" void resetInputState(InputState* input, u16 arg1) {
+    input->gotInput = 0;
+    input->justPressed = 0;
+    input->pressed = 0;
+    input->debounceTimer = 0;
+    input->_6 = arg1;
+    input->pressedPending = 0;
+    input->lastPressed = 0;
+    input->numRepeats = 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800164C.inc", void sub_0800164C());
+extern "C" void pollInput(InputState* input) {
+    u16 buttonState = (u32)(~REG_KEYINPUT << 0x16) >> 0x16;
+    input->gotInput = 1;
+
+    if (buttonState == 0) {
+        input->debounceTimer = 0;
+        input->gotInput = 0;
+        input->numRepeats = 0;
+    } else {
+        if (input->debounceTimer == 0) {
+            input->debounceTimer = 20;
+        } else {
+            input->debounceTimer--;
+            if (input->debounceTimer == 0) {
+                input->debounceTimer = 6;
+            } else {
+                input->gotInput = 0;
+            }
+        }
+    }
+
+    if (input->gotInput) {
+        if (input->pressed == input->lastPressed) {
+            input->numRepeats++;
+        } else {
+            input->numRepeats = 0;
+        }
+        input->lastPressed = input->pressed;
+    }
+
+    input->justPressed = buttonState & ~input->pressed;
+    input->pressed = buttonState;
+    if (input->gotInput) {
+        input->justPressed |= input->pressedPending;
+        input->pressedPending = 0;
+        return;
+    }
+    input->pressedPending |= input->justPressed;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080016E4.inc", void sub_080016E4());
 
 extern "C" void DoReset(void) {
@@ -266,9 +319,8 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002604.inc", void sub_08002604()
 
 extern "C" void breakIntoDigits(u16* digitBuffer, u32 value, u16 modifier, u16 numDigits) {
     u32* ptr = &gUnknown_08CDB95C[numDigits];
-    u16 i;
 
-    for (i = 0; i < numDigits; i++, ptr--) {
+    for (u16 i = 0; i < numDigits; i++, ptr--) {
         digitBuffer[i] = Divide(value, *ptr) + modifier;
         value = sub_08002FD4(value, *ptr);
     }
@@ -395,7 +447,7 @@ extern "C" u32 get_flag(u16 idx) {
     return (gSave.event_flags[idx / 8] >> (idx % 8)) & 1;
 }
 
-extern "C" u32 sub_08002998(u16 idx) {
+extern "C" u32 get_shop_flag(u16 idx) {
     return (gSave.shop_flags[idx / 2] >> ((idx & 1) * 4)) & 0xf;
 }
 
@@ -609,7 +661,33 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08004F7C.inc", void sub_08004F7C()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08004FB4.inc", void sub_08004FB4());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_1.inc", void nullsub_1());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_2.inc", void nullsub_2());
-extern "C" ASM_FUNC("asm/non_matching/rom/exec_mode.inc", void exec_mode());
+
+extern "C" void exec_mode(InputState* input) {
+    sub_080016E4();
+    switch (gGame.mode) {
+    case MODE_NORMAL:
+        sub_0800B00C(input);
+        return;
+    case MODE_SCRIPT:
+        sub_0800BB54(input);
+        return;
+    case 8:
+        sub_08026DE0(input);
+        return;
+    case MODE_MAP_VIEW:
+        sub_08026E3C(input);
+        return;
+    case MODE_DROPDOWN:
+        sub_08037DB0(input);
+        return;
+    case MODE_DEBUG_MENU:
+        mode_debug_menu(input);
+        return;
+    default:
+        return;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800519C.inc", void sub_0800519C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080051E0.inc", void sub_080051E0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080052D0.inc", void sub_080052D0());
@@ -823,10 +901,51 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B614.inc", void sub_0800B614()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B63C.inc", void sub_0800B63C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B660.inc", void sub_0800B660());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800B7AC.inc", void sub_0800B7AC());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BB54.inc", void sub_0800BB54());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BBF4.inc", void sub_0800BBF4());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BC48.inc", void sub_0800BC48());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BE04.inc", void sub_0800BE04());
+
+extern "C" void sub_0800BB54(InputState* input) {
+    if ((s8)gGame._1_10 != 0) {
+        sub_0800BBF4(input);
+        return;
+    }
+
+    if (gSomeBlend._566c_1) {
+        return;
+    }
+
+    Object* obj = get_obj_direct(0);
+
+    obj->_bf_8 = 0;
+    obj->_bf_10 = 0;
+
+    if (obj->_87 == 3 && obj->speed) {
+        sub_0800BC48(obj);
+        return;
+    }
+
+    for (u16 i = 0; i < 5; i++) {
+        obj = get_obj_direct(i);
+        if ((s8)obj->_bc_0 != 0) {
+            sub_08036BA4(obj);
+            if (obj->speed) {
+                sub_0800BE04(obj);
+            }
+        }
+    }
+}
+
+extern "C" void sub_0800BBF4(InputState* input) {
+    if (input->pressed & (A_BUTTON | B_BUTTON | START_BUTTON)) {
+        sub_0802610C(0);
+        sub_080052E4(4);
+        gGame._595b[1] = 0x15;
+        gGame._595b[0] = 0x15;
+        gGame._598c_2 = 1;
+        gGame._5960 = 0x28;
+    }
+}
+
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BC48.inc", void sub_0800BC48(Object*));
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800BE04.inc", void sub_0800BE04(Object*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C030.inc", void sub_0800C030());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C10C.inc", void sub_0800C10C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800C694.inc", void sub_0800C694());
@@ -1113,12 +1232,12 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019F90.inc", void sub_08019F90()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08019FE4.inc", void sub_08019FE4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A1B8.inc", void sub_0801A1B8());
 
-extern "C" void sub_0801A218(CameraPos* cam) {
+extern "C" void sub_0801A218(MovementVector* vec) {
     for (u16 i = 0; i < 3; i++)
-        sub_0801A238(i, cam);
+        sub_0801A238(i, vec);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, CameraPos*));
+extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A238.inc", void sub_0801A238(s32, MovementVector*));
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2B4.inc", void sub_0801A2B4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A2DC.inc", void sub_0801A2DC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0801A3AC.inc", void sub_0801A3AC());

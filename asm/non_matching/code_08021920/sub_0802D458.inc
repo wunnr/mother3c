@@ -141,7 +141,7 @@ _0802D55E:
 	cmp r0, #0
 	blt _0802D576
 	adds r0, r4, #0
-	bl sub_0802D9F8
+	bl updateObjectPosition
 _0802D576:
 	ldr r1, _0802D5C8
 	ldrb r0, [r1]

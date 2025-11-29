@@ -48,7 +48,7 @@ _0800B568:
 	cmp r0, #0
 	beq _0800B59A
 	ldrh r0, [r4, #2]
-	bl sub_0802706C
+	bl getDirectionIndex
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	ldr r0, _0800B5FC

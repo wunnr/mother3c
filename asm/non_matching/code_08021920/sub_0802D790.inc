@@ -54,7 +54,7 @@ _0802D7F4:
 	lsrs r0, r0, #0x1c
 	adds r2, r7, #2
 	adds r1, r7, #0
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, [r6, #0x34]
 	ldrb r0, [r0, #0x14]
 	lsls r0, r0, #0x19
@@ -69,7 +69,7 @@ _0802D7F4:
 	cmp r0, #0
 	blt _0802D836
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0805980C:
+checkSoftReset:
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08059824

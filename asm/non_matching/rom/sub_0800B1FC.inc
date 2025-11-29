@@ -129,7 +129,7 @@ _0800B308:
 	strh r1, [r0]
 _0800B30E:
 	ldrh r0, [r4, #2]
-	bl sub_0802706C
+	bl getDirectionIndex
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	adds r0, r6, #0

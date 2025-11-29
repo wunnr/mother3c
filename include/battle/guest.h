@@ -88,7 +88,7 @@ extern "C" {
 CharStats* get_char_stats(u32 idx);
 void sub_0802A7F8(CharStats*, u32);
 void sub_0802A8D4(CharStats*);
-u16 sub_0802A3D0(CharStats*, u32);
+u16 heldItemQty(CharStats*, u32);
 void sub_0802A74C(CharStats*, s16*);
 void sub_0802A670(CharStats*, s16*);
 }

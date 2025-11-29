@@ -32,7 +32,7 @@ _08051178:
 	mov r2, sp
 	adds r2, #0xa
 	adds r1, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	ldrh r1, [r5, #0x26]
 	add r0, sp, #8
 	movs r2, #0

@@ -409,7 +409,7 @@ _0800F8F8:
 	mov r2, sp
 	adds r2, #0x22
 	adds r1, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	movs r2, #0
 	ldrsh r0, [r4, r2]
 	lsls r0, r0, #3

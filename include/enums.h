@@ -1253,4 +1253,16 @@ enum StatMeterType { HP = 0, PP = 1 };
 
 enum EquipmentSlot { WEAPON = 0, HEAD = 1, BODY = 2, OTHER = 3 };
 
+enum DirectionID {
+    DIR_NONE = 0,
+    DIR_DOWN = 1,
+    DIR_DOWN_LEFT = 2,
+    DIR_LEFT = 3,
+    DIR_UP_LEFT = 4,
+    DIR_UP = 5,
+    DIR_UP_RIGHT = 6,
+    DIR_RIGHT = 7,
+    DIR_DOWN_RIGHT = 8
+};
+
 #endif  // ENUMS_H
