@@ -350,7 +350,9 @@ typedef struct struct_02016028 {
     u8 currentMenu;
     u8 pad_4261[0x4264 - 0x4261];
     u8 _4264;
-    u8 pad_4265[0x4294 - 0x4265];
+    u8 pad_4265[0x427E - 0x4265];
+    u16 _427e;
+    u8 pad_4280[0x4294 - 0x4280];
     u8 _4294;
     u8 pad_4295[0x44F2 - 0x4295];
     u8 _44f2_1 : 1;
@@ -372,7 +374,9 @@ typedef struct struct_02016028 {
     u8 _4b1a[0x566C - 0x4b1a];
     u8 _566c_1 : 1;
     u8 _566d[0x5778 - 0x566D];
-    u8 _5778[0xC620 - 0x5778];
+    u8 _5778[0xC5AD - 0x5778];
+    u8 _c5ad_1 : 1;
+    u8 _c5ae[0xC620 - 0xC5AE];
     void* _C620;
     u8 pad_C624[0x121b8 - 0xC624];
     u8 _121b8_0 : 3;

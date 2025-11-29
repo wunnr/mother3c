@@ -73,6 +73,8 @@ extern "C" void sub_080524EC();
 extern "C" void sub_080531C8(s32);
 extern "C" void sub_0804EF9C(MenuState*);
 extern "C" void sub_0804F158(MenuState*);
+extern "C" void sub_0804EEE8(MenuState*);
+extern "C" u16 sub_08053968(u16*, void*, InputState*, s32, s32, s32, s32);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -500,7 +502,30 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CCF4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuPSI.inc", void menuPSI());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuStatus.inc", void menuStatus());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuSkills.inc", void menuSkills());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuMemoSelect.inc", void menuMemoSelect());
+
+extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
+    if ((s8)gSomeBlend._44f2_1 == 0) {
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        if (gSomeBlend._427e != 0) {
+            sub_0804EEE8(menu);
+        }
+    } else {
+        if (input->justPressed & B_BUTTON) {
+            play_sound(SFX_MENU_CANCEL);
+            sub_080506CC(0);
+        } else if (gSomeBlend._427e != 0) {
+            if (sub_08053968(&menu->cursorPos, &menu->_8, input, 2,
+                             (menu->_2 >> 1) + (1 & menu->_2), menu->_2, menu->_6) == 2) {
+                sub_08046D90();
+                gSomeBlend._c5ad_1 = 1;
+            }
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuMemoView.inc", void menuMemoView());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuBattleMemory.inc", void menuBattleMemory());
 
@@ -626,7 +651,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804ECC8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EDFC.inc", void sub_0804EDFC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_21.inc", void nullsub_21());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EE64.inc", void sub_0804EE64());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4());
@@ -810,7 +835,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053968.inc", void sub_08053968());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053968.inc", u16 sub_08053968(u16*, void*, InputState*, s32, s32, s32, s32));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053AC8.inc", void sub_08053AC8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053C34.inc", void sub_08053C34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053E98.inc", s8 sub_08053E98(u16));
