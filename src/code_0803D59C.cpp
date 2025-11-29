@@ -83,6 +83,7 @@ extern "C" void sub_0804DFE4(InputState*, MenuState*);
 extern "C" void sub_08050628();
 extern "C" void sub_0804EFD4(MenuState*);
 extern "C" void sub_0804A448(u16);
+extern "C" void sub_0804A1C0(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -367,7 +368,14 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049B70.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049C70.inc", void sub_08049C70());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049D5C.inc", void sub_08049D5C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049DC4.inc", void sub_08049DC4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049DF8.inc", void sub_08049DF8());
+
+extern "C" void sub_08049DF8() {
+    if (gSomeBlend._4261 != 0) {
+        sub_0804A1C0(8);
+        gSomeBlend._4261 = 0;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049E20.inc", void sub_08049E20());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049E48.inc", void sub_08049E48());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049E70.inc", void sub_08049E70());
@@ -394,7 +402,7 @@ extern "C" void sub_0804A188() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A1C0.inc", void sub_0804A1C0());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A1C0.inc", void sub_0804A1C0(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A218.inc", void sub_0804A218());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A2E0.inc", void sub_0804A2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A398.inc", void sub_0804A398());
