@@ -1265,7 +1265,7 @@ enum DirectionID {
     DIR_DOWN_RIGHT = 8
 };
 
-enum Menu {
+enum MenuID {
     MENU_GOODS = 0x0,
     MENU_EQUIP = 0x1,
     MENU_PSI = 0x2,

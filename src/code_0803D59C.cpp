@@ -72,6 +72,7 @@ extern "C" s32 sub_08054FE0(u16);
 extern "C" void sub_080524EC();
 extern "C" void sub_080531C8(s32);
 extern "C" void sub_0804EF9C(MenuState*);
+extern "C" void sub_0804F158(MenuState*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -525,7 +526,25 @@ extern "C" void menuShopTransactionSelect(InputState* input, MenuState* menu) {
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopCharacterSelect.inc", void menuShopCharacterSelect());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopItemSelectBuy.inc", void menuShopItemSelectBuy());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopItemSelectSell.inc", void menuShopItemSelectSell());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuItemGuyTransactionSelect.inc", void menuItemGuyTransactionSelect());
+
+extern "C" void menuItemGuyTransactionSelect(InputState* input, MenuState* menu) {
+    if ((s8)gSomeBlend._44f2_1 == 0) {
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        sub_0804F158(menu);
+        return;
+    }
+
+    if (input->justPressed & B_BUTTON) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    }
+
+    sub_080534C8(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, 1);
+}
 
 extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
     if ((s8)gSomeBlend._44f2_1 == 0) {
@@ -613,7 +632,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158(MenuState*));
 
 extern "C" void sub_0804F190(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
