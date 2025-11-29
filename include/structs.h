@@ -346,7 +346,11 @@ typedef struct struct_02016028 {
     u8 _41c6_1 : 1;
     u8 pad_41c7[0x41DA - 0x41C7];
     u8 _41da_1 : 1;
-    u8 pad_41db[0x4260 - 0x41DB];
+    u8 pad_41db[0x41E6 - 0x41DB];
+    u8 _41e6_1 : 1;
+    u8 pad_41e7[0x424C - 0x41E7];
+    u8 _424c;
+    u8 pad_424d[0x4260 - 0x424D];
     u8 currentMenu;
     u8 pad_4261[0x4264 - 0x4261];
     u8 _4264;
@@ -548,7 +552,7 @@ typedef struct SystemEntry {
     u8 data[0x2A];
     u8 _2A[8];
     u8 _32;
-    u8 padding[100 - 0x33];
+    u8 padding[0x64 - 0x33];
 } SystemEntry;
 
 typedef struct struct_020050C0 {
