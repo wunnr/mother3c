@@ -61,7 +61,7 @@ _0801372C:
 	adds r0, r0, r1
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl sub_08090F8C
+	bl LZ77UnCompReadNormalWrite8bit
 	adds r0, r4, #0
 _0801373E:
 	pop {r4, r5, r6, r7}

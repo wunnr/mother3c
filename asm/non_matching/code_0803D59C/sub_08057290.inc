@@ -6,7 +6,7 @@ sub_08057290:
 	movs r1, #0x34
 	bl OffsetTable_GetEntry
 	ldr r1, _080572E8
-	bl sub_08090F88
+	bl LZ77UnCompReadNormalWrite16bit
 	adds r0, r4, #0
 	movs r1, #0x35
 	bl OffsetTable_GetEntry

@@ -36,7 +36,7 @@ _0803FB04:
 	movs r1, #0
 	bl OffsetTable_GetEntry
 	ldr r1, _0803FB54
-	bl sub_08090F88
+	bl LZ77UnCompReadNormalWrite16bit
 	ldr r0, _0803FB58
 	ldr r1, _0803FB5C
 	adds r0, r0, r1

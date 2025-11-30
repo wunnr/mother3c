@@ -1373,7 +1373,7 @@ push {r4, lr}\n\
 ldr r4, [r0]\n\
 adds r0, r4, #0\n\
 adds r0, #0xc\n\
-bl sub_08090F8C\n\
+bl LZ77UnCompReadNormalWrite8bit\n\
 ldrh r0, [r4, #8]\n\
 pop {r4}\n\
 pop {r1}\n\

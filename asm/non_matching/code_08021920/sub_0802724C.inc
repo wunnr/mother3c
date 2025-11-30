@@ -16,7 +16,7 @@ sub_0802724C:
 	ldrh r0, [r0]
 	bl sub_0801B3FC
 	ldr r1, _080272D8
-	bl sub_08090F88
+	bl LZ77UnCompReadNormalWrite16bit
 	movs r0, #0xc1
 	lsls r0, r0, #5
 	bl sub_0803B800
@@ -24,7 +24,7 @@ sub_0802724C:
 	adds r0, r5, #0
 	bl sub_0801B444
 	mov r1, r8
-	bl sub_08090F8C
+	bl LZ77UnCompReadNormalWrite8bit
 	lsls r4, r4, #9
 	add r4, r8
 	ldr r6, _080272DC

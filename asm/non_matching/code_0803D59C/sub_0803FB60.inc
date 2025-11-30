@@ -53,7 +53,7 @@ _0803FBBC:
 	bl OffsetTable_GetEntry
 	adds r3, r0, #0
 	ldr r1, _0803FC60
-	bl sub_08090F88
+	bl LZ77UnCompReadNormalWrite16bit
 _0803FBD8:
 	ldr r5, _0803FC5C
 	ldr r0, _0803FC64

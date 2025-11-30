@@ -28,7 +28,7 @@ sub_08040164:
 	bl OffsetTable_GetEntry
 	adds r7, r0, #0
 	ldr r1, _080401B8
-	bl sub_08090F88
+	bl LZ77UnCompReadNormalWrite16bit
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
