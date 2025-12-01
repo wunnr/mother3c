@@ -10,7 +10,7 @@ sub_08019EE8:
 	bl OffsetTable_GetEntry
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
-	bl LZ77UnCompReadNormalWrite16bit
+	bl LZ77UnCompVram
 	adds r0, r5, #0
 	movs r1, #0x2d
 	bl OffsetTable_GetEntry

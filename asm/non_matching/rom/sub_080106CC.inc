@@ -29,7 +29,7 @@ _080106F6:
 	add r1, r8
 	str r0, [r1]
 	adds r1, r4, #0
-	bl LZ77UnCompReadNormalWrite16bit
+	bl LZ77UnCompVram
 	movs r1, #0x80
 	lsls r1, r1, #4
 	adds r4, r4, r1
@@ -114,7 +114,7 @@ _080107A8:
 	lsrs r0, r0, #0x10
 	bl sub_0801B42C
 	adds r1, r6, #0
-	bl LZ77UnCompReadNormalWrite8bit
+	bl LZ77UnCompWram
 	adds r0, r5, #0
 	bl sub_0801A650
 	lsls r0, r0, #0x10
@@ -135,7 +135,7 @@ _080107CE:
 	adds r0, r7, #0
 	bl sub_0801B444
 	ldr r1, [r4]
-	bl LZ77UnCompReadNormalWrite8bit
+	bl LZ77UnCompWram
 	add sp, #4
 	pop {r3}
 	mov r8, r3
