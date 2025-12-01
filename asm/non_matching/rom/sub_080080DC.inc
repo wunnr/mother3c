@@ -6,7 +6,7 @@ sub_080080DC:
 	lsrs r4, r4, #0x10
 	ldr r0, _08008108
 	movs r1, #0xa
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r4, r4, #9
 	movs r1, #0x80
 	lsls r1, r1, #4

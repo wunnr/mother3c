@@ -111,7 +111,7 @@ _08058F4A:
 	ldr r4, _08058FA0
 	adds r0, r4, #0
 	adds r1, r7, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r2, r6, #0
@@ -120,7 +120,7 @@ _08058F4A:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _08058FA4
 	adds r0, r4, #0

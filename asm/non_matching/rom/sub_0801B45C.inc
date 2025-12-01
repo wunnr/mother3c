@@ -12,7 +12,7 @@ sub_0801B45C:
 _0801B46E:
 	ldr r0, _0801B47C
 	adds r1, r2, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	pop {r1}
 	bx r1
 	.align 2, 0

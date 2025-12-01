@@ -9,7 +9,7 @@ sub_0804A2E0:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0804A380
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r6, r0, #0
 	ldr r4, _0804A384
 	adds r0, r4, #0

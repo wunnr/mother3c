@@ -9,7 +9,7 @@ sub_0803FD48:
 	ldrb r1, [r4, #1]
 	adds r1, #0x36
 	adds r0, r5, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r3, r0, #0
 	ldr r1, _0803FD80
 	movs r2, #0x80
@@ -29,7 +29,7 @@ _0803FD84:
 	adds r0, r5, #0
 	movs r1, #0x33
 _0803FD88:
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r3, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #6
@@ -44,7 +44,7 @@ _0803FD88:
 	ldr r4, _0803FDD4
 	ldrb r1, [r4, #1]
 	adds r1, #0x42
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldrb r0, [r4, #1]
 	cmp r0, #3
@@ -78,7 +78,7 @@ _0803FDF4:
 	ldr r4, _0803FE34
 	adds r0, r4, #0
 	movs r1, #0x33
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r3, r0, #0
 	ldr r1, _0803FE38
 	movs r2, #0xa8
@@ -90,7 +90,7 @@ _0803FDF4:
 	ldrb r1, [r0]
 	adds r1, #0x3b
 	adds r0, r4, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FE44
 	movs r2, #2

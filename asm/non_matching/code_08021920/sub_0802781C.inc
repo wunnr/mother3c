@@ -48,7 +48,7 @@ _08027876:
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r1, #1
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	movs r1, #0xc
 	movs r2, #0x20
 	bl sub_08016F4C

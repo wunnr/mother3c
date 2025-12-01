@@ -11,14 +11,14 @@ sub_08007F64:
 	ldr r6, _08007FBC
 	ldrb r1, [r4]
 	adds r0, r6, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _08007FC0
 	movs r2, #0x80
 	lsls r2, r2, #3
 	bl CpuSmartSet
 	ldrb r1, [r4, #1]
 	adds r0, r6, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _08007FC4
 	adds r5, r5, r1
 	ldrb r1, [r5]

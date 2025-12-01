@@ -12,7 +12,7 @@ sub_0804A1C0:
 	beq _0804A202
 	strb r1, [r2]
 	ldr r0, _0804A210
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r0, #0x50

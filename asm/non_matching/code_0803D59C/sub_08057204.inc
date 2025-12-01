@@ -18,7 +18,7 @@ sub_08057204:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r1, r4, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _0805724C
 	movs r2, #0xc0
 	lsls r2, r2, #7

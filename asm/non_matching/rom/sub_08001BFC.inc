@@ -7,11 +7,11 @@ sub_08001BFC:
 	ldr r6, _08001C28
 	adds r0, r6, #0
 	movs r1, #0xa
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	adds r0, r6, #0
 	movs r1, #9
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r4, r4, #1
 	adds r4, r4, r0
 	ldrh r0, [r4]

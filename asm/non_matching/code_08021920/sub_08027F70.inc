@@ -13,7 +13,7 @@ sub_08027F70:
 	lsrs r2, r2, #0x10
 	adds r0, r4, #0
 	adds r1, r2, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	cmp r5, r4
 	bne _08027F9C
@@ -26,7 +26,7 @@ _08027F9C:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r1, r7, #1
 	adds r1, r1, r5
 	ldrh r1, [r1]

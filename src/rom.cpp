@@ -29,7 +29,7 @@ extern "C" void CpuFastSet(const void* src, void* dest, u32 control);
 extern "C" void sub_08000D88();
 extern "C" void sub_08090F90(s32);
 extern "C" s32 sub_08002FD4(s32, s32);
-extern "C" const void* OffsetTable_GetEntry(const void*, u16);
+extern "C" const void* Blob_GetEntry(const void*, u16);
 extern "C" u16 sub_0801A638(u16);
 extern "C" void sub_0801A238(s32, MovementVector*);
 extern "C" void sub_080016E4();
@@ -294,7 +294,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D58.inc", void sub_08001D58()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D70.inc", void sub_08001D70());
 
 extern "C" u16 get_misctext_len(u16 index) {
-    return *(u16*)OffsetTable_GetEntry(&_binary_build_mother3_assets_misctext_bin_start, index);
+    return *(u16*)Blob_GetEntry(&_binary_build_mother3_assets_misctext_bin_start, index);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001DC8.inc", void sub_08001DC8());
@@ -405,19 +405,19 @@ extern "C" void sub_0800282C(u16 r0, u16 r1, u16* r2, u16* r3) {
     }
 }
 
-extern "C" const void* OffsetTable_GetEntry(const void* src, u16 index) {
+extern "C" const void* Blob_GetEntry(const void* src, u16 index) {
     uintptr_t base = (uintptr_t)src;
     u32 offset = ((u32*)src)[index + 1];
     return (const void*)(base + offset);
 }
 
-extern "C" u32 OffsetTable_GetEntrySize(const void* src, u16 index) {
+extern "C" u32 Blob_GetEntrySize(const void* src, u16 index) {
     u32 next = ((u32*)src)[index + 2];
     u32 offset = ((u32*)src)[index + 1];
     return next - offset;
 }
 
-extern "C" u32 OffsetTable_GetNumEntries(const void* src) {
+extern "C" u32 Blob_GetNumEntries(const void* src) {
     return ((u32*)src)[0];
 }
 

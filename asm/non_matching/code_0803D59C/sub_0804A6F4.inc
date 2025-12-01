@@ -5,7 +5,7 @@ sub_0804A6F4:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0804A730
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	ldr r4, _0804A734
 	adds r0, r4, #0

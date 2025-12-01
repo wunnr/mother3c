@@ -14,7 +14,7 @@ sub_08027EF8:
 	lsrs r3, r3, #0x10
 	adds r0, r4, #0
 	adds r1, r3, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	cmp r1, r4
 	bne _08027F28

@@ -35,7 +35,7 @@ sub_08032EDC:
 	str r0, [r1]
 	ldr r0, _08032F54
 	movs r1, #0x21
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _08032F58
 	adds r4, r4, r1
 	str r0, [r4]

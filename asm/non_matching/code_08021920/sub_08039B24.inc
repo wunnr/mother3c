@@ -6,7 +6,7 @@ sub_08039B24:
 	ldr r5, _08039B40
 	adds r0, r5, #0
 	movs r1, #0x24
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _08039B44
@@ -17,7 +17,7 @@ _08039B40: .4byte gUnknown_09AF3790
 _08039B44:
 	adds r0, r5, #0
 	movs r1, #0x25
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r1, r6, #1
 	adds r1, r1, r4
 	ldrh r1, [r1]

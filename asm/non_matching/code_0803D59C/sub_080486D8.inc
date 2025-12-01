@@ -6,7 +6,7 @@ sub_080486D8:
 	ldr r5, _080486F4
 	adds r0, r5, #0
 	movs r1, #0x5a
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _080486F8
@@ -17,7 +17,7 @@ _080486F4: .4byte gMenuData
 _080486F8:
 	adds r0, r5, #0
 	movs r1, #0x5b
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r1, r6, #1
 	adds r1, r1, r4
 	ldrh r1, [r1]

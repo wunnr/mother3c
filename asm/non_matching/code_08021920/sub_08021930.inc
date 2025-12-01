@@ -194,7 +194,7 @@ _08021AC6:
 	bl sub_080376EC
 	ldr r0, _08021AF4
 	movs r1, #0xc
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	str r0, [r4]
 	ldr r1, _08021AF8
 	adds r4, r4, r1

@@ -3,7 +3,7 @@ sub_08057250:
 	push {r4, lr}
 	ldr r0, _08057284
 	movs r1, #0x33
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _08057288
 	movs r3, #0x80

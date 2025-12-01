@@ -6,7 +6,7 @@ sub_08027F38:
 	ldr r4, _08027F54
 	adds r0, r4, #0
 	movs r1, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	cmp r5, r4
 	bne _08027F58
@@ -17,7 +17,7 @@ _08027F54: .4byte _binary_build_mother3_assets_mainscript_bin_start
 _08027F58:
 	adds r0, r4, #0
 	movs r1, #1
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r1, r6, #1
 	adds r1, r1, r5
 	ldrh r1, [r1]

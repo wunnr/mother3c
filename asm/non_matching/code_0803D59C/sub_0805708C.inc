@@ -4,7 +4,7 @@ sub_0805708C:
 	ldr r4, _080570E4
 	adds r0, r4, #0
 	movs r1, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	movs r2, #0x88
@@ -12,7 +12,7 @@ sub_0805708C:
 	bl CpuSmartSet
 	adds r0, r4, #0
 	movs r1, #1
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _080570E8
 	adds r0, r4, #0

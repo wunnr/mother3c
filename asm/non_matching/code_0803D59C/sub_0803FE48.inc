@@ -8,7 +8,7 @@ sub_0803FE48:
 	lsls r2, r2, #0xe
 	adds r1, r1, r2
 	lsrs r1, r1, #0x10
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	movs r2, #0x80
 	lsls r2, r2, #6
 	adds r0, r0, r2

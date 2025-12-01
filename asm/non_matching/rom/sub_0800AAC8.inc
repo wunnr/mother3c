@@ -51,7 +51,7 @@ _0800AB28:
 	lsrs r4, r0, #0x10
 	ldr r0, _0800AB5C
 	movs r1, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	lsls r1, r6, #5
 	adds r0, r0, r1
 	ldr r1, _0800AB60

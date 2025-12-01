@@ -33,7 +33,7 @@ extern const u8 gUnknown_09BCDD8C;
 extern InputState gInputState;
 extern MenuFunc gMenuFuncTable[0x13];
 
-extern "C" void* OffsetTable_GetEntry(const void* src, int index);
+extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
 
 extern "C" void sub_08056584(int, int);
@@ -1045,8 +1045,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08058FAC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08058FE4.inc", void sub_08058FE4());
 
 extern "C" void sub_08059094() {
-    LZ77UnCompVram(OffsetTable_GetEntry(&gUnknown_09C5FD2C, 0x4C), (void*)0x06008000);
-    void* ptr = OffsetTable_GetEntry(&gUnknown_09C5FD2C, 0x4D);
+    LZ77UnCompVram(Blob_GetEntry(&gUnknown_09C5FD2C, 0x4C), (void*)0x06008000);
+    void* ptr = Blob_GetEntry(&gUnknown_09C5FD2C, 0x4D);
     sub_0800160C(&gSomeBlend._50, ptr, 0xE, 0x40);
     CpuSmartSet(ptr, &gSomeBlend._4294, 0x40);
 }
@@ -1122,12 +1122,12 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805A508.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805A520.inc", void sub_0805A520());
 
 extern "C" void sub_0805A568(void) {
-    LZ77UnCompVram(OffsetTable_GetEntry(&gUnknown_09C8DE98, 0), (void*)0x06008000);
-    LZ77UnCompVram(OffsetTable_GetEntry(&gUnknown_09C8DE98, 2), (void*)0x06000000);
-    LZ77UnCompVram(OffsetTable_GetEntry(&gUnknown_09C8DE98, 3), (void*)0x06010000);
-    gSomeBlend._2CB0 = OffsetTable_GetEntry(&gUnknown_09C8DE98, 4);
+    LZ77UnCompVram(Blob_GetEntry(&gUnknown_09C8DE98, 0), (void*)0x06008000);
+    LZ77UnCompVram(Blob_GetEntry(&gUnknown_09C8DE98, 2), (void*)0x06000000);
+    LZ77UnCompVram(Blob_GetEntry(&gUnknown_09C8DE98, 3), (void*)0x06010000);
+    gSomeBlend._2CB0 = Blob_GetEntry(&gUnknown_09C8DE98, 4);
 
-    void* temp_r0_2 = OffsetTable_GetEntry(&gUnknown_09C8DE98, 1);
+    void* temp_r0_2 = Blob_GetEntry(&gUnknown_09C8DE98, 1);
     sub_0800160C(&gSomeBlend._50, temp_r0_2, 0, 0x20);
     sub_0800160C(&gSomeBlend._50, temp_r0_2, 0x10, 0x20);
     sub_08001A14((void*)&gSomeBlend._50._2700, &gSomeBlend._2CB4, 0x400);

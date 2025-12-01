@@ -4,14 +4,14 @@ sub_08007E54:
 	ldr r4, _08007EE8
 	adds r0, r4, #0
 	movs r1, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _08007EEC
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl CpuSmartSet
 	adds r0, r4, #0
 	movs r1, #0x23
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _08007EF0
 	movs r2, #0x80
 	lsls r2, r2, #2
@@ -22,7 +22,7 @@ sub_08007E54:
 	ldrb r1, [r0]
 	adds r1, #1
 	adds r0, r4, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	movs r1, #0xc
 	movs r2, #0x20
 	bl sub_08016F4C

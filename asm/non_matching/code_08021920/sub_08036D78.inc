@@ -9,7 +9,7 @@ sub_08036D78:
 	ldr r7, _08036D9C
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	cmp r4, #1
 	beq _08036DAE
 	cmp r4, #1
@@ -37,14 +37,14 @@ _08036DB8:
 	ldr r0, _08036DC4
 _08036DBA:
 	adds r1, r5, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	b _08036DD0
 	.align 2, 0
 _08036DC4: .4byte gUnknown_09A012B8
 _08036DC8:
 	ldr r0, _08036DD8
 	adds r1, r5, #0
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 _08036DD0:
 	pop {r4, r5, r6, r7}
 	pop {r1}

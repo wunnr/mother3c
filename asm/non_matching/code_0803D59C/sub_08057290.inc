@@ -4,12 +4,12 @@ sub_08057290:
 	ldr r4, _080572E4
 	adds r0, r4, #0
 	movs r1, #0x34
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	ldr r1, _080572E8
 	bl LZ77UnCompVram
 	adds r0, r4, #0
 	movs r1, #0x35
-	bl OffsetTable_GetEntry
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _080572EC
 	adds r0, r4, #0
