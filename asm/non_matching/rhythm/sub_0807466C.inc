@@ -13,7 +13,7 @@ sub_0807466C:
 	str r0, [r5, #0x1c]
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08074710
+	bl getBattleTimingForTrack
 	str r0, [r5, #0x3c]
 	movs r1, #0
 	str r1, [r5, #0x40]

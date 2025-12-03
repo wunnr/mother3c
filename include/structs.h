@@ -605,4 +605,11 @@ typedef struct struct_200D818 {
     u16 _2e;
 } struct_200D818;
 
+typedef struct SoundBattleTiming {
+    u16 id;
+    u16 song;
+    u8 greatWindow;
+    u8 okWindow;
+} SoundBattleTiming;
+
 #endif  // STRUCTS_H

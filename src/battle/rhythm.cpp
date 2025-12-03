@@ -7,6 +7,8 @@
 #include "battle/unitTarget.h"
 #include "global.h"
 
+extern SoundBattleTiming gSoundBattleTimingTable[0x77];
+
 extern "C" s32 sub_08069558(s32 min, s32 max, s32 step, s32 duration);
 extern "C" BattleFader* sub_08072568();
 extern "C" BattleFader* sub_08072588();
@@ -146,7 +148,19 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807464C.inc", void sub_0807464
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074658.inc", void sub_08074658());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074660.inc", void sub_08074660());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074710.inc", void sub_08074710());
+
+extern "C" SoundBattleTiming* getBattleTimingForTrack(u16 unk, u16 currentSong) {
+    s32 i;
+    SoundBattleTiming* timing;
+    for (i = 0, timing = gSoundBattleTimingTable; i < 0x77; timing++, i++) {
+        if (timing->song == currentSong) {
+            return timing;
+        }
+    }
+
+    return &gSoundBattleTimingTable[0];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807473C.inc", void sub_0807473C());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807476C.inc", void sub_0807476C());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080747CC.inc", void sub_080747CC());
