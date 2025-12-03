@@ -40,7 +40,7 @@ void sub_0802AA78(u32);
 void sub_08033BCC(u32);
 void sub_0802B4D8();
 void sub_08028040();
-void sub_080029F8(u32, u32);
+void set_giftbox_flag(u32, u32);
 u32 get_giftbox_flag(u32);
 void sub_0802AF24(u32);
 void add_dp_to_bank(u32);

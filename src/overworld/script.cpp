@@ -1046,7 +1046,7 @@ u16 cmd_set_giftbox_flag(s32* sp) {
     idx = scriptstack_peek(sp, 1);
     val = scriptstack_peek(sp, 0) & 1;
     if (idx < 0x400) {
-        sub_080029F8(idx, val);
+        set_giftbox_flag(idx, val);
     }
     return 0;
 }

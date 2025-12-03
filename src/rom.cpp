@@ -457,7 +457,7 @@ extern "C" u32 sub_080029D4(u16 idx) {
     return gSave.mIQ0[idx * 2] | (gSave.mIQ0[idx * 2 + 1] << 8);
 }
 
-extern "C" void sub_080029F8(u16 idx, u16 value) {
+extern "C" void set_giftbox_flag(u16 idx, u16 value) {
     gSave.giftbox_flags[idx / 8] =
         (gSave.giftbox_flags[idx / 8] & ~(1 << (idx % 8))) | ((value & 1) << (idx % 8));
 }
