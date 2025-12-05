@@ -37,7 +37,7 @@ sub_0803B2C8:
 	lsrs r2, r2, #0x10
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrh r0, [r6]
 	cmp r0, r5
 	beq _0803B334

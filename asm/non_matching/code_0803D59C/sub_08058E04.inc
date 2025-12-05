@@ -6,7 +6,7 @@ sub_08058E04:
 	ldr r1, _08058E2C
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0
 	bl sub_08036DDC
 	adds r1, r0, #0

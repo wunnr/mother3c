@@ -328,7 +328,7 @@ _08007654:
 	lsls r5, r5, #3
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl memclear
@@ -371,7 +371,7 @@ _080076E0:
 	lsls r4, r4, #3
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r2, #1
 	rsbs r2, r2, #0
 	adds r0, r5, #0
@@ -388,7 +388,7 @@ _08007708:
 	lsls r5, r5, #3
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl memclear

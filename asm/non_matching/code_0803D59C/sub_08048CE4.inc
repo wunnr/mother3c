@@ -178,13 +178,13 @@ _08048DC0:
 	ldr r3, _08048EE0
 	adds r1, r4, r3
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sb
 	adds r0, #0x68
 	ldr r2, _08048EE4
 	adds r1, r4, r2
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r3, _08048EE8
 	adds r1, r4, r3
 	ldrb r0, [r1]

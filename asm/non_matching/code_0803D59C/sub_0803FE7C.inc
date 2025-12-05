@@ -8,7 +8,7 @@ sub_0803FE7C:
 	lsls r2, r2, #0xe
 	adds r1, r1, r2
 	lsrs r1, r1, #0x10
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FEAC
 	movs r2, #2

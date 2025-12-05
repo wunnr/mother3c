@@ -6,7 +6,7 @@ sub_08036D18:
 	lsrs r4, r4, #0x10
 	ldr r0, _08036D38
 	movs r1, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	lsls r1, r4, #1
 	adds r1, r1, r4
 	lsls r1, r1, #2

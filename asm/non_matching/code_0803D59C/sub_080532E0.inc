@@ -69,7 +69,7 @@ _0805336A:
 	adds r1, r1, r0
 	mov r0, sp
 	movs r2, #0x80
-	bl sub_08001B18
+	bl CpuSmartSet
 	add sp, #0x80
 	pop {r4, r5, r6, r7}
 	pop {r0}

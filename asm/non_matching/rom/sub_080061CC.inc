@@ -25,7 +25,7 @@ _080061F2:
 	lsls r1, r1, #0x13
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _0800622A
 	.align 2, 0
 _08006204: .4byte gGame
@@ -102,7 +102,7 @@ _080062AA:
 	lsls r1, r1, #0x13
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _080062DE
 	.align 2, 0
 _080062BC: .4byte gUnknown_0201B7A0

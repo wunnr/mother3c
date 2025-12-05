@@ -130,7 +130,7 @@ _0804D270:
 	adds r1, r3, #0
 	adds r1, #0x6e
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _0804D384
 	.align 2, 0
 _0804D2B0: .4byte gUnknown_02005090

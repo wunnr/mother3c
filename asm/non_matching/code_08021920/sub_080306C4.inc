@@ -16,13 +16,13 @@ _080306D8:
 	movs r2, #0x80
 	lsls r2, r2, #5
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0xa6
 	bl sub_08036D60
 	ldr r1, _08030720
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0
 	bl sub_08036DDC
 	movs r1, #0x10

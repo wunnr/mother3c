@@ -6,7 +6,7 @@ sub_08048710:
 	ldr r5, _0804872C
 	adds r0, r5, #0
 	movs r1, #0x5c
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _08048730
@@ -17,7 +17,7 @@ _0804872C: .4byte gMenuData
 _08048730:
 	adds r0, r5, #0
 	movs r1, #0x5d
-	bl sub_0800289C
+	bl Blob_GetEntry
 	lsls r1, r6, #1
 	adds r1, r1, r4
 	ldrh r1, [r1]

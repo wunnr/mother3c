@@ -397,7 +397,7 @@ _0803BBB0:
 	adds r1, r1, r4
 	adds r1, r7, r1
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r6, #1
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10

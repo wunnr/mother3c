@@ -10,7 +10,7 @@ sub_080138FC:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0x9c
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r1, #0x80
 	lsls r1, r1, #9
 	ldr r0, [sp]
@@ -48,12 +48,12 @@ sub_080138FC:
 	adds r1, #0x9c
 	mov r0, sp
 	movs r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	subs r4, #4
 	adds r0, r6, #0
 	adds r1, r4, #0
 	movs r2, #0xa0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r6, #0
 	bl sub_0803B860
 	add sp, #4

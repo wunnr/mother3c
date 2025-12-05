@@ -21,13 +21,13 @@ _0803EB00:
 	adds r0, r4, #4
 	ldr r1, [r4]
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x44
 	ldr r1, [r4]
 	adds r1, #0x40
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 _0803EB26:
 	subs r0, r5, #1
 	lsls r0, r0, #0x10

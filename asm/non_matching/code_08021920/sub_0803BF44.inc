@@ -6,7 +6,7 @@ sub_0803BF44:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0xa0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0xc6
 	ldrb r1, [r0]

@@ -222,7 +222,7 @@ _08006CF4:
 	adds r0, #8
 	ldr r1, [r4]
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x68
 	ldr r1, [r4]
@@ -230,7 +230,7 @@ _08006CF4:
 	lsls r2, r2, #3
 	adds r1, r1, r2
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrb r0, [r5]
 	movs r1, #2
 	orrs r0, r1
@@ -282,13 +282,13 @@ _08006D70:
 	adds r0, r7, #0
 	adds r1, r4, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r3, #0x80
 	lsls r3, r3, #3
 	adds r1, r4, r3
 	adds r0, r7, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r4, #0x20
 	adds r0, r5, #1
 	lsls r0, r0, #0x10
@@ -344,7 +344,7 @@ _08006DF6:
 	adds r1, r4, #0
 	movs r2, #0xe0
 	lsls r2, r2, #2
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r5, r5, r7
 	adds r4, r4, r7
 	adds r0, r6, #1
@@ -361,13 +361,13 @@ _08006E1A:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r3, #0x80
 	lsls r3, r3, #3
 	adds r1, r4, r3
 	adds r0, r5, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r4, #0x20
 	adds r0, r6, #1
 	lsls r0, r0, #0x10

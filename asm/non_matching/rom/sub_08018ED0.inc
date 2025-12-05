@@ -50,13 +50,13 @@ sub_08018ED0:
 	lsls r2, r2, #1
 	mov r8, r2
 	adds r0, r6, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _08018F98
 	adds r4, r4, r0
 	mov r0, sl
 	adds r1, r4, #0
 	mov r2, r8
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrh r0, [r5]
 	mov r1, sb
 	ldrh r1, [r1]

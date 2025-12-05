@@ -6,13 +6,13 @@ sub_08052054:
 	movs r2, #0x82
 	lsls r2, r2, #4
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0805207C
 	adds r4, r4, r0
 	ldr r0, _08052080
 	ldr r2, _08052084
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

@@ -90,7 +90,7 @@ _08001D0C: .4byte gUnknown_08CDB8B4
 _08001D10:
 	ldr r0, _08001D28
 	adds r1, r2, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldrh r2, [r0]
 	lsls r1, r5, #1
 	muls r1, r2, r1

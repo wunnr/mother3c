@@ -24,7 +24,7 @@ sub_08059B30:
 	ldr r2, _08059B80
 	adds r1, r4, r2
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _08059B84
 	adds r4, r4, r0
 	ldrb r0, [r4]
