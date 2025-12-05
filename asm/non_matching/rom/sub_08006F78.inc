@@ -52,7 +52,7 @@ _08006FDC:
 	adds r0, #8
 	ldr r1, [r4]
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x68
 	ldr r1, [r4]
@@ -60,7 +60,7 @@ _08006FDC:
 	lsls r2, r2, #3
 	adds r1, r1, r2
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	subs r0, r5, #1
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -85,13 +85,13 @@ _08007006:
 	ldr r1, [r5]
 	adds r0, r4, #0
 	movs r2, #0x3c
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r0, #0x40
 	ldr r1, [r5]
 	adds r1, #0x40
 	movs r2, #0x3c
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	movs r1, #0x80
 	bl memclear

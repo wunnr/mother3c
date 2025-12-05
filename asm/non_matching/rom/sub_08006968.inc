@@ -107,7 +107,7 @@ _08006A32:
 	adds r1, r6, #0
 	adds r2, r4, #0
 	str r3, [sp, #0xc]
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r3, [sp, #0xc]
 _08006A40:
 	adds r6, r6, r4

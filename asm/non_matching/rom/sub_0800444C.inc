@@ -36,7 +36,7 @@ sub_0800444C:
 	movs r2, #0x80
 	lsls r2, r2, #3
 	adds r0, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

@@ -104,7 +104,7 @@ _08029BE4:
 	adds r0, r4, #0
 	mov r1, r8
 	movs r2, #0xd0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0xd0
 	add r8, r0
 	ldrb r0, [r6]
@@ -152,7 +152,7 @@ _08029C20:
 	muls r2, r0, r2
 	ldr r0, [sp, #0x1c]
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, [sp, #0x1c]
 	bl sub_0803B860
 	ldr r2, _08029CA0

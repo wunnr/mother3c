@@ -19,7 +19,7 @@ sub_0801365C:
 	lsrs r2, r2, #0x1a
 	lsls r2, r2, #5
 	adds r1, r3, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

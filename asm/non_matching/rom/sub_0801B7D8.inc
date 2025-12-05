@@ -75,14 +75,14 @@ _0801B87A:
 	ldr r1, _0801B8FC
 	adds r0, r4, #0
 	movs r2, #0xa
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0801B900
 	adds r4, r4, r0
 	ldr r1, _0801B904
 	movs r2, #0xfa
 	lsls r2, r2, #4
 	adds r0, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 _0801B89E:
 	ldr r6, _0801B8F0
 	ldr r1, _0801B908
@@ -171,14 +171,14 @@ _0801B94E:
 	ldr r4, _0801B980
 	adds r1, r4, #0
 	movs r2, #0xa
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0801B984
 	ldr r2, _0801B988
 	adds r4, r4, r2
 	movs r2, #0xfa
 	lsls r2, r2, #4
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 _0801B972:
 	add sp, #4
 	pop {r4, r5, r6}

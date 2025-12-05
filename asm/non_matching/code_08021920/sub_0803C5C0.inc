@@ -319,7 +319,7 @@ _0803C7CC:
 	ldr r3, _0803C97C
 	adds r1, r1, r3
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r7, #1
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10

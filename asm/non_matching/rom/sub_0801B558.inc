@@ -5,7 +5,7 @@ sub_0801B558:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0801B570
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, [r0, #0xc]
 	adds r1, #0x14
 	adds r0, r0, r1

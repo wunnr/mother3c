@@ -4,12 +4,12 @@ sub_08057170:
 	ldr r4, _080571D0
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _080571D4
-	bl sub_08090F88
+	bl LZ77UnCompVram
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _080571D8
 	movs r6, #0x80
@@ -33,7 +33,7 @@ sub_08057170:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _080571E4
 	ldrb r0, [r0]
 	cmp r0, #0

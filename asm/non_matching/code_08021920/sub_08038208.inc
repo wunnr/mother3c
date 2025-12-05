@@ -28,7 +28,7 @@ _08038240:
 	ldr r0, _0803828C
 	movs r1, #9
 _08038244:
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _08038290
 	movs r3, #0x80

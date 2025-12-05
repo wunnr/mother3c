@@ -16,7 +16,7 @@ sub_080572F8:
 	adds r1, r1, r0
 	lsrs r1, r1, #0x10
 	adds r0, r5, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	adds r4, #0x50
 	adds r0, r4, #0
@@ -28,7 +28,7 @@ sub_080572F8:
 	movs r2, #0xa0
 	lsls r2, r2, #3
 	adds r0, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4, r5}
 	pop {r0}
 	bx r0

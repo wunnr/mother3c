@@ -60,7 +60,7 @@ _08057004:
 	strb r0, [r2]
 	ldr r0, _08057040
 	movs r1, #0x36
-	bl sub_0800289C
+	bl Blob_GetEntry
 	str r0, [r4, #0x34]
 	pop {r4}
 	pop {r0}

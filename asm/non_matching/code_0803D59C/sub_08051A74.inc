@@ -30,7 +30,7 @@ sub_08051A74:
 	mov r0, sp
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	adds r1, r5, #0
 	bl memclear
@@ -54,7 +54,7 @@ sub_08051A74:
 	adds r1, r7, r0
 	mov r0, sp
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	adds r1, r5, #0
 	bl memclear
@@ -75,7 +75,7 @@ sub_08051A74:
 	adds r1, r7, r0
 	mov r0, sp
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #1
 	b _08051B3A
 	.align 2, 0

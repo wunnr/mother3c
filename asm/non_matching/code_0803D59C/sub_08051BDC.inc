@@ -5,14 +5,14 @@ sub_08051BDC:
 	ldr r1, _08051C18
 	movs r2, #0x82
 	lsls r2, r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _08051C1C
 	adds r5, r5, r0
 	ldr r4, _08051C20
 	ldr r2, _08051C24
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	subs r0, #0x6c
 	movs r1, #0x6c

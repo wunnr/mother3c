@@ -3,7 +3,7 @@ sub_08057250:
 	push {r4, lr}
 	ldr r0, _08057284
 	movs r1, #0x33
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r4, _08057288
 	movs r3, #0x80
@@ -19,7 +19,7 @@ sub_08057250:
 	movs r2, #0x80
 	lsls r2, r2, #3
 	adds r1, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

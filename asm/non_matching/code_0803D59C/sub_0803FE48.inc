@@ -8,7 +8,7 @@ sub_0803FE48:
 	lsls r2, r2, #0xe
 	adds r1, r1, r2
 	lsrs r1, r1, #0x10
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r2, #0x80
 	lsls r2, r2, #6
 	adds r0, r0, r2
@@ -16,7 +16,7 @@ sub_0803FE48:
 	adds r1, r1, r2
 	movs r2, #0xd0
 	lsls r2, r2, #6
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r0}
 	bx r0
 	.align 2, 0

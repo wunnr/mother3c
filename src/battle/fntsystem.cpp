@@ -6,7 +6,7 @@
 extern ClockData gUnknown_080FFD3C;
 
 extern "C" void __11Unk08088018(void*);
-extern "C" void sub_08090F8C(void*, void*);
+extern "C" void LZ77UnCompWram(void*, void*);
 
 extern "C" ASM_FUNC("asm/non_matching/fntsystem/sub_0806D2CC.inc", void sub_0806D2CC());
 
@@ -164,7 +164,7 @@ void Unk0806D548::sub_0806D618(Unk2* arg0) {
 
     // get the size of the compressed data
     this->_4 = new u8[((*(u32*)&arg1->_C) >> 8) + 0x20];
-    sub_08090F8C(&arg1->_C, this->_4);  // LZ77UnCompReadNormalWrite8bit
+    LZ77UnCompWram(&arg1->_C, this->_4);
     this->_C = (u32)this->_4;
 }
 
