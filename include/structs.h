@@ -267,13 +267,14 @@ typedef struct Direction {
 } Direction;
 
 typedef struct MenuState {
-    u8 _0[2];
+    u16 id;
     u16 _2;
     u16 cursorPos;
     u16 _6;
     u16 _8;
-    u16 _a;
-    u8 _c[0x20 - 0xC];
+    u16 currentTab;
+    s16 prevMenuID;
+    u8 pad_e[0x20 - 0xE];
 } MenuState;
 static_assert(sizeof(MenuState) == 0x20);
 
@@ -514,9 +515,18 @@ typedef struct Stats {
 static_assert(sizeof(Stats) == 0x10);
 
 typedef struct PsiInfo {
+    u32 psi_no;
+    u32 type;
+    u32 overworld_usable;
+    u32 pp_cost;
+    MoveInfo info;
+} PsiInfo;
+extern char assertion[(sizeof(PsiInfo) == 0x38) ? 1 : -1];
+
+typedef struct PsiLearnInfo {
     u16 psi_no;
     u8 level;
-} PsiInfo;
+} PsiLearnInfo;
 
 typedef struct LevelStats {
     u8 ch_no;
@@ -527,7 +537,7 @@ typedef struct LevelStats {
     u8 overworld_playable;
     u8 battle_playable;
     u16 animal_value;
-    PsiInfo psi_table[32];
+    PsiLearnInfo psi_learning_table[32];
     u32 attack_sounds;
 } LevelStats;
 extern LevelStats gLevelStatTable[];

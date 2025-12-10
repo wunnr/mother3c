@@ -490,9 +490,9 @@ extern "C" void sub_0804C35C() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_ITEM_SELECT_DEPOSIT;
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
-    menu->_a = gSomeBlend._4264;
+    menu->currentTab = gSomeBlend._4264;
     menu->_8 = 0;
-    sub_08054FE0(menu->_a);
+    sub_08054FE0(menu->currentTab);
     sub_08053148();
 }
 
@@ -500,9 +500,9 @@ extern "C" void sub_0804C398() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_ITEM_SELECT_WITHDRAW;
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
-    menu->_a = gSomeBlend._4264;
+    menu->currentTab = gSomeBlend._4264;
     menu->_8 = 0;
-    s32 unk = sub_08054FE0(menu->_a);
+    s32 unk = sub_08054FE0(menu->currentTab);
     sub_080524EC();
     sub_080531C8(unk);
 }
@@ -717,7 +717,7 @@ extern "C" void menuNewGame(InputState* input, MenuState* menu) {
 }
 
 extern "C" void menuTryAgain(InputState* input, MenuState* menu) {
-    if ((s8)gSomeBlend._44f2_1 == 0 || menu->_a != 0) {
+    if ((s8)gSomeBlend._44f2_1 == 0 || menu->currentTab != 0) {
         return;
     }
 
@@ -800,12 +800,12 @@ extern "C" void handleTryAgain(MenuState* menu) {
     switch (menu->cursorPos) {
     case 0:  // Yes
         play_sound(SFX_STAT_MENU_ENTER);
-        menu->_a = 1;
+        menu->currentTab = 1;
         sub_08054108();
         return;
     case 1:  // No
         play_sound(SFX_STAT_MENU_LEAVE);
-        menu->_a = 2;
+        menu->currentTab = 2;
         sub_080506CC(5);
         return;
     }
