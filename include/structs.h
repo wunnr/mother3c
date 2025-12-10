@@ -476,11 +476,11 @@ typedef struct Save {
 extern Save gSave;
 extern struct_02016028 gSomeBlend;
 
-typedef struct ExpInfo {
+typedef struct LevelUpExpInfo {
     u32 ch_no;
     u32 deltas[99];
-} ExpInfo;
-extern ExpInfo gExpTable[];
+} LevelUpExpInfo;
+extern const LevelUpExpInfo gLevelUpExpTable[];
 
 typedef struct Stats {
     u32 hp;

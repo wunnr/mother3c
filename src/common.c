@@ -69,7 +69,7 @@ u32 sub_0805C1A8(CharStats* ch, LevelStats* ls, s32 level) {
     int total = 0;
     int i;
     for (i = 0; i < level; i++) {
-        total += gExpTable[ls->ch_no].deltas[i];
+        total += gLevelUpExpTable[ls->ch_no].deltas[i];
     }
     return total;
 }
