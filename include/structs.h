@@ -260,10 +260,10 @@ typedef struct Direction {
     u16 buttonCombo;
     s16 xVel;
     s16 yVel;
-    u16 previousDirection;
-    u16 oppositeDirection;
-    u16 stepCounterClockwise90;
-    u16 stepClockwise90;
+    u16 previous;
+    u16 opposite;
+    u16 turnLeft90;
+    u16 turnRight90;
 } Direction;
 
 typedef struct MenuState {
