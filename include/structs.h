@@ -499,7 +499,7 @@ typedef struct PsiInfo {
 } PsiInfo;
 
 typedef struct LevelStats {
-    u8 ch_no;
+    u16 ch_no;
     u16 ch_start_level;
     u16 start_equipment[4];
     Stats start_stats;

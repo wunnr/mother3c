@@ -11,7 +11,7 @@ u32 sub_0805C168(s32 num);
 int sub_0805D234(int, int);
 int Div(int, int);
 
-u32 sub_0805C1A8(CharStats* ch, LevelStats* ls, s32 level);
+u32 getNeededXP(CharStats* ch, LevelStats* ls, s32 level);
 
 typedef struct {
     u32 a, b;
@@ -62,10 +62,10 @@ u32 sub_0805C168(s32 num) {
 }
 
 u32 sub_0805C178(s32 ch_no, s32 level) {
-    return sub_0805C1A8(&gCharStats[ch_no], &gLevelStatTable[ch_no], level);
+    return getNeededXP(&gCharStats[ch_no], &gLevelStatTable[ch_no], level);
 }
 
-u32 sub_0805C1A8(CharStats* ch, LevelStats* ls, s32 level) {
+u32 getNeededXP(CharStats* ch, LevelStats* ls, s32 level) {
     int total = 0;
     int i;
     for (i = 0; i < level; i++) {

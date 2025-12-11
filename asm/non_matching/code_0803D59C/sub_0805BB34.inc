@@ -42,7 +42,7 @@ sub_0805BB34:
 	adds r0, r7, #0
 	adds r1, r4, #0
 	adds r2, r6, #0
-	bl sub_0805C1A8
+	bl getNeededXP
 	adds r2, r0, #0
 	ldr r0, [r7, #0x14]
 	subs r2, r2, r0
