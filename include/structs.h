@@ -499,7 +499,7 @@ typedef struct PsiInfo {
 } PsiInfo;
 
 typedef struct LevelStats {
-    u16 ch_no;
+    u8 ch_no;
     u16 ch_start_level;
     u16 start_equipment[4];
     Stats start_stats;
@@ -584,5 +584,14 @@ typedef struct struct_200D818 {
     s16 kindness;
     u16 _2e;
 } struct_200D818;
+
+typedef struct TownMapInfo {
+    u16 townMapID;
+    u16 topLeftX;
+    u16 topLeftY;
+    u16 bottomRightX;
+    u16 bottomRightY;
+    u16 _a;
+} TownMapInfo;
 
 #endif  // STRUCTS_H
