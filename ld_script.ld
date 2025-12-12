@@ -139,6 +139,7 @@ SECTIONS
         build/mother3/data/data1a.o(.rodata);
         build/mother3/src/data/townMapData.o(.rodata);
         build/mother3/data/data1c.o(.rodata);
+        build/mother3/data/levelStatData.o(.rodata);
         build/mother3/src/data/levelUpExpData.o(.rodata);
         build/mother3/data/gUnitTargetData.o(.rodata);
         build/mother3/src/data/playerSkillData.o(.rodata);
