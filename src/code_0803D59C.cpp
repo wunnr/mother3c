@@ -32,6 +32,7 @@ extern u8 gMenuTextPalette;
 extern const u8 gUnknown_09BCDD8C;
 extern InputState gInputState;
 extern MenuFunc gMenuFuncTable[0x13];
+extern u8 gMenuData[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
@@ -45,7 +46,6 @@ extern "C" void sub_080018F4();
 extern "C" void sub_0800160C(Unknown_02016078* dest, void* src, int index, u32 size);
 extern "C" void sub_08001A14(void* src, void* dest, u32 size);
 extern "C" void sub_08001A38(void* dest, u32 size, int value);
-extern "C" void CpuSmartSet(const void*, void*, u32);
 extern "C" void sub_08000E5C(void*);
 extern "C" void nullsub_11();
 extern "C" void pollInput(InputState*);
@@ -85,6 +85,7 @@ extern "C" void sub_0804EFD4(MenuState*);
 extern "C" void sub_0804A448(u16);
 extern "C" void sub_0804A1C0(u16);
 extern "C" void sub_0804A508(s32);
+extern "C" u16* sub_08001378(void*, s32, s32, s32);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -446,7 +447,14 @@ extern "C" void sub_0804A188() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A1C0.inc", void sub_0804A1C0(u16));
+extern "C" void sub_0804A1C0(u16 index) {
+    if (gSomeBlend._4262 != index) {
+        gSomeBlend._4262 = index;
+        CpuSmartSet(Blob_GetEntry(gMenuData, index), sub_08001378(&gSomeBlend._50, 2, 0, 0), 0x800);
+        gSomeBlend._50._2C44 = 1;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A218.inc", void sub_0804A218());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A2E0.inc", void sub_0804A2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A398.inc", void sub_0804A398());
