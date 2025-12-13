@@ -1287,4 +1287,10 @@ enum MenuID {
     MENU_TRY_AGAIN = 0x12
 };
 
+enum CursorMoveResult {
+    CURSOR_NO_CHANGE = 0,
+    CURSOR_MOVED = 1,
+    CURSOR_MOVED_AND_SCROLLED = 2,
+};
+
 #endif  // ENUMS_H

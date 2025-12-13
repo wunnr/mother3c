@@ -915,7 +915,7 @@ extern "C" void sub_0804E118(InputState* input, MenuState* menu) {
     if (input->justPressed == A_BUTTON) {
         sub_0804F6C8(menu);
     } else if (handleScrollingMenuNavigate(menu, &menu->cursorPos, input, 0,
-                                           (u32)(u16)(menu->_2 - 1)) == 2) {
+                                           (u32)(u16)(menu->_2 - 1)) == CURSOR_MOVED_AND_SCROLLED) {
         sub_08046D90();
         gSomeBlend._c5ad_1 = 1;
     }
@@ -1138,11 +1138,11 @@ extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputSt
             *cursor -= 1;
             if (menu->_6 > 1 && menu->_8 == (*cursor + 1)) {
                 menu->_8 = *cursor;
-                return 2;
+                return CURSOR_MOVED_AND_SCROLLED;
             }
-            return 1;
+            return CURSOR_MOVED;
         }
-        return 0;
+        return CURSOR_NO_CHANGE;
     }
 
     if (input->pressed & DPAD_DOWN) {
@@ -1151,14 +1151,14 @@ extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputSt
             *cursor += 1;
             if (*cursor >= menu->_8 + menu->_6) {
                 menu->_8++;
-                return 2;
+                return CURSOR_MOVED_AND_SCROLLED;
             }
-            return 1;
+            return CURSOR_MOVED;
         }
-        return 0;
+        return CURSOR_NO_CHANGE;
     }
 
-    return 0;
+    return CURSOR_NO_CHANGE;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_08053620());
