@@ -448,7 +448,13 @@ extern "C" void sub_08049F88() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049FB0.inc", void sub_08049FB0());
+extern "C" void sub_08049FB0() {
+    if (gSomeBlend._4261 != 0xC) {
+        sub_0804A1C0(0x14);
+        gSomeBlend._4261 = 0xC;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08049FD8.inc", void sub_08049FD8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A000.inc", void sub_0804A000());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A028.inc", void sub_0804A028());
