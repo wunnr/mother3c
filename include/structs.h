@@ -274,10 +274,10 @@ typedef struct Direction {
 
 typedef struct MenuState {
     u16 id;
-    u16 _2;
+    u16 numItems;
     u16 cursorPos;
-    u16 _6;
-    u16 _8;
+    u16 numItemsVisible;
+    u16 scrollOffset;
     u16 currentTab;
     s16 prevMenuID;
     u8 pad_e[0x20 - 0xE];

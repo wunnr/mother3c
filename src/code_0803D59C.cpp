@@ -630,7 +630,7 @@ extern "C" void sub_0804C35C() {
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->_8 = 0;
+    menu->scrollOffset = 0;
     sub_08054FE0(menu->currentTab);
     sub_08053148();
 }
@@ -640,7 +640,7 @@ extern "C" void sub_0804C398() {
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->_8 = 0;
+    menu->scrollOffset = 0;
     s32 unk = sub_08054FE0(menu->currentTab);
     sub_080524EC();
     sub_080531C8(unk);
@@ -705,8 +705,9 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
             play_sound(SFX_MENU_CANCEL);
             sub_080506CC(0);
         } else if (gSomeBlend._427e != 0) {
-            if (sub_08053968(&menu->cursorPos, &menu->_8, input, 2,
-                             (menu->_2 >> 1) + (1 & menu->_2), menu->_2, menu->_6) == 2) {
+            if (sub_08053968(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                             (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
+                             menu->numItemsVisible) == 2) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
@@ -772,7 +773,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, 1);
+    handleMenuNavigate(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, 1);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -816,7 +817,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, menu->_2 - 1, DPAD_DOWN, DPAD_UP, true);
+    handleMenuNavigate(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -915,7 +916,8 @@ extern "C" void sub_0804E118(InputState* input, MenuState* menu) {
     if (input->justPressed == A_BUTTON) {
         sub_0804F6C8(menu);
     } else if (handleScrollingMenuNavigate(menu, &menu->cursorPos, input, 0,
-                                           (u32)(u16)(menu->_2 - 1)) == CURSOR_MOVED_AND_SCROLLED) {
+                                           (u32)(u16)(menu->numItems - 1)) ==
+               CURSOR_MOVED_AND_SCROLLED) {
         sub_08046D90();
         gSomeBlend._c5ad_1 = 1;
     }
@@ -1136,8 +1138,8 @@ extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputSt
         if (*cursor != cursorMin) {
             play_sound(SFX_MENU_CURSOR_UD);
             *cursor -= 1;
-            if (menu->_6 > 1 && menu->_8 == (*cursor + 1)) {
-                menu->_8 = *cursor;
+            if (menu->numItemsVisible > 1 && menu->scrollOffset == (*cursor + 1)) {
+                menu->scrollOffset = *cursor;
                 return CURSOR_MOVED_AND_SCROLLED;
             }
             return CURSOR_MOVED;
@@ -1149,8 +1151,8 @@ extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputSt
         if (*cursor != cursorMax) {
             play_sound(SFX_MENU_CURSOR_UD);
             *cursor += 1;
-            if (*cursor >= menu->_8 + menu->_6) {
-                menu->_8++;
+            if (*cursor >= menu->scrollOffset + menu->numItemsVisible) {
+                menu->scrollOffset++;
                 return CURSOR_MOVED_AND_SCROLLED;
             }
             return CURSOR_MOVED;
