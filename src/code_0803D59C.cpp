@@ -476,7 +476,13 @@ extern "C" void sub_0804A028() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A050.inc", void sub_0804A050());
+extern "C" void sub_0804A050() {
+    if (gSomeBlend._4261 != 0x10) {
+        sub_0804A1C0(0x13);
+        gSomeBlend._4261 = 0x10;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A078.inc", void sub_0804A078());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A0A8.inc", void sub_0804A0A8());
 
