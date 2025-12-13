@@ -185,6 +185,12 @@ typedef struct Object {
 
 extern Object gUnknown_0200C3C8[];
 
+typedef struct TileInfo {
+    u16 tile_num : 10;    // 0x04 bits 0-9 - Tile/character number
+    u16 priority : 2;     // 0x04 bits 10-11 - Priority vs BG
+    u16 palette_num : 4;  // 0x04 bits 12-15 - Palette number
+} TileInfo;
+
 /* size: 8 bytes */
 typedef struct OAMEntry {
     // Attribute 0 (0x00-0x01)

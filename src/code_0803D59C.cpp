@@ -35,6 +35,7 @@ extern MenuFunc gMenuFuncTable[0x13];
 extern u8 gMenuData[];
 extern u8 gUnknown_0200F920;
 extern u8 gUnknown_02004100[];
+extern TileInfo gUnknown_02016078[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
@@ -555,7 +556,17 @@ extern "C" void sub_0804A1C0(u16 index) {
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A218.inc", void sub_0804A218(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A2E0.inc", void sub_0804A2E0(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A398.inc", void sub_0804A398());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A3F0.inc", void sub_0804A3F0());
+
+extern "C" void sub_0804A3F0() {
+    u16* tile = sub_08001378(&gUnknown_02016078, 2, 1, 0x12);
+
+    for (u16 i = 0; i < 0x12; i++) {
+        ((TileInfo*)&tile[i])->tile_num = 0x2C3;
+    }
+
+    gSomeBlend._50._2C44 = 1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A448.inc", void sub_0804A448(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A508.inc", void sub_0804A508(s32));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804A550.inc", void sub_0804A550());
