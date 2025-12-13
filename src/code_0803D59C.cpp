@@ -97,7 +97,7 @@ extern "C" void sub_0804A398();
 extern "C" void sub_0804A3F0();
 extern "C" void sub_08049AF8(void*);
 extern "C" void sub_0804F6C8(MenuState*);
-extern "C" u16 sub_08053598(MenuState*, u16*, InputState*, s32, s32);
+extern "C" u16 handleScrollingMenuNavigate(MenuState*, u16*, InputState*, u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -914,7 +914,8 @@ extern "C" void sub_0804E078(InputState* input, MenuState* menu) {
 extern "C" void sub_0804E118(InputState* input, MenuState* menu) {
     if (input->justPressed == A_BUTTON) {
         sub_0804F6C8(menu);
-    } else if (sub_08053598(menu, &menu->cursorPos, input, 0, (u32)(u16)(menu->_2 - 1)) == 2) {
+    } else if (handleScrollingMenuNavigate(menu, &menu->cursorPos, input, 0,
+                                           (u32)(u16)(menu->_2 - 1)) == 2) {
         sub_08046D90();
         gSomeBlend._c5ad_1 = 1;
     }
@@ -1124,7 +1125,42 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053384.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_080533F0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 minPos, u16 maxPos, u16 buttonPosUp, u16 buttonPosDown, u16 canCursorWrap));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053598.inc", u16 sub_08053598(MenuState*, u16*, InputState*, s32, s32));
+
+extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputState* input,
+                                           u16 cursorMin, u16 cursorMax) {
+    if (*cursor == 0 && cursorMax == 0) {
+        return 0;
+    }
+
+    if (input->pressed & DPAD_UP) {
+        if (*cursor != cursorMin) {
+            play_sound(SFX_MENU_CURSOR_UD);
+            *cursor -= 1;
+            if (menu->_6 > 1 && menu->_8 == (*cursor + 1)) {
+                menu->_8 = *cursor;
+                return 2;
+            }
+            return 1;
+        }
+        return 0;
+    }
+
+    if (input->pressed & DPAD_DOWN) {
+        if (*cursor != cursorMax) {
+            play_sound(SFX_MENU_CURSOR_UD);
+            *cursor += 1;
+            if (*cursor >= menu->_8 + menu->_6) {
+                menu->_8++;
+                return 2;
+            }
+            return 1;
+        }
+        return 0;
+    }
+
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_08053620());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
@@ -1505,7 +1541,7 @@ extern "C" void sub_0805AF34();
 extern "C" void sub_0805AD54();
 extern "C" void sub_08001960();
 extern "C" void sub_0805AE64();
-extern "C" void sub_08001778(void* arg1, u16 arg2, u16 arg3, u16 arg4);
+extern "C" void sub_08001778(void* arg1, u16 arg2, u16 cursorMin, u16 cursorMax);
 extern "C" void sub_080013D0(void*);
 extern "C" void sub_08001454(void*);
 extern "C" void resetInputState(InputState*, u16);
