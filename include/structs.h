@@ -326,8 +326,8 @@ typedef struct struct_02016028 {
     void* _2CB0;
     u16 _2CB4[0xA6];
     MenuState menus[0x13];
-    u8 _3060;
-    u8 pad_3061[0x30B4 - 0x3061];
+    MenuState _3060;
+    u8 pad_3080[0x30B4 - 0x3080];
     u8 pad_30B4[0x351B - 0x30B4];
     u32 _351C;
     u32 _3520;

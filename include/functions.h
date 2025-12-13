@@ -5,7 +5,6 @@
 
 typedef void (*DebugModeFunc)(InputState*, TransactionState*);
 typedef void (*MenuFunc)(InputState*, MenuState*);
-typedef void (*FuncTableType_09B8FF14)(InputState*, void*);
 
 extern "C" {
 

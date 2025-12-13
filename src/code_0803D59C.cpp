@@ -36,7 +36,7 @@ extern u8 gMenuData[];
 extern u8 gUnknown_0200F920;
 extern u8 gUnknown_02004100[];
 extern TileInfo gUnknown_02016078[];
-extern FuncTableType_09B8FF14 gUnknown_09B8FF14[];
+extern MenuFunc gUnknown_09B8FF14[];
 extern u8 gUnknown_0201AEF8[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
@@ -65,7 +65,7 @@ extern "C" void sub_080506CC(u16);
 extern "C" void sub_08054108();
 extern "C" void sub_08053804(u16*, InputState*, u16, u16, u16, u16);
 extern "C" void handleTryAgain(MenuState*);
-extern "C" void sub_0804E078(InputState*, void*);
+extern "C" void sub_0804E078(InputState*, MenuState*);
 extern "C" void sub_0804E16C(void*);
 extern "C" void sub_080506A4();
 extern "C" u16 sub_08050734(InputState*);
@@ -881,7 +881,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804DECC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804DF30.inc", void sub_0804DF30());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804DFE4.inc", void sub_0804DFE4());
 
-extern "C" void sub_0804E078(InputState* input, void* unk) {
+extern "C" void sub_0804E078(InputState* input, MenuState* menu) {
     if ((s8)gSomeBlend._44f2_1 == 0) {
         return;
     }
@@ -905,7 +905,7 @@ extern "C" void sub_0804E078(InputState* input, void* unk) {
     }
 
     if (gSomeBlend._41bc < 4) {
-        gUnknown_09B8FF14[gSomeBlend._41bc](input, unk);
+        gUnknown_09B8FF14[gSomeBlend._41bc](input, menu);
     }
 }
 
