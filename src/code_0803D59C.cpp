@@ -81,7 +81,7 @@ extern "C" void sub_0804EF9C(MenuState*);
 extern "C" void sub_0804F158(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
 extern "C" void sub_0804EF38(MenuState*);
-extern "C" u16 sub_08053968(u16*, void*, InputState*, s32, s32, s32, s32);
+extern "C" u16 handle2DMenuNavigate(u16*, u16*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
@@ -98,6 +98,8 @@ extern "C" void sub_0804A3F0();
 extern "C" void sub_08049AF8(void*);
 extern "C" void sub_0804F6C8(MenuState*);
 extern "C" u16 handleScrollingMenuNavigate(MenuState*, u16*, InputState*, u16, u16);
+extern "C" s32 Divide(s32 a, s32 b);
+extern "C" u16 sub_08002FD4(u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -705,9 +707,9 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
             play_sound(SFX_MENU_CANCEL);
             sub_080506CC(0);
         } else if (gSomeBlend._427e != 0) {
-            if (sub_08053968(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                             (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
-                             menu->numItemsVisible) == 2) {
+            if (handle2DMenuNavigate(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                                     (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
+                                     menu->numItemsVisible) == 2) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
@@ -1167,7 +1169,73 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053968.inc", u16 sub_08053968(u16*, void*, InputState*, s32, s32, s32, s32));
+
+extern "C" u16 handle2DMenuNavigate(u16* cursor, u16* scrollOffset, InputState* input,
+                                    u16 numColumns, u16 numRows, u16 numItems,
+                                    u16 numItemsVisible) {
+    u16 currentRow = Divide(*cursor, numColumns);
+    u16 currentColumn = sub_08002FD4(*cursor, numColumns);
+
+    if (input->pressed & DPAD_UP) {
+        if (currentRow != 0) {
+            play_sound(SFX_MENU_CURSOR_UD);
+            *cursor -= numColumns;
+            if (numItemsVisible > 1) {
+                if (*scrollOffset >= numColumns &&
+                    *scrollOffset + numColumns > *cursor + numColumns) {
+                    *scrollOffset = *scrollOffset - numColumns;
+                    return CURSOR_MOVED_AND_SCROLLED;
+                }
+            }
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & DPAD_DOWN) {
+        if (*cursor != numItems - 1 && currentRow < numRows - 1) {
+            play_sound(SFX_MENU_CURSOR_UD);
+            *cursor += numColumns;
+            *cursor = min(numItems - 1, *cursor);
+            if (*cursor >= *scrollOffset + numItemsVisible) {
+                *scrollOffset += numColumns;
+                return CURSOR_MOVED_AND_SCROLLED;
+            }
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & DPAD_LEFT) {
+        if (currentColumn == 0) {
+            if (*cursor + (numColumns - 1) < numItems) {
+                play_sound(SFX_MENU_CURSOR_LR);
+                *cursor += numColumns - 1;
+                return CURSOR_MOVED;
+            }
+            return CURSOR_NO_CHANGE;
+        }
+        play_sound(SFX_MENU_CURSOR_LR);
+        *cursor -= 1;
+        return CURSOR_MOVED;
+    }
+
+    if (input->pressed & DPAD_RIGHT) {
+        if (currentColumn == numColumns - 1) {
+            play_sound(SFX_MENU_CURSOR_LR);
+            *cursor = currentRow * numColumns;
+            return CURSOR_MOVED;
+        }
+        if (currentColumn < numColumns - 1 && *cursor + 1 < numItems) {
+            play_sound(SFX_MENU_CURSOR_LR);
+            *cursor += 1;
+            return CURSOR_MOVED;
+        }
+    }
+
+    return CURSOR_NO_CHANGE;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053AC8.inc", void sub_08053AC8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053C34.inc", void sub_08053C34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053E98.inc", s8 sub_08053E98(u16));

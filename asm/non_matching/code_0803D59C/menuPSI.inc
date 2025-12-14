@@ -143,7 +143,7 @@ _0804CE14:
 	str r2, [sp, #8]
 	adds r2, r7, #0
 	movs r3, #2
-	bl sub_08053968
+	bl handle2DMenuNavigate
 _0804CE34:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
