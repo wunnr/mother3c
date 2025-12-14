@@ -336,7 +336,8 @@ typedef struct struct_02016028 {
     u8 pad_3528[0x3530 - 0x3528];
     u8 _3530;
     u8 pad_3531[0x35BA - 0x3531];
-    u8 _35ba;
+    u8 _35ba_1 : 3;
+    u8 _35ba_8 : 1;
     u8 pad_35bb;
     TransactionState _35bc[7];
     u8 _3610[2];
@@ -406,7 +407,11 @@ typedef struct struct_02016028 {
     u8 _c5ad_1 : 1;
     u8 _c5ae[0xC620 - 0xC5AE];
     void* _C620;
-    u8 pad_C624[0x121b8 - 0xC624];
+    u8 pad_C624[0x121b6 - 0xC624];
+    u8 _121b6_1 : 1;
+    u8 _121b6_2 : 1;
+    u8 _121b6_4 : 6;
+    u8 _121b7;
     u8 _121b8_0 : 3;
     u8 _121b8_3 : 1;
     u8 _121b8_4 : 4;

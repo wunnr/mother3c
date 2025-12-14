@@ -4306,7 +4306,7 @@ u16 cmd_B4(s32* sp) {
 u16 cmd_load_sprite_table(s32* sp) {
     u16 a = scriptstack_peek(sp, 0);
     if (a < 5) {
-        gGame._2_2 = a;
+        gGame._2_40 = a;
     }
 
     return 0;
