@@ -133,7 +133,7 @@ _0804D028:
 	str r2, [sp, #8]
 	mov r2, r8
 	movs r3, #2
-	bl handle2DMenuNavigate
+	bl navigate2DMenu
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #2

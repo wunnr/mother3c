@@ -47,7 +47,7 @@ _0803A50C:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #3
-	bl menuTabNavigate
+	bl navigateMenuGeneric
 	b _0803A594
 _0803A536:
 	ldr r4, _0803A570
@@ -90,7 +90,7 @@ _0803A57C:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #2
-	bl menuTabNavigate
+	bl navigateMenuGeneric
 _0803A594:
 	add sp, #0xc
 	pop {r4}

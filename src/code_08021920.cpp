@@ -1195,7 +1195,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_71.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_72.inc", void nullsub_72());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_73.inc", void nullsub_73());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_74.inc", void nullsub_74());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/menuTabNavigate.inc", void menuTabNavigate());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/navigateMenuGeneric.inc", void navigateMenuGeneric());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803960C.inc", void sub_0803960C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039694.inc", void sub_08039694());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039738.inc", void sub_08039738());

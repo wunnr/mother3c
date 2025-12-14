@@ -81,7 +81,7 @@ extern "C" void sub_0804EF9C(MenuState*);
 extern "C" void sub_0804F158(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
 extern "C" void sub_0804EF38(MenuState*);
-extern "C" u16 handle2DMenuNavigate(u16*, u16*, InputState*, u16, u16, u16, u16);
+extern "C" u16 navigate2DMenu(u16*, u16*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
@@ -97,7 +97,7 @@ extern "C" void sub_0804A398();
 extern "C" void sub_0804A3F0();
 extern "C" void sub_08049AF8(void*);
 extern "C" void sub_0804F6C8(MenuState*);
-extern "C" u16 handleScrollingMenuNavigate(MenuState*, u16*, InputState*, u16, u16);
+extern "C" u16 navigateScrollingMenu(MenuState*, u16*, InputState*, u16, u16);
 extern "C" s32 Divide(s32 a, s32 b);
 extern "C" u16 sub_08002FD4(u16, u16);
 
@@ -707,9 +707,9 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
             play_sound(SFX_MENU_CANCEL);
             sub_080506CC(0);
         } else if (gSomeBlend._427e != 0) {
-            if (handle2DMenuNavigate(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                                     (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
-                                     menu->numItemsVisible) == 2) {
+            if (navigate2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                               (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
+                               menu->numItemsVisible) == 2) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
@@ -917,9 +917,8 @@ extern "C" void sub_0804E078(InputState* input, MenuState* menu) {
 extern "C" void sub_0804E118(InputState* input, MenuState* menu) {
     if (input->justPressed == A_BUTTON) {
         sub_0804F6C8(menu);
-    } else if (handleScrollingMenuNavigate(menu, &menu->cursorPos, input, 0,
-                                           (u32)(u16)(menu->numItems - 1)) ==
-               CURSOR_MOVED_AND_SCROLLED) {
+    } else if (navigateScrollingMenu(menu, &menu->cursorPos, input, 0,
+                                     (u32)(u16)(menu->numItems - 1)) == CURSOR_MOVED_AND_SCROLLED) {
         sub_08046D90();
         gSomeBlend._c5ad_1 = 1;
     }
@@ -1130,8 +1129,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 minPos, u16 maxPos, u16 buttonPosUp, u16 buttonPosDown, u16 canCursorWrap));
 
-extern "C" u16 handleScrollingMenuNavigate(MenuState* menu, u16* cursor, InputState* input,
-                                           u16 cursorMin, u16 cursorMax) {
+extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* input, u16 cursorMin,
+                                     u16 cursorMax) {
     if (*cursor == 0 && cursorMax == 0) {
         return 0;
     }
@@ -1170,9 +1169,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
 
-extern "C" u16 handle2DMenuNavigate(u16* cursor, u16* scrollOffset, InputState* input,
-                                    u16 numColumns, u16 numRows, u16 numItems,
-                                    u16 numItemsVisible) {
+extern "C" u16 navigate2DMenu(u16* cursor, u16* scrollOffset, InputState* input, u16 numColumns,
+                              u16 numRows, u16 numItems, u16 numItemsVisible) {
     u16 currentRow = Divide(*cursor, numColumns);
     u16 currentColumn = sub_08002FD4(*cursor, numColumns);
 

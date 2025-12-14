@@ -102,7 +102,7 @@ _0804D540:
 	adds r0, r2, #0
 	adds r2, r5, #0
 	movs r3, #0
-	bl handleScrollingMenuNavigate
+	bl navigateScrollingMenu
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #2

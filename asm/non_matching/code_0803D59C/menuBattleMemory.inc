@@ -165,7 +165,7 @@ _0804D2BC:
 	adds r1, r7, #0
 	adds r2, r4, #0
 	movs r3, #0
-	bl handleScrollingMenuNavigate
+	bl navigateScrollingMenu
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 _0804D2FE:

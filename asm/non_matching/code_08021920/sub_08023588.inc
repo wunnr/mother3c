@@ -153,7 +153,7 @@ _080236B2:
 	str r2, [sp, #8]
 	adds r1, r5, #0
 	movs r2, #0
-	bl menuTabNavigate
+	bl navigateMenuGeneric
 	b _08023738
 	.align 2, 0
 _080236C0: .4byte 0x00004B08
@@ -196,7 +196,7 @@ _080236FC:
 _0802370E:
 	adds r1, r5, #0
 	movs r2, #0
-	bl menuTabNavigate
+	bl navigateMenuGeneric
 	add r1, sp, #0xc
 	strh r0, [r1]
 	add r0, sp, #0xc

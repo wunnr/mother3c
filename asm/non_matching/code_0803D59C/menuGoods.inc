@@ -151,7 +151,7 @@ _0804CBD4:
 	str r2, [sp, #8]
 	mov r2, r8
 	movs r3, #2
-	bl handle2DMenuNavigate
+	bl navigate2DMenu
 	b _0804CC1C
 _0804CBF6:
 	ldr r2, _0804CC40
