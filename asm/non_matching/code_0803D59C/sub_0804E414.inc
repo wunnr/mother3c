@@ -19,7 +19,7 @@ _0804E426:
 	adds r0, r4, #0
 	movs r2, #0
 	movs r3, #6
-	bl handleMenuNavigate
+	bl navigate1DMenuChecked
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804E460

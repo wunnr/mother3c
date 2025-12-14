@@ -130,7 +130,7 @@ _0804D578:
 	str r1, [sp, #8]
 	adds r1, r5, #0
 	movs r2, #0
-	bl handleMenuNavigate
+	bl navigate1DMenuChecked
 _0804D594:
 	ldr r6, _0804D5D8
 	adds r0, r6, #4

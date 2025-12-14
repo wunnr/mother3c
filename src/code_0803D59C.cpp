@@ -71,7 +71,7 @@ extern "C" void sub_080506A4();
 extern "C" u16 sub_08050734(InputState*);
 extern "C" s8 sub_08053E98(u16);
 extern "C" void sub_0804F190(MenuState*);
-extern "C" void handleMenuNavigate(u16*, InputState*, u16, u16, u16, u16, u16);
+extern "C" u16 navigate1DMenuChecked(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
 extern "C" void sub_08053148();
 extern "C" s32 sub_08054FE0(u16);
@@ -754,7 +754,7 @@ extern "C" void menuShopTransactionSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
+    navigate1DMenuChecked(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
 }
 
 extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
@@ -775,7 +775,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, 1);
+    navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, 1);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -798,7 +798,7 @@ extern "C" void menuItemGuyTransactionSelect(InputState* input, MenuState* menu)
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
+    navigate1DMenuChecked(&menu->cursorPos, input, 0, 2, DPAD_DOWN, DPAD_UP, true);
 }
 
 extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
@@ -819,7 +819,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    handleMenuNavigate(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
+    navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -1127,7 +1127,52 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080532E0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053384.inc", void sub_08053384());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_080533F0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax, u16 buttonUp, u16 buttonDown, u16 canWrap));
+
+extern "C" u16 navigate1DMenuChecked(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax,
+                                     u16 buttonUp, u16 buttonDown, vu16 canWrap) {
+    if (*cursor == 0 && cursorMax == 0) {
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & buttonDown) {
+        if (*cursor != cursorMin) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor -= 1;
+            return CURSOR_MOVED;
+        } else if (canWrap) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMax;
+            return CURSOR_MOVED;
+        }
+    } else if (input->pressed & buttonUp) {
+        if (*cursor != cursorMax) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor += 1;
+            return CURSOR_MOVED;
+        } else if (canWrap) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMin;
+            return CURSOR_MOVED;
+        }
+    }
+    return CURSOR_NO_CHANGE;
+}
 
 extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* input, u16 cursorMin,
                                      u16 cursorMax) {

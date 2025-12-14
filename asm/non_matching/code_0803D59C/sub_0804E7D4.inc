@@ -22,7 +22,7 @@ _0804E7E6:
 	str r1, [sp, #8]
 	adds r1, r2, #0
 	movs r2, #0
-	bl handleMenuNavigate
+	bl navigate1DMenuChecked
 _0804E804:
 	add sp, #0xc
 	pop {r0}

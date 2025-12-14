@@ -61,7 +61,7 @@ _0804DFA0:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #6
-	bl handleMenuNavigate
+	bl navigate1DMenuChecked
 	ldr r2, _0804DFD8
 	ldr r0, _0804DFDC
 	adds r3, r2, r0

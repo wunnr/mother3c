@@ -95,7 +95,7 @@ _0804DAB0:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #1
-	bl handleMenuNavigate
+	bl navigate1DMenuChecked
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804DB3E
