@@ -1233,7 +1233,55 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_71.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_72.inc", void nullsub_72());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_73.inc", void nullsub_73());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_74.inc", void nullsub_74());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/navigateMenuGeneric.inc", void navigateMenuGeneric());
+
+extern "C" u16 navigate1DMenu(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax,
+                              u16 buttonUp, u16 buttonDown, vu16 canWrap) {
+    if (input->pressed & buttonDown) {
+        if (*cursor != cursorMin) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor -= 1;
+            return CURSOR_MOVED;
+        }
+        if (canWrap) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMax;
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & buttonUp) {
+        if (*cursor != cursorMax) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor += 1;
+            return CURSOR_MOVED;
+        }
+        if (canWrap) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMin;
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+    return CURSOR_NO_CHANGE;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803960C.inc", void sub_0803960C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039694.inc", void sub_08039694());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039738.inc", void sub_08039738());

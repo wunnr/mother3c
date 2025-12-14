@@ -53,7 +53,7 @@ _08037EA8:
 	str r1, [sp, #8]
 	adds r1, r4, #0
 	movs r2, #0
-	bl navigateMenuGeneric
+	bl navigate1DMenu
 _08037EC6:
 	add sp, #0xc
 	pop {r4}

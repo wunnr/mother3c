@@ -1127,7 +1127,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080532E0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053384.inc", void sub_08053384());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_080533F0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 minPos, u16 maxPos, u16 buttonPosUp, u16 buttonPosDown, u16 canCursorWrap));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/handleMenuNavigate.inc", void handleMenuNavigate(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax, u16 buttonUp, u16 buttonDown, u16 canWrap));
 
 extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* input, u16 cursorMin,
                                      u16 cursorMax) {

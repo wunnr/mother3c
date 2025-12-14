@@ -73,7 +73,7 @@ _0803AD28:
 	adds r1, r3, #0
 	movs r2, #0
 	movs r3, #1
-	bl navigateMenuGeneric
+	bl navigate1DMenu
 _0803AD40:
 	add sp, #0xc
 	pop {r4}
