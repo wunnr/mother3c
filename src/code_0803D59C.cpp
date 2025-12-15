@@ -716,7 +716,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         return;
     }
 
-    if (sub_08053754(&menu->currentTab, input, 0, (u16)(menu->numItems - 1), isCancel) !=
+    if (sub_08053754(&menu->currentTab, input, 0, menu->numItems - 1, isCancel) !=
         CURSOR_NO_CHANGE) {
         gSomeBlend._4264 = (s8)menu->currentTab;
         sub_0804BE64();
@@ -729,14 +729,14 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         if (gSomeBlend._426a != 0) {
             if (gSomeBlend._426a < 0x11) {
                 if (sub_08053AC8(&menu->cursorPos, input, 2,
-                                 (gSomeBlend._426a >> 1) + (gSomeBlend._426a & 1), gSomeBlend._426a,
+                                 TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a), gSomeBlend._426a,
                                  menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
                     sub_08046D90();
                     gSomeBlend._c5ad_1 = 1;
                 }
             } else {
                 if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                                            (gSomeBlend._426a >> 1) + (gSomeBlend._426a & 1),
+                                            TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a),
                                             gSomeBlend._426a,
                                             menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
                     sub_08046D90();
@@ -746,8 +746,8 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         }
     } else {
         if (gSomeBlend._426c != 0) {
-            if (sub_08053AC8(&menu->cursorPos, input, 2,
-                             (gSomeBlend._426c >> 1) + (gSomeBlend._426c & 1), gSomeBlend._426c,
+            if (sub_08053AC8(&menu->cursorPos, input, 2, TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426c),
+                             gSomeBlend._426c,
                              menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
@@ -777,8 +777,8 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
             sub_080506CC(0);
         } else if (gSomeBlend._427e != 0) {
             if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                                        (menu->numItems >> 1) + (1 & menu->numItems),
-                                        menu->numItems, menu->numItemsVisible) == 2) {
+                                        TWO_COLUMN_MENU_HEIGHT(menu->numItems), menu->numItems,
+                                        menu->numItemsVisible) == 2) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
