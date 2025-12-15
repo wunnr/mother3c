@@ -100,6 +100,10 @@ extern "C" void sub_0804F6C8(MenuState*);
 extern "C" u16 navigateScrollingMenu(MenuState*, u16*, InputState*, u16, u16);
 extern "C" s32 Divide(s32 a, s32 b);
 extern "C" u16 sub_08002FD4(u16, u16);
+extern "C" u16 sub_08053AC8(void*, InputState*, u16, u16, u16, u16);
+extern "C" void sub_0804EA28(MenuState*);
+extern "C" void sub_0804EAA4(MenuState*);
+extern "C" u16 sub_08053754(void*, InputState*, u16, u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -686,7 +690,72 @@ extern "C" void exec_menu(InputState* input) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuGoods.inc", void menuGoods());
+extern "C" void menuGoods(InputState* input, MenuState* menu) {
+    if ((s8)gSomeBlend._44f2_1 == 0) {
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        if (menu->currentTab >= gSomeBlend._2CB4[0xA3]) {
+            if (gSomeBlend._426a != 0) {
+                sub_0804EAA4(menu);
+            }
+            return;
+        }
+        if (gSomeBlend._426c == 0) {
+            return;
+        }
+        sub_0804EA28(menu);
+        return;
+    }
+
+    u16 isCancel = input->justPressed & B_BUTTON;
+    if (isCancel) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    }
+
+    if (sub_08053754(&menu->currentTab, input, 0, (u16)(menu->numItems - 1), isCancel) !=
+        CURSOR_NO_CHANGE) {
+        gSomeBlend._4264 = (s8)menu->currentTab;
+        sub_0804BE64();
+        sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
+        sub_08046D90();
+        return;
+    }
+
+    if (menu->currentTab >= gSomeBlend._2CB4[0xA3]) {
+        if (gSomeBlend._426a != 0) {
+            if (gSomeBlend._426a < 0x11) {
+                if (sub_08053AC8(&menu->cursorPos, input, 2,
+                                 (gSomeBlend._426a >> 1) + (gSomeBlend._426a & 1), gSomeBlend._426a,
+                                 menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+                    sub_08046D90();
+                    gSomeBlend._c5ad_1 = 1;
+                }
+            } else {
+                if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                                            (gSomeBlend._426a >> 1) + (gSomeBlend._426a & 1),
+                                            gSomeBlend._426a,
+                                            menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+                    sub_08046D90();
+                    gSomeBlend._c5ad_1 = 1;
+                }
+            }
+        }
+    } else {
+        if (gSomeBlend._426c != 0) {
+            if (sub_08053AC8(&menu->cursorPos, input, 2,
+                             (gSomeBlend._426c >> 1) + (gSomeBlend._426c & 1), gSomeBlend._426c,
+                             menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+                sub_08046D90();
+                gSomeBlend._c5ad_1 = 1;
+            }
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuEquip.inc", void menuEquip());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804CCF4.inc", void sub_0804CCF4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuPSI.inc", void menuPSI());
@@ -941,8 +1010,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804E968.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804E998.inc", void sub_0804E998());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804E9C8.inc", void sub_0804E9C8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804E9F8.inc", void sub_0804E9F8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EA28.inc", void sub_0804EA28());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EAA4.inc", void sub_0804EAA4());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EA28.inc", void sub_0804EA28(MenuState*));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EAA4.inc", void sub_0804EAA4(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EB68.inc", void sub_0804EB68());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804ECC8.inc", void sub_0804ECC8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EDFC.inc", void sub_0804EDFC());
@@ -1211,7 +1280,7 @@ extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* i
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_08053620());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", u16 sub_08053754(void*, InputState*, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
 
 extern "C" u16 navigateScrolling2DMenu(u16* cursor, u16* scrollOffset, InputState* input,
@@ -1280,7 +1349,7 @@ extern "C" u16 navigateScrolling2DMenu(u16* cursor, u16* scrollOffset, InputStat
     return CURSOR_NO_CHANGE;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053AC8.inc", void sub_08053AC8());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053AC8.inc", u16 sub_08053AC8(void*, InputState*, u16, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053C34.inc", void sub_08053C34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053E98.inc", s8 sub_08053E98(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053EEC.inc", void sub_08053EEC());
