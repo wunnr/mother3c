@@ -81,7 +81,7 @@ extern "C" void sub_0804EF9C(MenuState*);
 extern "C" void sub_0804F158(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
 extern "C" void sub_0804EF38(MenuState*);
-extern "C" u16 navigate2DMenu(u16*, u16*, InputState*, u16, u16, u16, u16);
+extern "C" u16 navigateScrolling2DMenu(u16*, u16*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
@@ -707,9 +707,9 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
             play_sound(SFX_MENU_CANCEL);
             sub_080506CC(0);
         } else if (gSomeBlend._427e != 0) {
-            if (navigate2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                               (menu->numItems >> 1) + (1 & menu->numItems), menu->numItems,
-                               menu->numItemsVisible) == 2) {
+            if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                                        (menu->numItems >> 1) + (1 & menu->numItems),
+                                        menu->numItems, menu->numItemsVisible) == 2) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
@@ -1214,8 +1214,9 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", void sub_08053754());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
 
-extern "C" u16 navigate2DMenu(u16* cursor, u16* scrollOffset, InputState* input, u16 numColumns,
-                              u16 numRows, u16 numItems, u16 numItemsVisible) {
+extern "C" u16 navigateScrolling2DMenu(u16* cursor, u16* scrollOffset, InputState* input,
+                                       u16 numColumns, u16 numRows, u16 numItems,
+                                       u16 numItemsVisible) {
     u16 currentRow = Divide(*cursor, numColumns);
     u16 currentColumn = sub_08002FD4(*cursor, numColumns);
 
