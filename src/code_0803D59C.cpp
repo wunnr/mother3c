@@ -1152,7 +1152,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AA90.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AB48.inc", void sub_0805AB48());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AC30.inc", void sub_0805AC30());
 
-extern const u8 gGBPlayerLogoPalette[0x200];
+extern const u16 gGBPlayerLogoPalette[0x100];
 extern const u8 gGBPlayerLogoGfx[0x4000];
 extern const u8 gGBPlayerLogoLayout[0x500];
 extern u8 gUnknown_020050B0;
