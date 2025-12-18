@@ -1326,7 +1326,68 @@ extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* i
     return CURSOR_NO_CHANGE;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/navigatePageableMenu.inc", void navigatePageableMenu());
+extern "C" u16 navigatePageableMenu(MenuState* menu, u16* cursor, InputState* input, u16 cursorMin,
+                                    u16 cursorMax) {
+    if (*cursor == 0 && cursorMax == 0) {
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & DPAD_LEFT) {
+        if (*cursor != cursorMin) {
+            play_sound(SFX_MENU_CURSOR_LR);
+            if (*cursor < menu->numItemsVisible) {
+                *cursor = cursorMin;
+                if (menu->scrollOffset != cursorMin) {
+                    menu->scrollOffset = cursorMin;
+                    return CURSOR_MOVED_AND_SCROLLED;
+                }
+                return CURSOR_MOVED;
+            }
+
+            if (*cursor < (menu->numItemsVisible * 2)) {
+                *cursor -= menu->numItemsVisible;
+                menu->scrollOffset = cursorMin;
+            } else {
+                *cursor -= menu->numItemsVisible;
+                menu->scrollOffset -= menu->numItemsVisible;
+            }
+            return CURSOR_MOVED_AND_SCROLLED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & DPAD_RIGHT && *cursor != cursorMax) {
+        play_sound(SFX_MENU_CURSOR_LR);
+        if (cursorMax < menu->numItemsVisible) {
+            *cursor = cursorMax;
+            if (menu->scrollOffset != cursorMin) {
+                menu->scrollOffset = cursorMin;
+                return CURSOR_MOVED_AND_SCROLLED;
+            }
+            return CURSOR_MOVED;
+        }
+
+        if (*cursor > cursorMax - menu->numItemsVisible) {
+            *cursor = cursorMax;
+            if (menu->scrollOffset != cursorMax - menu->numItemsVisible + 1) {
+                menu->scrollOffset = cursorMax - menu->numItemsVisible + 1;
+                return CURSOR_MOVED_AND_SCROLLED;
+            }
+            return CURSOR_MOVED;
+        }
+
+        if (*cursor > cursorMax - (menu->numItemsVisible * 2)) {
+            *cursor += menu->numItemsVisible;
+            menu->scrollOffset = cursorMax - menu->numItemsVisible + 1;
+        } else {
+            *cursor += menu->numItemsVisible;
+            menu->scrollOffset += menu->numItemsVisible;
+        }
+        return CURSOR_MOVED_AND_SCROLLED;
+    }
+    return CURSOR_NO_CHANGE;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", u16 sub_08053754(void*, InputState*, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
