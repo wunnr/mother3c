@@ -1064,7 +1064,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EB68.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804ECC8.inc", void sub_0804ECC8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EDFC.inc", void sub_0804EDFC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_21.inc", void nullsub_21());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EE64.inc", void sub_0804EE64());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/toggleBattleMemorySprite.inc", void toggleBattleMemorySprite());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
@@ -1326,7 +1326,7 @@ extern "C" u16 navigateScrollingMenu(MenuState* menu, u16* cursor, InputState* i
     return CURSOR_NO_CHANGE;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053620.inc", void sub_08053620());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/navigatePageableMenu.inc", void navigatePageableMenu());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", u16 sub_08053754(void*, InputState*, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));

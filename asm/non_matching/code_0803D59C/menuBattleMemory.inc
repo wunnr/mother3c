@@ -89,7 +89,7 @@ _0804D248:
 	cmp r0, #0
 	beq _0804D25A
 	adds r0, r5, #0
-	bl sub_0804EE64
+	bl toggleBattleMemorySprite
 	b _0804D384
 _0804D25A:
 	movs r0, #8
@@ -150,7 +150,7 @@ _0804D2BC:
 	adds r1, r7, #0
 	adds r2, r4, #0
 	movs r3, #0
-	bl sub_08053620
+	bl navigatePageableMenu
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #0
