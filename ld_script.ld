@@ -148,6 +148,8 @@ SECTIONS
         build/mother3/src/data/monsterData.o(.rodata);
         build/mother3/src/data/monsterSkillData.o(.rodata);
         build/mother3/data/data1b.o(.rodata);
+        build/mother3/data/gPsiData.o(.rodata);
+        build/mother3/data/data1d.o(.rodata);
         build/mother3/data/data2.o(.rodata);
 		build/mother3/src/m4a_tables.o(.rodata);
 		build/mother3/data/sound_data.o(.rodata);
