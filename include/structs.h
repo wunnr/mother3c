@@ -498,6 +498,14 @@ typedef struct PsiInfo {
     u8 level;
 } PsiInfo;
 
+typedef struct PsiSkillInfo {
+    u32 psi_num;
+    u32 type;
+    u32 overworld_usable;
+    u32 pp_cost;
+    MoveInfo move;
+} PsiSkillInfo;
+
 typedef struct LevelStats {
     u8 ch_no;
     u16 ch_start_level;
