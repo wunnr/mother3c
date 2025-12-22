@@ -1240,10 +1240,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053034.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053148.inc", void sub_08053148());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080531C8.inc", void sub_080531C8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053234.inc", void sub_08053234());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080532E0.inc", void sub_080532E0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053384.inc", void sub_08053384());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080533F0.inc", void sub_080533F0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805345C.inc", void sub_0805345C());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sortPsi.inc", void sortPsi());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/loadSupportPsi.inc", void loadSupportPsi());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/loadOffensePsi.inc", void loadOffensePsi());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/loadAssistPsi.inc", void loadAssistPsi());
 
 extern "C" u16 navigate1DMenuChecked(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax,
                                      u16 buttonUp, u16 buttonDown, vu16 canWrap) {

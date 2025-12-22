@@ -64,7 +64,7 @@ _08052D8C:
 	ldrb r2, [r0]
 	mov r0, ip
 	adds r1, r7, #0
-	bl sub_080532E0
+	bl sortPsi
 _08052D9A:
 	add sp, #4
 	pop {r3, r4, r5}

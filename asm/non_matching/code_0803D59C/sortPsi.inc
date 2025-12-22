@@ -1,5 +1,5 @@
 	.syntax unified
-sub_080532E0:
+sortPsi:
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x80
 	adds r5, r0, #0
@@ -26,43 +26,43 @@ _0805330C:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	mov r2, sp
-	bl sub_08053384
+	bl loadSupportPsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_080533F0
+	bl loadOffensePsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_0805345C
+	bl loadAssistPsi
 	b _0805336A
 _0805332C:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	mov r2, sp
-	bl sub_080533F0
+	bl loadOffensePsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_0805345C
+	bl loadAssistPsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08053384
+	bl loadSupportPsi
 	b _0805336A
 _0805334C:
 	adds r0, r5, #0
 	adds r1, r6, #0
 	mov r2, sp
-	bl sub_0805345C
+	bl loadAssistPsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08053384
+	bl loadSupportPsi
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_080533F0
+	bl loadOffensePsi
 _0805336A:
 	lsls r1, r6, #7
 	ldr r0, _08053380

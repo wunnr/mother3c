@@ -63,7 +63,7 @@ _0804CD80:
 	ldrh r1, [r5, #0xa]
 	ldrb r2, [r2]
 	adds r0, r3, #0
-	bl sub_080532E0
+	bl sortPsi
 	bl sub_08046D90
 	b _0804CE4C
 	.align 2, 0
