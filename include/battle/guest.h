@@ -62,7 +62,7 @@ public:
     u16 mID;
     u16 _fa;
     CharStats* mStats;
-    void* mLevelInfo;
+    const LevelStats* mLevelInfo;
 };
 
 extern "C" {

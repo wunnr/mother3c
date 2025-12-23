@@ -518,7 +518,7 @@ typedef struct LevelStats {
     PsiLearnInfo psi_table[32];
     u32 attack_sounds;
 } LevelStats;
-extern LevelStats gLevelStatTable[];
+extern const LevelStats gLevelStatTable[];
 static_assert(sizeof(LevelStats) == 0x144);
 
 typedef struct GoodsInfo {
