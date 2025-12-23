@@ -493,18 +493,18 @@ typedef struct Stats {
 } Stats;
 static_assert(sizeof(Stats) == 0x10);
 
-typedef struct PsiInfo {
+typedef struct PsiLearnInfo {
     u16 psi_no;
     u8 level;
-} PsiInfo;
+} PsiLearnInfo;
 
-typedef struct PsiSkillInfo {
+typedef struct PsiInfo {
     u32 psi_num;
     u32 type;
     u32 overworld_usable;
     u32 pp_cost;
     MoveInfo move;
-} PsiSkillInfo;
+} PsiInfo;
 
 typedef struct LevelStats {
     u8 ch_no;
@@ -515,7 +515,7 @@ typedef struct LevelStats {
     u8 overworld_playable;
     u8 battle_playable;
     u16 animal_value;
-    PsiInfo psi_table[32];
+    PsiLearnInfo psi_table[32];
     u32 attack_sounds;
 } LevelStats;
 extern LevelStats gLevelStatTable[];

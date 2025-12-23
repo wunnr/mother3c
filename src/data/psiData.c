@@ -1,6 +1,6 @@
 #include "structs.h"
 
-const PsiSkillInfo gPsiData[] = {
+const PsiInfo gPsiData[] = {
 	{
 		/*      PSI_NUMBER     */  0x0, /*         TYPE        */  0x0, /* USABLE_IN_OVERWORLD */  0x0,
 		/*       PP_COST       */  0x0, /*        EFFECT       */  0x2, /*       ELEMENT       */  0x0,
