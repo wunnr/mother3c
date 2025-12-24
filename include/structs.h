@@ -547,6 +547,11 @@ typedef struct GoodsInfo {
 } GoodsInfo;
 extern const GoodsInfo gGoodsInfo[];
 
+typedef struct ShopInfo {
+    u16 items[30];
+} ShopInfo;
+extern const ShopInfo gShopInfo[];
+
 typedef struct SystemEntry {
     u8 data[0x2A];
     u8 _2A[8];

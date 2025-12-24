@@ -1,9 +1,5 @@
     .section .rodata
 
-    .global gShopData
-gShopData:
-    .incbin "baserom.gba", 0x000EBD08, 0x870
-
     .global gUnknown_080EC578
 gUnknown_080EC578:
     .incbin "baserom.gba", 0x000EC578, 0x3B8

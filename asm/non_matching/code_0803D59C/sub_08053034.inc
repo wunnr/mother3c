@@ -84,7 +84,7 @@ _080530A8:
 	.align 2, 0
 _080530D4: .4byte gUnknown_02019D6C
 _080530D8: .4byte 0x0000053C
-_080530DC: .4byte gShopData
+_080530DC: .4byte gShopInfo
 _080530E0: .4byte 0xFFFFC2BC
 _080530E4: .4byte gGoodsInfo
 _080530E8: .4byte gGoodsInfo+0x4

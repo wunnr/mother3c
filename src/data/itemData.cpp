@@ -5636,3 +5636,366 @@ const GoodsInfo gGoodsInfo[] = {
 		/*       PAD_69      */               0x0, /*     CONSUMABLE    */               0x0
 	}
 };
+
+const ShopInfo gShopInfo[] = {
+	{
+		ItemLightersLumber,    ItemFreshLumber,          ItemStick,    ItemBetterStick,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty
+	},
+	{
+		   ItemAntidote,    ItemPaperFan, ItemAlarmCicada,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty
+	},
+	{
+		     ItemKidsShirt,        ItemKidsHat, ItemPiscesBracelet,  ItemSprintingBomb,
+		      ItemAntidote,       ItemPaperFan,    ItemAlarmCicada,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty
+	},
+	{
+		   ItemOffenseSpray,    ItemDefenseSpray, ItemEnemyBufferizer, ItemEnemyWimperizer,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		 ItemFizzySoda,  ItemBeefJerky,   ItemAntidote,   ItemPaperFan,
+		  ItemEyeDrops, ItemFleaPowder,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty,      ItemEmpty,      ItemEmpty,
+		     ItemEmpty,      ItemEmpty
+	},
+	{
+		      ItemBigCitySoda,       ItemBigCityCola,     ItemBigCityBurger, ItemBagOfBigCityFries,
+		     ItemDoggyBiscuit,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty
+	},
+	{
+		  ItemBetterStick,     ItemBreadRoll,      ItemAntidote, ItemAntiParalysis,
+		ItemSprintingBomb,  ItemPencilRocket,      ItemBugSpray,   ItemMadeYouLook,
+		        ItemEmpty,         ItemEmpty,         ItemEmpty,         ItemEmpty,
+		        ItemEmpty,         ItemEmpty,         ItemEmpty,         ItemEmpty,
+		        ItemEmpty,         ItemEmpty,         ItemEmpty,         ItemEmpty,
+		        ItemEmpty,         ItemEmpty,         ItemEmpty,         ItemEmpty,
+		        ItemEmpty,         ItemEmpty,         ItemEmpty,         ItemEmpty,
+		        ItemEmpty,         ItemEmpty
+	},
+	{
+		ItemEnemyWimperizer,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		ItemCupOfPorkNoodles,    ItemAntiParalysis,        ItemFreshMint,         ItemPaperFan,
+		ItemRecollectionBell,         ItemEyeDrops,       ItemSecretHerb,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		      ItemBetterStick,     ItemDurableGloves,        ItemSharpShoes,          ItemFlyCharm,
+		   ItemSparrowBandana,       ItemAzureRibbon, ItemCapricornBracelet,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty
+	},
+	{
+		       ItemHandyYoYo,    ItemSouvenirDress,   ItemTaurusBracelet,   ItemBagOfPorkChips,
+		ItemCupOfPorkNoodles,        ItemFreshMint,       ItemSecretHerb,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		   ItemPencilRocket,            ItemBomb,       ItemSuperBomb, ItemNewYearsEveBomb,
+		   ItemSaltwaterGun,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		   ItemVeryGoodStick, ItemCupOfPorkNoodles,         ItemPorkStew,         ItemAntidote,
+		        ItemEyeDrops,    ItemAntiParalysis,        ItemFreshMint,       ItemSecretHerb,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		       ItemGoodStick,      ItemRubberBoots,      ItemBrownCollar, ItemCupOfPorkNoodles,
+		   ItemAntiParalysis,        ItemFreshMint,         ItemPaperFan,       ItemSecretHerb,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		      ItemRubberCape, ItemCupOfPorkNoodles,     ItemLuxuryBanana,    ItemAntiParalysis,
+		        ItemPaperFan,         ItemEyeDrops,       ItemSecretHerb,     ItemPencilRocket,
+		     ItemMadeYouLook,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,        ItemWarmSweater,        ItemBantamCharm,            ItemBearHat,
+		       ItemWhiteRibbon,     ItemCancerBracelet,        ItemDoubleJerky,         ItemFleaPowder,
+		        ItemSecretHerb,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		     ItemFunnyStick,          ItemSevolg,   ItemBarefootShoes,    ItemFlamePendant,
+		     ItemIcePendant,  ItemThunderPendant,     ItemBoingRibbon,     ItemRailBandana,
+		    ItemLeoBracelet,     ItemHoneyShower, ItemAttackAttractor,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		  ItemWhiteCroissant,   ItemStrawberryTofu,        ItemLuckyRice,        ItemLottoMeal,
+		      ItemDoggyJerky,       ItemSecretHerb, ItemCupOfLifenoodles,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,      ItemAntiParalysis,        ItemAlarmCicada,           ItemPaperFan,
+		  ItemRecollectionBell,         ItemFleaPowder,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		     ItemFreshMilk, ItemStrawberryTofu, ItemPeculiarCheese,      ItemBreadRoll,
+		     ItemFreshMilk,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty
+	},
+	{
+		      ItemDCMCPamphlet,          ItemDCMCShirt,            ItemDCMCHat,           ItemDCMCRing,
+		ItemPickledVeggiePlate,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty
+	},
+	{
+		        ItemAlohaCoat,   ItemJumboShrimpSoup, ItemGiantAbaloneSteak,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,        ItemSpikyWeapon,       ItemFeatherCharm,      ItemLibraBracelet,
+		       ItemDoubleJerky,        ItemAlarmCicada,   ItemRecollectionBell,         ItemFleaPowder,
+		        ItemSecretHerb,   ItemCupOfLifenoodles,       ItemPencilRocket,           ItemBugSpray,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,        ItemCleverStick,       ItemStrongGloves,       ItemNonSlipShoes,
+		          ItemOtterHat,        ItemCrowBandana,        ItemPumiceCharm,        ItemGrilledFish,
+		    ItemGrilledChicken,      ItemAntiParalysis,        ItemAlarmCicada,         ItemSecretHerb,
+		  ItemCupOfLifenoodles,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty, ItemEmpty, ItemEmpty,
+		ItemEmpty, ItemEmpty
+	},
+	{
+		     ItemNutCookie,       ItemNutBread,      ItemBreadRoll, ItemPeculiarCheese,
+		     ItemFreshMilk,       ItemFreshEgg,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty
+	},
+	{
+		ItemSincerityDumplings,     ItemGrilledChicken,         ItemSecretHerb,   ItemCupOfLifenoodles,
+		     ItemSprintingBomb,       ItemPencilRocket,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty,              ItemEmpty,              ItemEmpty,
+		             ItemEmpty,              ItemEmpty
+	},
+	{
+		    ItemMasterStick, ItemExpensiveGloves,       ItemGoodShoes,      ItemHeavyCharm,
+		    ItemKiteBandana, ItemScorpioBracelet,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		ItemHotDogSushi,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty,       ItemEmpty,       ItemEmpty,
+		      ItemEmpty,       ItemEmpty
+	},
+	{
+		          ItemFakeBat,     ItemFakeFryingPan,            ItemRedHat,       ItemAngelRibbon,
+		   ItemBagOfPorkChips,  ItemCupOfPorkNoodles,     ItemBigCityBurger, ItemBagOfBigCityFries,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty,             ItemEmpty,             ItemEmpty,
+		            ItemEmpty,             ItemEmpty
+	},
+	{
+		    ItemKingBurger,      ItemBeefsteak, ItemPastaWithAPast,  ItemFavoritePizza,
+		   ItemRichKidStew,    ItemRichParfait,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty,          ItemEmpty,          ItemEmpty,
+		         ItemEmpty,          ItemEmpty
+	},
+	{
+		     ItemDoubleJerky,         ItemAntidote,        ItemFreshMint,       ItemSecretHerb,
+		ItemCupOfLifenoodles,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	},
+	{
+		   ItemPencilRocket,            ItemBomb,       ItemSuperBomb, ItemNewYearsEveBomb,
+		   ItemSaltwaterGun,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty,           ItemEmpty,           ItemEmpty,
+		          ItemEmpty,           ItemEmpty
+	},
+	{
+		  ItemGrilledChicken,       ItemSecretHerb, ItemCupOfLifenoodles,     ItemOffenseSpray,
+		    ItemDefenseSpray,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty,            ItemEmpty,            ItemEmpty,
+		           ItemEmpty,            ItemEmpty
+	}
+};
