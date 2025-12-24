@@ -13,5 +13,5 @@ sub_0801B4C4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B4E0: .4byte gUnknown_09165C10
+_0801B4E0: .4byte gGiftBoxTable
 	.syntax divided
