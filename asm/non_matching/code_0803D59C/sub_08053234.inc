@@ -85,5 +85,5 @@ _080532B8:
 _080532D0: .4byte gUnknown_02019DE4
 _080532D4: .4byte 0x000004C6
 _080532D8: .4byte gUnknown_02004970
-_080532DC: .4byte gUnknown_080E510C
+_080532DC: .4byte gGoodsInfo+0x4
 	.syntax divided

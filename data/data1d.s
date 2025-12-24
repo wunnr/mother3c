@@ -2,15 +2,7 @@
 
     .global gGoodsInfo
 gGoodsInfo:
-    .incbin "baserom.gba", 0x000E5108, 0x4
-
-    .global gUnknown_080E510C
-gUnknown_080E510C:
-    .incbin "baserom.gba", 0x000E510C, 0x3C
-
-    .global gUnknown_080E5148
-gUnknown_080E5148:
-    .incbin "baserom.gba", 0x000E5148, 0x6BC0
+    .incbin "baserom.gba", 0x000E5108, 0x6C00
 
     .global gShopData
 gShopData:
