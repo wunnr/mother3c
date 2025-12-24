@@ -11,7 +11,7 @@ u32 sub_0805C168(s32 num);
 int sub_0805D234(int, int);
 int Div(int, int);
 
-u32 getNeededXP(CharStats* ch, LevelStats* ls, s32 level);
+u32 getNeededXP(CharStats* ch, const LevelStats* ls, s32 level);
 
 typedef struct {
     u32 a, b;
@@ -65,7 +65,7 @@ u32 sub_0805C178(s32 ch_no, s32 level) {
     return getNeededXP(&gCharStats[ch_no], &gLevelStatTable[ch_no], level);
 }
 
-u32 getNeededXP(CharStats* ch, LevelStats* ls, s32 level) {
+u32 getNeededXP(CharStats* ch, const LevelStats* ls, s32 level) {
     int total = 0;
     int i;
     for (i = 0; i < level; i++) {
@@ -152,7 +152,7 @@ void sub_0805C3B8(CharStats* ch) {
 
 void sub_0805C458(CharStats* ch, s32 r1) {
     if (ch_is_lucas(ch) == true) {
-        LevelStats* ls = &gLevelStatTable[ch->charNo];
+        const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
             if (ls->psi_table[i].psi_no != 0 && r1 >= ls->psi_table[i].level) {
@@ -161,7 +161,7 @@ void sub_0805C458(CharStats* ch, s32 r1) {
             }
         }
     } else if (ch_is_kumatora(ch) == true) {
-        LevelStats* ls = &gLevelStatTable[ch->charNo];
+        const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
             if (ls->psi_table[i].psi_no != 0 && r1 >= ls->psi_table[i].level) {

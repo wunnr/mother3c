@@ -1,9 +1,5 @@
     .section .rodata
 
-    .global gGoodsInfo
-gGoodsInfo:
-    .incbin "baserom.gba", 0x000E5108, 0x6C00
-
     .global gShopData
 gShopData:
     .incbin "baserom.gba", 0x000EBD08, 0x870

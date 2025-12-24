@@ -472,7 +472,6 @@ typedef struct Save {
     u8 _81e;
 } Save;
 
-// extern ItemData gGoodsInfo[];
 extern Save gSave;
 extern struct_02016028 gSomeBlend;
 
@@ -546,7 +545,7 @@ typedef struct GoodsInfo {
     u8 _69;
     u8 consumable;
 } GoodsInfo;
-extern GoodsInfo gGoodsInfo[];
+extern const GoodsInfo gGoodsInfo[];
 
 typedef struct SystemEntry {
     u8 data[0x2A];
