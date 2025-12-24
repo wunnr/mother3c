@@ -7,12 +7,12 @@ void GuestFactory::init() {
     for (u32 i = 0; i < 16; i++) {
         put(i, DefaultGuestFactory::create);
     }
-    put(PARTY_MEMBER_THOMAS, ThomasFactory::create);
-    put(PARTY_MEMBER_FUEL, FuelFactory::create);
-    put(PARTY_MEMBER_ALEC, AlecFactory::create);
-    put(PARTY_MEMBER_WESS, WessFactory::create);
-    put(PARTY_MEMBER_FASSAD, FassadFactory::create);
-    put(PARTY_MEMBER_IONIA, IoniaFactory::create);
+    put(PartyMemberID::Thomas, ThomasFactory::create);
+    put(PartyMemberID::Fuel, FuelFactory::create);
+    put(PartyMemberID::Alec, AlecFactory::create);
+    put(PartyMemberID::Wess, WessFactory::create);
+    put(PartyMemberID::Fassad, FassadFactory::create);
+    put(PartyMemberID::Ionia, IoniaFactory::create);
 }
 
 void GuestFactory::put(u16 id, void* (*spawn)(u16 id)) {

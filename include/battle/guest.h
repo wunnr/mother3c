@@ -7,6 +7,27 @@
 
 struct CharStats;
 
+struct PartyMemberID {
+    enum {
+        Empty,
+        Flint,
+        Lucas,
+        Duster,
+        Kumatora,
+        Boney,
+        Salsa,
+        Wess,
+        Thomas,
+        Ionia,
+        Fuel,
+        Alec,
+        Fassad,
+        Claus,
+        Empty1,
+        Empty2
+    };
+};
+
 class Guest : public Unit {
 public:
     Guest() {}
