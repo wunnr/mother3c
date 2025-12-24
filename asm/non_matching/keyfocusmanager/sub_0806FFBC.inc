@@ -65,6 +65,6 @@ _08070038:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08070040: .4byte gSongTable
+_08070040: .4byte gSongPointerTable
 _08070044: .4byte gMPlayTable
 	.syntax divided

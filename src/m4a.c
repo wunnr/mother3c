@@ -81,7 +81,7 @@ void m4aSoundMain(void) {
 
 void m4aSongNumStart(u16 n) {
     const struct MusicPlayer* mplayTable = gMPlayTable;
-    const struct Song* songTable = gSongTable;
+    const struct Song* songTable = gSongPointerTable;
     const struct Song* song = &songTable[n];
     const struct MusicPlayer* mplay = &mplayTable[song->ms];
 
@@ -90,7 +90,7 @@ void m4aSongNumStart(u16 n) {
 
 void m4aSongNumStartOrChange(u16 n) {
     const struct MusicPlayer* mplayTable = gMPlayTable;
-    const struct Song* songTable = gSongTable;
+    const struct Song* songTable = gSongPointerTable;
     const struct Song* song = &songTable[n];
     const struct MusicPlayer* mplay = &mplayTable[song->ms];
 
@@ -106,7 +106,7 @@ void m4aSongNumStartOrChange(u16 n) {
 
 void m4aSongNumStartOrContinue(u16 n) {
     const struct MusicPlayer* mplayTable = gMPlayTable;
-    const struct Song* songTable = gSongTable;
+    const struct Song* songTable = gSongPointerTable;
     const struct Song* song = &songTable[n];
     const struct MusicPlayer* mplay = &mplayTable[song->ms];
 
@@ -120,7 +120,7 @@ void m4aSongNumStartOrContinue(u16 n) {
 
 void m4aSongNumStop(u16 n) {
     const struct MusicPlayer* mplayTable = gMPlayTable;
-    const struct Song* songTable = gSongTable;
+    const struct Song* songTable = gSongPointerTable;
     const struct Song* song = &songTable[n];
     const struct MusicPlayer* mplay = &mplayTable[song->ms];
 
@@ -130,7 +130,7 @@ void m4aSongNumStop(u16 n) {
 
 void m4aSongNumContinue(u16 n) {
     const struct MusicPlayer* mplayTable = gMPlayTable;
-    const struct Song* songTable = gSongTable;
+    const struct Song* songTable = gSongPointerTable;
     const struct Song* song = &songTable[n];
     const struct MusicPlayer* mplay = &mplayTable[song->ms];
 

@@ -552,6 +552,14 @@ typedef struct ShopInfo {
 } ShopInfo;
 extern const ShopInfo gShopInfo[];
 
+typedef struct SoundPlayerEntry {
+    u16 songID;
+    u16 playerID;
+    u32 minimumChapter;
+    u32 duration;
+} SoundPlayerEntry;
+extern const SoundPlayerEntry gSoundPlayerTable[];
+
 typedef struct SystemEntry {
     u8 data[0x2A];
     u8 _2A[8];
