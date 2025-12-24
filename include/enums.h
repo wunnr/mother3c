@@ -1284,4 +1284,6 @@ enum PartyCharacterID {
     PARTY_MEMBER_EMPTY_2 = 15,
 };
 
+enum PsiType { OFFENSE = 0, RECOVER = 1, ASSIST = 2 };
+
 #endif  // ENUMS_H
