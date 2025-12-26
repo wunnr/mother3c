@@ -78,7 +78,7 @@ _0804CD94:
 	str r4, [sp]
 	adds r1, r7, #0
 	movs r2, #0
-	bl sub_08053754
+	bl navigateTabbedMenu
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804CDDC

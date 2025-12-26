@@ -36,7 +36,7 @@ _0804D48C:
 	str r1, [sp]
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_08053754
+	bl navigateTabbedMenu
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804D4C6
@@ -142,7 +142,7 @@ _0804D594:
 	str r1, [sp]
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_08053754
+	bl navigateTabbedMenu
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804D5D0

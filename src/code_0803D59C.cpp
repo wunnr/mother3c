@@ -103,7 +103,7 @@ extern "C" u16 sub_08002FD4(u16, u16);
 extern "C" u16 sub_08053AC8(void*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804EA28(MenuState*);
 extern "C" void sub_0804EAA4(MenuState*);
-extern "C" u16 sub_08053754(void*, InputState*, u16, u16, u16);
+extern "C" u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16);
 extern "C" void sub_08052DBC();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
@@ -632,7 +632,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2A4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C330.inc", void sub_0804C330());
 
-extern "C" void sub_0804C35C() {
+extern "C" void setItemGuyDepositMenu() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_ITEM_SELECT_DEPOSIT;
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
@@ -642,7 +642,7 @@ extern "C" void sub_0804C35C() {
     sub_08053148();
 }
 
-extern "C" void sub_0804C398() {
+extern "C" void setItemGuyWithdrawMenu() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_ITEM_SELECT_WITHDRAW;
     MenuState* menu = &gSomeBlend.menus[gSomeBlend.currentMenu];
     menu->cursorPos = 0;
@@ -710,14 +710,13 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         return;
     }
 
-    u16 isCancel = input->justPressed & B_BUTTON;
-    if (isCancel) {
+    if (input->justPressed & B_BUTTON) {
         play_sound(SFX_MENU_CANCEL);
         sub_080506CC(0);
         return;
     }
 
-    if (sub_08053754(&menu->currentTab, input, 0, menu->numItems - 1, isCancel) !=
+    if (navigateTabbedMenu(&menu->currentTab, input, 0, menu->numItems - 1, 0) !=
         CURSOR_NO_CHANGE) {
         gSomeBlend._4264 = (s8)menu->currentTab;
         sub_0804BE64();
@@ -727,33 +726,37 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
     }
 
     if (menu->currentTab >= gSomeBlend._2CB4[0xA3]) {
-        if (gSomeBlend._426a != 0) {
-            if (gSomeBlend._426a < 0x11) {
-                if (sub_08053AC8(&menu->cursorPos, input, 2,
-                                 TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a), gSomeBlend._426a,
-                                 menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
-                    sub_08046D90();
-                    gSomeBlend._c5ad_1 = 1;
-                }
-            } else {
-                if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                                            TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a),
-                                            gSomeBlend._426a,
-                                            menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
-                    sub_08046D90();
-                    gSomeBlend._c5ad_1 = 1;
-                }
-            }
+        if (gSomeBlend._426a == 0) {
+            return;
         }
-    } else {
-        if (gSomeBlend._426c != 0) {
-            if (sub_08053AC8(&menu->cursorPos, input, 2, TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426c),
-                             gSomeBlend._426c,
+
+        if (gSomeBlend._426a < 0x11) {
+            if (sub_08053AC8(&menu->cursorPos, input, 2, TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a),
+                             gSomeBlend._426a,
                              menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
                 sub_08046D90();
                 gSomeBlend._c5ad_1 = 1;
             }
+            return;
         }
+
+        if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                                    TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426a), gSomeBlend._426a,
+                                    menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+            sub_08046D90();
+            gSomeBlend._c5ad_1 = 1;
+        }
+        return;
+    }
+
+    if (gSomeBlend._426c == 0) {
+        return;
+    }
+
+    if (sub_08053AC8(&menu->cursorPos, input, 2, TWO_COLUMN_MENU_HEIGHT(gSomeBlend._426c),
+                     gSomeBlend._426c, menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+        sub_08046D90();
+        gSomeBlend._c5ad_1 = 1;
     }
 }
 
@@ -777,7 +780,8 @@ extern "C" void menuSkills(InputState* input, MenuState* menu) {
         return;
     }
 
-    if (sub_08053754(&menu->currentTab, input, 0, menu->numItems - 1, 0) != CURSOR_NO_CHANGE) {
+    if (navigateTabbedMenu(&menu->currentTab, input, 0, menu->numItems - 1, 0) !=
+        CURSOR_NO_CHANGE) {
         gSomeBlend._4264 = menu->currentTab;
         menu->cursorPos = 0;
         menu->scrollOffset = 0;
@@ -819,18 +823,24 @@ extern "C" void menuMemoSelect(InputState* input, MenuState* menu) {
         if (gSomeBlend._427e != 0) {
             sub_0804EEE8(menu);
         }
-    } else {
-        if (input->justPressed & B_BUTTON) {
-            play_sound(SFX_MENU_CANCEL);
-            sub_080506CC(0);
-        } else if (gSomeBlend._427e != 0) {
-            if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
-                                        TWO_COLUMN_MENU_HEIGHT(menu->numItems), menu->numItems,
-                                        menu->numItemsVisible) == 2) {
-                sub_08046D90();
-                gSomeBlend._c5ad_1 = 1;
-            }
-        }
+        return;
+    }
+
+    if (input->justPressed & B_BUTTON) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    }
+
+    if (gSomeBlend._427e == 0) {
+        return;
+    }
+
+    if (navigateScrolling2DMenu(&menu->cursorPos, &menu->scrollOffset, input, 2,
+                                TWO_COLUMN_MENU_HEIGHT(menu->numItems), menu->numItems,
+                                menu->numItemsVisible) == CURSOR_MOVED_AND_SCROLLED) {
+        sub_08046D90();
+        gSomeBlend._c5ad_1 = 1;
     }
 }
 
@@ -892,7 +902,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
         return;
     }
 
-    navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, 1);
+    navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 }
 
@@ -985,16 +995,15 @@ extern "C" void menuTryAgain(InputState* input, MenuState* menu) {
         return;
     }
 
-    u16 isCancel = input->justPressed & B_BUTTON;
-
-    if (isCancel) {
+    if (input->justPressed & B_BUTTON) {
         if (menu->cursorPos != 1) {
             play_sound(SFX_MENU_CANCEL);
             menu->cursorPos = 1;
         }
-    } else {
-        sub_08053804(&menu->cursorPos, input, 2, 1, 2, isCancel);
+        return;
     }
+
+    sub_08053804(&menu->cursorPos, input, 2, 1, 2, false);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804DC5C.inc", void sub_0804DC5C(InputState*, MenuState*));
@@ -1034,8 +1043,8 @@ extern "C" void sub_0804E078(InputState* input, MenuState* menu) {
 extern "C" void sub_0804E118(InputState* input, MenuState* menu) {
     if (input->justPressed == A_BUTTON) {
         sub_0804F6C8(menu);
-    } else if (navigateScrollingMenu(menu, &menu->cursorPos, input, 0,
-                                     (u32)(u16)(menu->numItems - 1)) == CURSOR_MOVED_AND_SCROLLED) {
+    } else if (navigateScrollingMenu(menu, &menu->cursorPos, input, 0, menu->numItems - 1) ==
+               CURSOR_MOVED_AND_SCROLLED) {
         sub_08046D90();
         gSomeBlend._c5ad_1 = 1;
     }
@@ -1077,10 +1086,10 @@ extern "C" void sub_0804F190(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 
-    if (gSomeBlend.menus[0xC].cursorPos == 0) {
-        sub_0804C35C();
+    if (gSomeBlend.menus[MENU_ITEM_GUY_TRANSACTION_SELECT].cursorPos == 0) {
+        setItemGuyDepositMenu();
     } else {
-        sub_0804C398();
+        setItemGuyWithdrawMenu();
     }
 
     sub_08049DC4();
@@ -1389,7 +1398,7 @@ extern "C" u16 navigatePageableMenu(MenuState* menu, u16* cursor, InputState* in
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080536F8.inc", void sub_080536F8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053754.inc", u16 sub_08053754(void*, InputState*, u16, u16, u16));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/navigateTabbedMenu.inc", u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053804.inc", void sub_08053804(u16*, InputState*, u16, u16, u16, u16));
 
 extern "C" u16 navigateScrolling2DMenu(u16* cursor, u16* scrollOffset, InputState* input,

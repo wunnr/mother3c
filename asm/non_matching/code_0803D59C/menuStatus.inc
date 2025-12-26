@@ -42,7 +42,7 @@ _0804CEA2:
 	str r1, [sp]
 	adds r1, r2, #0
 	movs r2, #0
-	bl sub_08053754
+	bl navigateTabbedMenu
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804CF18
