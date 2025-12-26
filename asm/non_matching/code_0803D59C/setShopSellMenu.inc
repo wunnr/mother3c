@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0804C2A4:
+setShopSellMenu:
 	push {lr}
 	ldr r2, _0804C2D0
 	ldr r0, _0804C2D4

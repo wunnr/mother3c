@@ -52,7 +52,7 @@ _0804D4C6:
 	cmp r0, r2
 	beq _0804D5D0
 	strb r2, [r1]
-	bl sub_0804C254
+	bl setShopBuyMenu
 	bl sub_08046D90
 	b _0804D5D0
 	.align 2, 0
@@ -156,7 +156,7 @@ _0804D594:
 	cmp r0, r2
 	beq _0804D5D0
 	strb r2, [r1]
-	bl sub_0804C254
+	bl setShopBuyMenu
 	bl sub_08046D90
 _0804D5D0:
 	add sp, #0xc

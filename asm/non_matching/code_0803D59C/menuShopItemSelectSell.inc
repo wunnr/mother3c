@@ -119,7 +119,7 @@ _0804D6A0:
 	movs r2, #1
 	movs r3, #1
 	bl sub_080012BC
-	bl sub_0804C2A4
+	bl setShopSellMenu
 	bl sub_08046D90
 _0804D6EC:
 	add sp, #0xc

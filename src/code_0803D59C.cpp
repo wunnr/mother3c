@@ -627,8 +627,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C004.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C050.inc", void sub_0804C050());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C1E8.inc", void sub_0804C1E8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C228.inc", void sub_0804C228());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C254.inc", void sub_0804C254());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2A4.inc", void sub_0804C2A4());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setShopBuyMenu.inc", void setShopBuyMenu());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setShopSellMenu.inc", void setShopSellMenu());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C330.inc", void sub_0804C330());
 
@@ -1077,7 +1077,21 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/toggleBattleMemorySprite.inc
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setShopSubmenu.inc", void setShopSubmenu(MenuState*));
+
+extern "C" void setShopSubmenu(MenuState* menu) {
+    play_sound(SFX_MENU_SELECT);
+    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+
+    if (gSomeBlend.menus[MENU_SHOP_TRANSACTION_SELECT].cursorPos == 0) {
+        setShopBuyMenu();
+    } else {
+        setShopSellMenu();
+    }
+
+    sub_08049DC4();
+    sub_08046D90();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158(MenuState*));
