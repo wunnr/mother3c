@@ -126,7 +126,7 @@ _0804D9AC:
 	cmp r0, r1
 	beq _0804D9E8
 	strb r1, [r2]
-	bl sub_0804C398
+	bl setItemGuyWithdrawMenu
 	bl sub_08046D90
 _0804D9E8:
 	add sp, #0xc

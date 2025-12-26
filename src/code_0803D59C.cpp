@@ -70,7 +70,7 @@ extern "C" void sub_0804E16C(void*);
 extern "C" void sub_080506A4();
 extern "C" u16 sub_08050734(InputState*);
 extern "C" s8 sub_08053E98(u16);
-extern "C" void sub_0804F190(MenuState*);
+extern "C" void setItemGuySubmenu(MenuState*);
 extern "C" u16 navigate1DMenuChecked(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
 extern "C" void sub_08053148();
@@ -86,7 +86,7 @@ extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
 extern "C" void sub_08050628();
-extern "C" void sub_0804EFD4(MenuState*);
+extern "C" void setShopSubmenu(MenuState*);
 extern "C" void sub_0804A448(u16);
 extern "C" void sub_0804A1C0(u16);
 extern "C" void sub_0804A508(s32);
@@ -890,7 +890,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON) {
-        sub_0804EFD4(menu);
+        setShopSubmenu(menu);
         return;
     }
 
@@ -934,7 +934,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON) {
-        sub_0804F190(menu);
+        setItemGuySubmenu(menu);
         return;
     }
 
@@ -1077,12 +1077,12 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/toggleBattleMemorySprite.inc
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EFD4.inc", void sub_0804EFD4(MenuState*));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setShopSubmenu.inc", void setShopSubmenu(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158(MenuState*));
 
-extern "C" void sub_0804F190(MenuState* menu) {
+extern "C" void setItemGuySubmenu(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
     gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
 

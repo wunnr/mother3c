@@ -99,7 +99,7 @@ _0804D888:
 	cmp r0, r1
 	beq _0804D8C4
 	strb r1, [r2]
-	bl sub_0804C35C
+	bl setItemGuyDepositMenu
 	bl sub_08046D90
 _0804D8C4:
 	add sp, #8
