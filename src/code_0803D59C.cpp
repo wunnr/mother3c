@@ -106,6 +106,7 @@ extern "C" void sub_0804EAA4(MenuState*);
 extern "C" u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16);
 extern "C" void sub_08052DBC();
 extern "C" void sub_08052F9C(s32);
+extern "C" void sub_08052FC8();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -641,7 +642,16 @@ extern "C" void setShopBuyMenu() {
     menu->numItems = gSomeBlend._4280;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setShopSellMenu.inc", void setShopSellMenu());
+extern "C" void setShopSellMenu() {
+    gSomeBlend.currentMenu = MENU_SHOP_ITEM_SELECT_SELL;
+    MenuState* menu = &gSomeBlend.menus[MENU_SHOP_ITEM_SELECT_SELL];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->scrollOffset = 0;
+    sub_08054FE0(menu->currentTab);
+    sub_08052FC8();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C330.inc", void sub_0804C330());
 
