@@ -16,7 +16,7 @@ sub_0804F1D8:
 	cmp r0, #0
 	bne _0804F226
 	adds r0, r5, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F226

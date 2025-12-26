@@ -5,7 +5,7 @@ sub_080470A8:
 	ldrh r0, [r0, #0xa]
 	bl sub_08054FE0
 	adds r5, r0, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _080471A4

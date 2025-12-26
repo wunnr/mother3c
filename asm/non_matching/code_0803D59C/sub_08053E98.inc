@@ -15,7 +15,7 @@ sub_08053E98:
 _08053EB0:
 	adds r0, r4, #0
 	bl sub_08054FE0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08053ED6

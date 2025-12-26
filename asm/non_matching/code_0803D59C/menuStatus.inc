@@ -61,7 +61,7 @@ _0804CEA2:
 	cmp r0, #0
 	bge _0804CF04
 	adds r0, r4, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804CEF4

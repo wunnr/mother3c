@@ -117,7 +117,7 @@ _08028D34:
 	adds r0, #1
 	strb r0, [r1]
 	adds r0, r5, #0
-	bl isCharOverworldPlayable
+	bl isCharIDOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08028D6C

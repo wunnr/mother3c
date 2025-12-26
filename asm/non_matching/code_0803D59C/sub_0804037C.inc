@@ -106,7 +106,7 @@ _0804041C:
 	movs r2, #7
 	bl sub_08047CDC
 	ldr r0, [sp, #8]
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040490

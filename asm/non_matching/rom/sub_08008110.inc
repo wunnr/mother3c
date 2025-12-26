@@ -35,7 +35,7 @@ _0800814A:
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _08008168
-	bl isCharOverworldPlayable
+	bl isCharIDOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08008168

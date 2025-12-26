@@ -98,7 +98,7 @@ _08040A4A:
 	movs r2, #7
 	bl sub_08047CDC
 	mov r0, sl
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	cmp r5, #0

@@ -98,7 +98,7 @@ _08041076:
 	movs r2, #7
 	bl sub_08047CDC
 	mov r0, sl
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080410EC

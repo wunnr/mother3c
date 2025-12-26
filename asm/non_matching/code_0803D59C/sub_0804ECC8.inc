@@ -15,7 +15,7 @@ sub_0804ECC8:
 	cmp r0, #0
 	bne _0804ECF8
 	mov r0, r8
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	cmp r6, #0

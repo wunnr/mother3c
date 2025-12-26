@@ -47,7 +47,7 @@ _0802B622:
 	bne _0802B632
 	b _0802B782
 _0802B632:
-	bl isCharOverworldPlayable
+	bl isCharIDOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0802B63E

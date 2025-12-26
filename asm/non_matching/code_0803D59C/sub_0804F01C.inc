@@ -10,7 +10,7 @@ sub_0804F01C:
 	cmp r0, #0
 	bne _0804F04E
 	adds r0, r4, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F04E

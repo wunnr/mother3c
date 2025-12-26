@@ -46,7 +46,7 @@ _0802A1D2:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0802A242
-	bl isCharOverworldPlayable
+	bl isCharIDOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802A242

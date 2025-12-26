@@ -28,7 +28,7 @@ _08046210:
 	adds r0, r6, #0
 	bl sub_08054FE0
 	adds r4, r0, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	cmp r5, #0

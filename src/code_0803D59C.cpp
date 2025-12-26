@@ -1502,7 +1502,11 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", s32 sub_0
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FF0.inc", void sub_08054FF0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055008.inc", void sub_08055008());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055038.inc", void sub_08055038());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805504C.inc", void sub_0805504C());
+
+extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats) {
+    return gLevelStatTable[stats->charNo].overworld_playable;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055068.inc", void sub_08055068());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055098.inc", void sub_08055098());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080550D8.inc", void sub_080550D8());
