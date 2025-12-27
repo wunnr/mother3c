@@ -662,7 +662,15 @@ extern "C" void setMenuStatus() {
     sub_08052DBC(sub_08054FE0(menu->currentTab));
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF7C.inc", void sub_0804BF7C());
+extern "C" void setMenuSkills() {
+    gSomeBlend.currentMenu = MENU_SKILLS;
+    MenuState* menu = &gSomeBlend.menus[MENU_SKILLS];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->scrollOffset = 0;
+    menu->numItems = gSomeBlend._2CB4[0xA3];
+    gSomeBlend._44f3_8 = 0;
+}
 
 extern "C" void setMenuMemoSelect() {
     gSomeBlend.currentMenu = MENU_MEMO_SELECT;

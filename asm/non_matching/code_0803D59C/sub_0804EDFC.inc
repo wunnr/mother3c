@@ -23,7 +23,7 @@ _0804EE28: .4byte 0x0000427A
 _0804EE2C:
 	movs r0, #0xd2
 	bl play_sound
-	bl sub_0804BF7C
+	bl setMenuSkills
 	adds r0, r4, #0
 	adds r0, #0x50
 	ldr r2, _0804EE58
