@@ -12,7 +12,7 @@ sub_0804F158:
 _0804F16A:
 	movs r0, #0xd2
 	bl play_sound
-	bl sub_0804C330
+	bl setMenuItemGuyCharacterSelect
 	b _0804F184
 _0804F176:
 	movs r0, #0xd3

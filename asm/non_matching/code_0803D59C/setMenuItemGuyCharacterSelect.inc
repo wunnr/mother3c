@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0804C330:
+setMenuItemGuyCharacterSelect:
 	ldr r1, _0804C34C
 	ldr r0, _0804C350
 	adds r2, r1, r0

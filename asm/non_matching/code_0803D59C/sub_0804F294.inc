@@ -47,7 +47,7 @@ _0804F2E0:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _0804F328
-	bl sub_0804C330
+	bl setMenuItemGuyCharacterSelect
 	ldr r2, _0804F324
 	adds r0, r6, r2
 	movs r2, #0x90

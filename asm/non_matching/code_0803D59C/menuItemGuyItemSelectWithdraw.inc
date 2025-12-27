@@ -32,7 +32,7 @@ _0804D908:
 	beq _0804D938
 	movs r0, #0xd3
 	bl play_sound
-	bl sub_0804C330
+	bl setMenuItemGuyCharacterSelect
 	mov r0, r8
 	adds r0, #0x50
 	ldr r1, _0804D934
