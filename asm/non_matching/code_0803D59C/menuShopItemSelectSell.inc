@@ -30,7 +30,7 @@ _0804D614:
 	beq _0804D644
 	movs r0, #0xd3
 	bl play_sound
-	bl sub_0804C228
+	bl setMenuShopCharacterSelect
 	adds r0, r4, #0
 	adds r0, #0x50
 	ldr r2, _0804D640

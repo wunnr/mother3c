@@ -12,7 +12,7 @@ sub_0804EF9C:
 _0804EFAE:
 	movs r0, #0xd2
 	bl play_sound
-	bl sub_0804C228
+	bl setMenuShopCharacterSelect
 	b _0804EFC8
 _0804EFBA:
 	movs r0, #0xd3

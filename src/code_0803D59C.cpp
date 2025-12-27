@@ -702,7 +702,12 @@ extern "C" void setMenuShopTransactionSelect() {
     gSomeBlend._4263 = 1;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C228.inc", void sub_0804C228());
+extern "C" void setMenuShopCharacterSelect() {
+    gSomeBlend.currentMenu = MENU_SHOP_CHARACTER_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_SHOP_CHARACTER_SELECT];
+    menu->currentTab = 0;
+    menu->numItems = gSomeBlend._2CB4[0xA4];
+}
 
 extern "C" void setShopBuyMenu() {
     gSomeBlend.currentMenu = MENU_SHOP_ITEM_SELECT_BUY;

@@ -57,7 +57,7 @@ _08050340:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _080503CC
-	bl sub_0804C228
+	bl setMenuShopCharacterSelect
 	adds r0, r7, #0
 	adds r0, #0x50
 	ldr r2, _080503C8
