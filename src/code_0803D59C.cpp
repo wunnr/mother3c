@@ -107,6 +107,7 @@ extern "C" u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16);
 extern "C" void sub_08052DBC();
 extern "C" void sub_08052F9C(s32);
 extern "C" void sub_08052FC8();
+extern "C" void sub_08052A64();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -624,7 +625,15 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEB4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEFC.inc", void sub_0804BEFC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF34.inc", void sub_0804BF34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF7C.inc", void sub_0804BF7C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BFCC.inc", void sub_0804BFCC());
+
+extern "C" void setMenuMemoSelect() {
+    gSomeBlend.currentMenu = MENU_MEMO_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_MEMO_SELECT];
+    menu->currentTab = 0;
+    sub_08052A64();
+    menu->numItems = gSomeBlend._427e;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C004.inc", void sub_0804C004());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C050.inc", void sub_0804C050());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C1E8.inc", void sub_0804C1E8());
@@ -879,7 +888,7 @@ extern "C" void menuMemoView(InputState* input, MenuState* menu) {
 
     if (input->justPressed & B_BUTTON) {
         play_sound(SFX_MENU_CANCEL);
-        sub_0804BFCC();
+        setMenuMemoSelect();
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._424c, 1, 1);
         sub_08046D90();
         gSomeBlend._41e6_1 = 0;

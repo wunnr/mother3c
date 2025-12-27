@@ -14,7 +14,7 @@ sub_0804EF38:
 	blo _0804EF5E
 	movs r0, #0xd3
 	bl play_sound
-	bl sub_0804BFCC
+	bl setMenuMemoSelect
 	b _0804EF66
 _0804EF5E:
 	ldrh r0, [r4, #0xa]
