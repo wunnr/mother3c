@@ -636,7 +636,15 @@ extern "C" void setMenuGoods() {
     sub_08052964();
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEB4.inc", void sub_0804BEB4());
+extern "C" void setMenuEquip() {
+    gSomeBlend.currentMenu = MENU_EQUIP;
+    MenuState* menu = &gSomeBlend.menus[MENU_EQUIP];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->numItems = gSomeBlend._2CB4[0xA3];
+    sub_080524EC(sub_08054FE0(menu->currentTab));
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEFC.inc", void sub_0804BEFC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF34.inc", void sub_0804BF34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF7C.inc", void sub_0804BF7C());
@@ -1300,7 +1308,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052360.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080523B8.inc", void sub_080523B8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080523D4.inc", void sub_080523D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805244C.inc", void sub_0805244C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080524EC.inc", void sub_080524EC());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080524EC.inc", void sub_080524EC(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805255C.inc", void sub_0805255C());
 
 extern "C" void condenseInventory(CharStats* stats) {
