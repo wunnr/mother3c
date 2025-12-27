@@ -662,7 +662,13 @@ extern "C" void setShopSellMenu() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/setMenuItemGuyCharacterSelect.inc", void setMenuItemGuyCharacterSelect());
+
+extern "C" void setMenuItemGuyCharacterSelect() {
+    gSomeBlend.currentMenu = MENU_ITEM_GUY_CHARACTER_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_ITEM_GUY_CHARACTER_SELECT];
+    menu->currentTab = 0;
+    menu->numItems = gSomeBlend._2CB4[0xA4];
+}
 
 extern "C" void setItemGuyDepositMenu() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_ITEM_SELECT_DEPOSIT;
