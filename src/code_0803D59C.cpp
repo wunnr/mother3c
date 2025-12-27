@@ -343,7 +343,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047E48.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047EA4.inc", void sub_08047EA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047F28.inc", void sub_08047F28());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047FD4.inc", void sub_08047FD4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048074.inc", void sub_08048074());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048074.inc", void sub_08048074(u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048108.inc", void sub_08048108());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048158.inc", void sub_08048158());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080481DC.inc", void sub_080481DC());
@@ -352,7 +352,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048308.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080483E0.inc", void sub_080483E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080484A8.inc", void sub_080484A8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080484FC.inc", void sub_080484FC());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048534.inc", void sub_08048534());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048534.inc", u16 sub_08048534(u8));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048550.inc", void sub_08048550());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080485C4.inc", void sub_080485C4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804863C.inc", void sub_0804863C());
@@ -680,7 +680,17 @@ extern "C" void setMenuMemoSelect() {
     menu->numItems = gSomeBlend._427e;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C004.inc", void sub_0804C004());
+extern "C" void setMenuMemoView() {
+    gSomeBlend.currentMenu = MENU_MEMO_VIEW;
+    MenuState* menu = &gSomeBlend.menus[MENU_MEMO_VIEW];
+    u8* unk = (u8*)&gSomeBlend._3bfc[gSomeBlend.menus[5].cursorPos];
+    menu->cursorPos = 0;
+    menu->currentTab = *unk;
+    menu->scrollOffset = 0;
+    menu->numItems = sub_08048534(*unk);
+    sub_08048074(menu->currentTab, menu->cursorPos);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C050.inc", void sub_0804C050());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C1E8.inc", void sub_0804C1E8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C228.inc", void sub_0804C228());
