@@ -44,7 +44,7 @@ _0803F178:
 	adds r0, r5, #0
 	bl sub_08055254
 	adds r0, r5, #0
-	bl sub_080552B8
+	bl clearEquipForEmptyItems
 	adds r0, r6, #1
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10

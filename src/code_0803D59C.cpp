@@ -1607,7 +1607,15 @@ extern "C" void setEquipLyt(CharStats* stats, u16 index, u16 val) {
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080551B0.inc", void sub_080551B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805521C.inc", void sub_0805521C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055254.inc", void sub_08055254());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080552B8.inc", void sub_080552B8());
+
+extern "C" void clearEquipForEmptyItems(CharStats* stats) {
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] == ItemEmpty) {
+            setEquipLyt(stats, i, 0);
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080552E4.inc", void sub_080552E4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805534C.inc", void sub_0805534C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805548C.inc", void sub_0805548C());

@@ -6,7 +6,7 @@ sub_08053148:
 	adds r0, r4, #0
 	bl sub_0805255C
 	adds r0, r4, #0
-	bl sub_080552B8
+	bl clearEquipForEmptyItems
 	adds r0, r4, #0
 	movs r1, #0
 	bl sub_08052AFC

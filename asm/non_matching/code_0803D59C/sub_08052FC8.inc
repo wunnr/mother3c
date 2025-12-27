@@ -6,7 +6,7 @@ sub_08052FC8:
 	adds r0, r4, #0
 	bl sub_0805255C
 	adds r0, r4, #0
-	bl sub_080552B8
+	bl clearEquipForEmptyItems
 	ldr r4, _08052FF8
 	ldr r1, _08052FFC
 	adds r0, r4, r1
