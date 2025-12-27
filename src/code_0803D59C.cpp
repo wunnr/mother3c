@@ -683,7 +683,7 @@ extern "C" void setMenuMemoSelect() {
 extern "C" void setMenuMemoView() {
     gSomeBlend.currentMenu = MENU_MEMO_VIEW;
     MenuState* menu = &gSomeBlend.menus[MENU_MEMO_VIEW];
-    u8* unk = (u8*)&gSomeBlend._3bfc[gSomeBlend.menus[5].cursorPos];
+    u8* unk = (u8*)&gSomeBlend._3bfc[gSomeBlend.menus[MENU_MEMO_SELECT].cursorPos];
     menu->cursorPos = 0;
     menu->currentTab = *unk;
     menu->scrollOffset = 0;
@@ -692,7 +692,16 @@ extern "C" void setMenuMemoView() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C050.inc", void sub_0804C050());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C1E8.inc", void sub_0804C1E8());
+
+extern "C" void setMenuShopTransactionSelect() {
+    gSomeBlend.currentMenu = MENU_SHOP_TRANSACTION_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_SHOP_TRANSACTION_SELECT];
+    menu->currentTab = 0;
+    menu->numItems = 3;
+    gSomeBlend._44f2_10 = 1;
+    gSomeBlend._4263 = 1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C228.inc", void sub_0804C228());
 
 extern "C" void setShopBuyMenu() {
@@ -758,6 +767,7 @@ extern "C" void setItemGuyWithdrawMenu() {
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C3E0.inc", void sub_0804C3E0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C408.inc", void sub_0804C408());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C4B4.inc", void sub_0804C4B4());
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C51C.inc", void sub_0804C51C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C5B0.inc", void sub_0804C5B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C68C.inc", void sub_0804C68C());
@@ -998,7 +1008,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
 
     if (input->justPressed & B_BUTTON) {
         play_sound(SFX_MENU_CANCEL);
-        sub_0804C1E8();
+        setMenuShopTransactionSelect();
         sub_08049DC4();
         sub_08046D90();
         return;
