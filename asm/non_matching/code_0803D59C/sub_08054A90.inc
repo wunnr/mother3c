@@ -54,7 +54,7 @@ _08054AC6:
 	mov r1, sp
 	bl sub_080551B0
 	adds r0, r5, #0
-	bl sub_08052678
+	bl condenseInventory
 	adds r0, r5, #0
 	mov r1, sb
 	movs r2, #1

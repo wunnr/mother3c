@@ -2,7 +2,7 @@
 sub_08053148:
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08052678
+	bl condenseInventory
 	adds r0, r4, #0
 	bl sub_0805255C
 	adds r0, r4, #0
