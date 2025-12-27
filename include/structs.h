@@ -609,7 +609,7 @@ typedef struct GoodsInfo {
 extern GoodsInfo gGoodsInfo[];
 
 typedef struct SystemEntry {
-    u8 data[0x2A];
+    u16 data[0x15];
     u8 _2A[8];
     u8 _32;
     u8 padding[0x64 - 0x33];

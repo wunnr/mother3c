@@ -73,7 +73,7 @@ extern "C" s8 sub_08053E98(u16);
 extern "C" void setItemGuySubmenu(MenuState*);
 extern "C" u16 navigate1DMenuChecked(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
-extern "C" void sub_08053148();
+extern "C" void sub_08053148(CharStats*);
 extern "C" CharStats* sub_08054FE0(u16);
 extern "C" void sub_080524EC(CharStats*);
 extern "C" void sub_080531C8(CharStats*);
@@ -106,7 +106,7 @@ extern "C" void sub_0804EAA4(MenuState*);
 extern "C" u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16);
 extern "C" void sub_08052DBC(CharStats*);
 extern "C" void sub_08052F9C(CharStats*);
-extern "C" void sub_08052FC8();
+extern "C" void sub_08052FC8(CharStats*);
 extern "C" void sub_08052A64();
 extern "C" void sub_08052964();
 
@@ -727,8 +727,7 @@ extern "C" void setShopSellMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    sub_08054FE0(menu->currentTab);
-    sub_08052FC8();
+    sub_08052FC8(sub_08054FE0(menu->currentTab));
 }
 
 extern "C" void setMenuItemGuyTransactionSelect() {
@@ -754,8 +753,7 @@ extern "C" void setItemGuyDepositMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    sub_08054FE0(menu->currentTab);
-    sub_08053148();
+    sub_08053148(sub_08054FE0(menu->currentTab));
 }
 
 extern "C" void setItemGuyWithdrawMenu() {
@@ -769,7 +767,13 @@ extern "C" void setItemGuyWithdrawMenu() {
     sub_080531C8(stats);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C3E0.inc", void sub_0804C3E0());
+extern "C" void setMenuSaveSelect() {
+    gSomeBlend.currentMenu = MENU_SAVE_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_SAVE_SELECT];
+    menu->cursorPos = gUnknown_020050C0.entries[0].data[2];
+    menu->currentTab = 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C408.inc", void sub_0804C408());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C4B4.inc", void sub_0804C4B4());
 
@@ -1401,9 +1405,9 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052EC0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052F74.inc", void sub_08052F74());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052F80.inc", void sub_08052F80());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052F9C.inc", void sub_08052F9C(CharStats*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052FC8.inc", void sub_08052FC8());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052FC8.inc", void sub_08052FC8(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053034.inc", void sub_08053034());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053148.inc", void sub_08053148());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053148.inc", void sub_08053148(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080531C8.inc", void sub_080531C8(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053234.inc", void sub_08053234());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sortPsi.inc", void sortPsi());
