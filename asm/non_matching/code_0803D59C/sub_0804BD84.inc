@@ -53,7 +53,7 @@ _0804BDEC:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BEFC
+	bl setMenuPSI
 	b _0804BE3A
 	.align 2, 0
 _0804BE00: .4byte gSomeBlend

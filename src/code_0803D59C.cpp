@@ -645,7 +645,14 @@ extern "C" void setMenuEquip() {
     sub_080524EC(sub_08054FE0(menu->currentTab));
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEFC.inc", void sub_0804BEFC());
+extern "C" void setMenuPSI() {
+    gSomeBlend.currentMenu = MENU_PSI;
+    MenuState* menu = &gSomeBlend.menus[MENU_PSI];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->numItems = gSomeBlend._2CB4[0xA3];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF34.inc", void sub_0804BF34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF7C.inc", void sub_0804BF7C());
 
