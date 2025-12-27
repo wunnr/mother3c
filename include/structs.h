@@ -423,6 +423,8 @@ typedef struct struct_02016028 {
     u8 _c5b5_4 : 1;
     u8 _c5b5_8 : 2;
     u8 _c5b5_20 : 1;
+    u8 _c5b5_40 : 1;
+    u8 _c5b5_80 : 1;
     u8 _c5b6[0xC61C - 0xC5B6];
     u32 _c61c;
     void* _C620;

@@ -661,7 +661,15 @@ extern "C" void setShopSellMenu() {
     sub_08052FC8();
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C2E0.inc", void sub_0804C2E0());
+extern "C" void setMenuItemGuyTransactionSelect() {
+    gSomeBlend.currentMenu = MENU_ITEM_GUY_TRANSACTION_SELECT;
+    MenuState* menu = &gSomeBlend.menus[MENU_ITEM_GUY_TRANSACTION_SELECT];
+    menu->currentTab = 0;
+    menu->numItems = 3;
+    gSomeBlend._c5b5_80 = 1;
+    gSomeBlend._44f2_10 = 1;
+    gSomeBlend._4263 = 1;
+}
 
 extern "C" void setMenuItemGuyCharacterSelect() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_CHARACTER_SELECT;
@@ -978,7 +986,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
 
     if (input->justPressed & B_BUTTON) {
         play_sound(SFX_MENU_CANCEL);
-        sub_0804C2E0();
+        setMenuItemGuyTransactionSelect();
         sub_08049DC4();
         sub_08046D90();
         return;

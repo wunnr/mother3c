@@ -4,7 +4,7 @@ sub_0803DD3C:
 	ldr r1, _0803DD58
 	movs r0, #2
 	strb r0, [r1]
-	bl sub_0804C2E0
+	bl setMenuItemGuyTransactionSelect
 	bl sub_08049DC4
 	bl sub_08046D90
 	bl sub_0803DE38
