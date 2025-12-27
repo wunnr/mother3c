@@ -104,7 +104,7 @@ extern "C" u16 sub_08053AC8(void*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804EA28(MenuState*);
 extern "C" void sub_0804EAA4(MenuState*);
 extern "C" u16 navigateTabbedMenu(void*, InputState*, u16, u16, u16);
-extern "C" void sub_08052DBC();
+extern "C" void sub_08052DBC(CharStats*);
 extern "C" void sub_08052F9C(CharStats*);
 extern "C" void sub_08052FC8();
 extern "C" void sub_08052A64();
@@ -653,7 +653,15 @@ extern "C" void setMenuPSI() {
     menu->numItems = gSomeBlend._2CB4[0xA3];
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF34.inc", void sub_0804BF34());
+extern "C" void setMenuStatus() {
+    gSomeBlend.currentMenu = MENU_STATUS;
+    MenuState* menu = &gSomeBlend.menus[MENU_STATUS];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->numItems = gSomeBlend._2CB4[0xA3];
+    sub_08052DBC(sub_08054FE0(menu->currentTab));
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF7C.inc", void sub_0804BF7C());
 
 extern "C" void setMenuMemoSelect() {
@@ -848,7 +856,7 @@ extern "C" void menuSkills(InputState* input, MenuState* menu) {
 
     if (input->justPressed & B_BUTTON) {
         play_sound(SFX_MENU_CANCEL);
-        sub_0804BF34();
+        setMenuStatus();
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
         sub_08046D90();
         sub_08049AF8(gSomeBlend._4ed0);
@@ -862,8 +870,8 @@ extern "C" void menuSkills(InputState* input, MenuState* menu) {
         menu->cursorPos = 0;
         menu->scrollOffset = 0;
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
-        sub_08054FE0(menu->currentTab);
-        sub_08052DBC();
+        CharStats* stats = sub_08054FE0(menu->currentTab);
+        sub_08052DBC(stats);
         sub_08046D90();
         gSomeBlend._44f3_8 = 1;
         return;
@@ -1354,7 +1362,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052AFC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052BE0.inc", void sub_08052BE0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052CC4.inc", void sub_08052CC4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052D1C.inc", void sub_08052D1C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052DBC.inc", void sub_08052DBC());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052DBC.inc", void sub_08052DBC(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052EA4.inc", void sub_08052EA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052EC0.inc", void sub_08052EC0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08052F74.inc", void sub_08052F74());

@@ -66,7 +66,7 @@ _0804BE08:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BF34
+	bl setMenuStatus
 	b _0804BE3A
 	.align 2, 0
 _0804BE1C: .4byte gSomeBlend
