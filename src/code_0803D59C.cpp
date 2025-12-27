@@ -108,6 +108,7 @@ extern "C" void sub_08052DBC();
 extern "C" void sub_08052F9C(s32);
 extern "C" void sub_08052FC8();
 extern "C" void sub_08052A64();
+extern "C" void sub_08052964();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -620,7 +621,22 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BB28.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BB58.inc", void sub_0804BB58());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BD34.inc", void sub_0804BD34());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BD84.inc", void sub_0804BD84());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BE64.inc", void sub_0804BE64());
+
+extern "C" void setMenuGoods() {
+    gSomeBlend.currentMenu = MENU_GOODS;
+    MenuState* menu = &gSomeBlend.menus[MENU_GOODS];
+    menu->cursorPos = 0;
+    menu->currentTab = gSomeBlend._4264;
+    menu->numItems = gSomeBlend._2CB4[0xA3] + 1;
+
+    if (menu->currentTab < gSomeBlend._2CB4[0xA3]) {
+        sub_08054FE0(menu->currentTab);
+        sub_080524EC();
+    }
+
+    sub_08052964();
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEB4.inc", void sub_0804BEB4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BEFC.inc", void sub_0804BEFC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804BF34.inc", void sub_0804BF34());
@@ -765,7 +781,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
     if (navigateTabbedMenu(&menu->currentTab, input, 0, menu->numItems - 1, 0) !=
         CURSOR_NO_CHANGE) {
         gSomeBlend._4264 = (s8)menu->currentTab;
-        sub_0804BE64();
+        setMenuGoods();
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
         sub_08046D90();
         return;

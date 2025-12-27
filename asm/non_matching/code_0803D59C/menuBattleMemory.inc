@@ -34,7 +34,7 @@ _0804D1C4:
 	beq _0804D248
 	movs r0, #0xd3
 	bl play_sound
-	bl sub_0804BE64
+	bl setMenuGoods
 	ldr r0, _0804D22C
 	ldr r2, _0804D230
 	adds r1, r6, r2
