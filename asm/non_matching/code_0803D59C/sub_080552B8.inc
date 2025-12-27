@@ -13,7 +13,7 @@ _080552BE:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0
-	bl sub_08055190
+	bl setEquipLyt
 _080552D4:
 	adds r0, r4, #1
 	lsls r0, r0, #0x10

@@ -1598,7 +1598,12 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080550D8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055104.inc", void sub_08055104());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055138.inc", void sub_08055138());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055180.inc", void sub_08055180());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055190.inc", void sub_08055190());
+
+extern "C" void setEquipLyt(CharStats* stats, u16 index, u16 val) {
+    u32 mask = stats->equip_lyt & ~(1 << index);
+    stats->equip_lyt = mask | (val << index);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080551B0.inc", void sub_080551B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805521C.inc", void sub_0805521C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055254.inc", void sub_08055254());

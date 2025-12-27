@@ -49,7 +49,7 @@ _08054AC6:
 	strh r2, [r0]
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08055190
+	bl setEquipLyt
 	adds r0, r5, #0
 	mov r1, sp
 	bl sub_080551B0
@@ -65,7 +65,7 @@ _08054AC6:
 	lsrs r1, r1, #0x10
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_08055190
+	bl setEquipLyt
 	movs r0, #1
 _08054B20:
 	add sp, #0x10

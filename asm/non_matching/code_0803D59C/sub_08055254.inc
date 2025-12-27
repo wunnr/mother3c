@@ -41,7 +41,7 @@ _0805528C:
 	beq _080552A8
 	adds r0, r5, #0
 	movs r2, #1
-	bl sub_08055190
+	bl setEquipLyt
 _080552A8:
 	adds r0, r4, #1
 	lsls r0, r0, #0x10

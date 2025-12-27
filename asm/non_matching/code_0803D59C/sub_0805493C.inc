@@ -150,7 +150,7 @@ _08054A5C:
 	adds r0, r4, #0
 _08054A62:
 	movs r2, #0
-	bl sub_08055190
+	bl setEquipLyt
 	adds r0, r4, #0
 	add r1, sp, #4
 	bl sub_080551B0
