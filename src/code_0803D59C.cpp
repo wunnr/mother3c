@@ -1730,7 +1730,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055098.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080550D8.inc", void sub_080550D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055104.inc", void sub_08055104());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055138.inc", void sub_08055138());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055180.inc", void sub_08055180());
+
+extern "C" u16 isEquipLytSet(CharStats* stats, u16 index) {
+    return (stats->equip_lyt >> index) & 1;
+}
 
 extern "C" void setEquipLyt(CharStats* stats, u16 index, u16 val) {
     u32 mask = stats->equip_lyt & ~(1 << index);

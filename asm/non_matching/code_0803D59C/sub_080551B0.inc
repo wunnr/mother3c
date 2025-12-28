@@ -22,7 +22,7 @@ _080551D2:
 	adds r1, r5, #0
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	ldr r2, [sp]
 	ldr r3, [sp, #4]

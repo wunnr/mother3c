@@ -83,7 +83,7 @@ _080549AC:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	str r3, [sp, #0x18]
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	ldr r3, [sp, #0x18]
 	cmp r0, #0
@@ -134,7 +134,7 @@ _08054A10:
 	mov r0, sl
 	lsrs r1, r0, #0x10
 	adds r0, r4, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054A5C

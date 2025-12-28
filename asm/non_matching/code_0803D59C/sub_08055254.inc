@@ -7,7 +7,7 @@ sub_08055254:
 _0805525C:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08055270

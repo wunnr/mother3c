@@ -36,7 +36,7 @@ _08054AC6:
 	str r0, [r1]
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10

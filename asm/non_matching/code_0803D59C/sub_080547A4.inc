@@ -59,7 +59,7 @@ _080547E6:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	str r3, [sp, #0x14]
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	ldr r3, [sp, #0x14]
 	cmp r0, #0

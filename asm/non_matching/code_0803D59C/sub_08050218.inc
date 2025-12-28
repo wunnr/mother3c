@@ -40,7 +40,7 @@ _08050248:
 	adds r6, r6, r1
 	ldrb r1, [r6]
 	adds r0, r5, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08050298
