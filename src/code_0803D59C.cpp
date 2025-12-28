@@ -117,7 +117,12 @@ extern "C" void sub_0804C5B0(u16);
 extern "C" void sub_08055788();
 extern "C" u16 sub_080552E4(CharStats*);
 extern "C" void sub_0803F424(u16, u16, s32);
-extern "C" void sub_0803F1AC(CharStats* stats, struct_200D818* unk);
+extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk);
+extern "C" void refreshEquipLyt(CharStats*);
+extern "C" void clearEquipForEmptyItems(CharStats*);
+extern "C" void sub_0803F1A0(CharStats*, struct_200D800*);
+extern "C" void sub_0803F260(CharStats*, struct_200D800*);
+extern "C" struct_200D800* sub_08054FF0(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -195,15 +200,36 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803EEA0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F038.inc", void sub_0803F038());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F068.inc", void sub_0803F068());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F0A4.inc", void sub_0803F0A4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F124.inc", void sub_0803F124());
 
-// exact same as sub_0802941C
-extern "C" void sub_0803F1A0(CharStats* stats, struct_200D818* unk) {
+extern "C" void sub_0803F124() {
+    for (u16 i = 0; i < gSomeBlend._2df0[5]; i++) {
+        CharStats* stats = sub_08054FE0(i);
+        struct_200D800* unk = sub_08054FF0(i);
+
+        unk->maxHP = stats->maxHP;
+        unk->maxPP = stats->maxPP;
+
+        sub_0803F1A0(stats, unk);
+        sub_0803F260(stats, unk);
+
+        if (stats->curHP > unk->_8) {
+            stats->curHP = unk->_8;
+        }
+
+        if (stats->curPP > unk->_10) {
+            stats->curPP = unk->_10;
+        }
+
+        refreshEquipLyt(stats);
+        clearEquipForEmptyItems(stats);
+    }
+}
+
+extern "C" void sub_0803F1A0(CharStats* stats, struct_200D800* unk) {
     sub_0803F1AC(stats, unk);
 }
 
-// exact same as sub_08029428
-extern "C" void sub_0803F1AC(CharStats* stats, struct_200D818* unk) {
+extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk) {
     unk->hp = 0;
     unk->pp = 0;
     unk->offense = 0;
@@ -223,7 +249,7 @@ extern "C" void sub_0803F1AC(CharStats* stats, struct_200D818* unk) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F260.inc", void sub_0803F260());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F260.inc", void sub_0803F260(CharStats*, struct_200D800*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F36C.inc", void sub_0803F36C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F3B0.inc", void sub_0803F3B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F424.inc", void sub_0803F424(u16, u16, s32));

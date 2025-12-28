@@ -314,7 +314,9 @@ typedef struct struct_200D800 {
     u16 _2a;
     s16 kindness;
     u16 _2e;
-    u8 _30[0x8];
+    u32 maxHP;
+    u16 maxPP;
+    u16 pad_36;
 } struct_200D800;
 
 typedef struct struct_02016028 {
