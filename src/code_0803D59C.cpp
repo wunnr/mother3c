@@ -661,9 +661,9 @@ extern "C" void setMenuGoods() {
     MenuState* menu = &gSomeBlend.menus[MENU_GOODS];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2CB4[0xA3] + 1;
+    menu->numItems = gSomeBlend._2df0[5] + 1;
 
-    if (menu->currentTab < gSomeBlend._2CB4[0xA3]) {
+    if (menu->currentTab < gSomeBlend._2df0[5]) {
         sub_080524EC(sub_08054FE0(menu->currentTab));
     }
 
@@ -675,7 +675,7 @@ extern "C" void setMenuEquip() {
     MenuState* menu = &gSomeBlend.menus[MENU_EQUIP];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2CB4[0xA3];
+    menu->numItems = gSomeBlend._2df0[5];
     sub_080524EC(sub_08054FE0(menu->currentTab));
 }
 
@@ -684,7 +684,7 @@ extern "C" void setMenuPSI() {
     MenuState* menu = &gSomeBlend.menus[MENU_PSI];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2CB4[0xA3];
+    menu->numItems = gSomeBlend._2df0[5];
 }
 
 extern "C" void setMenuStatus() {
@@ -692,7 +692,7 @@ extern "C" void setMenuStatus() {
     MenuState* menu = &gSomeBlend.menus[MENU_STATUS];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2CB4[0xA3];
+    menu->numItems = gSomeBlend._2df0[5];
     sub_08052DBC(sub_08054FE0(menu->currentTab));
 }
 
@@ -702,7 +702,7 @@ extern "C" void setMenuSkills() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    menu->numItems = gSomeBlend._2CB4[0xA3];
+    menu->numItems = gSomeBlend._2df0[5];
     gSomeBlend._44f3_8 = 0;
 }
 
@@ -740,7 +740,7 @@ extern "C" void setMenuShopCharacterSelect() {
     gSomeBlend.currentMenu = MENU_SHOP_CHARACTER_SELECT;
     MenuState* menu = &gSomeBlend.menus[MENU_SHOP_CHARACTER_SELECT];
     menu->currentTab = 0;
-    menu->numItems = gSomeBlend._2CB4[0xA4];
+    menu->numItems = gSomeBlend._2df0[6];
 }
 
 extern "C" void setShopBuyMenu() {
@@ -778,7 +778,7 @@ extern "C" void setMenuItemGuyCharacterSelect() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_CHARACTER_SELECT;
     MenuState* menu = &gSomeBlend.menus[MENU_ITEM_GUY_CHARACTER_SELECT];
     menu->currentTab = 0;
-    menu->numItems = gSomeBlend._2CB4[0xA4];
+    menu->numItems = gSomeBlend._2df0[6];
 }
 
 extern "C" void setItemGuyDepositMenu() {
@@ -892,7 +892,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON) {
-        if (menu->currentTab >= gSomeBlend._2CB4[0xA3]) {
+        if (menu->currentTab >= gSomeBlend._2df0[5]) {
             if (gSomeBlend._426a != 0) {
                 sub_0804EAA4(menu);
             }
@@ -920,7 +920,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         return;
     }
 
-    if (menu->currentTab >= gSomeBlend._2CB4[0xA3]) {
+    if (menu->currentTab >= gSomeBlend._2df0[5]) {
         if (gSomeBlend._426a == 0) {
             return;
         }
@@ -1743,7 +1743,11 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F5C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_08054FB8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", CharStats* sub_08054FE0(u16));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FF0.inc", void sub_08054FF0());
+
+extern "C" struct_200D800* sub_08054FF0(u16 index) {
+    return &gSomeBlend._2cd8[index];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055008.inc", void sub_08055008());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055038.inc", void sub_08055038());
 
@@ -2023,7 +2027,7 @@ extern "C" void sub_08059500(InputState* input) {
     if (gUnknown_02015DC0 == 0) {
         gSomeBlend.dispcnt |= (DISPCNT_OBJ_ON | DISPCNT_BG3_ON | DISPCNT_BG0_ON);
         sub_08059548(&gSomeBlend._2CB0);
-        sub_080596A0(&gSomeBlend._2CB4[0x32]);
+        sub_080596A0(&gSomeBlend._2cd8[1]._8);
     }
 }
 
@@ -2088,7 +2092,7 @@ extern "C" void sub_0805A568(void) {
     void* temp_r0_2 = Blob_GetEntry(&gUnknown_09C8DE98, 1);
     sub_0800160C(&gSomeBlend._50, temp_r0_2, 0, 0x20);
     sub_0800160C(&gSomeBlend._50, temp_r0_2, 0x10, 0x20);
-    sub_08001A14((void*)&gSomeBlend._50._2700, &gSomeBlend._2CB4, 0x400);
+    sub_08001A14((void*)&gSomeBlend._50._2700, &gSomeBlend._2cb4, 0x400);
     sub_08001A38((void*)&gSomeBlend._50._2700, 0x400, -1);
     gSomeBlend.dispcnt = 0x140U;
     gSomeBlend.bgcnt[0] = 8;

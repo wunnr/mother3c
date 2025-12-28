@@ -293,6 +293,30 @@ typedef struct TransactionState {
 } TransactionState;
 static_assert(sizeof(TransactionState) == 0xC);
 
+typedef struct struct_200D800 {
+    u8 _0[0x4];
+    s32 hp;
+    s32 _8;
+    u8 _c[0xE - 0xC];
+    s16 pp;
+    s16 _10;
+    u8 _12[0x14 - 0x12];
+    s16 offense;
+    u8 _16[0x1A - 0x16];
+    s16 defense;
+    u8 _1c;
+    u8 _1d[0x20 - 0x1D];
+    s16 iq;
+    u16 _22;
+    u16 _24;
+    s16 speed;
+    u16 _28;
+    u16 _2a;
+    s16 kindness;
+    u16 _2e;
+    u8 _30[0x8];
+} struct_200D800;
+
 typedef struct struct_02016028 {
     vu16 bldcnt;
     vu16 bldalpha;
@@ -324,7 +348,9 @@ typedef struct struct_02016028 {
     Unknown_02016078 _50;
     InputState input;
     void* _2CB0;
-    u16 _2CB4[0xA6];
+    u16 _2cb4[0x12];
+    struct_200D800 _2cd8[5];
+    u16 _2df0[8];
     MenuState menus[0x13];
     MenuState _3060;
     u8 pad_3080[0x30B4 - 0x3080];
