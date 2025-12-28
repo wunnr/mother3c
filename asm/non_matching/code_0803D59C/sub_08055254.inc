@@ -33,7 +33,7 @@ _0805528C:
 	adds r0, r6, r4
 	ldrb r1, [r0]
 	adds r0, r5, #0
-	bl sub_080550D8
+	bl getInventoryIndex
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	asrs r0, r0, #0x10

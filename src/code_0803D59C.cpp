@@ -1727,7 +1727,16 @@ extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055068.inc", void sub_08055068());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055098.inc", void sub_08055098());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080550D8.inc", void sub_080550D8());
+
+extern "C" s16 getInventoryIndex(CharStats* stats, u16 item) {
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055104.inc", void sub_08055104());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055138.inc", void sub_08055138());
 
