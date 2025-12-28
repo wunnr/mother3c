@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "battle/guest.h"
 #include "battle/irc.h"
 #include "enums.h"
 #include "functions.h"
@@ -39,6 +40,7 @@ extern TileInfo gUnknown_02016078[];
 extern MenuFunc gUnknown_09B8FF14[];
 extern u8 gUnknown_0201AEF8[];
 extern u8 gUnknown_0201A520;
+extern u16 gUnknown_080C6AF6[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
@@ -113,6 +115,8 @@ extern "C" void sub_08052964();
 extern "C" void sub_0804C51C();
 extern "C" void sub_0804C5B0(u16);
 extern "C" void sub_08055788();
+extern "C" u16 sub_080552E4(CharStats*);
+extern "C" void sub_0803F424(u16, u16, s32);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -196,7 +200,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F1AC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F260.inc", void sub_0803F260());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F36C.inc", void sub_0803F36C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F3B0.inc", void sub_0803F3B0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F424.inc", void sub_0803F424());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F424.inc", void sub_0803F424(u16, u16, s32));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F5CC.inc", void sub_0803F5CC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F774.inc", void sub_0803F774());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F8F8.inc", void sub_0803F8F8(u16));
@@ -806,7 +810,20 @@ extern "C" void setMenuNewGame() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C4B4.inc", void sub_0804C4B4());
+extern "C" void setMenuTryAgain() {
+    gSomeBlend.currentMenu = MENU_TRY_AGAIN;
+    MenuState* menu = &gSomeBlend.menus[MENU_TRY_AGAIN];
+    menu->cursorPos = 0;
+    menu->currentTab = 0;
+    CharStats* stats = sub_08054FE0(menu->currentTab);
+    u16 unk = sub_080552E4(stats);
+
+    if (stats->charNo == GuestID::Lucas && stats->spriteNo == 3) {
+        sub_0803F424(0x2CB, 0, -1);
+    } else {
+        sub_0803F424(gUnknown_080C6AF6[unk], 0, -1);
+    }
+}
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C51C.inc", void sub_0804C51C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C5B0.inc", void sub_0804C5B0(u16));
@@ -1732,7 +1749,7 @@ extern "C" void clearEquipForEmptyItems(CharStats* stats) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080552E4.inc", void sub_080552E4());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080552E4.inc", u16 sub_080552E4(CharStats*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805534C.inc", void sub_0805534C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805548C.inc", void sub_0805548C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055558.inc", void sub_08055558());
