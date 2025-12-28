@@ -1751,7 +1751,26 @@ extern "C" void setEquipLyt(CharStats* stats, u16 index, u16 val) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080551B0.inc", void sub_080551B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805521C.inc", void sub_0805521C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055254.inc", void sub_08055254());
+
+extern "C" void refreshEquipLyt(CharStats* stats) {
+    u16 count = 0;
+
+    for (u16 i = 0; i < 0x10; i++) {
+        if (isEquipLytSet(stats, i)) {
+            count++;
+        }
+    }
+
+    if (count > 4) {
+        stats->equip_lyt = 0;
+        for (u16 i = 0; i < 4; i++) {
+            u16 index = getInventoryIndex(stats, stats->equipment[i]);
+            if ((s16)index != -1) {
+                setEquipLyt(stats, index, 1);
+            }
+        }
+    }
+}
 
 extern "C" void clearEquipForEmptyItems(CharStats* stats) {
     for (u16 i = 0; i < 0x10; i++) {

@@ -42,7 +42,7 @@ _0803F168:
 	strh r2, [r5, #0x1c]
 _0803F178:
 	adds r0, r5, #0
-	bl sub_08055254
+	bl refreshEquipLyt
 	adds r0, r5, #0
 	bl clearEquipForEmptyItems
 	adds r0, r6, #1
