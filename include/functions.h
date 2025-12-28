@@ -4,7 +4,7 @@
 #include "structs.h"
 
 typedef void (*DebugModeFunc)(InputState*, TransactionState*);
-typedef void (*MenuFunc)(InputState*, MenuState*);
+typedef void (*MenuHandlerFunc)(InputState*, MenuState*);
 
 extern "C" {
 

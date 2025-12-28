@@ -32,12 +32,12 @@ extern const u8 gUnknown_09C8DE98;  // Some sort of "archive" with sprites, pale
 extern u8 gMenuTextPalette;
 extern const u8 gUnknown_09BCDD8C;
 extern InputState gInputState;
-extern MenuFunc gMenuFuncTable[0x13];
+extern MenuHandlerFunc gMenuFuncTable[0x13];
 extern u8 gMenuData[];
 extern u8 gUnknown_0200F920[];
 extern u8 gUnknown_02004100[];
 extern TileInfo gUnknown_02016078[];
-extern MenuFunc gUnknown_09B8FF14[];
+extern MenuHandlerFunc gUnknown_09B8FF14[];
 extern u8 gUnknown_0201AEF8[];
 extern u8 gUnknown_0201A520;
 extern u16 gUnknown_080C6AF6[];
@@ -196,7 +196,28 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F068.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F0A4.inc", void sub_0803F0A4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F124.inc", void sub_0803F124());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F1A0.inc", void sub_0803F1A0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F1AC.inc", void sub_0803F1AC());
+
+// exact same as sub_08029428
+extern "C" void sub_0803F1AC(CharStats* stats, struct_200D818* unk) {
+    unk->hp = 0;
+    unk->pp = 0;
+    unk->offense = 0;
+    unk->defense = 0;
+    unk->iq = 0;
+    unk->speed = 0;
+    unk->kindness = 0;
+
+    for (u16 i = 0; i < 4; i++) {
+        unk->hp += gGoodsInfo[stats->equipment[i]].hp_mod;
+        unk->pp += gGoodsInfo[stats->equipment[i]].pp_mod;
+        unk->offense += gGoodsInfo[stats->equipment[i]].off_mod;
+        unk->defense += gGoodsInfo[stats->equipment[i]].def_mod;
+        unk->iq += gGoodsInfo[stats->equipment[i]].iq_mod;
+        unk->speed += gGoodsInfo[stats->equipment[i]].spd_mod;
+        unk->kindness += gGoodsInfo[stats->equipment[i]].kindness_mod;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F260.inc", void sub_0803F260());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F36C.inc", void sub_0803F36C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F3B0.inc", void sub_0803F3B0());
