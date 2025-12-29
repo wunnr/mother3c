@@ -117,12 +117,12 @@ extern "C" void sub_0804C5B0(u16);
 extern "C" void sub_08055788();
 extern "C" u16 sub_080552E4(CharStats*);
 extern "C" void sub_0803F424(u16, u16, s32);
-extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk);
+extern "C" void sub_0803F1AC(CharStats* stats, struct_2018D00* unk);
 extern "C" void refreshEquipLyt(CharStats*);
 extern "C" void clearEquipForEmptyItems(CharStats*);
-extern "C" void sub_0803F1A0(CharStats*, struct_200D800*);
-extern "C" void sub_0803F260(CharStats*, struct_200D800*);
-extern "C" struct_200D800* sub_08054FF0(u16);
+extern "C" void sub_0803F1A0(CharStats*, struct_2018D00*);
+extern "C" void sub_0803F260(CharStats*, struct_2018D00*);
+extern "C" struct_2018D00* sub_08054FF0(u16);
 extern "C" u16 isLucasOrKumatora(u8);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
@@ -205,7 +205,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F0A4.inc", void sub_
 extern "C" void sub_0803F124() {
     for (u16 i = 0; i < gSomeBlend._2df0[5]; i++) {
         CharStats* stats = sub_08054FE0(i);
-        struct_200D800* unk = sub_08054FF0(i);
+        struct_2018D00* unk = sub_08054FF0(i);
 
         unk->maxHP = stats->maxHP;
         unk->maxPP = stats->maxPP;
@@ -226,11 +226,11 @@ extern "C" void sub_0803F124() {
     }
 }
 
-extern "C" void sub_0803F1A0(CharStats* stats, struct_200D800* unk) {
+extern "C" void sub_0803F1A0(CharStats* stats, struct_2018D00* unk) {
     sub_0803F1AC(stats, unk);
 }
 
-extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk) {
+extern "C" void sub_0803F1AC(CharStats* stats, struct_2018D00* unk) {
     unk->hpMod = 0;
     unk->ppMod = 0;
     unk->offenseMod = 0;
@@ -250,7 +250,7 @@ extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk) {
     }
 }
 
-extern "C" void sub_0803F260(CharStats* stats, struct_200D800* unk) {
+extern "C" void sub_0803F260(CharStats* stats, struct_2018D00* unk) {
     s32 tmp = stats->maxHP + unk->hpMod;
     if (tmp > 999) {
         tmp = 999;
@@ -1827,7 +1827,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", CharStats* sub_08054FE0(u16));
 
-extern "C" struct_200D800* sub_08054FF0(u16 index) {
+extern "C" struct_2018D00* sub_08054FF0(u16 index) {
     return &gSomeBlend._2cd8[index];
 }
 

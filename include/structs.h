@@ -293,7 +293,7 @@ typedef struct TransactionState {
 } TransactionState;
 static_assert(sizeof(TransactionState) == 0xC);
 
-typedef struct struct_200D800 {
+typedef struct struct_2018D00 {
     s32 _0;
     s32 hpMod;
     s32 _8;
@@ -318,7 +318,7 @@ typedef struct struct_200D800 {
     u32 maxHP;
     u16 maxPP;
     u16 pad_36;
-} struct_200D800;
+} struct_2018D00;
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
@@ -352,7 +352,7 @@ typedef struct struct_02016028 {
     InputState input;
     void* _2CB0;
     u16 _2cb4[0x12];
-    struct_200D800 _2cd8[5];
+    struct_2018D00 _2cd8[5];
     u16 _2df0[8];
     MenuState menus[0x13];
     MenuState _3060;
@@ -665,18 +665,19 @@ typedef struct StatMeter {
 } StatMeter;
 
 typedef struct struct_200D818 {
-    u8 _0[0x4];
+    s32 _0;
     s32 hp;
     s32 _8;
-    u8 _c[0xE - 0xC];
+    u16 _c;
     s16 pp;
     s16 _10;
-    u8 _12[0x14 - 0x12];
+    u16 _12;
     s16 offense;
-    u8 _16[0x1A - 0x16];
+    u16 _16;
+    u16 _18;
     s16 defense;
-    u8 _1c;
-    u8 _1d[0x20 - 0x1D];
+    u16 _1c;
+    u16 _1d;
     s16 iq;
     u16 _22;
     u16 _24;
