@@ -92,7 +92,7 @@ _0804EBE0:
 	strb r2, [r0]
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl sub_08055098
+	bl getEquippedItemIndex
 	ldr r1, _0804ECB0
 	adds r2, r6, r1
 	ands r4, r0

@@ -124,6 +124,7 @@ extern "C" void sub_0803F1A0(CharStats*, struct_2018D00*);
 extern "C" void sub_0803F260(CharStats*, struct_2018D00*);
 extern "C" struct_2018D00* sub_08054FF0(u16);
 extern "C" u16 isLucasOrKumatora(u8);
+extern "C" u16 isEquipLytSet(CharStats*, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -1842,7 +1843,15 @@ extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055068.inc", void sub_08055068());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055098.inc", void sub_08055098());
+
+extern "C" s16 getEquippedItemIndex(CharStats* stats, u16 equipment) {
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] == equipment && isEquipLytSet(stats, i)) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 extern "C" s16 getInventoryIndex(CharStats* stats, u16 item) {
     for (u16 i = 0; i < 0x10; i++) {

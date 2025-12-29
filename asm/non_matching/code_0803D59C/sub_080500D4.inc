@@ -58,7 +58,7 @@ _08050110:
 	beq _08050184
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_08055098
+	bl getEquippedItemIndex
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
 	asrs r0, r0, #0x10
