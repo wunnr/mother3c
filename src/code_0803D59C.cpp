@@ -123,6 +123,7 @@ extern "C" void clearEquipForEmptyItems(CharStats*);
 extern "C" void sub_0803F1A0(CharStats*, struct_200D800*);
 extern "C" void sub_0803F260(CharStats*, struct_200D800*);
 extern "C" struct_200D800* sub_08054FF0(u16);
+extern "C" u16 isLucasOrKumatora(u8);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -230,26 +231,82 @@ extern "C" void sub_0803F1A0(CharStats* stats, struct_200D800* unk) {
 }
 
 extern "C" void sub_0803F1AC(CharStats* stats, struct_200D800* unk) {
-    unk->hp = 0;
-    unk->pp = 0;
-    unk->offense = 0;
-    unk->defense = 0;
-    unk->iq = 0;
-    unk->speed = 0;
-    unk->kindness = 0;
+    unk->hpMod = 0;
+    unk->ppMod = 0;
+    unk->offenseMod = 0;
+    unk->defenseMod = 0;
+    unk->iqMod = 0;
+    unk->speedMod = 0;
+    unk->kindnessMod = 0;
 
     for (u16 i = 0; i < 4; i++) {
-        unk->hp += gGoodsInfo[stats->equipment[i]].hp_mod;
-        unk->pp += gGoodsInfo[stats->equipment[i]].pp_mod;
-        unk->offense += gGoodsInfo[stats->equipment[i]].off_mod;
-        unk->defense += gGoodsInfo[stats->equipment[i]].def_mod;
-        unk->iq += gGoodsInfo[stats->equipment[i]].iq_mod;
-        unk->speed += gGoodsInfo[stats->equipment[i]].spd_mod;
-        unk->kindness += gGoodsInfo[stats->equipment[i]].kindness_mod;
+        unk->hpMod += gGoodsInfo[stats->equipment[i]].hp_mod;
+        unk->ppMod += gGoodsInfo[stats->equipment[i]].pp_mod;
+        unk->offenseMod += gGoodsInfo[stats->equipment[i]].off_mod;
+        unk->defenseMod += gGoodsInfo[stats->equipment[i]].def_mod;
+        unk->iqMod += gGoodsInfo[stats->equipment[i]].iq_mod;
+        unk->speedMod += gGoodsInfo[stats->equipment[i]].spd_mod;
+        unk->kindnessMod += gGoodsInfo[stats->equipment[i]].kindness_mod;
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F260.inc", void sub_0803F260(CharStats*, struct_200D800*));
+extern "C" void sub_0803F260(CharStats* stats, struct_200D800* unk) {
+    s32 tmp = stats->maxHP + unk->hpMod;
+    if (tmp > 999) {
+        tmp = 999;
+    }
+    unk->_0 = tmp;
+
+    unk->_c = min(stats->maxPP + unk->ppMod, 999);
+
+    if (!isLucasOrKumatora(stats->charNo)) {
+        unk->ppMod = 0;
+        unk->_c = 0;
+    }
+
+    unk->_12 = min(unk->offenseMod + stats->offense, 0xFF);
+    unk->_18 = min(unk->defenseMod + stats->defense, 0xFF);
+    unk->_1e = min(unk->iqMod + stats->iq, 0xFF);
+    unk->_24 = min(unk->speedMod + stats->speed, 0xFF);
+    unk->_2a = min(unk->kindnessMod + stats->kindness, 0xFF);
+
+    if (unk->_0 <= 0) {
+        unk->_0 = 1;
+    }
+
+    if (unk->_c < 0) {
+        unk->_c = 0;
+    }
+
+    if (unk->_12 < 0) {
+        unk->_12 = 0;
+    }
+
+    if (unk->_18 < 0) {
+        unk->_18 = 0;
+    }
+
+    if (unk->_1e < 0) {
+        unk->_1e = 0;
+    }
+
+    if (unk->_24 < 0) {
+        unk->_24 = 0;
+    }
+
+    if (unk->_2a < 0) {
+        unk->_2a = 0;
+    }
+
+    unk->_8 = unk->_0;
+    unk->_10 = unk->_c;
+    unk->_16 = unk->_12;
+    unk->_1c = unk->_18;
+    unk->_22 = unk->_1e;
+    unk->_28 = unk->_24;
+    unk->_2e = unk->_2a;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F36C.inc", void sub_0803F36C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F3B0.inc", void sub_0803F3B0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F424.inc", void sub_0803F424(u16, u16, s32));
