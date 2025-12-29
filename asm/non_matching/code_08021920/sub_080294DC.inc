@@ -24,7 +24,7 @@ _08029502:
 	movs r6, #0
 	strh r1, [r4, #0xc]
 	ldrb r0, [r5]
-	bl sub_08001D58
+	bl isLucasOrKumatora
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08029516

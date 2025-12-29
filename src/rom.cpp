@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "battle/guest.h"
 #include "battle/irc.h"
 #include "gba/gba.h"
 #include "gba/macro.h"
@@ -290,7 +291,13 @@ extern "C" u16 isCharIDOverworldPlayable(u16 playerID) {
     return 1;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D58.inc", void sub_08001D58());
+extern "C" u16 isLucasOrKumatora(u16 id) {
+    if (id == GuestID::Lucas || id == GuestID::Kumatora) {
+        return 1;
+    }
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001D70.inc", void sub_08001D70());
 
 extern "C" u16 get_misctext_len(u16 index) {

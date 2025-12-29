@@ -135,7 +135,7 @@ _0805625A:
 	strh r5, [r4, #0x1c]
 _08056266:
 	ldrb r0, [r4]
-	bl sub_08001D58
+	bl isLucasOrKumatora
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08056276
