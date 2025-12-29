@@ -1832,7 +1832,10 @@ extern "C" struct_200D800* sub_08054FF0(u16 index) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055008.inc", void sub_08055008());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055038.inc", void sub_08055038());
+
+extern "C" u16 isCharUnconscious(CharStats* stats) {
+    return stats->curHP == 0;
+}
 
 extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats) {
     return gLevelStatTable[stats->charNo].overworld_playable;

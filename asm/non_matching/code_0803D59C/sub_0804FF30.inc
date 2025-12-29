@@ -26,7 +26,7 @@ sub_0804FF30:
 	cmp r0, #1
 	bne _0804FF94
 	adds r0, r5, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804FF94

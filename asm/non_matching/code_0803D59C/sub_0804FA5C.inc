@@ -76,7 +76,7 @@ _0804FAD0:
 	mov r2, sb
 	strb r0, [r2]
 	mov r0, sl
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804FB4C

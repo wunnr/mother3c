@@ -11,7 +11,7 @@ sub_0804F1D8:
 	bl sub_08054FF0
 	mov r8, r0
 	adds r0, r5, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F226

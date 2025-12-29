@@ -13,7 +13,7 @@ sub_0804EB68:
 	ldrh r0, [r1, #0xa]
 	bl sub_08054FF0
 	adds r0, r7, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804EBD0

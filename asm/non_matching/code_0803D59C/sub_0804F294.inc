@@ -5,7 +5,7 @@ sub_0804F294:
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FE0
 	adds r5, r0, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F2D4

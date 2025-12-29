@@ -10,7 +10,7 @@ sub_0804ECC8:
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
 	mov r0, r8
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804ECF8
