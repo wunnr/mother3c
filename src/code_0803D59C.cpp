@@ -1879,7 +1879,12 @@ extern "C" void setEquipLyt(CharStats* stats, u16 index, u16 val) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080551B0.inc", void sub_080551B0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805521C.inc", void sub_0805521C());
+
+extern "C" void refreshPartyEquipLyt() {
+    for (u16 i = 0; i < gSomeBlend.partyCount; i++) {
+        refreshEquipLyt(getBufferedCharStats(i));
+    }
+}
 
 extern "C" void refreshEquipLyt(CharStats* stats) {
     u16 count = 0;
