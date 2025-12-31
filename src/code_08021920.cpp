@@ -1152,11 +1152,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A0C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A7C.inc", void sub_08037A7C());
 
 extern "C" void sub_08037AF4() {
-    gGame.mode = gSomeBlend.pad_30B4[0x47e];
-    s8* tmp = (s8*)&gSomeBlend.pad_30B4[0x506];
-    *tmp &= -2;
-    gSomeBlend.pad_30B4[0x47c] = 0;
-    gSomeBlend.pad_30B4[0x47d] = 2;
+    gGame.mode = gSomeBlend._3532;
+    gSomeBlend._35ba_1 = 0;
+    gSomeBlend._3530 = 0;
+    gSomeBlend._3531 = 2;
     sub_080012BC(&gSomeBlend._50, 0, 0, 1);
 }
 

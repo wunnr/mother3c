@@ -320,6 +320,13 @@ typedef struct struct_2018D00 {
     u16 pad_36;
 } struct_2018D00;
 
+typedef struct MenuGoodsEntry {
+    u8 id;
+    u8 _1;
+    u16 _2_1 : 6;
+    u16 _2_40 : 1;
+} MenuGoodsEntry;
+
 typedef struct struct_02016028 {
     vu16 bldcnt;
     vu16 bldalpha;
@@ -357,15 +364,21 @@ typedef struct struct_02016028 {
     MenuState menus[0x13];
     MenuState _3060;
     u8 pad_3080[0x30B4 - 0x3080];
-    u8 pad_30B4[0x351B - 0x30B4];
+    u8 pad_30B4[0x3480 - 0x30B4];
+    MenuGoodsEntry _3480[0x10];
+    MenuGoodsEntry equippableItems[0x10];
+    u8 pad_3500[0x351C - 0x3500];
     u32 _351C;
     u32 _3520;
     u16 _3524;
     u16 _3526;
     u8 pad_3528[0x3530 - 0x3528];
     u8 _3530;
-    u8 pad_3531[0x35BA - 0x3531];
-    u8 _35ba_1 : 3;
+    u8 _3531;
+    u8 _3532;
+    u8 pad_3533[0x35BA - 0x3533];
+    u8 _35ba_1 : 1;
+    u8 _35ba_2 : 2;
     u8 _35ba_8 : 1;
     u8 pad_35bb;
     TransactionState _35bc[7];
@@ -406,7 +419,8 @@ typedef struct struct_02016028 {
     u8 pad_4265[0x426A - 0x4265];
     u16 _426a;
     u16 _426c;
-    u8 pad_426e[0x427A - 0x426E];
+    u16 numEquippableItems;
+    u8 pad_4270[0x427A - 0x4270];
     u16 _427a;
     u16 _427c;
     u16 _427e;
