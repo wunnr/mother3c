@@ -55,7 +55,7 @@ _08054448:
 	mov r8, r0
 _0805445A:
 	adds r0, r5, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r0, r5, #0
 	bl sub_08054FF0
@@ -98,7 +98,7 @@ _0805448C:
 	adds r6, r4, #0
 _080544B4:
 	adds r0, r5, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r0, r5, #0
 	bl sub_08054FF0

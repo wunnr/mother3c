@@ -51,7 +51,7 @@ _0804CEA2:
 	adds r0, r5, r2
 	strb r1, [r0]
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	bl sub_08052DBC
 	ldr r0, _0804CF00

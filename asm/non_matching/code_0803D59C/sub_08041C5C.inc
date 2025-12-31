@@ -13,7 +13,7 @@ sub_08041C5C:
 	orrs r0, r1
 	strb r0, [r6, #6]
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
 	ldr r1, _08041D9C

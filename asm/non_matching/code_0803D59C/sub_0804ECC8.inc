@@ -5,7 +5,7 @@ sub_0804ECC8:
 	push {r7}
 	adds r7, r0, #0
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov r8, r0
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0

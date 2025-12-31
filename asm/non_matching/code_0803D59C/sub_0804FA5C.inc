@@ -20,7 +20,7 @@ sub_0804FA5C:
 	lsls r2, r2, #6
 	adds r7, r5, r2
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov sl, r0
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0

@@ -41,6 +41,7 @@ extern MenuHandlerFunc gUnknown_09B8FF14[];
 extern u8 gUnknown_0201AEF8[];
 extern u8 gUnknown_0201A520;
 extern u16 gUnknown_080C6AF6[];
+extern u32 gUnknown_02018CD8[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
@@ -77,7 +78,7 @@ extern "C" void setItemGuySubmenu(MenuState*);
 extern "C" u16 navigate1DMenuChecked(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
 extern "C" void sub_08053148(CharStats*);
-extern "C" CharStats* sub_08054FE0(u16);
+extern "C" CharStats* getBufferedCharStats(u16);
 extern "C" void sub_080524EC(CharStats*);
 extern "C" void sub_080531C8(CharStats*);
 extern "C" void sub_0804EF9C(MenuState*);
@@ -204,8 +205,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F068.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803F0A4.inc", void sub_0803F0A4());
 
 extern "C" void sub_0803F124() {
-    for (u16 i = 0; i < gSomeBlend._2df0[5]; i++) {
-        CharStats* stats = sub_08054FE0(i);
+    for (u16 i = 0; i < gSomeBlend.partyCount; i++) {
+        CharStats* stats = getBufferedCharStats(i);
         struct_2018D00* unk = sub_08054FF0(i);
 
         unk->maxHP = stats->maxHP;
@@ -745,10 +746,10 @@ extern "C" void setMenuGoods() {
     MenuState* menu = &gSomeBlend.menus[MENU_GOODS];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2df0[5] + 1;
+    menu->numItems = gSomeBlend.partyCount + 1;
 
-    if (menu->currentTab < gSomeBlend._2df0[5]) {
-        sub_080524EC(sub_08054FE0(menu->currentTab));
+    if (menu->currentTab < gSomeBlend.partyCount) {
+        sub_080524EC(getBufferedCharStats(menu->currentTab));
     }
 
     sub_08052964();
@@ -759,8 +760,8 @@ extern "C" void setMenuEquip() {
     MenuState* menu = &gSomeBlend.menus[MENU_EQUIP];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2df0[5];
-    sub_080524EC(sub_08054FE0(menu->currentTab));
+    menu->numItems = gSomeBlend.partyCount;
+    sub_080524EC(getBufferedCharStats(menu->currentTab));
 }
 
 extern "C" void setMenuPSI() {
@@ -768,7 +769,7 @@ extern "C" void setMenuPSI() {
     MenuState* menu = &gSomeBlend.menus[MENU_PSI];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2df0[5];
+    menu->numItems = gSomeBlend.partyCount;
 }
 
 extern "C" void setMenuStatus() {
@@ -776,8 +777,8 @@ extern "C" void setMenuStatus() {
     MenuState* menu = &gSomeBlend.menus[MENU_STATUS];
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
-    menu->numItems = gSomeBlend._2df0[5];
-    sub_08052DBC(sub_08054FE0(menu->currentTab));
+    menu->numItems = gSomeBlend.partyCount;
+    sub_08052DBC(getBufferedCharStats(menu->currentTab));
 }
 
 extern "C" void setMenuSkills() {
@@ -786,7 +787,7 @@ extern "C" void setMenuSkills() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    menu->numItems = gSomeBlend._2df0[5];
+    menu->numItems = gSomeBlend.partyCount;
     gSomeBlend._44f3_8 = 0;
 }
 
@@ -824,7 +825,7 @@ extern "C" void setMenuShopCharacterSelect() {
     gSomeBlend.currentMenu = MENU_SHOP_CHARACTER_SELECT;
     MenuState* menu = &gSomeBlend.menus[MENU_SHOP_CHARACTER_SELECT];
     menu->currentTab = 0;
-    menu->numItems = gSomeBlend._2df0[6];
+    menu->numItems = gSomeBlend.playablePartyCount;
 }
 
 extern "C" void setShopBuyMenu() {
@@ -833,7 +834,7 @@ extern "C" void setShopBuyMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    CharStats* stats = sub_08054FE0(menu->currentTab);
+    CharStats* stats = getBufferedCharStats(menu->currentTab);
     sub_080524EC(stats);
     sub_08052F9C(stats);
     menu->numItems = gSomeBlend._4280;
@@ -845,7 +846,7 @@ extern "C" void setShopSellMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    sub_08052FC8(sub_08054FE0(menu->currentTab));
+    sub_08052FC8(getBufferedCharStats(menu->currentTab));
 }
 
 extern "C" void setMenuItemGuyTransactionSelect() {
@@ -862,7 +863,7 @@ extern "C" void setMenuItemGuyCharacterSelect() {
     gSomeBlend.currentMenu = MENU_ITEM_GUY_CHARACTER_SELECT;
     MenuState* menu = &gSomeBlend.menus[MENU_ITEM_GUY_CHARACTER_SELECT];
     menu->currentTab = 0;
-    menu->numItems = gSomeBlend._2df0[6];
+    menu->numItems = gSomeBlend.playablePartyCount;
 }
 
 extern "C" void setItemGuyDepositMenu() {
@@ -871,7 +872,7 @@ extern "C" void setItemGuyDepositMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    sub_08053148(sub_08054FE0(menu->currentTab));
+    sub_08053148(getBufferedCharStats(menu->currentTab));
 }
 
 extern "C" void setItemGuyWithdrawMenu() {
@@ -880,7 +881,7 @@ extern "C" void setItemGuyWithdrawMenu() {
     menu->cursorPos = 0;
     menu->currentTab = gSomeBlend._4264;
     menu->scrollOffset = 0;
-    CharStats* stats = sub_08054FE0(menu->currentTab);
+    CharStats* stats = getBufferedCharStats(menu->currentTab);
     sub_080524EC(stats);
     sub_080531C8(stats);
 }
@@ -925,7 +926,7 @@ extern "C" void setMenuTryAgain() {
     MenuState* menu = &gSomeBlend.menus[MENU_TRY_AGAIN];
     menu->cursorPos = 0;
     menu->currentTab = 0;
-    CharStats* stats = sub_08054FE0(menu->currentTab);
+    CharStats* stats = getBufferedCharStats(menu->currentTab);
     u16 unk = sub_080552E4(stats);
 
     if (stats->charNo == GuestID::Lucas && stats->spriteNo == 3) {
@@ -976,7 +977,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON) {
-        if (menu->currentTab >= gSomeBlend._2df0[5]) {
+        if (menu->currentTab >= gSomeBlend.partyCount) {
             if (gSomeBlend._426a != 0) {
                 sub_0804EAA4(menu);
             }
@@ -1004,7 +1005,7 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
         return;
     }
 
-    if (menu->currentTab >= gSomeBlend._2df0[5]) {
+    if (menu->currentTab >= gSomeBlend.partyCount) {
         if (gSomeBlend._426a == 0) {
             return;
         }
@@ -1065,7 +1066,7 @@ extern "C" void menuSkills(InputState* input, MenuState* menu) {
         menu->cursorPos = 0;
         menu->scrollOffset = 0;
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
-        CharStats* stats = sub_08054FE0(menu->currentTab);
+        CharStats* stats = getBufferedCharStats(menu->currentTab);
         sub_08052DBC(stats);
         sub_08046D90();
         gSomeBlend._44f3_8 = 1;
@@ -1826,7 +1827,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F34.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F5C.inc", void sub_08054F5C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_08054FB8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FE0.inc", CharStats* sub_08054FE0(u16));
+
+extern "C" CharStats* getBufferedCharStats(u16 index) {
+    return *(CharStats**)&gUnknown_02018CD8[index];
+}
 
 extern "C" struct_2018D00* sub_08054FF0(u16 index) {
     return &gSomeBlend._2cd8[index];

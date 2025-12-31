@@ -131,7 +131,7 @@ _08051D56:
 	mov r8, r3
 _08051DF4:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r0, #0xe

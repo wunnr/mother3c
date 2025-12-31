@@ -26,7 +26,7 @@ _0805040C:
 	lsls r2, r2, #6
 	adds r4, r6, r2
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0

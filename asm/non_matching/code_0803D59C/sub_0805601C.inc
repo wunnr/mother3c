@@ -13,7 +13,7 @@ sub_0805601C:
 	adds r7, r0, #0
 _08056032:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	ldrb r1, [r0]
 	ldrh r2, [r4]
 	cmp r1, r2

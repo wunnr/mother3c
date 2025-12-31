@@ -360,7 +360,10 @@ typedef struct struct_02016028 {
     void* _2CB0;
     u16 _2cb4[0x12];
     struct_2018D00 _2cd8[5];
-    u16 _2df0[8];
+    u16 _2df0[5];
+    u16 partyCount;
+    u16 playablePartyCount;
+    u16 _2dfe;
     MenuState menus[0x13];
     MenuState _3060;
     u8 pad_3080[0x30B4 - 0x3080];

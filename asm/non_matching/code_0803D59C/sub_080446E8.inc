@@ -46,7 +46,7 @@ sub_080446E8:
 	adds r7, r0, #0
 _0804474C:
 	adds r0, r5, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10

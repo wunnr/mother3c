@@ -14,7 +14,7 @@ sub_08040B58:
 	strb r0, [r6, #6]
 	mov r1, sl
 	ldrh r0, [r1, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	str r0, [sp, #0x18]
 	mov r2, sl
 	ldrh r0, [r2, #0xa]
@@ -140,7 +140,7 @@ _08040C64:
 	ldr r0, _08040CC8
 	adds r4, r6, r0
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0

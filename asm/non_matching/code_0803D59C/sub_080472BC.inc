@@ -3,7 +3,7 @@ sub_080472BC:
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	ldrh r0, [r0, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10

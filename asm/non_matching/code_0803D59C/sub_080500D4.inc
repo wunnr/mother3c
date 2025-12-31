@@ -39,7 +39,7 @@ _08050110:
 	adds r1, r1, r5
 	mov sb, r1
 	ldrh r0, [r1, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r6, r0, #0
 	mov r2, sb
 	ldrh r0, [r2, #0xa]

@@ -7,7 +7,7 @@ sub_08042A6C:
 	sub sp, #8
 	mov sb, r0
 	movs r0, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	bl sub_080552E4
 	lsls r0, r0, #0x10
 	ldr r7, _08042AB8

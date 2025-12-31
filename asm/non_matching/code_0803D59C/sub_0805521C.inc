@@ -11,7 +11,7 @@ sub_0805521C:
 	adds r5, r0, #0
 _0805522E:
 	adds r0, r4, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	bl refreshEquipLyt
 	adds r0, r4, #1
 	lsls r0, r0, #0x10

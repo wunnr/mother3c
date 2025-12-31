@@ -14,7 +14,7 @@ sub_08041150:
 	strb r0, [r6, #6]
 	mov r1, sl
 	ldrh r0, [r1, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	str r0, [sp, #0x1c]
 	mov r2, sl
 	ldrh r0, [r2, #0xa]

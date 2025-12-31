@@ -25,7 +25,7 @@ _080403A0:
 	strb r0, [r7, #6]
 	mov r2, sl
 	ldrh r0, [r2, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	str r0, [sp, #8]
 	mov r3, sl
 	ldrh r0, [r3, #0xa]
@@ -165,7 +165,7 @@ _080404D0:
 	ldr r2, _08040514
 	adds r4, r7, r2
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r6, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0

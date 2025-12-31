@@ -47,7 +47,7 @@ _0804CD52:
 	movs r0, #0xd2
 	bl play_sound
 	ldrh r0, [r5, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r3, r0, #0
 	ldr r2, _0804CD90
 	add r2, r8

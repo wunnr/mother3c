@@ -26,7 +26,7 @@ _08050340:
 	ldr r2, _080503B4
 	adds r4, r7, r2
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0

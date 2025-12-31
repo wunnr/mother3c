@@ -6,7 +6,7 @@ sub_0805548C:
 	ldr r1, _080554B4
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	ldrb r0, [r4]
 	subs r0, #1

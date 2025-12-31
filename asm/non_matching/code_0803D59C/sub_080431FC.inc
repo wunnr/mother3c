@@ -31,7 +31,7 @@ _08043228:
 	b _08043350
 _08043238:
 	ldr r0, [sp, #0x4c]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldr r0, [sp, #0x4c]
 	bl sub_08054FF0

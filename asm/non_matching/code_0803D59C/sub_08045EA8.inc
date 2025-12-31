@@ -59,7 +59,7 @@ sub_08045EA8:
 	mov r8, r0
 _08045F2E:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10

@@ -26,7 +26,7 @@ _0804741C: .4byte 0x0000427A
 _08047420: .4byte 0x0000423C
 _08047424:
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	add r3, sp, #4
 	mov r2, sp
 	adds r2, #6
