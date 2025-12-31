@@ -8,7 +8,7 @@ sub_08046D0C:
 	ldr r0, [r4, #0x1c]
 	ldrh r2, [r4, #0x10]
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

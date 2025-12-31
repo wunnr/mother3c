@@ -69,7 +69,7 @@ _080045A2:
 	bne _080045A2
 	ldr r0, _08004650
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	movs r5, #0
 _080045BA:
 	bl sub_08001960
@@ -133,7 +133,7 @@ _08004640: .4byte gSomeBlend
 _08004644: .4byte 0x000121B6
 _08004648: .4byte 0x04000130
 _0800464C: .4byte 0x000003FF
-_08004650: .4byte gUnknown_02018CC8
+_08004650: .4byte gInputState
 _08004654: .4byte gGame
 _08004658: .4byte 0x00009D14
 _0800465C: .4byte 0x000082B9

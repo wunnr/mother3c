@@ -222,13 +222,13 @@ _0800992A:
 	ldr r1, _08009A40
 	add r1, r8
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r7, #0
 	adds r0, #0x68
 	ldr r1, _08009A44
 	add r1, r8
 	movs r2, #0x60
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r6, #0xcc
 	adds r7, #0xcc
 	ldr r3, [sp, #0x10]

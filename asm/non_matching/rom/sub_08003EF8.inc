@@ -94,7 +94,7 @@ _08003FA8:
 	adds r4, r4, r1
 	adds r1, r4, #0
 	movs r2, #0x80
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08004028
 	.align 2, 0
 _08003FE4: .4byte gGame

@@ -10,7 +10,7 @@ sub_0803FF50:
 	beq _0803FFEA
 	ldr r0, _0803FF70
 	movs r1, #0x23
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r6, r0, #0
 	movs r4, #0
 	b _0803FFE4

@@ -12,17 +12,17 @@ sub_08057204:
 	ldr r1, _08057244
 	movs r2, #0xa0
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _08057248
 	adds r4, #9
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r1, r4, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _0805724C
 	movs r2, #0xc0
 	lsls r2, r2, #7
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4}
 	pop {r0}
 	bx r0

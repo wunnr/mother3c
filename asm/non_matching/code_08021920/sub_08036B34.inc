@@ -17,7 +17,7 @@ _08036B3C:
 	adds r0, #0x85
 	ldrb r0, [r0]
 	adds r1, r5, #0
-	bl sub_08036A1C
+	bl updateObjDirection
 _08036B5A:
 	adds r0, r4, #1
 	lsls r0, r0, #0x10

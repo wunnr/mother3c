@@ -22,7 +22,7 @@ sub_0805191C:
 	ldr r1, _0805198C
 	add r1, sp
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r1, sp
 	movs r0, #1
 	strh r0, [r1]
@@ -55,7 +55,7 @@ _08051990:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0xf4
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -65,7 +65,7 @@ _08051990:
 	adds r1, r5, #0
 	adds r1, #0xd0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 _080519B0:
 	movs r0, #1
 _080519B2:

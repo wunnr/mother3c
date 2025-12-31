@@ -5,7 +5,7 @@ sub_08050D64:
 	ldr r1, _08050D7C
 	movs r2, #0x80
 	lsls r2, r2, #1
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r0}
 	bx r0
 	.align 2, 0

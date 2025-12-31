@@ -103,7 +103,7 @@ sub_08007398:
 	ands r1, r2
 	strb r1, [r7, #1]
 	movs r0, #0x18
-	bl sub_08002998
+	bl get_shop_flag
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0xf
@@ -172,7 +172,7 @@ _080074E4:
 	ldr r0, _08007570
 	add r0, sl
 	movs r1, #0
-	bl sub_08001630
+	bl resetInputState
 	mov r0, sl
 	bl sub_08007CC0
 	adds r0, r4, #0
@@ -328,7 +328,7 @@ _08007654:
 	lsls r5, r5, #3
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl memclear
@@ -371,7 +371,7 @@ _080076E0:
 	lsls r4, r4, #3
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r2, #1
 	rsbs r2, r2, #0
 	adds r0, r5, #0
@@ -388,7 +388,7 @@ _08007708:
 	lsls r5, r5, #3
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl memclear

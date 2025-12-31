@@ -91,7 +91,7 @@ _0803A810:
 	adds r1, r3, #0
 	movs r2, #0
 	movs r3, #2
-	bl sub_08039544
+	bl menuTabNavigate
 _0803A828:
 	add sp, #0xc
 	pop {r4}

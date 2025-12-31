@@ -34,7 +34,7 @@ _08001AFE:
 	lsls r1, r1, #0x11
 	orrs r2, r1
 	adds r1, r3, #0
-	bl sub_08090F74
+	bl CpuFastSet
 _08001B12:
 	add sp, #8
 	pop {r0}

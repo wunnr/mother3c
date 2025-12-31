@@ -49,7 +49,7 @@ _0802FCE4:
 	mov r2, sp
 	adds r2, #0xa
 	adds r1, r4, #0
-	bl sub_080270A0
+	bl getVelocity
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl sub_0800C694
@@ -142,14 +142,14 @@ _0802FD9C:
 	mov r2, sb
 	lsls r1, r2, #0x10
 	asrs r1, r1, #0x10
-	bl sub_080270F8
+	bl get90DegreeTurn
 	b _0802FDBC
 _0802FDB0:
 	ldrh r0, [r1]
 	cmp r0, #0
 	beq _0802FDE6
 	ldrb r0, [r6]
-	bl sub_080270E8
+	bl getOppositeDirection
 _0802FDBC:
 	strb r0, [r6]
 	adds r4, r5, #0
@@ -159,7 +159,7 @@ _0802FDBC:
 	cmp r0, #0
 	blt _0802FDE6
 	ldrb r0, [r6]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

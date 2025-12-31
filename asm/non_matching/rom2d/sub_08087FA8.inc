@@ -13,7 +13,7 @@ sub_08087FA8:
 	str r1, [r5, #4]
 	adds r4, #0xc
 	adds r0, r4, #0
-	bl sub_08090F8C
+	bl LZ77UnCompWram
 	ldr r0, [r5, #4]
 	str r0, [r5, #0xc]
 	pop {r4, r5}

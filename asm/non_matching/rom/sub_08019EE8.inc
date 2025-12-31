@@ -7,13 +7,13 @@ sub_08019EE8:
 	ldr r5, _08019F38
 	adds r0, r5, #0
 	movs r1, #0x2c
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
-	bl sub_08090F88
+	bl LZ77UnCompVram
 	adds r0, r5, #0
 	movs r1, #0x2d
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0
 	movs r2, #0x40
 	bl sub_08016F4C
@@ -22,7 +22,7 @@ sub_08019EE8:
 	lsrs r4, r4, #0x10
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	bl sub_08019F44
 	ldr r0, _08019F3C
 	ldr r1, _08019F40

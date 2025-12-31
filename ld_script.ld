@@ -135,6 +135,8 @@ SECTIONS
         build/mother3/asm/rom4.o(.text);
 
         build/mother3/data/data1.o(.rodata);
+        build/mother3/src/data/directionData.o(.rodata);
+        build/mother3/data/data1a.o(.rodata);
         build/mother3/src/data/playerSkillData.o(.rodata);
         build/mother3/src/data/guestSkillData.o(.rodata);
         build/mother3/src/data/monsterData.o(.rodata);
@@ -159,6 +161,8 @@ SECTIONS
         build/mother3/data/data3.o(.data);
         build/mother3/assets/misctext.o(.data);
         build/mother3/data/data3a.o(.data);
+        build/mother3/src/data/directionData.o(.data);
+        build/mother3/data/data3b.o(.data);
         build/mother3/assets/mainscript.o(.data);
         build/mother3/data/data4.o(.data);
 

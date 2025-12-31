@@ -36,7 +36,7 @@ sub_0801870C:
 	mov r2, sp
 	adds r2, #2
 	mov r1, sp
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, [r6, #0x34]
 	ldrh r0, [r0, #2]
 	ldrh r2, [r4, #2]

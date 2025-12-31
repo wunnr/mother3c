@@ -24,7 +24,7 @@ _080138A4:
 	adds r1, r2, r0
 	adds r0, r5, #0
 	movs r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r6, #1
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -47,11 +47,11 @@ _080138D2:
 	adds r1, r2, r0
 	mov r0, r8
 	movs r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r1, _080138F8
 	mov r0, sp
 	movs r2, #0xa0
-	bl sub_08001B18
+	bl CpuSmartSet
 	add sp, #0xa0
 	pop {r3}
 	mov r8, r3

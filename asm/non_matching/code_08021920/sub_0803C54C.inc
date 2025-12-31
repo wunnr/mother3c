@@ -14,13 +14,13 @@ sub_0803C54C:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #8
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r5, #0x10
 	adds r4, #8
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r5, #0x10
 	adds r0, r5, #0
 	bl sub_0803C5C0

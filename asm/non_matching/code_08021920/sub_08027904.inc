@@ -16,7 +16,7 @@ sub_08027904:
 	adds r4, r4, r1
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4, r5}
 	pop {r0}
 	bx r0

@@ -12,7 +12,7 @@ sub_0804A1C0:
 	beq _0804A202
 	strb r1, [r2]
 	ldr r0, _0804A210
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r0, #0x50
@@ -24,7 +24,7 @@ sub_0804A1C0:
 	movs r2, #0x80
 	lsls r2, r2, #4
 	adds r0, r4, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0804A214
 	adds r1, r5, r0
 	ldrh r0, [r1]

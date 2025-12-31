@@ -22,10 +22,10 @@ _0802E4E2:
 	ldrb r1, [r0]
 	movs r0, #0
 _0802E4EA:
-	bl sub_080366C0
+	bl directionToTargetByID
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 _0802E4FA:
@@ -45,7 +45,7 @@ _0802E514:
 	adds r0, r4, #0
 	adds r0, #0x85
 	ldrb r0, [r0]
-	bl sub_08036A1C
+	bl updateObjDirection
 _0802E51E:
 	ldr r1, _0802E52C
 	movs r0, #1

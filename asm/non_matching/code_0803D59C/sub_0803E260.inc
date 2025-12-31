@@ -17,7 +17,7 @@ sub_0803E260:
 	ldr r1, _0803E2AC
 	adds r4, r4, r1
 	adds r0, r4, #0
-	bl sub_0800164C
+	bl pollInput
 	adds r0, r4, #0
 	bl exec_menu
 _0803E28E:

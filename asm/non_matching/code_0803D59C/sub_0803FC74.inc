@@ -3,7 +3,7 @@ sub_0803FC74:
 	push {lr}
 	ldr r0, _0803FC8C
 	movs r1, #0x19
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _0803FC90
 	movs r2, #0x80
 	lsls r2, r2, #7

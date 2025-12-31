@@ -30,7 +30,7 @@ _08044F3C:
 	add r4, sp, #0x50
 	adds r1, r4, #0
 	movs r2, #0x14
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r7, #0
 	bl sub_080552E4
 	lsls r0, r0, #0x10

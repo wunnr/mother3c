@@ -3,13 +3,13 @@
 .syntax unified
 .section .text
 
-	thumb_func_start sub_08090F70
-sub_08090F70: @ 0x08090F70
+	thumb_func_start ArcTan2
+ArcTan2: @ 0x08090F70
 	svc #0xa
 	bx lr
 
-	thumb_func_start sub_08090F74
-sub_08090F74: @ 0x08090F74
+	thumb_func_start CpuFastSet
+CpuFastSet: @ 0x08090F74
 	svc #0xc
 	bx lr
 
@@ -30,13 +30,13 @@ DivMod: @ 0x08090F80
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_08090F88
-sub_08090F88: @ 0x08090F88
+	thumb_func_start LZ77UnCompVram
+LZ77UnCompVram: @ 0x08090F88
 	svc #0x12
 	bx lr
 
-	thumb_func_start sub_08090F8C
-sub_08090F8C: @ 0x08090F8C
+	thumb_func_start LZ77UnCompWram
+LZ77UnCompWram: @ 0x08090F8C
 	svc #0x11
 	bx lr
 

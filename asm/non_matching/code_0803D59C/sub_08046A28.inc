@@ -13,7 +13,7 @@ sub_08046A28:
 	lsrs r4, r4, #0x10
 	mov r1, sp
 	movs r2, #0x14
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	strb r4, [r0, #0xc]
 	cmp r5, #0x1f

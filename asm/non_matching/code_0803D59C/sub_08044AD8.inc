@@ -127,7 +127,7 @@ _08044BC0:
 	adds r0, r6, #0
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	lsrs r4, r4, #0x11
 	lsls r4, r4, #1
 	adds r4, r4, r7
@@ -167,7 +167,7 @@ _08044C0C:
 	adds r0, r6, #0
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	lsrs r4, r4, #0x11
 	lsls r4, r4, #1
 	adds r4, r4, r7

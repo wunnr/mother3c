@@ -48,7 +48,7 @@ _08027876:
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r1, #1
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0xc
 	movs r2, #0x20
 	bl sub_08016F4C
@@ -79,7 +79,7 @@ _08027876:
 	ldr r1, _08027900
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

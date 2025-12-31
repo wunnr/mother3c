@@ -57,7 +57,7 @@ _0800BE70:
 	mov r2, sp
 	adds r2, #0xe
 	add r1, sp, #0xc
-	bl sub_080270A0
+	bl getVelocity
 	ldr r0, [r4, #0x34]
 	ldrb r0, [r0, #0x14]
 	lsls r0, r0, #0x19
@@ -72,7 +72,7 @@ _0800BE70:
 	cmp r0, #0
 	blt _0800BEB4
 	ldrb r0, [r1]
-	bl sub_080270B8
+	bl getPrevDirection
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #7

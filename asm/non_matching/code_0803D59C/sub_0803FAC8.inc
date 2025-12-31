@@ -8,7 +8,7 @@ sub_0803FAC8:
 	ldr r4, _0803FB4C
 	adds r0, r4, #0
 	movs r1, #0x25
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	movs r2, #0x80
@@ -16,7 +16,7 @@ sub_0803FAC8:
 	bl sub_08001A14
 	adds r0, r4, #0
 	movs r1, #0x26
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FB50
 	movs r2, #1
@@ -34,16 +34,16 @@ _0803FB04:
 	ldr r4, _0803FB4C
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _0803FB54
-	bl sub_08090F88
+	bl LZ77UnCompVram
 	ldr r0, _0803FB58
 	ldr r1, _0803FB5C
 	adds r0, r0, r1
 	ldrb r1, [r0]
 	adds r1, #1
 	adds r0, r4, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r1, r0, #0
 	ldr r0, _0803FB50
 	movs r2, #2

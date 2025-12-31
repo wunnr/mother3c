@@ -36,7 +36,7 @@ sub_08016E64:
 	lsls r2, r2, #1
 	adds r1, r4, r2
 	movs r2, #0x40
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08016ECA
 	.align 2, 0
 _08016EB4: .4byte gUnknown_03005314

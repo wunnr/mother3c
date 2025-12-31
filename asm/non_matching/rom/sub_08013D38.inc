@@ -57,7 +57,7 @@ _08013D80:
 	str r1, [r4]
 	ldr r0, _08013E28
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r1, _08013E2C
 	ldr r2, _08013E10
 	adds r0, r6, r2
