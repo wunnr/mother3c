@@ -12,7 +12,7 @@ _0807471A:
 	adds r0, r2, #0
 	b _08074732
 	.align 2, 0
-_08074724: .4byte gUnknown_080EC578
+_08074724: .4byte gRhythmData
 _08074728:
 	adds r2, #8
 	adds r3, #1
@@ -23,5 +23,5 @@ _08074732:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08074738: .4byte gUnknown_080EC578
+_08074738: .4byte gRhythmData
 	.syntax divided
