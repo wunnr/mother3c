@@ -82,7 +82,7 @@ extern "C" CharStats* getBufferedCharStats(u16);
 extern "C" void sub_080524EC(CharStats*);
 extern "C" void sub_080531C8(CharStats*);
 extern "C" void sub_0804EF9C(MenuState*);
-extern "C" void sub_0804F158(MenuState*);
+extern "C" void handleItemGuyTransactionSelection(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
 extern "C" void sub_0804EF38(MenuState*);
 extern "C" u16 navigateScrolling2DMenu(u16*, u16*, InputState*, u16, u16, u16, u16);
@@ -983,9 +983,11 @@ extern "C" void menuGoods(InputState* input, MenuState* menu) {
             }
             return;
         }
+
         if (gSomeBlend._426c == 0) {
             return;
         }
+
         sub_0804EA28(menu);
         return;
     }
@@ -1066,8 +1068,7 @@ extern "C" void menuSkills(InputState* input, MenuState* menu) {
         menu->cursorPos = 0;
         menu->scrollOffset = 0;
         sub_080012BC(&gSomeBlend._50, &gSomeBlend._423c, 1, 1);
-        CharStats* stats = getBufferedCharStats(menu->currentTab);
-        sub_08052DBC(stats);
+        sub_08052DBC(getBufferedCharStats(menu->currentTab));
         sub_08046D90();
         gSomeBlend._44f3_8 = 1;
         return;
@@ -1195,7 +1196,7 @@ extern "C" void menuItemGuyTransactionSelect(InputState* input, MenuState* menu)
     }
 
     if (input->justPressed == A_BUTTON) {
-        sub_0804F158(menu);
+        handleItemGuyTransactionSelection(menu);
         return;
     }
 
@@ -1374,7 +1375,25 @@ extern "C" void setShopSubmenu(MenuState* menu) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F01C.inc", void sub_0804F01C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F0D4.inc", void sub_0804F0D4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804F158.inc", void sub_0804F158(MenuState*));
+
+extern "C" void handleItemGuyTransactionSelection(MenuState* menu) {
+    switch (menu->cursorPos) {
+    case 0:  // Deposit
+    case 1:  // Withdraw
+        play_sound(SFX_MENU_SELECT);
+        setMenuItemGuyCharacterSelect();
+        break;
+    case 2:  // End
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    default:
+        break;
+    }
+
+    sub_08049DC4();
+    sub_08046D90();
+}
 
 extern "C" void setItemGuySubmenu(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
