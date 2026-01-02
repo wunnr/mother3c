@@ -54,7 +54,7 @@ _0805003C:
 	bl sub_08046D90
 	bl nullsub_22
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080500BC

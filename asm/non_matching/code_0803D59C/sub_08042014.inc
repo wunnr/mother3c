@@ -217,7 +217,7 @@ _080421C6:
 	bhs _0804224E
 _080421DE:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804220E
@@ -241,7 +241,7 @@ _080421DE:
 _0804220E:
 	adds r4, #4
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08042240
@@ -276,7 +276,7 @@ _0804224E:
 	cmp r6, #0
 	beq _08042284
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08042284

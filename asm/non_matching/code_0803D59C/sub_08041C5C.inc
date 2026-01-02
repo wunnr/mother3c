@@ -205,7 +205,7 @@ _08041E08:
 	adds r6, r1, r0
 _08041E1A:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08041E48

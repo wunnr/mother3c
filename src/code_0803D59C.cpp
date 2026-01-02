@@ -1842,7 +1842,16 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054BE0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CA4.inc", void sub_08054CA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CDC.inc", void sub_08054CDC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054EF4.inc", void sub_08054EF4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F34.inc", void sub_08054F34());
+
+extern "C" u16 isItemIdEqiupment(u16 item) {
+    if (gGoodsInfo[item].item_type == Weapon || gGoodsInfo[item].item_type == BodyArmor ||
+        gGoodsInfo[item].item_type == Headgear || gGoodsInfo[item].item_type == Armgear) {
+        return true;
+    }
+
+    return false;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F5C.inc", void sub_08054F5C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_08054FB8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());

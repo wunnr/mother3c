@@ -5,7 +5,7 @@ sub_08055138:
 	lsls r1, r1, #0x10
 	lsrs r5, r1, #0x10
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08055152

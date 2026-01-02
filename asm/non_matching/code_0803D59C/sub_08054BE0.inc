@@ -25,7 +25,7 @@ sub_08054BE0:
 	movs r1, #1
 	bl sub_08054558
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054C2C

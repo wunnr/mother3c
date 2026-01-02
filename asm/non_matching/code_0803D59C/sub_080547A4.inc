@@ -17,7 +17,7 @@ sub_080547A4:
 	ldr r0, [r0]
 	str r0, [r1]
 	mov r0, r8
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080547DC

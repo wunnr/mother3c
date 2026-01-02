@@ -227,7 +227,7 @@ _08040564:
 	b _080405B6
 _0804056E:
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040586
@@ -358,7 +358,7 @@ _08040664:
 	bhs _08040716
 _0804067E:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080406AE
@@ -403,7 +403,7 @@ _080406AE:
 	bls _08040708
 _080406D8:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040708
@@ -459,7 +459,7 @@ _08040716:
 	bls _08040776
 _08040746:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040776

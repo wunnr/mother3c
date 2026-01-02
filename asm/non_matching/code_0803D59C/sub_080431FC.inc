@@ -16,7 +16,7 @@ sub_080431FC:
 	lsrs r2, r2, #0x10
 	str r2, [sp, #0x44]
 	adds r0, r2, #0
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08043228

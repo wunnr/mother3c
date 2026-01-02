@@ -32,7 +32,7 @@ _08050248:
 	ldr r0, _08050290
 	adds r4, r6, r0
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEqiupment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080502A4
