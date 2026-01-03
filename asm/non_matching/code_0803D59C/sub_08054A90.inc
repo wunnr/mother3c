@@ -12,7 +12,7 @@ sub_08054A90:
 	lsls r2, r2, #0x10
 	lsrs r4, r2, #0x10
 	adds r6, r4, #0
-	bl sub_080546B0
+	bl numItemsInInventory
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r8, r0

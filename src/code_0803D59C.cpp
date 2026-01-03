@@ -1837,7 +1837,19 @@ extern "C" void sub_08054604(u32 price) {
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054640.inc", void sub_08054640());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054670.inc", void sub_08054670());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054694.inc", void sub_08054694());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080546B0.inc", void sub_080546B0());
+
+extern "C" u16 numItemsInInventory(CharStats* stats) {
+    u16 count = 0;
+
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] != ItemEmpty) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080546D8.inc", void sub_080546D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054720.inc", void sub_08054720());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805476C.inc", void sub_0805476C());
