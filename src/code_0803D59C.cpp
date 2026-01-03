@@ -1823,7 +1823,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054528.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054558.inc", void sub_08054558());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805458C.inc", void sub_0805458C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080545C0.inc", void sub_080545C0());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054604.inc", void sub_08054604());
+
+extern "C" void sub_08054604(u32 price) {
+    if (gSomeBlend._2df0[0] > price) {
+        gSomeBlend._2df0[0] -= price;
+    } else {
+        gSomeBlend._2df0[0] = 0;
+    }
+
+    gSave.dp_pocket = gSomeBlend._2df0[0];
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054640.inc", void sub_08054640());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054670.inc", void sub_08054670());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054694.inc", void sub_08054694());

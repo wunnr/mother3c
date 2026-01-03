@@ -360,7 +360,8 @@ typedef struct struct_02016028 {
     void* _2CB0;
     u16 _2cb4[0x12];
     struct_2018D00 _2cd8[5];
-    u16 _2df0[5];
+    u32 _2df0[2];
+    u16 _2dfa;
     u16 partyCount;
     u16 playablePartyCount;
     u16 _2dfe;
