@@ -284,7 +284,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BFC.inc", void sub_08001BFC()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001C2C.inc", void sub_08001C2C());
 extern "C" ASM_FUNC("asm/non_matching/rom/get_misctext_msg.inc", void get_misctext_msg());
 
-extern "C" u16 isCharIDOverworldPlayable(u16 playerID) {
+extern "C" u16 isCharIdOverworldPlayable(u16 playerID) {
     if (gLevelStatTable[playerID].overworld_playable != 0) {
         return 0;
     }

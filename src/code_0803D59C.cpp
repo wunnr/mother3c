@@ -1898,7 +1898,10 @@ extern "C" u16 isItemIdEquipment(u16 item) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054F5C.inc", void sub_08054F5C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FB8.inc", void sub_08054FB8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054FCC.inc", void sub_08054FCC());
+
+extern "C" CharStats* getCharStats(u16 index) {
+    return &gCharStats[index];
+}
 
 extern "C" CharStats* getBufferedCharStats(u16 index) {
     return *(CharStats**)&gUnknown_02018CD8[index];

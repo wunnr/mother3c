@@ -29,7 +29,7 @@ _0802A33C:
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _0802A3A6
-	bl isCharIDOverworldPlayable
+	bl isCharIdOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0802A3A6

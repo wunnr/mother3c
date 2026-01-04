@@ -479,7 +479,7 @@ extern "C" void sub_0802ABCC() {
 
     for (u16 i = 0; i < gGame.party_count; i++) {
         CharStats* stats = get_char_stats(i);
-        if (stats->charNo != 0 && isCharIDOverworldPlayable(stats->charNo)) {
+        if (stats->charNo != 0 && isCharIdOverworldPlayable(stats->charNo)) {
             stats->curHP = tickStatMeter(getStatMeter(i, HP));
             StatMeter* meter = getStatMeter(i, PP);
             if (meter->current != meter->target) {

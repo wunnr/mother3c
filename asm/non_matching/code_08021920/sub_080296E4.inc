@@ -480,7 +480,7 @@ _08029A84:
 	cmp r0, #0
 	bne _08029AC6
 	ldr r0, [sp, #4]
-	bl isCharIDOverworldPlayable
+	bl isCharIdOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08029AC6
