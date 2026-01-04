@@ -585,4 +585,11 @@ typedef struct struct_200D818 {
     u16 _2e;
 } struct_200D818;
 
+typedef struct RhythmInfo { // TODO: This should probably be part of a class?
+    u16 id; // Entry ID (is there any point to this?)
+    u16 songNum; // Internal Song ID
+    u8 greatWindow; // Number of frames allowed for a "great" hit
+    u8 okayWindow; // Number of frames allowed for an "okay" hit
+} RhythmInfo; // note that in the final game, "great" and "okay" hits do the same thing, so effectively only the "okay" window matters
+
 #endif  // STRUCTS_H

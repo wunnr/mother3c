@@ -2,6 +2,7 @@
 #define BATTLE_RHYTHM_H
 
 #include "base.h"
+#include "structs.h"
 
 struct ComboRhythm {
     ComboRhythm(s16 a, s16 b) : a(a), b(b) {}
@@ -27,5 +28,7 @@ public:
 private:
     u8 filler[0x11a];
 };
+
+extern const RhythmInfo gRhythmData[];
 
 #endif  // BATTLE_RHYTHM_H
