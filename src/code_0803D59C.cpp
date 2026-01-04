@@ -1908,7 +1908,15 @@ extern "C" struct_2018D00* sub_08054FF0(u16 index) {
     return &gSomeBlend._2cd8[index];
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055008.inc", void sub_08055008());
+extern "C" s16 getCharIndexInParty(u16 id) {
+    for (u16 i = 0; i < 5; i++) {
+        if (gSave.party[i] == id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
 
 extern "C" u16 isCharUnconscious(CharStats* stats) {
     return stats->curHP == 0;
