@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "battle/rhythm.h"
 #include "battle.h"
 #include "battle/fader.h"
 #include "battle/goods.h"
@@ -6,8 +7,6 @@
 #include "battle/monsterSkill.h"
 #include "battle/unitTarget.h"
 #include "global.h"
-
-extern SoundBattleTiming gSoundBattleTimingTable[0x77];
 
 extern "C" s32 sub_08069558(s32 min, s32 max, s32 step, s32 duration);
 extern "C" BattleFader* sub_08072568();
@@ -149,16 +148,17 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074658.inc", void sub_0807465
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074660.inc", void sub_08074660());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
 
-extern "C" SoundBattleTiming* getBattleTimingForTrack(u16 unk, u16 currentSong) {
-    s32 i;
-    SoundBattleTiming* timing;
-    for (i = 0, timing = gSoundBattleTimingTable; i < 0x77; timing++, i++) {
-        if (timing->song == currentSong) {
-            return timing;
-        }
+extern "C" const struct RhythmInfo* GetRhythmDataBySongNum(
+    void* this_,
+    u16 songNum) {  // TODO: The this_ arg is fake, this function should be part of a class
+    int i;
+
+    for (i = 0; i < 119; i++) {
+        if (gRhythmData[i].songNum == songNum)
+            return &gRhythmData[i];
     }
 
-    return &gSoundBattleTimingTable[0];
+    return gRhythmData;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807473C.inc", void sub_0807473C());
