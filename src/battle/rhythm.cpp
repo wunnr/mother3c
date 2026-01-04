@@ -148,7 +148,7 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074658.inc", void sub_0807465
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074660.inc", void sub_08074660());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
 
-extern "C" const struct RhythmInfo * GetRhythmDataBySongNum(void *this_, u16 songNum) {
+extern "C" const struct RhythmInfo * GetRhythmDataBySongNum(void *this_, u16 songNum) { // TODO: The this_ arg is fake, this function should be part of a class
     int i;
     
     for (i = 0; i < 119; i++) {
