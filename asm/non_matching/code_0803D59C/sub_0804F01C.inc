@@ -41,7 +41,7 @@ _0804F05C:
 	movs r0, #0xe7
 	bl play_sound
 	ldrb r0, [r4]
-	bl sub_08054BB8
+	bl buyItem
 	movs r0, #0
 	bl sub_08052F9C
 	bl sub_08046D90

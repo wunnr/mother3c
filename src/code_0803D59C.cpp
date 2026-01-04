@@ -1834,7 +1834,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080542FC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054360.inc", void sub_08054360());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805438C.inc", void sub_0805438C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080543E8.inc", void sub_080543E8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080544F8.inc", void sub_080544F8());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080544F8.inc", void sub_080544F8(u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054528.inc", void sub_08054528());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054558.inc", void sub_08054558());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805458C.inc", void sub_0805458C());
@@ -1875,7 +1875,13 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805493C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054A90.inc", void sub_08054A90());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054B30.inc", void sub_08054B30());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054B74.inc", void sub_08054B74());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054BB8.inc", void sub_08054BB8());
+
+extern "C" void buyItem(u16 item) {
+    u32 buyPrice = gGoodsInfo[item].sell_price * 2;
+    sub_080544F8(item, 1);
+    sub_08054604(buyPrice);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054BE0.inc", void sub_08054BE0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CA4.inc", void sub_08054CA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CDC.inc", void sub_08054CDC());
