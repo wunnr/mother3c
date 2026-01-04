@@ -43,7 +43,7 @@ _0804D48C:
 	b _0804D5D0
 _0804D4C6:
 	ldrh r0, [r6, #4]
-	bl sub_08053E98
+	bl getNonPlayablePartyMemberIndex
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r0, _0804D4FC
@@ -147,7 +147,7 @@ _0804D594:
 	cmp r0, #0
 	beq _0804D5D0
 	ldrh r0, [r6, #4]
-	bl sub_08053E98
+	bl getNonPlayablePartyMemberIndex
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r0, _0804D5DC

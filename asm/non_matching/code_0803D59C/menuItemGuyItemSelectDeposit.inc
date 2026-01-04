@@ -90,7 +90,7 @@ _0804D888:
 	cmp r0, #0
 	beq _0804D8C4
 	ldrh r0, [r4, #4]
-	bl sub_08053E98
+	bl getNonPlayablePartyMemberIndex
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	ldr r0, _0804D8D0

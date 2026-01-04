@@ -73,7 +73,7 @@ extern "C" void sub_0804E078(InputState*, MenuState*);
 extern "C" void sub_0804E16C(void*);
 extern "C" void sub_080506A4();
 extern "C" u16 sub_08050734(InputState*);
-extern "C" s8 sub_08053E98(u16);
+extern "C" u16 getNonPlayablePartyMemberIndex(u16);
 extern "C" void setItemGuySubmenu(MenuState*);
 extern "C" u16 navigate1DMenuChecked(u16*, InputState*, u16, u16, u16, u16, u16);
 extern "C" void sub_080012BC(void*, void*, s32, s32);
@@ -126,6 +126,7 @@ extern "C" void sub_0803F260(CharStats*, struct_2018D00*);
 extern "C" struct_2018D00* sub_08054FF0(u16);
 extern "C" u16 isLucasOrKumatora(u8);
 extern "C" u16 isEquipLytSet(CharStats*, u16);
+extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -1184,7 +1185,7 @@ extern "C" void menuShopCharacterSelect(InputState* input, MenuState* menu) {
     }
 
     navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
-    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+    gSomeBlend._4264 = getNonPlayablePartyMemberIndex(menu->cursorPos);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuShopItemSelectBuy.inc", void menuShopItemSelectBuy());
@@ -1228,7 +1229,7 @@ extern "C" void menuItemGuyCharacterSelect(InputState* input, MenuState* menu) {
     }
 
     navigate1DMenuChecked(&menu->cursorPos, input, 0, menu->numItems - 1, DPAD_DOWN, DPAD_UP, true);
-    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+    gSomeBlend._4264 = getNonPlayablePartyMemberIndex(menu->cursorPos);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/menuItemGuyItemSelectDeposit.inc", void menuItemGuyItemSelectDeposit());
@@ -1361,7 +1362,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_
 
 extern "C" void setShopSubmenu(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
-    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+    gSomeBlend._4264 = getNonPlayablePartyMemberIndex(menu->cursorPos);
 
     if (gSomeBlend.menus[MENU_SHOP_TRANSACTION_SELECT].cursorPos == 0) {
         setShopBuyMenu();
@@ -1397,7 +1398,7 @@ extern "C" void handleItemGuyTransactionSelection(MenuState* menu) {
 
 extern "C" void setItemGuySubmenu(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
-    gSomeBlend._4264 = sub_08053E98(menu->cursorPos);
+    gSomeBlend._4264 = getNonPlayablePartyMemberIndex(menu->cursorPos);
 
     if (gSomeBlend.menus[MENU_ITEM_GUY_TRANSACTION_SELECT].cursorPos == 0) {
         setItemGuyDepositMenu();
@@ -1808,7 +1809,22 @@ extern "C" u16 navigateScrolling2DMenu(u16* cursor, u16* scrollOffset, InputStat
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053AC8.inc", u16 sub_08053AC8(void*, InputState*, u16, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053C34.inc", void sub_08053C34());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053E98.inc", s8 sub_08053E98(u16));
+
+extern "C" u16 getNonPlayablePartyMemberIndex(u16 target) {
+    u16 numNonPlayable = 0;
+
+    for (u16 i = 0; i < gSomeBlend.partyCount; i++) {
+        if (!isCharStatsOverworldPlayable(getBufferedCharStats(i))) {
+            if (numNonPlayable == target) {
+                return i;
+            }
+            numNonPlayable++;
+        }
+    }
+
+    return target;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08053EEC.inc", void sub_08053EEC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054108.inc", void sub_08054108());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054130.inc", void sub_08054130());

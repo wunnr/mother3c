@@ -24,7 +24,7 @@ _0804E872:
 	movs r2, #0
 	bl navigate1DMenuChecked
 	ldrh r0, [r4]
-	bl sub_08053E98
+	bl getNonPlayablePartyMemberIndex
 	strh r0, [r4, #6]
 	ldr r2, _0804E8B4
 	adds r1, r4, r2
