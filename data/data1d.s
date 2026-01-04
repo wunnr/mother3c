@@ -1,9 +1,5 @@
     .section .rodata
 
-    .global gUnknown_080EC578
-gUnknown_080EC578:
-    .incbin "baserom.gba", 0x000EC578, 0x3B8
-
     .global gBattleGroupTable
 gBattleGroupTable:
     .incbin "baserom.gba", 0x000EC930, 0x410

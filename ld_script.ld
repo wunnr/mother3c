@@ -149,6 +149,7 @@ SECTIONS
         build/mother3/data/data1b.o(.rodata);
         build/mother3/src/data/psiData.o(.rodata);
         build/mother3/src/data/itemData.o(.rodata);
+        build/mother3/src/data/rhythmData.o(.rodata);
         build/mother3/data/data1d.o(.rodata);
         build/mother3/data/data2.o(.rodata);
 		build/mother3/src/m4a_tables.o(.rodata);
