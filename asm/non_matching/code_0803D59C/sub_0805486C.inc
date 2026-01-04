@@ -19,7 +19,7 @@ sub_0805486C:
 	ldr r0, [r0]
 	str r0, [r1]
 	adds r0, r5, #0
-	bl isItemIdEqiupment
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080548A8

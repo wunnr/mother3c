@@ -43,7 +43,7 @@ _0804F114:
 	adds r0, r6, r2
 	strb r1, [r0]
 	ldrb r0, [r4]
-	bl isItemIdEqiupment
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804F14A

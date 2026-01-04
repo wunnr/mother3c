@@ -1887,7 +1887,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CA4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054CDC.inc", void sub_08054CDC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08054EF4.inc", void sub_08054EF4());
 
-extern "C" u16 isItemIdEqiupment(u16 item) {
+extern "C" u16 isItemIdEquipment(u16 item) {
     if (gGoodsInfo[item].item_type == Weapon || gGoodsInfo[item].item_type == BodyArmor ||
         gGoodsInfo[item].item_type == Headgear || gGoodsInfo[item].item_type == Armgear) {
         return true;
@@ -1939,7 +1939,20 @@ extern "C" s16 getInventoryIndex(CharStats* stats, u16 item) {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055104.inc", void sub_08055104());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055138.inc", void sub_08055138());
+
+extern "C" u16 isItemIdEquipped(CharStats* stats, u16 item) {
+    if (!isItemIdEquipment(item)) {
+        return 0;
+    }
+
+    for (u16 i = 0; i < 0x10; i++) {
+        if (stats->inventory[i] == item && isEquipLytSet(stats, i)) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
 
 extern "C" u16 isEquipLytSet(CharStats* stats, u16 index) {
     return (stats->equip_lyt >> index) & 1;

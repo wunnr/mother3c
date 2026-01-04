@@ -131,7 +131,7 @@ _080460A2:
 	ldr r1, _080460C4
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl isItemIdEqiupment
+	bl isItemIdEquipment
 	add sp, #8
 	pop {r3}
 	mov r8, r3

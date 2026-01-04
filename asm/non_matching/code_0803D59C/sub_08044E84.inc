@@ -23,7 +23,7 @@ _08044EAC: .4byte 0x000044EE
 _08044EB0:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08055138
+	bl isItemIdEquipped
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08044EC2

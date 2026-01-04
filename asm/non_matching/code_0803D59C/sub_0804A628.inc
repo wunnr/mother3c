@@ -60,7 +60,7 @@ _0804A68C:
 	cmp r0, #0
 	beq _0804A6C0
 	ldrb r0, [r4]
-	bl isItemIdEqiupment
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804A6C0
