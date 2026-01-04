@@ -4,6 +4,7 @@
 #include "battle/goods.h"
 #include "battle/monster.h"
 #include "battle/monsterSkill.h"
+#include "battle/rhythm.h"
 #include "battle/unitTarget.h"
 #include "global.h"
 
@@ -146,7 +147,18 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807464C.inc", void sub_0807464
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074658.inc", void sub_08074658());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074660.inc", void sub_08074660());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074710.inc", void sub_08074710());
+
+extern "C" const struct RhythmInfo * GetRhythmDataBySongNum(void *this_, u16 songNum) {
+    int i;
+    
+    for (i = 0; i < 119; i++) {
+        if (gRhythmData[i].songNum == songNum)
+            return &gRhythmData[i];
+    }
+    
+    return gRhythmData;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807473C.inc", void sub_0807473C());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807476C.inc", void sub_0807476C());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080747CC.inc", void sub_080747CC());

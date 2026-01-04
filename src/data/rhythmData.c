@@ -1,13 +1,6 @@
-#include "gba/types.h"
+#include "structs.h"
 
-struct RhythmInfo {
-    u16 id;
-    u16 songNum;
-    u8 greatWindow;
-    u8 okayWindow;
-};
-
-const struct RhythmInfo gRhythmData[] = {
+const RhythmInfo gRhythmData[] = {
     {.id = 0, .songNum = 0, .greatWindow = 1, .okayWindow = 3},
     {.id = 1, .songNum = 169, .greatWindow = 1, .okayWindow = 3},
     {.id = 2, .songNum = 397, .greatWindow = 3, .okayWindow = 5},
