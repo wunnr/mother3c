@@ -351,7 +351,7 @@ struct Song
 };
 
 extern const struct MusicPlayer gMPlayTable[];
-extern const struct Song gSongPointerTable[];
+extern const struct Song gSongTable[];
 
 
 extern u8 gMPlayMemAccArea[];

@@ -589,7 +589,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D48.inc", void sub_08003D48()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08003D64.inc", void sub_08003D64());
 
 extern "C" s16 getMusicPlayerIndex(u16 songID) {
-    MusicPlayerInfo* mpInfo = gMPlayTable[gSongPointerTable[songID].ms].info;
+    MusicPlayerInfo* mpInfo = gMPlayTable[gSongTable[songID].ms].info;
 
     for (u16 i = 0; i < 10; i++) {
         if (mpInfo == gMPlayTable[i].info) {

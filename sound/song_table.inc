@@ -1,5 +1,5 @@
 	.align 2
-gSongPointerTable::	@ 0x08120E94
+gSongTable::	@ 0x08120E94
 	song dummy_song_header, 0, 0
 	song dummy_song_header, 0, 0
 	song gSong_08BCC998, 0, 0
