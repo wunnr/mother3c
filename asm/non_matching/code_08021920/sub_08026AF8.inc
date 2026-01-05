@@ -10,12 +10,12 @@ sub_08026AF8:
 	movs r0, #0
 	bl sub_080037F0
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	movs r0, #8
 	movs r1, #4
-	bl sub_08003B30
+	bl musicPlayerFadeOut_sfx
 	ldr r4, _08026B3C
 	ldrb r0, [r4]
 	cmp r0, #1

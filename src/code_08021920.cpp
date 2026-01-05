@@ -43,7 +43,7 @@ extern "C" u16 sub_0801A7CC(s16, u32, s32);
 extern "C" u16 sub_0801A868(s16, u32, s32);
 extern "C" void sub_08034BAC();
 extern "C" void play_sound(u16);
-extern "C" void sub_08003BA8(s32);
+extern "C" void musicPlayerStop_sfx(u16);
 extern "C" s16 getCurrentTrack(u16);
 extern "C" void sub_0803B278();
 
@@ -851,7 +851,7 @@ extern "C" void sub_08034288(void) {
     case 2:
     case 4:
         if ((s8)gGame._82b6_20 == 0) {
-            sub_08003BA8(5);
+            musicPlayerStop_sfx(5);
             return;
         }
         soundID = 0x6A3;

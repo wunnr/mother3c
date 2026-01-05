@@ -10,15 +10,15 @@ cmd_87:
 	cmp r1, r0
 	bne _08020F3C
 	movs r0, #3
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 	movs r0, #4
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 	movs r0, #5
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 	b _08020F42
 _08020F3C:
 	lsrs r0, r2, #0x10
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 _08020F42:
 	movs r0, #0
 	pop {r1}

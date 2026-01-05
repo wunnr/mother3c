@@ -309,7 +309,7 @@
 . = 0x00015EC0; gMPlayTrackTable = .;
 . = 0x00015ED8; gMPlayPrevTrackTable = .;
 . = 0x00015EF0; gMPlayVolumeTable = .;
-. = 0x00015F08; gUnknown_02015F08 = .;
+. = 0x00015F08; gMPlayVolumeStorageTable = .;
 . = 0x00015F1C; gAudioSynced = .;
 . = 0x00015F20; gUnknown_02015F20 = .;
 . = 0x00015F22; gUnknown_02015F22 = .;

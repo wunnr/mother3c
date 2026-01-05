@@ -46,7 +46,7 @@ _080342E0:
 	cmp r0, #0
 	bne _08034300
 	movs r0, #5
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 	b _08034334
 	.align 2, 0
 _080342F8: .4byte gGame

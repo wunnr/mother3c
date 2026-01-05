@@ -20,11 +20,11 @@ cmd_85:
 	cmp r4, #0
 	bne _08020ED4
 	adds r0, r6, #0
-	bl sub_08003AE0
+	bl musicPlayerFadeIn_sfx
 	b _08020EDA
 _08020ED4:
 	adds r0, r6, #0
-	bl sub_08003B30
+	bl musicPlayerFadeOut_sfx
 _08020EDA:
 	movs r0, #0
 	pop {r4, r5, r6}

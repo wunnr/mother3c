@@ -2,11 +2,11 @@
 sub_0800882C:
 	push {r4, r5, r6, lr}
 	movs r0, #0
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	movs r0, #1
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	ldr r0, _08008860
@@ -21,7 +21,7 @@ sub_0800882C:
 _08008854:
 	ldr r0, _08008864
 	strb r6, [r0, #2]
-	bl sub_08003EA0
+	bl storeMusicPlayerVolumes
 	b _0800886A
 	.align 2, 0
 _08008860: .4byte gUnknown_020051E4
@@ -33,7 +33,7 @@ _0800886A:
 	bne _08008878
 	movs r0, #0
 	adds r1, r6, #0
-	bl sub_08003AB8
+	bl musicPlayerFadeOutTemp_mus
 	b _08008884
 _08008878:
 	movs r0, #0
@@ -46,7 +46,7 @@ _08008884:
 	bne _08008892
 	movs r0, #1
 	adds r1, r6, #0
-	bl sub_08003AB8
+	bl musicPlayerFadeOutTemp_mus
 	b _0800889E
 _08008892:
 	movs r0, #1
@@ -57,7 +57,7 @@ _08008892:
 _0800889E:
 	movs r0, #8
 	movs r1, #4
-	bl sub_08003B30
+	bl musicPlayerFadeOut_sfx
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

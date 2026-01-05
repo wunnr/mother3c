@@ -5,17 +5,17 @@ sub_08027A28:
 	mov r6, r8
 	push {r6, r7}
 	movs r0, #0
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r7, r0, #0
 	movs r0, #1
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r6, r0, #0
 	movs r0, #5
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	mov sb, r4

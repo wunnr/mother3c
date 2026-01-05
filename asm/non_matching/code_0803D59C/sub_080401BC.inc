@@ -16,12 +16,12 @@ sub_080401BC:
 _080401D4: .4byte gUnknown_0200F920
 _080401D8: .4byte gUnknown_02004100
 _080401DC:
-	bl sub_08003EA0
+	bl storeMusicPlayerVolumes
 _080401E0:
 	ldr r0, _080401FC
 	movs r1, #0
 	strh r1, [r0]
-	bl sub_080037D8
+	bl snd_vsync_on
 	ldr r0, _08040200
 	ldrb r0, [r0]
 	cmp r0, #5
@@ -44,9 +44,9 @@ _08040208:
 	.4byte _0804028C
 _08040220:
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r0, _08040268
 	bl startSong
 	ldr r0, _0804026C
@@ -76,7 +76,7 @@ _08040274: .4byte 0x000003DA
 _08040278: .4byte 0x000003DB
 _0804027C: .4byte 0x000003DD
 _08040280:
-	bl sub_0800377C
+	bl snd_restart
 	movs r0, #0x54
 	bl startSong
 	b _08040292

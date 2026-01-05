@@ -16,7 +16,7 @@ sub_08033C14:
 	cmp r0, r4
 	bne _08033C3E
 	movs r0, #5
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 _08033C3E:
 	pop {r4}
 	pop {r0}

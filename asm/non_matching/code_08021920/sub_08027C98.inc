@@ -13,7 +13,7 @@ sub_08027C98:
 	ldrb r0, [r4, #8]
 	lsls r0, r0, #0x1c
 	lsrs r0, r0, #0x1d
-	bl sub_08003C48
+	bl musicPlayerUpdateVolume
 	ldrh r0, [r4, #2]
 	adds r0, #1
 	strh r0, [r4, #2]

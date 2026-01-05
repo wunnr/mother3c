@@ -37,7 +37,7 @@ _080083FA:
 	cmp r4, #0
 	bne _08008420
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r2, _0800841C
 	adds r0, r7, r2
 	strh r5, [r0]
@@ -48,7 +48,7 @@ _08008418: .4byte 0x0000829B
 _0800841C: .4byte 0x000067AE
 _08008420:
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r3, _08008430
 	adds r0, r7, r3
 	strh r5, [r0]
@@ -100,12 +100,12 @@ _0800847C:
 	movs r6, #0x64
 _08008486:
 	adds r0, r6, #0
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 	ldr r1, _080084EC
 	adds r0, r7, r1
 	strh r5, [r0]
@@ -121,12 +121,12 @@ _08008486:
 	cmp r0, r8
 	beq _080084C8
 	lsrs r0, r1, #0x10
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #1
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _080084C8:
 	ldr r0, _080084F4
 	mov r1, sb
@@ -164,7 +164,7 @@ _080084F8:
 	cmp r4, #0
 	bne _08008534
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r1, _08008530
 	adds r0, r7, r1
 	b _0800853E
@@ -173,7 +173,7 @@ _0800852C: .4byte 0x0000847C
 _08008530: .4byte 0x000067AE
 _08008534:
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r2, _08008578
 	adds r0, r7, r2
 _0800853E:
@@ -186,12 +186,12 @@ _0800853E:
 	beq _08008560
 	lsrs r4, r4, #0x10
 	lsrs r0, r2, #0x10
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _08008560:
 	ldr r1, _0800857C
 	ldr r3, _08008580
@@ -283,7 +283,7 @@ _08008616:
 	cmp r5, #0
 	bne _0800862E
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _0800863E
 _0800862E:
 	mov r1, sl
@@ -301,7 +301,7 @@ _0800863E:
 	cmp r2, #0
 	bne _08008652
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _08008676
 _08008652:
 	ldr r3, [sp, #4]
@@ -314,7 +314,7 @@ _08008652:
 	b _08008676
 _08008664:
 	mov r0, sb
-	bl sub_08003D64
+	bl isMusicPlayerPlaying_mus
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08008676
@@ -339,12 +339,12 @@ _08008684:
 	beq _080086A8
 	lsrs r4, r4, #0x10
 	adds r0, r6, #0
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _080086A8:
 	ldrh r0, [r7]
 	cmp r0, #0
@@ -358,12 +358,12 @@ _080086A8:
 	beq _080086D0
 	lsrs r4, r4, #0x10
 	ldr r0, [sp, #8]
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _080086D0:
 	ldr r0, _080086F8
 	ldr r2, _080086FC

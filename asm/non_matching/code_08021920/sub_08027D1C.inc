@@ -46,18 +46,18 @@ _08027D36:
 	bl startSong
 	movs r0, #1
 	movs r1, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _08027D84:
 	movs r0, #0
 	movs r1, #1
-	bl sub_08003A60
+	bl musicPlayerFadeIn_mus
 	ldr r0, _08027DBC
 	lsls r1, r5, #1
 	ldr r2, _08027DC0
 	adds r0, r0, r2
 	adds r1, r1, r0
 	ldrh r0, [r1]
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r2, r0, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10

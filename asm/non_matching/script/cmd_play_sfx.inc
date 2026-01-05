@@ -79,7 +79,7 @@ _080213AC:
 	movs r1, #0x50
 	bl sub_08027C20
 	movs r0, #0
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
@@ -88,7 +88,7 @@ _080213AC:
 	movs r3, #0x20
 	bl sub_08027B84
 	movs r0, #1
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10

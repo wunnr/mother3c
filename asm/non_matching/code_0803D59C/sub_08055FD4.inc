@@ -7,9 +7,9 @@ sub_08055FD4:
 	movs r0, #0
 	bl sub_080037F0
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	ldr r2, _08056010
 	ldr r0, _08056014
 	movs r3, #0xc

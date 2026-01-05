@@ -16,7 +16,7 @@ sub_08027B84:
 	bhi _08027BC6
 	cmp r3, #1
 	bhi _08027BAA
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 	b _08027BC6
 _08027BAA:
 	lsls r0, r4, #1

@@ -5,19 +5,19 @@ sub_08027AE0:
 	ldr r1, _08027B74
 	adds r0, r6, r1
 	ldrh r0, [r0]
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r1, _08027B78
 	adds r0, r6, r1
 	ldrh r0, [r0]
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r5, r0, #0
 	lsls r5, r5, #0x10
 	lsrs r5, r5, #0x10
 	movs r0, #0
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
@@ -26,7 +26,7 @@ sub_08027AE0:
 	movs r3, #2
 	bl sub_08027B84
 	movs r0, #1
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
@@ -42,15 +42,15 @@ sub_08027AE0:
 	ldr r1, _08027B80
 	adds r0, r6, r1
 	ldrh r0, [r0]
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	movs r0, #5
 	adds r1, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 	movs r0, #5
-	bl sub_08003D48
+	bl getMusicPlayerVolumePercent
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10

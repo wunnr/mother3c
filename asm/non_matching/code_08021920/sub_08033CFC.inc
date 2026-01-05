@@ -65,7 +65,7 @@ _08033D60:
 	bge _08033DA0
 _08033D76:
 	adds r0, r5, #0
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 	b _08033DA0
 _08033D7E:
 	ldr r0, [r2, #0x18]

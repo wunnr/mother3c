@@ -20,15 +20,15 @@ extern void sub_08037A7C();
 extern void sub_08019D04();
 extern void sub_0802781C();
 extern void sub_08004794();
-extern void sub_08003C20(u16);
+extern void musicPlayerContinue_mus(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
 extern void startSong(s32);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
-extern void sub_08003BF8(u16);
+extern void musicPlayerPause_mus(u16);
 extern s16 getCurrentTrack(u16);
-extern u16 sub_08003D48(u16);
+extern u16 getMusicPlayerVolumePercent(u16);
 extern void sub_08033548(u8);
 extern u8 getMusicIDForRoom(u16);
 extern void sub_080274AC(s32, u16);
@@ -38,8 +38,8 @@ extern void sub_080272F4(u16, u16, u16);
 extern s32 sub_08022354(s32);
 extern s32 sub_08039B24(s32);
 extern u16 sub_080031E0();
-extern void sub_08003C88(u16, u16);
-extern s32 sub_08003E20(u16);
+extern void musicPlayerInitAndUpdateVolume(u16, u16);
+extern s32 percentToMPlayVolume(u16);
 extern void DoReset();
 extern s16 getMusicPlayerIndex(u16);
 extern void play_sound(u16);
@@ -4776,15 +4776,15 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_p
 
 extern "C" s32 cmd_play_sound(s32* sp) {
     u16 sound = scriptstack_peek(sp, 1);
-    s16 unk = scriptstack_peek(sp, 0);
+    s16 vol_percent = scriptstack_peek(sp, 0);
     play_sound(sound);
 
-    if (unk != -1) {
+    if (vol_percent != -1) {
         s16 playerIndex = getMusicPlayerIndex(sound);
         u16 uPlayerIndex = (u16)playerIndex;
 
         if (playerIndex != -1)
-            sub_08003C88(uPlayerIndex, (u16)sub_08003E20(unk));
+            musicPlayerInitAndUpdateVolume(uPlayerIndex, (u16)percentToMPlayVolume(vol_percent));
     }
     return 0;
 }
@@ -4823,7 +4823,7 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_8A.inc", void cmd_8A());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_CB.inc", void cmd_CB());
 
 extern "C" s32 cmd_D0(s32* sp) {
-    scriptstack_push(sub_08003D48(scriptstack_peek(sp, 0)));
+    scriptstack_push(getMusicPlayerVolumePercent(scriptstack_peek(sp, 0)));
     return 0;
 }
 
@@ -4844,23 +4844,23 @@ extern "C" s32 cmd_set_volume(s32* sp) {
 }
 
 extern "C" s32 cmd_DB(s32* sp) {
-    s16 unk = scriptstack_peek(sp, 0);
-    if (unk == -1) {
-        sub_08003BF8(0);
-        sub_08003BF8(1);
+    s16 mpIndex = scriptstack_peek(sp, 0);
+    if (mpIndex == -1) {
+        musicPlayerPause_mus(0);
+        musicPlayerPause_mus(1);
     } else {
-        sub_08003BF8(unk);
+        musicPlayerPause_mus(mpIndex);
     }
     return 0;
 }
 
 extern "C" s32 cmd_DC(s32* sp) {
-    s16 unk = scriptstack_peek(sp, 0);
-    if (unk == -1) {
-        sub_08003C20(0);
-        sub_08003C20(1);
+    s16 mpIndex = scriptstack_peek(sp, 0);
+    if (mpIndex == -1) {
+        musicPlayerContinue_mus(0);
+        musicPlayerContinue_mus(1);
     } else {
-        sub_08003C20(unk);
+        musicPlayerContinue_mus(mpIndex);
     }
     return 0;
 }

@@ -54,7 +54,7 @@ _08008730:
 	cmp r5, #0
 	bne _08008798
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _0800879E
 	.align 2, 0
 _0800877C: .4byte gUnknown_02005080
@@ -80,11 +80,11 @@ _0800879E:
 	b _080087CA
 _080087B2:
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _080087CA
 _080087BA:
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _080087CA
 _080087C2:
 	adds r0, r6, #0
@@ -106,12 +106,12 @@ _080087DC:
 	beq _080087F6
 	lsrs r4, r4, #0x10
 	mov r0, r8
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _080087F6:
 	mov r0, sl
 	lsls r4, r0, #0x10
@@ -120,12 +120,12 @@ _080087F6:
 	beq _08008814
 	lsrs r4, r4, #0x10
 	mov r0, sb
-	bl sub_08003E20
+	bl percentToMPlayVolume
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_08003C88
+	bl musicPlayerInitAndUpdateVolume
 _08008814:
 	movs r0, #0xf7
 	lsls r0, r0, #2

@@ -10,13 +10,13 @@ cmd_86:
 	cmp r1, r0
 	bne _08020F06
 	movs r0, #0
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	movs r0, #1
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 	b _08020F0C
 _08020F06:
 	lsrs r0, r2, #0x10
-	bl sub_08003B58
+	bl musicPlayerStop_mus
 _08020F0C:
 	movs r0, #0
 	pop {r1}

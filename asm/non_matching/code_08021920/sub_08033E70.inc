@@ -171,7 +171,7 @@ _08033FC0:
 	cmp r0, r4
 	bne _08033FE2
 	movs r0, #5
-	bl sub_08003BA8
+	bl musicPlayerStop_sfx
 _08033FE2:
 	movs r0, #1
 _08033FE4:
