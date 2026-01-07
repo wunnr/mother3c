@@ -212,7 +212,7 @@ RhythmGame::RhythmGame(u16 songNum) : Sound(songNum) {
     listen(ClockManager::get(), AppClock(), gUnknown_08105CD8);
 }
 
-extern "C" const RhythmInfo* GetRhythmDataBySongNum(RhythmGame* game, u16 songNum) { // TODO: The this_ arg is fake, this function should be part of a class
+extern "C" const RhythmInfo* GetRhythmDataBySongNum(RhythmGame* game, u16 songNum) {
     int i;
     
     for (i = 0; i < 119; i++) {
