@@ -1,7 +1,9 @@
 // Auto-generated source file
 #include "battle.h"
+#include "battle/clock.h"
 #include "battle/fader.h"
 #include "battle/goods.h"
+#include "battle/irc.h"
 #include "battle/monster.h"
 #include "battle/monsterSkill.h"
 #include "battle/rhythm.h"
@@ -11,6 +13,8 @@
 extern u32 gUnknown_02002134; // TODO: confirm type
 extern u32 gUnknown_02002128; // TODO: confirm type
 extern u32 gUnknown_0200211C; // TODO: confirm type
+extern Intr2 gUnknown_08105CD0;
+extern ClockData gUnknown_08105CD8;
 
 extern "C" s32 sub_08069558(s32 min, s32 max, s32 step, s32 duration);
 extern "C" BattleFader* sub_08072568();
@@ -193,9 +197,22 @@ extern "C" u32* sub_08074660() {
     return sub_08074658();
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
+RhythmGame::RhythmGame(u16 songNum) : Sound(songNum) {
+    rhythmData = GetRhythmDataBySongNum(this, songNum);
+    field_40 = 0;
+    field_44 = 0;
+    field_48 = 0;
+    field_4C = 0;
+    field_50 = 0;
+    field_58 = 2;
+    field_5C = 0;
 
-extern "C" const struct RhythmInfo * GetRhythmDataBySongNum(void *this_, u16 songNum) { // TODO: The this_ arg is fake, this function should be part of a class
+    IrcManager::get()->sub_08069A50((u32)this, gUnknown_08105CD0);
+
+    listen(ClockManager::get(), AppClock(), gUnknown_08105CD8);
+}
+
+extern "C" const RhythmInfo* GetRhythmDataBySongNum(RhythmGame* game, u16 songNum) { // TODO: The this_ arg is fake, this function should be part of a class
     int i;
     
     for (i = 0; i < 119; i++) {

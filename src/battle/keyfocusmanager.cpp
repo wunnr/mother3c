@@ -1,25 +1,10 @@
 // Auto-generated source file
 #include "battle/archive.h"
 #include "battle/clock.h"
+#include "battle/keyFocusManager.h"
 #include "battle/rhythm.h"
 #include "battle/system.h"
-#include "gba/m4a_internal.h"
 #include "global.h"
-
-struct Sound : Base {
-    Sound(u16 idx);
-    virtual ~Sound();
-
-    void play(bool fade_in);
-    bool isPlaying();
-
-    u16 idx;
-    MusicPlayer* player;
-    u32 _28;
-    u32 _2c;
-    u8 _30;
-    u32 _34;
-};
 
 extern "C" s32 DivMod(s32, s32);
 
