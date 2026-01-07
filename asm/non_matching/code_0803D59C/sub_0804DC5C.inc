@@ -73,7 +73,7 @@ _0804DCE4:
 	ands r0, r1
 	cmp r0, #0
 	beq _0804DCF2
-	bl sub_08050628
+	bl backspaceMenuText
 	b _0804DDF4
 _0804DCF2:
 	movs r0, #8

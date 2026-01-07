@@ -89,7 +89,7 @@ extern "C" u16 navigateScrolling2DMenu(u16*, u16*, InputState*, u16, u16, u16, u
 extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
 extern "C" void sub_0804DFE4(InputState*, MenuState*);
-extern "C" void sub_08050628();
+extern "C" void backspaceMenuText();
 extern "C" void setShopSubmenu(MenuState*);
 extern "C" void sub_0804A448(u16);
 extern "C" void sub_0804A1C0(u16);
@@ -1263,7 +1263,7 @@ extern "C" void menuNewGame(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed & B_BUTTON) {
-        sub_08050628();
+        backspaceMenuText();
     }
 }
 
@@ -1447,7 +1447,23 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805030C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080503DC.inc", void sub_080503DC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050458.inc", void sub_08050458());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080505D8.inc", void sub_080505D8());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050628.inc", void sub_08050628());
+
+extern "C" void backspaceMenuText() {
+    if (gSomeBlend.menuTextCursorPos == 0) {
+        play_sound(SFX_MENU_CANCEL);
+        if (gSomeBlend.menuTextBuffer[0] == 0xFFFF) {
+            nullsub_23();
+            return;
+        }
+        gSomeBlend.menuTextBuffer[0] = 0xFFFF;
+        return;
+    }
+
+    play_sound(SFX_MENU_CANCEL);
+    gSomeBlend.menuTextCursorPos--;
+    gSomeBlend.menuTextBuffer[gSomeBlend.menuTextCursorPos] = 0xFFFF;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506A4.inc", void sub_080506A4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080506CC.inc", void sub_080506CC(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050734.inc", u16 sub_08050734(InputState*));

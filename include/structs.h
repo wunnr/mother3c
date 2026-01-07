@@ -463,7 +463,11 @@ typedef struct struct_02016028 {
     u16 _4b16;
     u8 _4b18;
     u8 _4b19 : 2;
-    u8 _4b1a[0x4ECF - 0x4B1A];
+    u8 _4b1a[0x4DF4 - 0x4B1A];
+    u16* menuTextBuffer;
+    u8 _4df8[0x4ECE - 0x4DF8];
+    u8 menuTextCursorPos : 5;
+    u8 _4ece_20 : 3;
     u8 _4ecf_1 : 4;
     u8 _4ecf_10 : 1;
     u8 _4ed0[0x566C - 0x4ED0];
