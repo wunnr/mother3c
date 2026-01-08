@@ -461,7 +461,7 @@ enum Item {
     ItemFactorySketch
 };
 
-enum Sound {
+enum SoundEnum {
     SFX_NULL = 0x0,
     SFX_1 = 0x1,
     SONG_ADOLESCENCE = 0x2,

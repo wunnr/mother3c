@@ -1,17 +1,30 @@
 // Auto-generated source file
 #include "battle.h"
+#include "battle/clock.h"
 #include "battle/fader.h"
 #include "battle/goods.h"
+#include "battle/irc.h"
 #include "battle/monster.h"
 #include "battle/monsterSkill.h"
 #include "battle/rhythm.h"
 #include "battle/unitTarget.h"
 #include "global.h"
 
+extern u32 gUnknown_02002134; // TODO: confirm type
+extern u32 gUnknown_02002128; // TODO: confirm type
+extern u32 gUnknown_0200211C; // TODO: confirm type
+extern Intr2 gUnknown_08105CD0;
+extern ClockData gUnknown_08105CD8;
+
 extern "C" s32 sub_08069558(s32 min, s32 max, s32 step, s32 duration);
 extern "C" BattleFader* sub_08072568();
 extern "C" BattleFader* sub_08072588();
 extern "C" BattleFader* sub_080725A8();
+extern "C" Action* sub_08064574(u16 arg0);
+extern "C" void* sub_08061A4C(u16 arg0); // TODO: confirm return type
+extern "C" void* sub_08064950(u16 arg0); // TODO: confirm return type
+extern "C" void* sub_08065148(u16 arg0, u32 arg1, u16 arg2); // TODO: confirm return type
+extern "C" void* sub_08062368(u16 arg0); // TODO: confirm return type
 
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080736F8.inc", void sub_080736F8());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/hitPlayer.inc", void hitPlayer());
@@ -22,23 +35,42 @@ extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073CF0.inc", void sub_08073CF
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073D98.inc", void sub_08073D98());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073E3C.inc", void sub_08073E3C());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/tellStatusWoreOff.inc", void tellStatusWoreOff());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073F88.inc", void sub_08073F88());
+
+extern "C" void* sub_08073F88(u16 arg0) {
+    return sub_08061A4C(arg0);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073F98.inc", void sub_08073F98());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08073FC4.inc", void sub_08073FC4());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074010.inc", void sub_08074010());
+
+extern "C" void* sub_08074010(u16 arg0) {
+    return sub_08064950(arg0);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074020.inc", void sub_08074020());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807404C.inc", void sub_0807404C());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074098.inc", void sub_08074098());
+
+extern "C" void* sub_08074098(u16 arg0, u32 arg1, u16 arg2) {
+    return sub_08065148(arg0, arg1, arg2);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080740AC.inc", void sub_080740AC());
 
 extern "C" bool IsGoodsAndType(Action* action, u16 id) {
     return action && action->getRTTI() == getGoodsRTTI() && action->id() == id;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074124.inc", void sub_08074124());
+extern "C" void* sub_08074124(u16 arg0) {
+    return sub_08062368(arg0);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074134.inc", void sub_08074134());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074160.inc", void sub_08074160());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/getMonsterSkill.inc", void getMonsterSkill());
+
+extern "C" Action* getMonsterSkill(u16 arg0) {
+    return sub_08064574(arg0);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080741BC.inc", void sub_080741BC());
 
 extern "C" u8 IsMonsterSkillAndType(Action* action, u16 id) {
@@ -140,15 +172,47 @@ extern "C" void sub_08074518(s32 min, s32 max, s32 duration, bool r3, bool r4, b
 
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807459C__FUsiii.inc", void sub_0807459C__FUsiii());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074614.inc", void sub_08074614());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074630.inc", void sub_08074630());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074638.inc", void sub_08074638());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074644.inc", void sub_08074644());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807464C.inc", void sub_0807464C());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074658.inc", void sub_08074658());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_08074660.inc", void sub_08074660());
-extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_0807466C.inc", void sub_0807466C());
 
-extern "C" const struct RhythmInfo * GetRhythmDataBySongNum(void *this_, u16 songNum) { // TODO: The this_ arg is fake, this function should be part of a class
+extern "C" u32* sub_08074630() {
+    return &gUnknown_02002134;
+}
+
+extern "C" u32* sub_08074638() {
+    return sub_08074630();
+}
+
+extern "C" u32* sub_08074644() {
+    return &gUnknown_02002128;
+}
+
+extern "C" u32* sub_0807464C() {
+    return sub_08074644();
+}
+
+extern "C" u32* sub_08074658() {
+    return &gUnknown_0200211C;
+}
+
+extern "C" u32* sub_08074660() {
+    return sub_08074658();
+}
+
+RhythmGame::RhythmGame(u16 songNum) : Sound(songNum) {
+    rhythmData = GetRhythmDataBySongNum(this, songNum);
+    field_40 = 0;
+    field_44 = 0;
+    field_48 = 0;
+    field_4C = 0;
+    field_50 = 0;
+    field_58 = 2;
+    field_5C = 0;
+
+    IrcManager::get()->sub_08069A50((u32)this, gUnknown_08105CD0);
+
+    listen(ClockManager::get(), AppClock(), gUnknown_08105CD8);
+}
+
+extern "C" const RhythmInfo* GetRhythmDataBySongNum(RhythmGame* game, u16 songNum) {
     int i;
     
     for (i = 0; i < 119; i++) {
