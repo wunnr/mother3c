@@ -127,6 +127,7 @@ extern "C" struct_2018D00* sub_08054FF0(u16);
 extern "C" u16 isLucasOrKumatora(u8);
 extern "C" u16 isEquipLytSet(CharStats*, u16);
 extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats);
+extern "C" u16 sub_0805592C();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -2039,18 +2040,38 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080557F4.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055828.inc", void sub_08055828());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805585C.inc", void sub_0805585C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055890.inc", void sub_08055890());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080558CC.inc", void sub_080558CC());
+
+extern "C" u16 sub_080558CC(u16 promptId) {
+    if (promptId > 0xD) {
+        return sub_0805592C();
+    }
+
+    u16* ptr = gSomeBlend.menuTextBuffer;
+    u16* unk = sub_080486A0(0);
+
+    for (u16 i = 0; i < 9 && *ptr != 0xFFFF; i++, ptr++) {
+        if (*ptr == 0xFFFF) {
+            return 1;
+        }
+
+        if (*ptr != *unk) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
 
 extern "C" u16 sub_0805592C() {
     u16* ptr = gSomeBlend.menuTextBuffer;
-    u16* temp_r3 = sub_080486A0(0);
+    u16* unk = sub_080486A0(0);
 
     for (u16 i = 0; i < 0x10 && *ptr != 0xFFFF; i++, ptr++) {
         if (*ptr == 0xFFFF) {
             return 1;
         }
 
-        if (*ptr != *temp_r3) {
+        if (*ptr != *unk) {
             return 0;
         }
     }
