@@ -481,7 +481,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804865C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486A0.inc", u16* sub_080486A0(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486D8.inc", void sub_080486D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048710.inc", void sub_08048710());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048748.inc", void sub_08048748());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048748.inc", u16 sub_08048748(u16*, s16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080487A0.inc", void sub_080487A0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080487D4.inc", void sub_080487D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048878.inc", void sub_08048878());
@@ -1447,7 +1447,22 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050218.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805030C.inc", void sub_0805030C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080503DC.inc", void sub_080503DC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08050458.inc", void sub_08050458());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080505D8.inc", void sub_080505D8());
+
+extern "C" void sub_080505D8() {
+    u16 len;
+
+    if (gSomeBlend._4a30 == 0xE) {
+        len = sub_08048748(gSomeBlend.menuTextBuffer, 0x10);
+    } else {
+        len = sub_08048748(gSomeBlend.menuTextBuffer, 9);
+    }
+
+    if (len != 0) {
+        sub_0804C68C();
+    } else {
+        play_sound(SFX_MENU_ERROR);
+    }
+}
 
 extern "C" void backspaceMenuText() {
     if (gSomeBlend.menuTextCursorPos == 0) {
