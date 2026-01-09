@@ -2054,7 +2054,17 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080557C0.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080557F4.inc", void sub_080557F4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055828.inc", void sub_08055828());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805585C.inc", void sub_0805585C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055890.inc", void sub_08055890());
+
+extern "C" void sub_08055890(u16* dest, u16* src) {
+    u16 len = sub_08048748(src, -1);
+
+    for (u16 i = 0; i < len; i++, src++) {
+        if (*src != 0xFF01) {
+            *dest = *src;
+            dest++;
+        }
+    }
+}
 
 extern "C" u16 sub_080558CC(u16 promptId) {
     if (promptId > 0xD) {
