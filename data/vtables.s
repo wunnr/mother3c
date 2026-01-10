@@ -93620,7 +93620,7 @@ vt_09F812E0::
 	.2byte 0
 	.4byte sub_080C14F0
 
-vt_09F812F8::
+_vt.10RhythmGame::
 	.2byte 0
 	.2byte 0
 	.4byte 0
