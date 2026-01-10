@@ -9,7 +9,7 @@ sub_0804165C:
 	orrs r0, r1
 	strb r0, [r4, #6]
 	movs r0, #0x46
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf

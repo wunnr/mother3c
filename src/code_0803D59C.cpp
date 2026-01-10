@@ -478,7 +478,18 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048550.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080485C4.inc", void sub_080485C4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804863C.inc", void sub_0804863C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804865C.inc", void sub_0804865C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486A0.inc", u16* sub_080486A0(u16));
+
+extern "C" u16* getMenuText(u16 index) {
+    u16* textOffsets = (u16*)Blob_GetEntry(&gMenuData, 0x58);
+
+    if (textOffsets != NULL) {
+        // Offsets are in bytes. So even though it's a u16 table, we have to index it as a u8[]
+        return (u16*)(&((u8*)Blob_GetEntry(&gMenuData, 0x59))[textOffsets[index]]);
+    }
+
+    return NULL;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486D8.inc", void sub_080486D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048710.inc", void sub_08048710());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048748.inc", u16 sub_08048748(u16*, s16));
@@ -2072,7 +2083,7 @@ extern "C" u16 sub_080558CC(u16 promptId) {
     }
 
     u16* ptr = gSomeBlend.menuTextBuffer;
-    u16* unk = sub_080486A0(0);
+    u16* unk = getMenuText(0);
 
     for (u16 i = 0; i < 9 && *ptr != 0xFFFF; i++, ptr++) {
         if (*ptr == 0xFFFF) {
@@ -2089,7 +2100,7 @@ extern "C" u16 sub_080558CC(u16 promptId) {
 
 extern "C" u16 sub_0805592C() {
     u16* ptr = gSomeBlend.menuTextBuffer;
-    u16* unk = sub_080486A0(0);
+    u16* unk = getMenuText(0);
 
     for (u16 i = 0; i < 0x10 && *ptr != 0xFFFF; i++, ptr++) {
         if (*ptr == 0xFFFF) {

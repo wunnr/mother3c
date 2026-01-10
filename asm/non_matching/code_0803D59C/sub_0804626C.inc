@@ -31,7 +31,7 @@ sub_0804626C:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	movs r0, #0x7c
-	bl sub_080486A0
+	bl getMenuText
 	adds r4, #1
 	ldr r2, _08046318
 	adds r5, r5, r2
@@ -49,7 +49,7 @@ sub_0804626C:
 	adds r3, r4, #0
 	bl sub_08047CDC
 	movs r0, #3
-	bl sub_080486A0
+	bl getMenuText
 	mov r1, r8
 	str r1, [sp]
 	str r6, [sp, #4]
@@ -58,7 +58,7 @@ sub_0804626C:
 	adds r3, r4, #0
 	bl sub_08047CDC
 	movs r0, #4
-	bl sub_080486A0
+	bl getMenuText
 	mov r2, r8
 	str r2, [sp]
 	str r6, [sp, #4]

@@ -6,7 +6,7 @@ sub_08045C34:
 	push {r5, r6}
 	sub sp, #8
 	movs r0, #0x18
-	bl sub_080486A0
+	bl getMenuText
 	ldr r4, _08045CC4
 	ldr r1, _08045CC8
 	adds r1, r1, r4
@@ -30,7 +30,7 @@ sub_08045C34:
 	str r5, [sp, #4]
 	bl sub_08047CDC
 	movs r0, #3
-	bl sub_080486A0
+	bl getMenuText
 	mov r2, r8
 	ldrh r1, [r2]
 	adds r1, #0x34
@@ -45,7 +45,7 @@ sub_08045C34:
 	mov r3, sb
 	bl sub_08047CDC
 	movs r0, #4
-	bl sub_080486A0
+	bl getMenuText
 	mov r3, r8
 	ldrh r1, [r3]
 	adds r1, #0x68

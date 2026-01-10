@@ -7,7 +7,7 @@ sub_080557F4:
 	movs r4, #0
 _080557FE:
 	adds r0, r5, #0
-	bl sub_080486A0
+	bl getMenuText
 	adds r1, r0, #0
 	adds r0, r6, #0
 	bl sub_08055890

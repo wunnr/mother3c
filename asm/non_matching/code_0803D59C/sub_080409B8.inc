@@ -88,7 +88,7 @@ _08040A4A:
 	bl sub_080430B4
 	bl sub_08044614
 	movs r0, #0x42
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf

@@ -92,7 +92,7 @@ _08055544: .4byte 0x0000C5D3
 _08055548:
 	movs r0, #0xa1
 _0805554A:
-	bl sub_080486A0
+	bl getMenuText
 	add sp, #4
 	pop {r4}
 	pop {r1}
