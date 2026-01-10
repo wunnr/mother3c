@@ -1,7 +1,7 @@
 // Auto-generated source file
+#include "battle/keyFocusManager.h"
 #include "battle/archive.h"
 #include "battle/clock.h"
-#include "battle/keyFocusManager.h"
 #include "battle/rhythm.h"
 #include "battle/system.h"
 #include "global.h"
