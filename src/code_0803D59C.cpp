@@ -128,6 +128,8 @@ extern "C" u16 isLucasOrKumatora(u8);
 extern "C" u16 isEquipLytSet(CharStats*, u16);
 extern "C" u16 isCharStatsOverworldPlayable(CharStats* stats);
 extern "C" u16 sub_0805592C();
+extern "C" void sub_08047CDC(u16*, u16, u16, s16, u16, u16);
+extern "C" u16* getMenuText(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -407,7 +409,13 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804598C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_080.inc", void nullsub_080());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_081.inc", void nullsub_081());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_082.inc", void nullsub_082());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08045C34.inc", void sub_08045C34());
+
+extern "C" void sub_08045C34() {
+    sub_08047CDC(getMenuText(0x18), gSomeBlend._4234 + 0x14, gSomeBlend._4236 + 0xC, -1, 0xF, 0);
+    sub_08047CDC(getMenuText(3), gSomeBlend._4234 + 0x34, gSomeBlend._4236 + 0x1E, -1, 0xF, 0);
+    sub_08047CDC(getMenuText(4), gSomeBlend._4234 + 0x68, gSomeBlend._4236 + 0x1E, -1, 0xF, 0);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08045CD0.inc", void sub_08045CD0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08045D50.inc", void sub_08045D50());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08045E04.inc", void sub_08045E04());
@@ -457,7 +465,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047A78.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047B0C.inc", void sub_08047B0C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047B9C.inc", void sub_08047B9C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047C3C.inc", void sub_08047C3C());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047CDC.inc", void sub_08047CDC());
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047CDC.inc", void sub_08047CDC(u16*, u16, u16, s16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047D90.inc", void sub_08047D90());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047E04.inc", void sub_08047E04());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047E48.inc", void sub_08047E48());
