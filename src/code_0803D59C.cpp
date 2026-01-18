@@ -2061,7 +2061,31 @@ extern "C" void clearEquipForEmptyItems(CharStats* stats) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080552E4.inc", u16 sub_080552E4(CharStats*));
+extern "C" u16 sub_080552E4(CharStats* stats) {
+    switch (stats->charNo) {
+    case GuestID::Lucas:
+        switch (stats->spriteNo) {
+        case 0x4:
+        case 0x3C:
+        case 0x47:
+        case 0x8D:
+        case 0xF3:
+        case 0xF1:
+        case 0x289:
+            return 0x10;
+        default:
+            return stats->charNo;
+        }
+    case GuestID::Kumatora:
+        if (stats->spriteNo == 0xC || stats->spriteNo == 0xD) {
+            return 0x12;
+        }
+        return 4;
+    default:
+        return stats->charNo;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805534C.inc", void sub_0805534C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805548C.inc", void sub_0805548C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055558.inc", void sub_08055558());
