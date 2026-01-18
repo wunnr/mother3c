@@ -35,7 +35,7 @@ _080554D4:
 	adds r0, r4, #2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_08048748
+	bl bufferedTextLength
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r2, #1

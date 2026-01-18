@@ -68,7 +68,7 @@ sub_080460C8:
 	bl sub_08047CDC
 	adds r0, r4, #0
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10

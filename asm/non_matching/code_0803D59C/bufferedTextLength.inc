@@ -1,5 +1,5 @@
 	.syntax unified
-sub_08048748:
+bufferedTextLength:
 	push {r4, r5, lr}
 	adds r2, r0, #0
 	movs r3, #0

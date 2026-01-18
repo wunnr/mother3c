@@ -46,7 +46,7 @@ sub_0804C944:
 	bne _0804C9D0
 	adds r0, r6, #0
 	movs r1, #0x10
-	bl sub_08048748
+	bl bufferedTextLength
 	ldr r1, _0804C9CC
 	adds r3, r7, r1
 	b _0804C9DC
@@ -63,7 +63,7 @@ _0804C9CC: .4byte 0x00004ECE
 _0804C9D0:
 	adds r0, r6, #0
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	ldr r2, _0804C9F4
 	adds r3, r7, r2
 _0804C9DC:

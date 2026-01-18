@@ -148,7 +148,7 @@ _08050590:
 	adds r0, r4, r1
 	ldr r0, [r0]
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	ldr r2, _080505D4
 	adds r4, r4, r2
 	movs r1, #0x1f

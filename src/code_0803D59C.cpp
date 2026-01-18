@@ -500,7 +500,7 @@ extern "C" u16* getMenuText(u16 index) {
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486D8.inc", void sub_080486D8());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048710.inc", void sub_08048710());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048748.inc", u16 sub_08048748(u16*, s16));
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/bufferedTextLength.inc", u16 bufferedTextLength(u16*, s16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080487A0.inc", void sub_080487A0());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080487D4.inc", void sub_080487D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048878.inc", void sub_08048878());
@@ -1266,12 +1266,12 @@ extern "C" void menuNewGame(InputState* input, MenuState* menu) {
         return;
     }
 
-    if (gSomeBlend._4a30 == 8) {
+    if (gSomeBlend._4a30 == 8) {  // text speed and window flavor
         sub_0804DE00(input, menu);
         return;
     }
 
-    if (gSomeBlend._4a30 == 9) {
+    if (gSomeBlend._4a30 == 9) {  // "Does this look okay?" page
         sub_0804DFE4(input, menu);
         return;
     }
@@ -1471,9 +1471,9 @@ extern "C" void sub_080505D8() {
     u16 len;
 
     if (gSomeBlend._4a30 == 0xE) {
-        len = sub_08048748(gSomeBlend.menuTextBuffer, 0x10);
+        len = bufferedTextLength(gSomeBlend.menuTextBuffer, 0x10);
     } else {
-        len = sub_08048748(gSomeBlend.menuTextBuffer, 9);
+        len = bufferedTextLength(gSomeBlend.menuTextBuffer, 9);
     }
 
     if (len != 0) {
@@ -2075,7 +2075,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055828.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805585C.inc", void sub_0805585C());
 
 extern "C" void sub_08055890(u16* dest, u16* src) {
-    u16 len = sub_08048748(src, -1);
+    u16 len = bufferedTextLength(src, -1);
 
     for (u16 i = 0; i < len; i++, src++) {
         if (*src != 0xFF01) {

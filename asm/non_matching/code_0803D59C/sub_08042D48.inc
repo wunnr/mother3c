@@ -82,7 +82,7 @@ sub_08042D48:
 	adds r5, #0xa0
 	adds r0, r5, #0
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0xd
@@ -113,7 +113,7 @@ sub_08042D48:
 	adds r5, #0x20
 	adds r0, r5, #0
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0xd
 	subs r4, r4, r0
