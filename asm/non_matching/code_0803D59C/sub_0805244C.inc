@@ -80,6 +80,6 @@ _080524CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080524E4: .4byte gUnknown_080E510C
+_080524E4: .4byte gGoodsInfo+0x4
 _080524E8: .4byte gUnknown_02004870
 	.syntax divided

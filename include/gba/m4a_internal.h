@@ -354,7 +354,6 @@ extern const struct MusicPlayer gMPlayTable[];
 extern const struct Song gSongTable[];
 
 
-
 extern u8 gMPlayMemAccArea[];
 
 extern char SoundMainRAM[];

@@ -16,5 +16,5 @@ _0801B46E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B47C: .4byte gUnknown_0911DEB4
+_0801B47C: .4byte gDoorHotSpotTable
 	.syntax divided

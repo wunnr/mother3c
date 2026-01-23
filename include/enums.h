@@ -1265,4 +1265,6 @@ enum DirectionID {
     DIR_DOWN_RIGHT = 8
 };
 
+enum PsiType { OFFENSE = 0, RECOVER = 1, ASSIST = 2 };
+
 #endif  // ENUMS_H

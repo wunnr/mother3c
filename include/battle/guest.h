@@ -7,7 +7,7 @@
 
 struct CharStats;
 
-struct GuestID {
+struct PartyMemberID {
     enum {
         Empty,
         Flint,
@@ -22,7 +22,9 @@ struct GuestID {
         Fuel,
         Alec,
         Fassad,
-        Claus
+        Claus,
+        Empty1,
+        Empty2
     };
 };
 
@@ -81,7 +83,7 @@ public:
     u16 mID;
     u16 _fa;
     CharStats* mStats;
-    void* mLevelInfo;
+    const LevelStats* mLevelInfo;
 };
 
 extern "C" {

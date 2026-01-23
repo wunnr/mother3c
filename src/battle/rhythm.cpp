@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "battle/rhythm.h"
 #include "battle.h"
 #include "battle/clock.h"
 #include "battle/fader.h"
@@ -6,7 +7,6 @@
 #include "battle/irc.h"
 #include "battle/monster.h"
 #include "battle/monsterSkill.h"
-#include "battle/rhythm.h"
 #include "battle/unitTarget.h"
 #include "global.h"
 
@@ -214,12 +214,12 @@ RhythmGame::RhythmGame(u16 songNum) : Sound(songNum) {
 
 extern "C" const RhythmInfo* GetRhythmDataBySongNum(RhythmGame* game, u16 songNum) {
     int i;
-    
+
     for (i = 0; i < 119; i++) {
         if (gRhythmData[i].songNum == songNum)
             return &gRhythmData[i];
     }
-    
+
     return gRhythmData;
 }
 

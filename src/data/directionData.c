@@ -28,85 +28,85 @@ u16 gSectorToDirectionExt[] = {
 };
 
 const Direction gDirectionTable[] = {
-    {
-       0,
-       0,
-       0,
-       DIR_NONE,
-       DIR_NONE,
-       DIR_NONE,
-       DIR_NONE,
-    },
-    {
-       DPAD_DOWN,
-       0,
-       1,
-       DIR_NONE,
-       DIR_UP,
-       DIR_RIGHT,
-       DIR_LEFT,
-    },
-    {
-       DPAD_DOWN | DPAD_LEFT,
-       -1,
-       1,
-       DIR_DOWN,
-       DIR_UP_RIGHT,
-       DIR_DOWN_RIGHT,
-       DIR_UP_LEFT,
-    },
-    {
-       DPAD_LEFT,
-       -1,
-       0,
-       DIR_DOWN_LEFT,
-       DIR_RIGHT,
-       DIR_DOWN,
-       DIR_UP,
-    },
-    {
-       DPAD_UP | DPAD_LEFT,
-       -1,
-       -1,
-       DIR_LEFT,
-       DIR_DOWN_RIGHT,
-       DIR_DOWN_LEFT,
-       DIR_UP_RIGHT,
-    },
-    {
-       DPAD_UP,
-       0,
-       -1,
-       DIR_UP_LEFT,
-       DIR_DOWN,
-       DIR_LEFT,
-       DIR_RIGHT,
-    },
-    {
-       DPAD_UP | DPAD_RIGHT,
-       1,
-       -1,
-       DIR_UP,
-       DIR_DOWN_LEFT,
-       DIR_UP_LEFT,
-       DIR_DOWN_RIGHT,
-    },
-    {
-       DPAD_RIGHT,
-       1,
-       0,
-       DIR_UP_RIGHT,
-       DIR_LEFT,
-       DIR_UP,
-       DIR_DOWN,
-    },
-    {
-       DPAD_DOWN | DPAD_RIGHT,
-       1,
-       1,
-       DIR_RIGHT,
-       DIR_UP_LEFT,
-       DIR_UP_RIGHT,
-       DIR_DOWN_LEFT,
-    },
+	{
+		/* BUTTON_COMBO */ 0,
+		/*    X_VEL     */ 0,
+		/*    Y_VEL     */ 0,
+		/*   PREVIOUS   */ DIR_NONE,
+		/*   OPPOSITE   */ DIR_NONE,
+		/* TURN_LEFT90  */ DIR_NONE,
+		/* TURN_RIGHT90 */ DIR_NONE
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_DOWN,
+		/*    X_VEL     */ 0,
+		/*    Y_VEL     */ 1,
+		/*   PREVIOUS   */ DIR_NONE,
+		/*   OPPOSITE   */ DIR_UP,
+		/* TURN_LEFT90  */ DIR_RIGHT,
+		/* TURN_RIGHT90 */ DIR_LEFT
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_DOWN | DPAD_LEFT,
+		/*    X_VEL     */ -1,
+		/*    Y_VEL     */ 1,
+		/*   PREVIOUS   */ DIR_DOWN,
+		/*   OPPOSITE   */ DIR_UP_RIGHT,
+		/* TURN_LEFT90  */ DIR_DOWN_RIGHT,
+		/* TURN_RIGHT90 */ DIR_UP_LEFT
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_LEFT,
+		/*    X_VEL     */ -1,
+		/*    Y_VEL     */ 0,
+		/*   PREVIOUS   */ DIR_DOWN_LEFT,
+		/*   OPPOSITE   */ DIR_RIGHT,
+		/* TURN_LEFT90  */ DIR_DOWN,
+		/* TURN_RIGHT90 */ DIR_UP
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_UP | DPAD_LEFT,
+		/*    X_VEL     */ -1,
+		/*    Y_VEL     */ -1,
+		/*   PREVIOUS   */ DIR_LEFT,
+		/*   OPPOSITE   */ DIR_DOWN_RIGHT,
+		/* TURN_LEFT90  */ DIR_DOWN_LEFT,
+		/* TURN_RIGHT90 */ DIR_UP_RIGHT
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_UP,
+		/*    X_VEL     */ 0,
+		/*    Y_VEL     */ -1,
+		/*   PREVIOUS   */ DIR_UP_LEFT,
+		/*   OPPOSITE   */ DIR_DOWN,
+		/* TURN_LEFT90  */ DIR_LEFT,
+		/* TURN_RIGHT90 */ DIR_RIGHT
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_UP | DPAD_RIGHT,
+		/*    X_VEL     */ 1,
+		/*    Y_VEL     */ -1,
+		/*   PREVIOUS   */ DIR_UP,
+		/*   OPPOSITE   */ DIR_DOWN_LEFT,
+		/* TURN_LEFT90  */ DIR_UP_LEFT,
+		/* TURN_RIGHT90 */ DIR_DOWN_RIGHT
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_RIGHT,
+		/*    X_VEL     */ 1,
+		/*    Y_VEL     */ 0,
+		/*   PREVIOUS   */ DIR_UP_RIGHT,
+		/*   OPPOSITE   */ DIR_LEFT,
+		/* TURN_LEFT90  */ DIR_UP,
+		/* TURN_RIGHT90 */ DIR_DOWN
+	},
+	{
+		/* BUTTON_COMBO */ DPAD_DOWN | DPAD_RIGHT,
+		/*    X_VEL     */ 1,
+		/*    Y_VEL     */ 1,
+		/*   PREVIOUS   */ DIR_RIGHT,
+		/*   OPPOSITE   */ DIR_UP_LEFT,
+		/* TURN_LEFT90  */ DIR_UP_RIGHT,
+		/* TURN_RIGHT90 */ DIR_DOWN_LEFT
+	}
 };

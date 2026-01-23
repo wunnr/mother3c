@@ -150,7 +150,7 @@ _0805C6C8: @ jump table
 _0805C6E4:
 	subs r1, r7, r6
 	lsls r1, r1, #3
-	ldr r0, _0805C6FC @ =gUnknown_080E1918
+	ldr r0, _0805C6FC @ =gPsiData+0x10
 	adds r1, r1, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -159,11 +159,11 @@ _0805C6E4:
 	bl sub_0805C7F0
 	b _0805C786
 	.align 2, 0
-_0805C6FC: .4byte gUnknown_080E1918
+_0805C6FC: .4byte gPsiData+0x10
 _0805C700:
 	subs r1, r7, r6
 	lsls r1, r1, #3
-	ldr r0, _0805C718 @ =gUnknown_080E1918
+	ldr r0, _0805C718 @ =gPsiData+0x10
 	adds r1, r1, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -172,11 +172,11 @@ _0805C700:
 	bl sub_0805C7F8
 	b _0805C786
 	.align 2, 0
-_0805C718: .4byte gUnknown_080E1918
+_0805C718: .4byte gPsiData+0x10
 _0805C71C:
 	subs r1, r7, r6
 	lsls r1, r1, #3
-	ldr r0, _0805C734 @ =gUnknown_080E1918
+	ldr r0, _0805C734 @ =gPsiData+0x10
 	adds r1, r1, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -185,11 +185,11 @@ _0805C71C:
 	bl sub_0805C82C
 	b _0805C786
 	.align 2, 0
-_0805C734: .4byte gUnknown_080E1918
+_0805C734: .4byte gPsiData+0x10
 _0805C738:
 	subs r1, r7, r6
 	lsls r1, r1, #3
-	ldr r0, _0805C750 @ =gUnknown_080E1918
+	ldr r0, _0805C750 @ =gPsiData+0x10
 	adds r1, r1, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -198,11 +198,11 @@ _0805C738:
 	bl sub_0805C850
 	b _0805C786
 	.align 2, 0
-_0805C750: .4byte gUnknown_080E1918
+_0805C750: .4byte gPsiData+0x10
 _0805C754:
 	subs r1, r7, r6
 	lsls r1, r1, #3
-	ldr r0, _0805C76C @ =gUnknown_080E1918
+	ldr r0, _0805C76C @ =gPsiData+0x10
 	adds r1, r1, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -211,11 +211,11 @@ _0805C754:
 	bl sub_0805C888
 	b _0805C786
 	.align 2, 0
-_0805C76C: .4byte gUnknown_080E1918
+_0805C76C: .4byte gPsiData+0x10
 _0805C770:
 	subs r2, r7, r6
 	lsls r2, r2, #3
-	ldr r0, _0805C7E8 @ =gUnknown_080E1918
+	ldr r0, _0805C7E8 @ =gPsiData+0x10
 	adds r2, r2, r0
 	adds r0, r3, #4
 	add r0, sp
@@ -248,7 +248,7 @@ _0805C7A2:
 	mov r4, sl
 	adds r4, #4
 	add r6, sp, #4
-	ldr r3, _0805C7E8 @ =gUnknown_080E1918
+	ldr r3, _0805C7E8 @ =gPsiData+0x10
 	mov r8, r3
 _0805C7B6:
 	ldm r6!, {r0}
@@ -276,6 +276,6 @@ _0805C7CC:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0805C7E8: .4byte gUnknown_080E1918
+_0805C7E8: .4byte gPsiData+0x10
 _0805C7EC: .4byte gPsiData
     .syntax divided
