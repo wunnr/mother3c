@@ -12,5 +12,5 @@ sub_0801B558:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B570: .4byte gUnknown_0916CB08
+_0801B570: .4byte gMapAnimationTable
 	.syntax divided

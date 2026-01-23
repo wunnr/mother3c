@@ -54,5 +54,5 @@ _080533DC:
 	bx r1
 	.align 2, 0
 _080533E8: .4byte gUnknown_02019528
-_080533EC: .4byte gUnknown_080E190C
+_080533EC: .4byte gPsiData+4
 	.syntax divided

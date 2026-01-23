@@ -13,5 +13,5 @@ sub_0801B4E4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B500: .4byte gUnknown_09169C1C
+_0801B500: .4byte gDoorDestinationTable
 	.syntax divided

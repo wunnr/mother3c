@@ -950,7 +950,7 @@ extern "C" void setMenuTryAgain() {
     CharStats* stats = getBufferedCharStats(menu->currentTab);
     u16 unk = sub_080552E4(stats);
 
-    if (stats->charNo == GuestID::Lucas && stats->spriteNo == 3) {
+    if (stats->charNo == PartyMemberID::Lucas && stats->spriteNo == 3) {
         sub_0803F424(0x2CB, 0, -1);
     } else {
         sub_0803F424(gUnknown_080C6AF6[unk], 0, -1);
@@ -2063,7 +2063,7 @@ extern "C" void clearEquipForEmptyItems(CharStats* stats) {
 
 extern "C" u16 sub_080552E4(CharStats* stats) {
     switch (stats->charNo) {
-    case GuestID::Lucas:
+    case PartyMemberID::Lucas:
         switch (stats->spriteNo) {
         case 0x4:
         case 0x3C:
@@ -2076,7 +2076,7 @@ extern "C" u16 sub_080552E4(CharStats* stats) {
         default:
             return stats->charNo;
         }
-    case GuestID::Kumatora:
+    case PartyMemberID::Kumatora:
         if (stats->spriteNo == 0xC || stats->spriteNo == 0xD) {
             return 0x12;
         }
@@ -2436,7 +2436,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AA90.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AB48.inc", void sub_0805AB48());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805AC30.inc", void sub_0805AC30());
 
-extern const u8 gGBPlayerLogoPalette[0x200];
+extern const u16 gGBPlayerLogoPalette[0x100];
 extern const u8 gGBPlayerLogoGfx[0x4000];
 extern const u8 gGBPlayerLogoLayout[0x500];
 extern u8 gUnknown_020050B0;

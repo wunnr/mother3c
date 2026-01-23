@@ -190,14 +190,14 @@ extern "C" void getVelocity(u16 index, s16* xVel, s16* yVel) {
 }
 
 extern "C" u16 getPrevDirection(u16 index) {
-    return gDirectionTable[index].previousDirection;
+    return gDirectionTable[index].previous;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270C8.inc", void sub_080270C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080270D8.inc", void sub_080270D8());
 
 extern "C" u16 getOppositeDirection(u16 index) {
-    return gDirectionTable[index].oppositeDirection;
+    return gDirectionTable[index].opposite;
 }
 
 extern "C" u16 get90DegreeTurn(u16 index, u16 unk) {
@@ -205,9 +205,9 @@ extern "C" u16 get90DegreeTurn(u16 index, u16 unk) {
         unk = sub_08002FE8() & 1;
 
     if (unk == 0)
-        return gDirectionTable[index].stepCounterClockwise90;
+        return gDirectionTable[index].turnLeft90;
 
-    return gDirectionTable[index].stepClockwise90;
+    return gDirectionTable[index].turnRight90;
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027138.inc", void sub_08027138());

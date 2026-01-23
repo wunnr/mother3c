@@ -266,10 +266,10 @@ typedef struct Direction {
     u16 buttonCombo;
     s16 xVel;
     s16 yVel;
-    u16 previousDirection;
-    u16 oppositeDirection;
-    u16 stepCounterClockwise90;
-    u16 stepClockwise90;
+    u16 previous;
+    u16 opposite;
+    u16 turnLeft90;
+    u16 turnRight90;
 } Direction;
 
 typedef struct MenuState {
@@ -590,15 +590,14 @@ typedef struct Save {
     u8 _81e;
 } Save;
 
-// extern ItemData gGoodsInfo[];
 extern Save gSave;
 extern struct_02016028 gSomeBlend;
 
-typedef struct ExpInfo {
+typedef struct LevelUpExpInfo {
     u32 ch_no;
     u32 deltas[99];
-} ExpInfo;
-extern ExpInfo gExpTable[];
+} LevelUpExpInfo;
+extern const LevelUpExpInfo gLevelUpExpTable[];
 
 typedef struct Stats {
     u32 hp;
@@ -610,20 +609,18 @@ typedef struct Stats {
     u32 kindness;
 } Stats;
 static_assert(sizeof(Stats) == 0x10);
-
-typedef struct PsiInfo {
-    u32 psi_no;
-    u32 type;
-    u32 overworld_usable;
-    u32 pp_cost;
-    MoveInfo info;
-} PsiInfo;
-extern char assertion[(sizeof(PsiInfo) == 0x38) ? 1 : -1];
-
 typedef struct PsiLearnInfo {
     u16 psi_no;
     u8 level;
 } PsiLearnInfo;
+
+typedef struct PsiInfo {
+    u32 psi_num;
+    u32 type;
+    u32 overworld_usable;
+    u32 pp_cost;
+    MoveInfo move;
+} PsiInfo;
 
 typedef struct LevelStats {
     u8 ch_no;
@@ -637,8 +634,9 @@ typedef struct LevelStats {
     PsiLearnInfo psi_learning_table[32];
     u32 attack_sounds;
 } LevelStats;
-extern LevelStats gLevelStatTable[];
 static_assert(sizeof(LevelStats) == 0x144);
+
+extern const LevelStats gLevelStatTable[];
 
 typedef struct GoodsInfo {
     u8 item_id;
@@ -665,7 +663,20 @@ typedef struct GoodsInfo {
     u8 _69;
     u8 consumable;
 } GoodsInfo;
-extern GoodsInfo gGoodsInfo[];
+extern const GoodsInfo gGoodsInfo[];
+
+typedef struct ShopInfo {
+    u16 items[30];
+} ShopInfo;
+extern const ShopInfo gShopInfo[];
+
+typedef struct SoundPlayerEntry {
+    u16 songID;
+    u16 playerID;
+    u32 minimumChapter;
+    u32 duration;
+} SoundPlayerEntry;
+extern const SoundPlayerEntry gSoundPlayerTable[];
 
 typedef struct SystemEntry {
     u16 data[0x15];
@@ -712,6 +723,15 @@ typedef struct struct_200D818 {
     s16 kindness;
     u16 _2e;
 } struct_200D818;
+
+typedef struct TownMapInfo {
+    u16 townMapID;
+    u16 topLeftX;
+    u16 topLeftY;
+    u16 bottomRightX;
+    u16 bottomRightY;
+    u16 _a;
+} TownMapInfo;
 
 typedef struct RhythmInfo {  // TODO: This should probably be part of a class?
     u16 id;                  // Entry ID (is there any point to this?)

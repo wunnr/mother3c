@@ -1293,4 +1293,6 @@ enum CursorMoveResult {
     CURSOR_MOVED_AND_SCROLLED = 2,
 };
 
+enum PsiType { OFFENSE = 0, RECOVER = 1, ASSIST = 2 };
+
 #endif  // ENUMS_H

@@ -351,7 +351,7 @@ _0805BF52:
 	bgt _0805BF6A
 	adds r0, r7, #0
 	ldr r1, [sp, #0xc0]
-	bl sub_0805C1A8
+	bl getNeededXP
 	ldr r1, [r7, #0x14]
 	cmp r1, r0
 	blo _0805BF6A

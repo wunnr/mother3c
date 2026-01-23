@@ -11,7 +11,7 @@ u32 sub_0805C168(s32 num);
 int sub_0805D234(int, int);
 int Div(int, int);
 
-u32 sub_0805C1A8(CharStats* ch, LevelStats* ls, s32 level);
+u32 getNeededXP(CharStats* ch, const LevelStats* ls, s32 level);
 
 typedef struct {
     u32 a, b;
@@ -62,14 +62,14 @@ u32 sub_0805C168(s32 num) {
 }
 
 u32 sub_0805C178(s32 ch_no, s32 level) {
-    return sub_0805C1A8(&gCharStats[ch_no], &gLevelStatTable[ch_no], level);
+    return getNeededXP(&gCharStats[ch_no], &gLevelStatTable[ch_no], level);
 }
 
-u32 sub_0805C1A8(CharStats* ch, LevelStats* ls, s32 level) {
+u32 getNeededXP(CharStats* ch, const LevelStats* ls, s32 level) {
     int total = 0;
     int i;
     for (i = 0; i < level; i++) {
-        total += gExpTable[ls->ch_no].deltas[i];
+        total += gLevelUpExpTable[ls->ch_no].deltas[i];
     }
     return total;
 }
@@ -152,7 +152,7 @@ void sub_0805C3B8(CharStats* ch) {
 
 void sub_0805C458(CharStats* ch, s32 r1) {
     if (ch_is_lucas(ch) == true) {
-        LevelStats* ls = &gLevelStatTable[ch->charNo];
+        const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
             if (ls->psi_learning_table[i].psi_no != 0 && r1 >= ls->psi_learning_table[i].level) {
@@ -161,7 +161,7 @@ void sub_0805C458(CharStats* ch, s32 r1) {
             }
         }
     } else if (ch_is_kumatora(ch) == true) {
-        LevelStats* ls = &gLevelStatTable[ch->charNo];
+        const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
             if (ls->psi_learning_table[i].psi_no != 0 && r1 >= ls->psi_learning_table[i].level) {
@@ -440,7 +440,7 @@ _0805CA70:\n\
 movs r0, #0x6c\n\
 adds r1, r6, #0\n\
 muls r1, r0, r1\n\
-ldr r0, _0805CA88 @ =gUnknown_080E5148\n\
+ldr r0, _0805CA88 @ =gGoodsInfo+0x40\n\
 adds r1, r1, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -449,12 +449,12 @@ adds r0, r7, #0\n\
 bl sub_0805CB78\n\
 b _0805CB14\n\
 .align 2, 0\n\
-_0805CA88: .4byte gUnknown_080E5148\n\
+_0805CA88: .4byte gGoodsInfo+0x40\n\
 _0805CA8C:\n\
 movs r0, #0x6c\n\
 adds r1, r6, #0\n\
 muls r1, r0, r1\n\
-ldr r0, _0805CAA4 @ =gUnknown_080E5148\n\
+ldr r0, _0805CAA4 @ =gGoodsInfo+0x40\n\
 adds r1, r1, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -463,12 +463,12 @@ adds r0, r7, #0\n\
 bl sub_0805CC10\n\
 b _0805CB14\n\
 .align 2, 0\n\
-_0805CAA4: .4byte gUnknown_080E5148\n\
+_0805CAA4: .4byte gGoodsInfo+0x40\n\
 _0805CAA8:\n\
 movs r0, #0x6c\n\
 adds r1, r6, #0\n\
 muls r1, r0, r1\n\
-ldr r0, _0805CAC0 @ =gUnknown_080E5148\n\
+ldr r0, _0805CAC0 @ =gGoodsInfo+0x40\n\
 adds r1, r1, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -477,12 +477,12 @@ adds r0, r7, #0\n\
 bl sub_0805CC4C\n\
 b _0805CB14\n\
 .align 2, 0\n\
-_0805CAC0: .4byte gUnknown_080E5148\n\
+_0805CAC0: .4byte gGoodsInfo+0x40\n\
 _0805CAC4:\n\
 movs r0, #0x6c\n\
 adds r1, r6, #0\n\
 muls r1, r0, r1\n\
-ldr r0, _0805CADC @ =gUnknown_080E5148\n\
+ldr r0, _0805CADC @ =gGoodsInfo+0x40\n\
 adds r1, r1, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -491,12 +491,12 @@ adds r0, r7, #0\n\
 bl sub_0805CC5C\n\
 b _0805CB14\n\
 .align 2, 0\n\
-_0805CADC: .4byte gUnknown_080E5148\n\
+_0805CADC: .4byte gGoodsInfo+0x40\n\
 _0805CAE0:\n\
 movs r0, #0x6c\n\
 adds r1, r6, #0\n\
 muls r1, r0, r1\n\
-ldr r0, _0805CAF8 @ =gUnknown_080E5148\n\
+ldr r0, _0805CAF8 @ =gGoodsInfo+0x40\n\
 adds r1, r1, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -505,12 +505,12 @@ adds r0, r7, #0\n\
 bl sub_0805CCA4\n\
 b _0805CB14\n\
 .align 2, 0\n\
-_0805CAF8: .4byte gUnknown_080E5148\n\
+_0805CAF8: .4byte gGoodsInfo+0x40\n\
 _0805CAFC:\n\
 movs r0, #0x6c\n\
 adds r2, r6, #0\n\
 muls r2, r0, r2\n\
-ldr r0, _0805CB20 @ =gUnknown_080E5148\n\
+ldr r0, _0805CB20 @ =gGoodsInfo+0x40\n\
 adds r2, r2, r0\n\
 adds r0, r3, #4\n\
 add r0, sp\n\
@@ -527,7 +527,7 @@ b _0805C972\n\
 _0805CB1E:\n\
 b _0805CB2C\n\
 .align 2, 0\n\
-_0805CB20: .4byte gUnknown_080E5148\n\
+_0805CB20: .4byte gGoodsInfo+0x40\n\
 _0805CB24:\n\
 adds r2, #1\n\
 cmp r2, #0xf\n\
@@ -543,7 +543,7 @@ muls r7, r0, r7\n\
 mov r4, sl\n\
 adds r4, #4\n\
 add r6, sp, #4\n\
-ldr r0, _0805CB74 @ =gUnknown_080E5148\n\
+ldr r0, _0805CB74 @ =gGoodsInfo+0x40\n\
 mov r8, r0\n\
 _0805CB42:\n\
 ldm r6!, {r0}\n\
@@ -571,7 +571,7 @@ pop {r4, r5, r6, r7}\n\
 pop {r1}\n\
 bx r1\n\
 .align 2, 0\n\
-_0805CB74: .4byte gUnknown_080E5148\n\
+_0805CB74: .4byte gGoodsInfo+0x40\n\
 ");
 }
 NAKED void sub_0805CB78() {

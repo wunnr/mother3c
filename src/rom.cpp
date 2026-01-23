@@ -292,7 +292,7 @@ extern "C" u16 isCharIdOverworldPlayable(u16 playerID) {
 }
 
 extern "C" u16 isLucasOrKumatora(u16 id) {
-    if (id == GuestID::Lucas || id == GuestID::Kumatora) {
+    if (id == PartyMemberID::Lucas || id == PartyMemberID::Kumatora) {
         return 1;
     }
     return 0;
