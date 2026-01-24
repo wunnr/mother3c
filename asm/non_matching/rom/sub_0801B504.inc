@@ -5,12 +5,12 @@ sub_0801B504:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _0801B51C
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, [r0]
 	adds r1, #0x14
 	adds r0, r0, r1
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B51C: .4byte gUnknown_0916CB08
+_0801B51C: .4byte gMapAnimationTable
 	.syntax divided

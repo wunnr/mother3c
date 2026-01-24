@@ -44,7 +44,7 @@ _08027350:
 _08027354:
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08027374
 	.align 2, 0
 _08027360: .4byte gUnknown_03005314
@@ -54,7 +54,7 @@ _08027368:
 	ldr r1, _08027388
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 _08027374:
 	cmp r4, #1
 	beq _080273B0

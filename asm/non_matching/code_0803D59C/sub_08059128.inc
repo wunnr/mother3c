@@ -15,7 +15,7 @@ sub_08059128:
 	adds r2, r2, r1
 	lsrs r2, r2, #0x10
 	adds r1, r2, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	ldr r6, _080591B8
 	mov r0, sp

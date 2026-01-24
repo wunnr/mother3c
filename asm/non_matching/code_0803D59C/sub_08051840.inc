@@ -38,7 +38,7 @@ _0805187C:
 	adds r1, #0xd0
 	adds r0, r7, #0
 	movs r2, #0x20
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrb r0, [r4]
 	movs r1, #0x40
 	orrs r0, r1
@@ -61,7 +61,7 @@ _0805187C:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	movs r2, #0xf4
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0
 	bl sub_0805217C
 	lsls r0, r0, #0x10

@@ -11,12 +11,12 @@ sub_0803D0A8:
 	lsls r5, r5, #3
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r4, r4, r5
 	ldr r1, _0803D0DC
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4, r5}
 	pop {r0}
 	bx r0

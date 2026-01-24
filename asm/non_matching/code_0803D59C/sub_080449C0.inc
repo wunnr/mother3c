@@ -17,7 +17,7 @@ sub_080449C0:
 	add r6, sp, #4
 	adds r1, r6, #0
 	movs r2, #0x14
-	bl sub_08001B18
+	bl CpuSmartSet
 	add r0, sp, #0x14
 	strh r4, [r0]
 	adds r0, #2

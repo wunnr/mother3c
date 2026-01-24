@@ -20,7 +20,7 @@ sub_0803D678:
 	lsrs r5, r5, #0x10
 	mov r1, sp
 	movs r2, #0x18
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	strb r4, [r0, #0xc]
 	strh r5, [r0, #0x14]

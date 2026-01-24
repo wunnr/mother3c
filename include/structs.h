@@ -260,10 +260,10 @@ typedef struct Direction {
     u16 buttonCombo;
     s16 xVel;
     s16 yVel;
-    u16 previousDirection;
-    u16 oppositeDirection;
-    u16 stepCounterClockwise90;
-    u16 stepClockwise90;
+    u16 previous;
+    u16 opposite;
+    u16 turnLeft90;
+    u16 turnRight90;
 } Direction;
 
 typedef struct MenuState {
@@ -472,15 +472,14 @@ typedef struct Save {
     u8 _81e;
 } Save;
 
-// extern ItemData gGoodsInfo[];
 extern Save gSave;
 extern struct_02016028 gSomeBlend;
 
-typedef struct ExpInfo {
+typedef struct LevelUpExpInfo {
     u32 ch_no;
     u32 deltas[99];
-} ExpInfo;
-extern ExpInfo gExpTable[];
+} LevelUpExpInfo;
+extern const LevelUpExpInfo gLevelUpExpTable[];
 
 typedef struct Stats {
     u32 hp;
@@ -493,9 +492,17 @@ typedef struct Stats {
 } Stats;
 static_assert(sizeof(Stats) == 0x10);
 
-typedef struct PsiInfo {
+typedef struct PsiLearnInfo {
     u16 psi_no;
     u8 level;
+} PsiLearnInfo;
+
+typedef struct PsiInfo {
+    u32 psi_num;
+    u32 type;
+    u32 overworld_usable;
+    u32 pp_cost;
+    MoveInfo move;
 } PsiInfo;
 
 typedef struct LevelStats {
@@ -507,10 +514,10 @@ typedef struct LevelStats {
     u8 overworld_playable;
     u8 battle_playable;
     u16 animal_value;
-    PsiInfo psi_table[32];
+    PsiLearnInfo psi_table[32];
     u32 attack_sounds;
 } LevelStats;
-extern LevelStats gLevelStatTable[];
+extern const LevelStats gLevelStatTable[];
 static_assert(sizeof(LevelStats) == 0x144);
 
 typedef struct GoodsInfo {
@@ -538,7 +545,20 @@ typedef struct GoodsInfo {
     u8 _69;
     u8 consumable;
 } GoodsInfo;
-extern GoodsInfo gGoodsInfo[];
+extern const GoodsInfo gGoodsInfo[];
+
+typedef struct ShopInfo {
+    u16 items[30];
+} ShopInfo;
+extern const ShopInfo gShopInfo[];
+
+typedef struct SoundPlayerEntry {
+    u16 songID;
+    u16 playerID;
+    u32 minimumChapter;
+    u32 duration;
+} SoundPlayerEntry;
+extern const SoundPlayerEntry gSoundPlayerTable[];
 
 typedef struct SystemEntry {
     u8 data[0x2A];
@@ -584,5 +604,21 @@ typedef struct struct_200D818 {
     s16 kindness;
     u16 _2e;
 } struct_200D818;
+
+typedef struct TownMapInfo {
+    u16 townMapID;
+    u16 topLeftX;
+    u16 topLeftY;
+    u16 bottomRightX;
+    u16 bottomRightY;
+    u16 _a;
+} TownMapInfo;
+typedef struct RhythmInfo {  // TODO: This should probably be part of a class?
+    u16 id;                  // Entry ID (is there any point to this?)
+    u16 songNum;             // Internal Song ID
+    u8 greatWindow;          // Number of frames allowed for a "great" hit
+    u8 okayWindow;           // Number of frames allowed for an "okay" hit
+} RhythmInfo;  // note that in the final game, "great" and "okay" hits do the same thing, so
+               // effectively only the "okay" window matters
 
 #endif  // STRUCTS_H

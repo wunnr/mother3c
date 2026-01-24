@@ -27,7 +27,7 @@ _08047ECA:
 	lsrs r2, r4, #0x10
 	adds r0, r5, #0
 	add r1, sp, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	lsrs r4, r4, #0x11
 	lsls r4, r4, #1
 	mov r1, sp

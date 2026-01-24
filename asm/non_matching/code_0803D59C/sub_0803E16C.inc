@@ -75,7 +75,7 @@ _0803E1F8:
 	lsls r2, r2, #3
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldr r0, _0803E25C
 	adds r4, r4, r0
 	movs r0, #1

@@ -52,7 +52,7 @@ _0805132C:
 	adds r1, r5, #0
 	adds r1, #0xf4
 	movs r2, #0x18
-	bl sub_08001B18
+	bl CpuSmartSet
 _0805133A:
 	ldr r1, _08051440
 	movs r0, #2

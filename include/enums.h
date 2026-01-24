@@ -461,7 +461,7 @@ enum Item {
     ItemFactorySketch
 };
 
-enum Sound {
+enum SoundEnum {
     SFX_NULL = 0x0,
     SFX_1 = 0x1,
     SONG_ADOLESCENCE = 0x2,
@@ -1264,5 +1264,7 @@ enum DirectionID {
     DIR_RIGHT = 7,
     DIR_DOWN_RIGHT = 8
 };
+
+enum PsiType { OFFENSE = 0, RECOVER = 1, ASSIST = 2 };
 
 #endif  // ENUMS_H

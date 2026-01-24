@@ -42,7 +42,7 @@ sub_08027680:
 	ldr r1, _080276E4
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	b _08027736
 	.align 2, 0
 _080276E0: .4byte gUnknown_03005314

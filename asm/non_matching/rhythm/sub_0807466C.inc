@@ -13,7 +13,7 @@ sub_0807466C:
 	str r0, [r5, #0x1c]
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08074710
+	bl GetRhythmDataBySongNum
 	str r0, [r5, #0x3c]
 	movs r1, #0
 	str r1, [r5, #0x40]
@@ -65,7 +65,7 @@ sub_0807466C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080746FC: .4byte vt_09F812F8
+_080746FC: .4byte _vt.10RhythmGame
 _08074700: .4byte gUnknown_08105CD0
 _08074704: .4byte _vt.3Unk
 _08074708: .4byte _vt.8AppClock

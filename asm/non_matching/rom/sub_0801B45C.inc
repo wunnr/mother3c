@@ -12,9 +12,9 @@ sub_0801B45C:
 _0801B46E:
 	ldr r0, _0801B47C
 	adds r1, r2, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801B47C: .4byte gUnknown_0911DEB4
+_0801B47C: .4byte gDoorHotSpotTable
 	.syntax divided

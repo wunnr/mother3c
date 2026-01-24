@@ -25,7 +25,7 @@ sub_080528A0:
 	mov r8, r1
 	b _0805294C
 	.align 2, 0
-_080528D4: .4byte gUnknown_080E1910
+_080528D4: .4byte gPsiData+8
 _080528D8:
 	adds r0, r6, #0
 	adds r1, r5, #0

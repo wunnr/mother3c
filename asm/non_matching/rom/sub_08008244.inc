@@ -4,14 +4,14 @@ sub_08008244:
 	ldr r4, _080082C4
 	adds r0, r4, #0
 	movs r1, #0x26
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _080082C8
 	movs r2, #0xb0
 	lsls r2, r2, #6
 	bl sub_08001A14
 	adds r0, r4, #0
 	movs r1, #0x27
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0xe
 	movs r2, #0x20
 	bl sub_08016F4C
@@ -23,27 +23,27 @@ sub_08008244:
 	bl sub_080082DC
 	adds r0, r4, #0
 	movs r1, #0x2a
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _080082D4
 	movs r2, #0x80
 	lsls r2, r2, #3
 	bl sub_08001A14
 	adds r0, r4, #0
 	movs r1, #0x2b
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0x1d
 	movs r2, #0x20
 	bl sub_08016F4C
 	adds r0, r4, #0
 	movs r1, #0x1e
-	bl sub_0800289C
+	bl Blob_GetEntry
 	ldr r1, _080082D8
 	movs r2, #0xc0
 	lsls r2, r2, #4
 	bl sub_08001A14
 	adds r0, r4, #0
 	movs r1, #0x1f
-	bl sub_0800289C
+	bl Blob_GetEntry
 	movs r1, #0x1e
 	movs r2, #0x20
 	bl sub_08016F4C

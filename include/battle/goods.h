@@ -60,7 +60,7 @@ public:
     static Msg getName(u16);
     u16 calcMessage(u16 idx) const;
 
-    GoodsInfo* mInfo;
+    const GoodsInfo* mInfo;
     u16 _4c;
 };
 

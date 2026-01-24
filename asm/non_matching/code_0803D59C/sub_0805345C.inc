@@ -35,7 +35,7 @@ _08053486:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #4
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r5, #4
 _080534A6:
 	adds r0, r6, #1
@@ -54,5 +54,5 @@ _080534B4:
 	bx r1
 	.align 2, 0
 _080534C0: .4byte gUnknown_02019528
-_080534C4: .4byte gUnknown_080E190C
+_080534C4: .4byte gPsiData+4
 	.syntax divided

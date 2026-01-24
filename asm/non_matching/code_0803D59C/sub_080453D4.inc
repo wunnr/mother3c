@@ -12,7 +12,7 @@ sub_080453D4:
 	mov r8, r0
 	add r1, sp, #0x18
 	movs r2, #0x14
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sb
 	bl sub_080552E4
 	lsls r0, r0, #0x10

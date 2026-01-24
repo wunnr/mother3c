@@ -10,11 +10,11 @@ sub_08027E0C:
 	ldr r4, _08027E44
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_0800289C
+	bl Blob_GetEntry
 	cmp r5, r4
 	beq _08027E4C
 	cmp r0, r4

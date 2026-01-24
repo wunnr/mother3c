@@ -9,7 +9,7 @@ sub_0800800C:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	ldr r0, _08008090
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r6, r0, #0
 	ldr r0, _08008094
 	movs r1, #0

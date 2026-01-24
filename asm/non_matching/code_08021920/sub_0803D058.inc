@@ -3,7 +3,7 @@ sub_0803D058:
 	push {lr}
 	ldr r1, _0803D068
 	movs r2, #0x80
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r0}
 	bx r0
 	.align 2, 0

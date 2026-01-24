@@ -7,11 +7,11 @@ sub_08001BCC:
 	ldr r6, _08001BF8
 	adds r0, r6, #0
 	movs r1, #4
-	bl sub_0800289C
+	bl Blob_GetEntry
 	adds r5, r0, #0
 	adds r0, r6, #0
 	movs r1, #3
-	bl sub_0800289C
+	bl Blob_GetEntry
 	lsls r4, r4, #1
 	adds r4, r4, r0
 	ldrh r0, [r4]

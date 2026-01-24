@@ -19,7 +19,7 @@ sub_08013578:
 	adds r1, r0, #0
 	adds r0, r6, #0
 	movs r2, #8
-	bl sub_08001B18
+	bl CpuSmartSet
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

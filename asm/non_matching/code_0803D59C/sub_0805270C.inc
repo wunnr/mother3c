@@ -123,7 +123,7 @@ _080527E8:
 	.align 2, 0
 _080527F8: .4byte gUnknown_020194E8
 _080527FC: .4byte 0x00000DAE
-_08052800: .4byte gUnknown_080E510C
+_08052800: .4byte gGoodsInfo+0x4
 _08052804: .4byte gSomeBlend
 _08052808: .4byte 0x0000426E
 	.syntax divided

@@ -46,7 +46,7 @@ _08055E40:
 	mov r1, sl
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #1
 	str r0, [sp]
 	mov r2, r8

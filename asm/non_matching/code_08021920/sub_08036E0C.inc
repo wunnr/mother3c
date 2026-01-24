@@ -9,7 +9,7 @@ sub_08036E0C:
 	ldr r7, _08036E30
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	cmp r4, #1
 	beq _08036E42
 	cmp r4, #1
@@ -37,14 +37,14 @@ _08036E4C:
 	ldr r0, _08036E58
 _08036E4E:
 	adds r1, r5, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 	b _08036E64
 	.align 2, 0
 _08036E58: .4byte gUnknown_09AEE4C4
 _08036E5C:
 	ldr r0, _08036E6C
 	adds r1, r5, #0
-	bl sub_0800289C
+	bl Blob_GetEntry
 _08036E64:
 	pop {r4, r5, r6, r7}
 	pop {r1}

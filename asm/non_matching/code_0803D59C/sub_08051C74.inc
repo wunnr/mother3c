@@ -28,7 +28,7 @@ sub_08051C74:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0xf4
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, sp
 	ldrh r2, [r0]
 	mov r0, sb
@@ -39,7 +39,7 @@ sub_08051C74:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0xf4
-	bl sub_08001B18
+	bl CpuSmartSet
 	mov r0, r8
 	adds r1, r6, #0
 	movs r2, #1

@@ -12,7 +12,7 @@ sub_0803C4DC:
 	ldr r1, _0803C538
 	movs r2, #0x80
 	lsls r2, r2, #3
-	bl sub_08001B18
+	bl CpuSmartSet
 _0803C4F8:
 	ldr r0, _0803C53C
 	movs r1, #0x8a
@@ -25,18 +25,18 @@ _0803C4F8:
 	lsls r5, r5, #3
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r0, r4, #0
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	adds r6, r6, r5
 	ldr r0, _0803C544
 	adds r4, r4, r0
 	adds r0, r4, #0
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08001B18
+	bl CpuSmartSet
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}

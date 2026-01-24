@@ -34,7 +34,7 @@ _08057E8E:
 	adds r1, r1, r2
 	movs r2, #0x80
 	lsls r2, r2, #2
-	bl sub_08001B18
+	bl CpuSmartSet
 	ldrb r0, [r4]
 	adds r0, #1
 	bl sub_08057A14

@@ -31,7 +31,7 @@ sub_080364B8:
 	adds r0, r5, #0
 	adds r1, r2, #0
 	movs r2, #0xd0
-	bl sub_08001B18
+	bl CpuSmartSet
 	movs r0, #0xa6
 	adds r0, r0, r5
 	mov r8, r0
