@@ -81,7 +81,7 @@ extern "C" void sub_08053148(CharStats*);
 extern "C" CharStats* getBufferedCharStats(u16);
 extern "C" void sub_080524EC(CharStats*);
 extern "C" void sub_080531C8(CharStats*);
-extern "C" void sub_0804EF9C(MenuState*);
+extern "C" void handleShopTransactionSelection(MenuState*);
 extern "C" void handleItemGuyTransactionSelection(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
 extern "C" void sub_0804EF38(MenuState*);
@@ -1173,7 +1173,7 @@ extern "C" void menuShopTransactionSelect(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON) {
-        sub_0804EF9C(menu);
+        handleShopTransactionSelection(menu);
         return;
     }
 
@@ -1378,7 +1378,25 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_21.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/toggleBattleMemorySprite.inc", void toggleBattleMemorySprite());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF9C.inc", void sub_0804EF9C(MenuState*));
+
+extern "C" void handleShopTransactionSelection(MenuState* menu) {
+    switch (menu->cursorPos) {
+    case 0:  // Buy
+    case 1:  // Sell
+        play_sound(SFX_MENU_SELECT);
+        setMenuShopCharacterSelect();
+        break;
+    case 2:  // End
+        play_sound(SFX_MENU_CANCEL);
+        sub_080506CC(0);
+        return;
+    default:
+        break;
+    }
+
+    sub_08049DC4();
+    sub_08046D90();
+}
 
 extern "C" void setShopSubmenu(MenuState* menu) {
     play_sound(SFX_MENU_SELECT);
