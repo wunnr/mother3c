@@ -7,6 +7,8 @@ extern "C" {
 
 #include "gba/m4a_internal.h"
 
+#define SONG_COUNT ((u16)&gSongCount)
+
 void m4aSoundVSync(void);
 
 void m4aSoundInit(void);
