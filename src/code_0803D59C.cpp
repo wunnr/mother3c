@@ -501,7 +501,17 @@ extern "C" u16* getMenuText(u16 index) {
     return NULL;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080486D8.inc", void sub_080486D8());
+extern "C" u16* getMemoEntryText(u16 index) {
+    u16* textOffsets = (u16*)Blob_GetEntry(gMenuData, 0x5A);
+
+    if (textOffsets) {
+        // Offsets are in bytes. So even though it's a u16 table, we have to index it as a u8[]
+        return (u16*)(&((u8*)Blob_GetEntry(gMenuData, 0x5B))[textOffsets[index]]);
+    }
+
+    return NULL;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048710.inc", void sub_08048710());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/bufferedTextLength.inc", u16 bufferedTextLength(u16*, s16));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080487A0.inc", void sub_080487A0());

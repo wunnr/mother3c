@@ -19,7 +19,7 @@ sub_08048074:
 	lsls r2, r2, #0xf
 	adds r0, r0, r2
 	lsrs r0, r0, #0x10
-	bl sub_080486D8
+	bl getMemoEntryText
 	adds r4, r0, #0
 	adds r1, r6, #0
 	bl sub_080025A0

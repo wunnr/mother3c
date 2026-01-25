@@ -31,7 +31,7 @@ _080475D4:
 	cmp r0, #0
 	bge _0804764A
 	ldrb r0, [r4]
-	bl sub_080486D8
+	bl getMemoEntryText
 	adds r3, r0, #0
 	adds r1, r7, #3
 	lsls r0, r1, #0x10
@@ -63,7 +63,7 @@ _0804760A:
 	cmp r0, #0
 	bge _0804764A
 	ldrb r0, [r4]
-	bl sub_080486D8
+	bl getMemoEntryText
 	adds r1, r0, #0
 	lsls r0, r5, #0x10
 	lsrs r2, r0, #0x10
@@ -102,7 +102,7 @@ _08047658:
 	cmp r0, #0
 	beq _08047694
 	ldrb r0, [r4]
-	bl sub_080486D8
+	bl getMemoEntryText
 	adds r1, r0, #0
 	adds r0, r7, #3
 	lsls r0, r0, #0x10

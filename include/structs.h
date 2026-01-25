@@ -609,6 +609,7 @@ typedef struct Stats {
     u32 kindness;
 } Stats;
 static_assert(sizeof(Stats) == 0x10);
+
 typedef struct PsiLearnInfo {
     u16 psi_no;
     u8 level;
