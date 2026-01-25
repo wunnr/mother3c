@@ -92429,55 +92429,55 @@ _vt.5Sound::
 	.4byte clearNullOutgoing__4Base
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FFBC
+	.4byte setup__5SoundUs
 	.2byte 0
 	.2byte 0
-	.4byte play__5Soundb
+	.4byte play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080700E4
+	.4byte stop__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070118
+	.4byte continue_play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807014C
+	.4byte clear__5Soundi
 	.2byte 0
 	.2byte 0
 	.4byte isPlaying__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080701F8
+	.4byte sound_1f8__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070250
+	.4byte sound_250__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702C0
+	.4byte setTempo__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702EC
+	.4byte setVolume__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070320
+	.4byte setPan__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807035C
+	.4byte getIndex__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070360
+	.4byte getTempo__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070364
+	.4byte getVolume__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070368
+	.4byte getPan__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070374
+	.4byte getTimestamp__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807038C
+	.4byte getPlayerClock__5Sound
 
 vt_09F80770::
 	.2byte 0
@@ -93662,55 +93662,55 @@ _vt.10RhythmGame::
 	.4byte clearNullOutgoing__4Base
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FFBC
+	.4byte setup__5SoundUs
 	.2byte 0
 	.2byte 0
-	.4byte play__5Soundb
+	.4byte play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080700E4
+	.4byte stop__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070118
+	.4byte continue_play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807014C
+	.4byte clear__5Soundi
 	.2byte 0
 	.2byte 0
 	.4byte isPlaying__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080701F8
+	.4byte sound_1f8__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070250
+	.4byte sound_250__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702C0
+	.4byte setTempo__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702EC
+	.4byte setVolume__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070320
+	.4byte setPan__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807035C
+	.4byte getIndex__5Sound
 	.2byte 0
 	.2byte 0
 	.4byte sub_0807487C
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070364
+	.4byte getVolume__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070368
+	.4byte getPan__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070374
+	.4byte getTimestamp__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807038C
+	.4byte getPlayerClock__5Sound
 	.2byte 0
 	.2byte 0
 	.4byte sub_0807476C
@@ -99148,55 +99148,55 @@ vt_09F84AE8::
 	.4byte clearNullOutgoing__4Base
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FFBC
+	.4byte setup__5SoundUs
 	.2byte 0
 	.2byte 0
-	.4byte play__5Soundb
+	.4byte play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080700E4
+	.4byte stop__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070118
+	.4byte continue_play__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807014C
+	.4byte clear__5Soundi
 	.2byte 0
 	.2byte 0
 	.4byte isPlaying__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080701F8
+	.4byte sound_1f8__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070250
+	.4byte sound_250__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702C0
+	.4byte setTempo__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_080702EC
+	.4byte setVolume__5Soundi
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070320
+	.4byte setPan__5Soundi
 	.2byte 0
 	.2byte 0
 	.4byte sub_08086D80
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070360
+	.4byte getTempo__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070364
+	.4byte getVolume__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070368
+	.4byte getPan__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_08070374
+	.4byte getTimestamp__5Sound
 	.2byte 0
 	.2byte 0
-	.4byte sub_0807038C
+	.4byte getPlayerClock__5Sound
 	.2byte 0
 	.2byte 0
 	.4byte sub_08086D84

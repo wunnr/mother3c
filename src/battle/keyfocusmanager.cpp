@@ -6,31 +6,195 @@
 #include "battle/system.h"
 #include "global.h"
 
-extern "C" s32 DivMod(s32, s32);
+extern u16 gUnknown_02001F28[];
+extern u16 gSongCount;
 
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0806FF38.inc", void sub_0806FF38());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0806FF6C.inc", void __5SoundUs());
+extern "C" s32 DivMod(s32, s32);
+extern "C" s32 Div(s32, s32);
+
+Sound::Sound(){
+    idx = 0;
+    player = 0;
+    tempo = 100;
+    volume = 100;
+    pan = 0;
+    time = 0;
+    setup(0);
+}
+
+Sound::Sound(u16 arg1){
+    idx = 0;
+    player = 0;
+    tempo = 100;
+    volume = 100;
+    pan = 0;
+    time = 0;
+    setup(arg1);
+}
 
 Sound::~Sound() {}
 
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0806FFBC.inc", void sub_0806FFBC());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070048.inc", void play__5Soundb());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080700E4.inc", void sub_080700E4());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070118.inc", void sub_08070118());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807014C.inc", void sub_0807014C());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080701AC.inc", void isPlaying__5Sound());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080701F8.inc", void sub_080701F8());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070250.inc", void sub_08070250());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080702A8.inc", void sub_080702A8());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080702C0.inc", void sub_080702C0());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080702EC.inc", void sub_080702EC());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070320.inc", void sub_08070320());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807035C.inc", void sub_0807035C());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070360.inc", void sub_08070360());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070364.inc", void sub_08070364());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070368.inc", void sub_08070368());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070374.inc", void sub_08070374());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807038C.inc", void sub_0807038C());
+bool Sound::setup(u16 song) {
+    if (song >= SONG_COUNT) {
+        idx = 0;
+        return false;
+    }
+    
+    if (song != 0) {
+        idx = song;
+        player = &gMPlayTable[gSongTable[song].ms];
+        player->info->clock = 0;
+        
+        setTempo(0x64);
+        setVolume(0x64);
+        setPan(0);
+        
+        return true;
+    }
+    
+    return false;
+}
+
+void Sound::play(s32 fade){
+    if (idx == 0) { return; }
+    
+    time = ClockManager::get()->getTime();
+    player->info->clock = 0;
+    
+    if (fade <= 0) {
+        m4aSongNumStart(idx);
+    } else {
+        m4aSongNumStart(idx);
+        m4aMPlayImmInit(player->info);
+        m4aMPlayVolumeControl(player->info, TRACKS_ALL, 0);
+        MPlayStop(player->info);
+        m4aMPlayFadeIn(player->info, fixFade(fade));
+    }
+    
+    gUnknown_02001F28[player - gMPlayTable] = idx;
+}
+
+void Sound::stop(s32 fade) {
+    if (idx == 0) { return; }
+    
+    if (fade <= 0) {
+        MPlayStop(player->info);
+        return;
+    }
+    
+    m4aMPlayFadeOutTemporarily(player->info, fixFade(fade));
+}
+
+void Sound::continue_play(s32 fade) {
+    if (idx == 0) { return; }
+    
+    if (fade <= 0) {
+        m4aMPlayContinue(player->info);
+        return;
+    }
+    
+    m4aMPlayFadeIn(player->info, fixFade(fade));
+}
+
+void Sound::clear(s32 fade) {
+    if (idx == 0) { return; }
+
+    if (fade <= 0) {
+        MPlayStop(player->info);
+    } else {
+        m4aMPlayFadeOutTemporarily(player->info, fixFade(fade));
+    }
+    
+    gUnknown_02001F28[player - gMPlayTable] = 0;
+}
+
+bool Sound::isPlaying() {
+    if ((idx == 0) || (gUnknown_02001F28[player - gMPlayTable] != idx)) {
+        return false;
+    }
+    
+    return (player->info->status >> 0x1F) ^ 1;
+}
+
+bool Sound::sound_1f8() {
+    if (idx == 0) { return 0; }
+    
+    if (gUnknown_02001F28[player - gMPlayTable] == idx) {
+        if ((s32) player->info->status < 0 && (player->info->status & MUSICPLAYER_STATUS_TRACK) != 0) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+bool Sound::sound_250() {
+    if (idx == 0) { return true; }
+
+    if (gUnknown_02001F28[player - gMPlayTable] == idx && (player->info->status & 0x8000FFFF) != MUSICPLAYER_STATUS_PAUSE) {
+        return false;
+    }
+    
+    return true;
+}
+
+s32 Sound::fixFade(s32 fade) {
+    if (fade < 0) {
+       fade += 0xF;
+    }
+    fade = fade >> 4;
+    s32 new_fade = 1;
+    if (new_fade < fade) {
+        new_fade = fade;
+    }
+    return new_fade;
+}
+
+void Sound::setTempo(s32 new_tempo) {
+    if (idx == 0) { return; }
+    
+    tempo = new_tempo;
+    m4aMPlayTempoControl(player->info, Div(new_tempo << 8, 0x64));
+}
+
+void Sound::setVolume(s32 new_volume) {
+    if (idx == 0) { return; }
+    
+    volume = new_volume;
+    m4aMPlayVolumeControl(player->info, TRACKS_ALL, Div(new_volume << 8, 0x64));
+}
+
+void Sound::setPan(s32 new_pan) {
+    if (idx == 0) { return; }
+    
+    pan = new_pan;
+    m4aMPlayPanpotControl(player->info, TRACKS_ALL, Div(pan << 8, 0x64));
+}
+
+u16 Sound::getIndex() {
+    return idx;
+}
+
+u32 Sound::getTempo() {
+    return tempo;
+}
+
+u32 Sound::getVolume() {
+    return volume;
+}
+
+s8 Sound::getPan() {
+    return pan;
+}
+
+u32 Sound::getTimestamp() {
+    return ClockManager::get()->getTime() - time;
+}
+
+u32 Sound::getPlayerClock() {
+    return (idx == 0) ? 0 : player->info->clock;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080703A4.inc", void sub_080703A4());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070414.inc", void sub_08070414());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070478.inc", void sub_08070478());
