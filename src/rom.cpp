@@ -318,7 +318,20 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002420.inc", void sub_08002420()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002474.inc", void sub_08002474());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080024F0.inc", void sub_080024F0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800255C.inc", void sub_0800255C());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025A0.inc", void sub_080025A0());
+
+extern "C" u16* getNthLine(u16* buf, u16 line) {
+    for (u16 i = 0; i < line; i++) {
+        u16 currentChar = *buf;
+
+        do {
+            currentChar = *buf;
+            buf++;
+        } while (currentChar != 0xFFFF && currentChar != 0xFF00);
+    }
+
+    return buf;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080025D8.inc", void sub_080025D8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002604.inc", void sub_08002604());
 

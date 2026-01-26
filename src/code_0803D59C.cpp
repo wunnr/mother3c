@@ -493,7 +493,7 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804865C.inc", void sub_
 extern "C" u16* getMenuText(u16 index) {
     u16* textOffsets = (u16*)Blob_GetEntry(&gMenuData, 0x58);
 
-    if (textOffsets != NULL) {
+    if (textOffsets) {
         // Offsets are in bytes. So even though it's a u16 table, we have to index it as a u8[]
         return (u16*)(&((u8*)Blob_GetEntry(&gMenuData, 0x59))[textOffsets[index]]);
     }
