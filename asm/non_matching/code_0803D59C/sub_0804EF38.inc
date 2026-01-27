@@ -19,7 +19,7 @@ sub_0804EF38:
 _0804EF5E:
 	ldrh r0, [r4, #0xa]
 	ldrh r1, [r4, #4]
-	bl sub_08048074
+	bl loadMemoEntryPage
 _0804EF66:
 	ldr r4, _0804EF90
 	ldr r0, _0804EF94

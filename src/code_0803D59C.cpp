@@ -133,6 +133,10 @@ extern "C" void sub_08047CDC(u16*, u16, u16, s16, u16, u16);
 extern "C" u16* getMenuText(u16);
 extern "C" void sub_0804A188();
 extern "C" void sub_0804A550();
+extern "C" void memFill(void*, u16, s16);
+extern "C" u16* getMemoEntryText(u16);
+extern "C" u16* getNthMemoPage(u16*, u16);
+extern "C" void sub_08048108(void*, void*);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -475,8 +479,34 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047E48.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047EA4.inc", void sub_08047EA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047F28.inc", void sub_08047F28());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08047FD4.inc", void sub_08047FD4());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048074.inc", void sub_08048074(u16, u16));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048108.inc", void sub_08048108());
+
+extern "C" void loadMemoEntryPage(u16 entry, u16 pageNum) {
+    u16 buffer[0xA0];
+    gSomeBlend.memoTextBuffer[0] = 0xFFFF;
+
+    u16* memoText = getMemoEntryText(entry + 0x52);
+    u16* page = getNthMemoPage(memoText, pageNum);
+
+    if (!page) {
+        return;
+    }
+
+    u16* nextPage = getNthMemoPage(memoText, pageNum + 1);
+
+    if (!nextPage) {
+        return;
+    }
+
+    u16 pageLengthBytes = (nextPage - page) * 2;
+    CpuSmartSet(page, buffer, pageLengthBytes);
+
+    buffer[pageLengthBytes / 2] = 0xFFFF;
+
+    memFill(&gSomeBlend.memoTextBuffer, sizeof buffer, -1);
+    sub_08048108(&gSomeBlend.memoTextBuffer, buffer);
+}
+
+extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048108.inc", void sub_08048108(void*, void*));
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048158.inc", void sub_08048158());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080481DC.inc", void sub_080481DC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08048214.inc", void sub_08048214());
@@ -849,7 +879,7 @@ extern "C" void setMenuMemoView() {
     menu->currentTab = *unk;
     menu->scrollOffset = 0;
     menu->numItems = sub_08048534(*unk);
-    sub_08048074(menu->currentTab, menu->cursorPos);
+    loadMemoEntryPage(menu->currentTab, menu->cursorPos);
 }
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804C050.inc", void sub_0804C050());

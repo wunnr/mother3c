@@ -435,7 +435,7 @@ typedef struct struct_02016028 {
     u8 pad_4282[0x4294 - 0x4282];
     u8 _4294;
     u8 pad_4295[0x43AC - 0x4295];
-    u16 _43ac[0xA0];
+    u16 memoTextBuffer[0xA0];
     u8 pad_44ec[0x44F2 - 0x44EC];
     u8 _44f2_1 : 1;
     u8 _44f2_2 : 1;
