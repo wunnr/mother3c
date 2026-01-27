@@ -85,7 +85,7 @@ extern "C" void sub_080531C8(CharStats*);
 extern "C" void handleShopTransactionSelection(MenuState*);
 extern "C" void handleItemGuyTransactionSelection(MenuState*);
 extern "C" void sub_0804EEE8(MenuState*);
-extern "C" void sub_0804EF38(MenuState*);
+extern "C" void advanceMemoEntry(MenuState*);
 extern "C" u16 navigateScrolling2DMenu(u16*, u16*, InputState*, u16, u16, u16, u16);
 extern "C" void sub_0804DC5C(InputState*, MenuState*);
 extern "C" void sub_0804DE00(InputState*, MenuState*);
@@ -1203,7 +1203,7 @@ extern "C" void menuMemoView(InputState* input, MenuState* menu) {
     }
 
     if (input->justPressed == A_BUTTON || input->justPressed & DPAD_DOWN) {
-        sub_0804EF38(menu);
+        advanceMemoEntry(menu);
         return;
     }
 
@@ -1428,7 +1428,22 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EDFC.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/nullsub_21.inc", void nullsub_21());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/toggleBattleMemorySprite.inc", void toggleBattleMemorySprite());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EEE8.inc", void sub_0804EEE8(MenuState*));
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804EF38.inc", void sub_0804EF38(MenuState*));
+
+extern "C" void advanceMemoEntry(MenuState* menu) {
+    play_sound(SFX_MENU_SELECT);
+    menu->cursorPos++;
+
+    if (menu->cursorPos >= menu->numItems) {
+        play_sound(SFX_MENU_CANCEL);
+        setMenuMemoSelect();
+    } else {
+        loadMemoEntryPage(menu->currentTab, menu->cursorPos);
+    }
+
+    sub_080012BC(&gSomeBlend._50, &gSomeBlend._424c, 1, 1);
+    sub_08046D90();
+    gSomeBlend._41e6_1 = 0;
+}
 
 extern "C" void handleShopTransactionSelection(MenuState* menu) {
     switch (menu->cursorPos) {
