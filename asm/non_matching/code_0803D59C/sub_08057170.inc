@@ -53,7 +53,7 @@ _080571E8:
 	rsbs r2, r2, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08001B54
+	bl memFill
 	b _080571FE
 _080571F6:
 	adds r0, r5, #0

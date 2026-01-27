@@ -42,7 +42,7 @@ _08047EEE:
 	adds r0, r4, #0
 	movs r1, #0x58
 	adds r2, r5, #0
-	bl sub_08001B54
+	bl memFill
 	adds r0, r4, #0
 	add r1, sp, #4
 	bl sub_08048108

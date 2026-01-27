@@ -277,7 +277,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001A94.inc", void sub_08001A94()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001AAC.inc", void sub_08001AAC());
 extern "C" ASM_FUNC("asm/non_matching/rom/memclear.inc", void memclear());
 extern "C" ASM_FUNC("asm/non_matching/rom/CpuSmartSet.inc", void CpuSmartSet());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001B54.inc", void sub_08001B54());
+extern "C" ASM_FUNC("asm/non_matching/rom/memFill.inc", void memFill());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001B9C.inc", void sub_08001B9C());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BCC.inc", void sub_08001BCC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001BFC.inc", void sub_08001BFC());
@@ -319,7 +319,7 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002474.inc", void sub_08002474()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080024F0.inc", void sub_080024F0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800255C.inc", void sub_0800255C());
 
-extern "C" u16* getNthLine(u16* buf, u16 line) {
+extern "C" u16* getNthMemoPage(u16* buf, u16 line) {
     for (u16 i = 0; i < line; i++) {
         u16 currentChar = *buf;
 

@@ -22,7 +22,7 @@ sub_08048074:
 	bl getMemoEntryText
 	adds r4, r0, #0
 	adds r1, r6, #0
-	bl getNthLine
+	bl getNthMemoPage
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _080480F0
@@ -30,7 +30,7 @@ sub_08048074:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl getNthLine
+	bl getNthMemoPage
 	cmp r0, #0
 	beq _080480F0
 	subs r4, r0, r5
@@ -52,7 +52,7 @@ sub_08048074:
 	movs r2, #1
 	rsbs r2, r2, #0
 	adds r0, r7, #0
-	bl sub_08001B54
+	bl memFill
 	adds r0, r7, #0
 	mov r1, sp
 	bl sub_08048108
