@@ -92317,16 +92317,16 @@ vt_09F805B8::
 	.2byte 0
 	.4byte sub_080C146C
 
-vt_09F805D0::
+vt.9SndSystem::
 	.2byte 0
 	.2byte 0
 	.4byte 0
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FE64
+	.4byte destructor__9SndSystem
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FDF8
+	.4byte getRTTI__9SndSystem
 	.2byte 0
 	.2byte 0
 	.4byte base_1c__4Base
@@ -92359,33 +92359,33 @@ vt_09F805D0::
 	.4byte clearNullOutgoing__4Base
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FEBC
+	.4byte vsyncOn__9SndSystem
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FEC8
+	.4byte vsyncOff__9SndSystem
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FED4
+	.4byte setUnk20__9SndSystemUs
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FEF0
+	.4byte setUnk22__9SndSystemUc
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FEF8
+	.4byte getUnk20__9SndSystem
 	.2byte 0
 	.2byte 0
-	.4byte sub_0806FEFC
+	.4byte getUnk22__9SndSystem
 
-vt_09F80668::
+vt.16SndSystemManager::
 	.2byte 0
 	.2byte 0
 	.4byte 0
 	.2byte 0
 	.2byte 0
-	.4byte sub_080C1494
+	.4byte getName__16SndSystemManager
 	.2byte 0
 	.2byte 0
-	.4byte sub_080C1484
+	.4byte init__16SndSystemManager
 
 _vt.5Sound::
 	.2byte 0

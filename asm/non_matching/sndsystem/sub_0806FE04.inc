@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0806FE04:
+__9SndSystem:
 	push {r4, lr}
 	adds r4, r0, #0
 	bl __4Base
@@ -34,7 +34,7 @@ sub_0806FE04:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806FE58: .4byte vt_09F805D0
+_0806FE58: .4byte vt.9SndSystem
 _0806FE5C: .4byte gUnknown_08101CBC
 _0806FE60: .4byte gUnknown_08101CC4
 	.syntax divided

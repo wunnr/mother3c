@@ -11,5 +11,5 @@ sub_0806FF1C:
 	bx r0
 	.align 2, 0
 _0806FF30: .4byte gUnknown_02001F14
-_0806FF34: .4byte vt_09F80668
+_0806FF34: .4byte vt.16SndSystemManager
 	.syntax divided

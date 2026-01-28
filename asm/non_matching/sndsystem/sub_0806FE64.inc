@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0806FE64:
+destructor__9SndSystem:
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -12,7 +12,7 @@ sub_0806FE64:
 	bne _0806FE82
 	bl VBlankIntrWait
 	adds r0, r4, #0
-	bl sub_0806FEC8
+	bl vsyncOff__9SndSystem
 _0806FE82:
 	bl get__10IrcManager
 	ldr r1, _0806FEB4
@@ -33,7 +33,7 @@ _0806FE82:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806FEB0: .4byte vt_09F805D0
+_0806FEB0: .4byte vt.9SndSystem
 _0806FEB4: .4byte gUnknown_08101CBC
 _0806FEB8: .4byte gUnknown_08101CC4
 	.syntax divided

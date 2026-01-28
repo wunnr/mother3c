@@ -1081,21 +1081,21 @@ sub_080C147C: @ 0x080C147C
 	.align 2, 0
 _080C1480: .4byte gUnknown_08101BE0
 
-	thumb_func_start sub_080C1484
-sub_080C1484: @ 0x080C1484
+	thumb_func_start init__16SndSystemManager
+init__16SndSystemManager: @ 0x080C1484
 	push {lr}
 	movs r0, #0x24
 	bl __builtin_new
-	bl sub_0806FE04
+	bl __9SndSystem
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_080C1494
-sub_080C1494: @ 0x080C1494
-	ldr r0, _080C1498 @ =gUnknown_08101CB0
+	thumb_func_start getName__16SndSystemManager
+getName__16SndSystemManager: @ 0x080C1494
+	ldr r0, _080C1498 @ =const_classname_SndSystem
 	bx lr
 	.align 2, 0
-_080C1498: .4byte gUnknown_08101CB0
+_080C1498: .4byte const_classname_SndSystem
 
 	thumb_func_start sub_080C149C
 sub_080C149C: @ 0x080C149C

@@ -10,7 +10,7 @@ sub_0806FD80:
 	ldr r4, _0806FDAC
 	movs r0, #0x24
 	bl __builtin_new
-	bl sub_0806FE04
+	bl __9SndSystem
 	str r0, [r4]
 _0806FD9C:
 	ldr r0, _0806FDAC

@@ -108,7 +108,7 @@ System::System() {
 
     sub_0806FD80();
 
-    sub_0806FDB0()->sndsystem_78(0x82);
+    sub_0806FDB0()->setUnk20(0x82);
 
     sub_0806A974();
     sub_0806B040();
