@@ -314,7 +314,25 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002104.inc", void sub_08002104()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002254.inc", void sub_08002254());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080023A4.inc", void sub_080023A4());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080023E0.inc", void sub_080023E0());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002420.inc", void sub_08002420());
+
+extern "C" void copyText(u16* dest, u16* src, s16 len) {
+    if (len == -1) {
+        while (*src != 0xFFFF) {
+            *dest = *src;
+            src++;
+            dest++;
+        }
+
+        *dest = 0xFFFF;
+    } else {
+        for (u16 i = 0; i < len; i++) {
+            *dest = *src;
+            src++;
+            dest++;
+        }
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002474.inc", void sub_08002474());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080024F0.inc", void sub_080024F0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800255C.inc", void sub_0800255C());

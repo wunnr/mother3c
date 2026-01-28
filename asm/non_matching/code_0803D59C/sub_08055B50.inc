@@ -38,7 +38,7 @@ _08055BA0:
 	ldr r1, _08055BB0
 _08055BA4:
 	movs r2, #8
-	bl sub_08002420
+	bl copyText
 	b _08055BD2
 	.align 2, 0
 _08055BAC: .4byte gUnknown_020042C2
@@ -47,7 +47,7 @@ _08055BB4:
 	ldr r0, _08055BC0
 	ldr r1, _08055BC4
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	b _08055BD2
 	.align 2, 0
 _08055BC0: .4byte gUnknown_02004F26
@@ -56,7 +56,7 @@ _08055BC8:
 	ldr r0, _08055BD8
 	ldr r1, _08055BDC
 	movs r2, #0x10
-	bl sub_08002420
+	bl copyText
 _08055BD2:
 	pop {r0}
 	bx r0

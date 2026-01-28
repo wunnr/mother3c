@@ -60,7 +60,7 @@ _0804C62C:
 	add r4, r8
 	adds r0, r4, #0
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	adds r0, r5, #0
 	adds r1, r4, #0
 _0804C63E:
@@ -81,12 +81,12 @@ _0804C64C:
 	add r4, r8
 	adds r0, r4, #0
 	movs r2, #0x10
-	bl sub_08002420
+	bl copyText
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0x10
 _0804C66C:
-	bl sub_08002420
+	bl copyText
 	bl sub_0804C944
 	pop {r3, r4, r5}
 	mov r8, r3

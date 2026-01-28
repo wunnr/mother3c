@@ -47,7 +47,7 @@ _08001C88:
 	ldr r6, _08001D04
 	adds r1, r6, #0
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	movs r2, #0
 	ldrh r0, [r6]
 	ldr r1, _08001D08

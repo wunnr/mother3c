@@ -16,7 +16,7 @@ sub_08047E48:
 	mov r8, r0
 	add r0, sp, #8
 	mov r2, r8
-	bl sub_08002420
+	bl copyText
 	ldr r4, _08047EA0
 	adds r0, r4, #0
 	movs r1, #0x58

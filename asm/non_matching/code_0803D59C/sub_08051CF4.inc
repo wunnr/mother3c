@@ -262,7 +262,7 @@ _08051E1E:
 	adds r1, r4, #2
 	ldr r0, [sp, #0x34]
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 _08051F12:
 	mov r0, sp
 	ldrh r0, [r0]

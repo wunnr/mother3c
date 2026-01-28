@@ -388,7 +388,7 @@ typedef struct struct_02016028 {
     TransactionState _35bc[7];
     u8 _3610[2];
     u16 _3612;
-    u8 pad_35b4[0x3668 - 0x3614];
+    u8 pad_3614[0x3668 - 0x3614];
     u8 _3668_1 : 1;
     u8 _3668_2 : 1;
     u8 _3668_4 : 1;
