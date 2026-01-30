@@ -5,27 +5,31 @@
 #include "battle/sndSystem.h"
 #include "battle/irc.h"
 
-extern void* gUnknown_02001F14;
-extern SndSystem* gUnknown_02001F24;
+extern Intr2 gUnknown_08101CBC;
+extern Intr2 gUnknown_08101CC4;
 
-void* getSndSystemRTTI(void) {
-    return &gUnknown_02001F14;
+SINGLETON_IMPL(SndSystem)
+
+SndSystem::SndSystem() {
+    m4aMPlayAllStop();
+    
+    _20 = 80;
+    _22 = 1;
+    
+    IrcManager::get()->sub_08069AC0((u32)this, gUnknown_08101CBC);
+    IrcManager::get()->sub_08069AF8(0xA0 - _20);
+    IrcManager::get()->sub_08069A50((u32)this, gUnknown_08101CC4);
 }
 
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FD80.inc", void sub_0806FD80());
+SndSystem::~SndSystem() {
+    if (_22 == 1){
+        VBlankIntrWait();
+        vsyncOff();
+    }
 
-SndSystem* sub_0806FDB0() {
-    return gUnknown_02001F24;
+    IrcManager::get()->sub_08069CF4((u32)this, gUnknown_08101CBC);
+    IrcManager::get()->sub_08069C84((u32)this, gUnknown_08101CC4);
 }
-
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FDBC.inc", void sub_0806FDBC());
-
-void* SndSystem::getRTTI() {
-    return getSndSystemRTTI();
-}
-
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FE04.inc", void __9SndSystem());
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FE64.inc", void destructor__9SndSystem());
 
 void SndSystem::vsyncOn() {
     m4aSoundVSyncOn();
@@ -59,5 +63,3 @@ extern "C" void sub_0806FF04() {
 extern "C" void sub_0806FF10() {
     m4aSoundVSync();
 }
-
-extern "C" ASM_FUNC("asm/non_matching/sndsystem/sub_0806FF1C.inc", void sub_0806FF1C());

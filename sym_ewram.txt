@@ -113,9 +113,9 @@
 . = 0x00001F00; gUnknown_02001F00 = .;
 . = 0x00001F0C; gUnknown_02001F0C = .;
 . = 0x00001F10; gUnknown_02001F10 = .;
-. = 0x00001F14; gUnknown_02001F14 = .;
-. = 0x00001F20; gUnknown_02001F20 = .;
-. = 0x00001F24; gUnknown_02001F24 = .;
+. = 0x00001F14; sSndSystemManager = .;
+. = 0x00001F20; _16SndSystemManager.mSingletonGuard = .;
+. = 0x00001F24; _16SndSystemManager.mSingleton = .;
 . = 0x00001F28; gUnknown_02001F28 = .;
 . = 0x00001F68; gSystemAllocator = .;
 . = 0x00001F70; sSystemAllocator = .;

@@ -92317,13 +92317,13 @@ vt_09F805B8::
 	.2byte 0
 	.4byte sub_080C146C
 
-vt.9SndSystem::
+_vt.9SndSystem::
 	.2byte 0
 	.2byte 0
 	.4byte 0
 	.2byte 0
 	.2byte 0
-	.4byte destructor__9SndSystem
+	.4byte _._9SndSystem
 	.2byte 0
 	.2byte 0
 	.4byte getRTTI__9SndSystem
@@ -92376,7 +92376,7 @@ vt.9SndSystem::
 	.2byte 0
 	.4byte getUnk22__9SndSystem
 
-vt.16SndSystemManager::
+_vt.16SndSystemManager::
 	.2byte 0
 	.2byte 0
 	.4byte 0

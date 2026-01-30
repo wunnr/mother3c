@@ -199,7 +199,7 @@ _0805D9C6:
 	bl __builtin_new
 	bl sub_080703A4
 	str r0, [r7, #0x34]
-	bl sub_0806FDB0__Fv
+	bl get__16SndSystemManager
 	ldr r1, [r0, #0x1c]
 	adds r1, #0x68
 	movs r3, #0

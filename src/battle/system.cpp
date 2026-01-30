@@ -12,7 +12,6 @@ extern "C" void sub_0806CC1C();
 extern "C" void sub_0806BE20();
 extern "C" void sub_0806B07C();
 extern "C" void sub_0806A9B0();
-extern "C" void sub_0806FDBC();
 extern "C" void destroy__10IrcManager();
 extern "C" u16 get_progression_flag(u32);
 extern "C" void sub_080026C0();
@@ -26,7 +25,6 @@ extern "C" void sub_0806B040();
 extern "C" void sub_0806BDE4();
 extern "C" void sub_0806CBE0();
 extern "C" void sub_0806E488();
-extern "C" void sub_0806FD80();
 
 extern IrqTable gIntrHandlers;
 
@@ -106,9 +104,8 @@ System::System() {
 
     ClockManager::makeInstance();
 
-    sub_0806FD80();
-
-    sub_0806FDB0()->setUnk20(0x82);
+    SndSystemManager::makeInstance();
+    SndSystemManager::get()->setUnk20(0x82);
 
     sub_0806A974();
     sub_0806B040();
@@ -129,7 +126,7 @@ System::~System() {
     sub_0806BE20();
     sub_0806B07C();
     sub_0806A9B0();
-    sub_0806FDBC();
+    SndSystemManager::destroy();
     ClockManager::destroy();
     destroy__10IrcManager();
 }
