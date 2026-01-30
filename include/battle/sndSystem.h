@@ -10,10 +10,6 @@ public:
     virtual ~SndSystem();
 
     void* getRTTI() override;
-    // virtual void sndsystem_68();
-    // virtual void sndsystem_70();
-    // virtual void sndsystem_78(int);
-    // virtual void sndsystem_80(s32);
     virtual void vsyncOn();
     virtual void vsyncOff();
     virtual void setUnk20(u16);
@@ -25,7 +21,5 @@ public:
     u8 _22;
 };
 SINGLETON_DECL(SndSystem);
-
-SndSystem* sub_0806FDB0();
 
 #endif  // BATTLE_SND_SYSTEM
