@@ -56,10 +56,10 @@ u8 SndSystem::getUnk22() {
     return _22;
 }
 
-extern "C" void sub_0806FF04() {
+extern "C" void sndsystem_main() {
     m4aSoundMain();
 }
 
-extern "C" void sub_0806FF10() {
+extern "C" void sndsystem_vsync() {
     m4aSoundVSync();
 }

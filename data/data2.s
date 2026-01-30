@@ -301,12 +301,12 @@ const_classname_SndSystem:
     .global gUnknown_08101CBC
 gUnknown_08101CBC:
     .4byte 0xFFFF0000
-    .4byte sub_0806FF04+1
+    .4byte sndsystem_main+1
 
     .global gUnknown_08101CC4
 gUnknown_08101CC4:
     .4byte 0xFFFF0000
-    .4byte sub_0806FF10+1
+    .4byte sndsystem_vsync+1
     .incbin "baserom.gba", 0x00101CCC, 0x1A0
 
     .global gUnknown_08101E6C
