@@ -1323,22 +1323,22 @@ extern "C" void mode_debug_menu(InputState* input) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A0EC.inc", void sub_0803A0EC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage1.inc", void debugMenuPage1());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A198.inc", void sub_0803A198());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A224.inc", void sub_0803A224());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A2D4.inc", void sub_0803A2D4());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage2.inc", void debugMenuPage2());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A3C8.inc", void sub_0803A3C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A458.inc", void sub_0803A458());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A4D0.inc", void sub_0803A4D0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage3.inc", void debugMenuPage3());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A59C.inc", void sub_0803A59C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A644.inc", void sub_0803A644());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A75C.inc", void sub_0803A75C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage4.inc", void debugMenuPage4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A830.inc", void sub_0803A830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A844.inc", void sub_0803A844());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A974.inc", void sub_0803A974());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage5.inc", void debugMenuPage5());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AA98.inc", void sub_0803AA98());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AAAC.inc", void sub_0803AAAC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AC9C.inc", void sub_0803AC9C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage6.inc", void debugMenuPage6());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_19.inc", void nullsub_19());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_20.inc", void nullsub_20());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AD50.inc", void sub_0803AD50());

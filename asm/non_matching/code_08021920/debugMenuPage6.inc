@@ -1,5 +1,5 @@
 	.syntax unified
-sub_0803AC9C:
+debugMenuPage6:
 	push {r4, lr}
 	sub sp, #0xc
 	adds r3, r0, #0

@@ -60,12 +60,12 @@ gUnknown_08D2E178:
 
     .global gDebugFuncTable
 gDebugFuncTable:
-        .4byte sub_0803A0EC+1
-        .4byte sub_0803A2D4+1
-        .4byte sub_0803A4D0+1
-        .4byte sub_0803A75C+1
-        .4byte sub_0803A974+1
-        .4byte sub_0803AC9C+1
+        .4byte debugMenuPage1+1
+        .4byte debugMenuPage2+1
+        .4byte debugMenuPage3+1
+        .4byte debugMenuPage4+1
+        .4byte debugMenuPage5+1
+        .4byte debugMenuPage6+1
 
 
     .global gUnknown_08D2E1A8
