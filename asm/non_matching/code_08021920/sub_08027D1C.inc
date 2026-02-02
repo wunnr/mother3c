@@ -50,7 +50,7 @@ _08027D36:
 _08027D84:
 	movs r0, #0
 	movs r1, #1
-	bl musicPlayerFadeIn_mus
+	bl musicPlayerFadeIn_bgm
 	ldr r0, _08027DBC
 	lsls r1, r5, #1
 	ldr r2, _08027DC0

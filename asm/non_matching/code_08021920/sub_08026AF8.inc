@@ -10,9 +10,9 @@ sub_08026AF8:
 	movs r0, #0
 	bl startSong_battle
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	movs r0, #8
 	movs r1, #4
 	bl musicPlayerFadeOut_sfx

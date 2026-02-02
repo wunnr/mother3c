@@ -20,11 +20,11 @@ cmd_84:
 	cmp r4, #0
 	bne _08020E90
 	adds r0, r6, #0
-	bl musicPlayerFadeInIfPaused_mus
+	bl musicPlayerFadeInIfPaused_bgm
 	b _08020E96
 _08020E90:
 	adds r0, r6, #0
-	bl musicPlayerFadeOutTemp_mus
+	bl musicPlayerFadeOutTemp_bgm
 _08020E96:
 	movs r0, #0
 	pop {r4, r5, r6}

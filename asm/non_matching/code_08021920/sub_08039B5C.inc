@@ -14,7 +14,7 @@ sub_08039B5C:
 	cmp r0, #0xb7
 	bne _08039B7E
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 _08039B7E:
 	pop {r0}
 	bx r0

@@ -92,7 +92,7 @@ _08038C88:
 	b _08038E64
 _08038C98:
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _08038E64
 _08038CA0:
 	ldr r1, _08038CD4
@@ -132,7 +132,7 @@ _08038CE0:
 	cmp r0, #0xb7
 	bne _08038CF8
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 _08038CF8:
 	ldr r7, _08038D7C
 	movs r5, #1

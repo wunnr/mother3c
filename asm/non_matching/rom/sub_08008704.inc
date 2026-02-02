@@ -54,7 +54,7 @@ _08008730:
 	cmp r5, #0
 	bne _08008798
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _0800879E
 	.align 2, 0
 _0800877C: .4byte gUnknown_02005080
@@ -80,11 +80,11 @@ _0800879E:
 	b _080087CA
 _080087B2:
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _080087CA
 _080087BA:
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _080087CA
 _080087C2:
 	adds r0, r6, #0

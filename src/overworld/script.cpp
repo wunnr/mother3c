@@ -20,13 +20,13 @@ extern void sub_08037A7C();
 extern void sub_08019D04();
 extern void sub_0802781C();
 extern void sub_08004794();
-extern void musicPlayerContinue_mus(u16);
+extern void musicPlayerContinue_bgm(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
 extern void startSong(s32);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
-extern void musicPlayerPause_mus(u16);
+extern void musicPlayerPause_bgm(u16);
 extern s16 getCurrentTrack(u16);
 extern u16 getMusicPlayerVolumePercent(u16);
 extern void sub_08033548(u8);
@@ -4846,10 +4846,10 @@ extern "C" s32 cmd_set_volume(s32* sp) {
 extern "C" s32 cmd_DB(s32* sp) {
     s16 mpIndex = scriptstack_peek(sp, 0);
     if (mpIndex == -1) {
-        musicPlayerPause_mus(0);
-        musicPlayerPause_mus(1);
+        musicPlayerPause_bgm(0);
+        musicPlayerPause_bgm(1);
     } else {
-        musicPlayerPause_mus(mpIndex);
+        musicPlayerPause_bgm(mpIndex);
     }
     return 0;
 }
@@ -4857,10 +4857,10 @@ extern "C" s32 cmd_DB(s32* sp) {
 extern "C" s32 cmd_DC(s32* sp) {
     s16 mpIndex = scriptstack_peek(sp, 0);
     if (mpIndex == -1) {
-        musicPlayerContinue_mus(0);
-        musicPlayerContinue_mus(1);
+        musicPlayerContinue_bgm(0);
+        musicPlayerContinue_bgm(1);
     } else {
-        musicPlayerContinue_mus(mpIndex);
+        musicPlayerContinue_bgm(mpIndex);
     }
     return 0;
 }

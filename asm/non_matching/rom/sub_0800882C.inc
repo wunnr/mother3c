@@ -33,7 +33,7 @@ _0800886A:
 	bne _08008878
 	movs r0, #0
 	adds r1, r6, #0
-	bl musicPlayerFadeOutTemp_mus
+	bl musicPlayerFadeOutTemp_bgm
 	b _08008884
 _08008878:
 	movs r0, #0
@@ -46,7 +46,7 @@ _08008884:
 	bne _08008892
 	movs r0, #1
 	adds r1, r6, #0
-	bl musicPlayerFadeOutTemp_mus
+	bl musicPlayerFadeOutTemp_bgm
 	b _0800889E
 _08008892:
 	movs r0, #1

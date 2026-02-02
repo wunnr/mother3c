@@ -7,9 +7,9 @@ sub_080592A8:
 	cmp r0, #0
 	bne _080592FC
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	ldr r0, _08059304
 	bl startSong
 	ldr r0, _08059308

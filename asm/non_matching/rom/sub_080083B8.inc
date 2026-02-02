@@ -37,7 +37,7 @@ _080083FA:
 	cmp r4, #0
 	bne _08008420
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	ldr r2, _0800841C
 	adds r0, r7, r2
 	strh r5, [r0]
@@ -48,7 +48,7 @@ _08008418: .4byte 0x0000829B
 _0800841C: .4byte 0x000067AE
 _08008420:
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	ldr r3, _08008430
 	adds r0, r7, r3
 	strh r5, [r0]
@@ -164,7 +164,7 @@ _080084F8:
 	cmp r4, #0
 	bne _08008534
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	ldr r1, _08008530
 	adds r0, r7, r1
 	b _0800853E
@@ -173,7 +173,7 @@ _0800852C: .4byte 0x0000847C
 _08008530: .4byte 0x000067AE
 _08008534:
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	ldr r2, _08008578
 	adds r0, r7, r2
 _0800853E:
@@ -283,7 +283,7 @@ _08008616:
 	cmp r5, #0
 	bne _0800862E
 	movs r0, #0
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _0800863E
 _0800862E:
 	mov r1, sl
@@ -301,7 +301,7 @@ _0800863E:
 	cmp r2, #0
 	bne _08008652
 	movs r0, #1
-	bl musicPlayerStop_mus
+	bl musicPlayerStop_bgm
 	b _08008676
 _08008652:
 	ldr r3, [sp, #4]
@@ -314,7 +314,7 @@ _08008652:
 	b _08008676
 _08008664:
 	mov r0, sb
-	bl isMusicPlayerPlaying_mus
+	bl isMusicPlayerPlaying_bgm
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08008676

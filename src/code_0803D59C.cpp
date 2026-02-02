@@ -77,7 +77,7 @@ extern "C" void sub_080531C8(s32);
 extern "C" void sub_0804EF9C(MenuState*);
 extern "C" void startSong_battle(u16);
 extern "C" void startSong(u16);
-extern "C" void musicPlayerStop_mus(u16);
+extern "C" void musicPlayerStop_bgm(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -883,8 +883,8 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055F44.inc", void sub_
 extern "C" void setup_battle_music() {
     gUnknown_03004B00 = 1;
     startSong_battle(0);
-    musicPlayerStop_mus(0);
-    musicPlayerStop_mus(1);
+    musicPlayerStop_bgm(0);
+    musicPlayerStop_bgm(1);
     startSong(gMonsterData[(gEncounter._c + 0xFFFFFF00)].encounter_bgm);
 }
 
