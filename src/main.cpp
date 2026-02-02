@@ -58,7 +58,7 @@ extern "C" void sub_080007CC();
 extern "C" void sub_0803DBB8();
 extern "C" void sub_08003EF8();
 extern "C" void sub_080512CC(u32);
-extern "C" void sub_080037F0(u32);
+extern "C" void startSong_battle(u32);
 extern "C" void sub_08026C28();
 extern "C" void init_battle();
 extern "C" void snd_vsync_off();
@@ -234,7 +234,7 @@ void sub_080003D8(void) {
 void sub_080004D8() {
     if (gEncounter._0 == 3) {
         gEncounter.mIQ = 1;
-        sub_080037F0(0);
+        startSong_battle(0);
         sub_08026C28();
         gUnknown_02004848._0 = 5;
         gUnknown_02005080 = 3;

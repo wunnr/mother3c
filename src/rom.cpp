@@ -1,4 +1,5 @@
 // Auto-generated source file
+#include "enums.h"
 #include "battle/irc.h"
 #include "gba/gba.h"
 #include "gba/macro.h"
@@ -594,13 +595,12 @@ extern "C" void snd_vsync_off(void) {
     m4aSoundVSyncOff();
 }
 
-//sub_080037F0
-extern "C" void sub_080037F0(u16 song) {
-    if (song == 0) {
+extern "C" void startSong_battle(u16 song) {
+    if (song == SFX_NULL) {
         gMPlayPrevTrackTable[0] = gMPlayTrackTable[0];
         gMPlayPrevTrackTable[1] = gMPlayTrackTable[1];
-        gMPlayTrackTable[0] = song;
-        gMPlayTrackTable[1] = song;
+        gMPlayTrackTable[0] = SFX_NULL;
+        gMPlayTrackTable[1] = SFX_NULL;
         gMPlayVolumeTable[0] = 0x100;
         gMPlayVolumeTable[1] = 0x100;
         MPlayStop(gMPlayTable[0].info);
@@ -608,107 +608,95 @@ extern "C" void sub_080037F0(u16 song) {
         return;
     }
     
-    s16 playerIndex = getMusicPlayerIndex(song); 
-    u16 uPlayerIndex = (u16)playerIndex; // FAKEMATCH
-    if (playerIndex != -1) {
-        gMPlayPrevTrackTable[(s16)uPlayerIndex] = gMPlayTrackTable[(s16)uPlayerIndex];
-        gMPlayTrackTable[(s16)uPlayerIndex] = song;
-        gMPlayVolumeTable[(s16)uPlayerIndex] = 0x100;
-        m4aSongNumStartOrContinue(song);
-        m4aMPlayImmInit(gMPlayTable[(s16)uPlayerIndex].info);
-        m4aMPlayVolumeControl(gMPlayTable[(s16)uPlayerIndex].info, TRACKS_ALL, gMPlayVolumeTable[(s16)uPlayerIndex]);
-    }
+    s16 mpIndex; 
+    if ((mpIndex = getMusicPlayerIndex(song)) == -1) return;
+    
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = song;
+    gMPlayVolumeTable[mpIndex] = 0x100;
+    m4aSongNumStartOrContinue(song);
+    m4aMPlayImmInit(gMPlayTable[mpIndex].info);
+    m4aMPlayVolumeControl(gMPlayTable[mpIndex].info, TRACKS_ALL, gMPlayVolumeTable[mpIndex]);
 }
 
 extern "C" void startSong(u16 song) {
-    if (song == 0) {
+    if (song == SFX_NULL) {
         gMPlayPrevTrackTable[0] = gMPlayTrackTable[0];
         gMPlayPrevTrackTable[1] = gMPlayTrackTable[1];
-        gMPlayTrackTable[0] = song;
-        gMPlayTrackTable[1] = song;
+        gMPlayTrackTable[0] = SFX_NULL;
+        gMPlayTrackTable[1] = SFX_NULL;
         gMPlayVolumeTable[0] = 0x100;
         gMPlayVolumeTable[1] = 0x100;
-        m4aSongNumStart(0);
+        m4aSongNumStart(SFX_NULL);
         return;
     }
     
-    s16 playerIndex = getMusicPlayerIndex(song);
-    u16 uPlayerIndex = (u16)playerIndex; // FAKEMATCH
-    if (playerIndex != -1) {
-        gMPlayPrevTrackTable[(s16)uPlayerIndex] = gMPlayTrackTable[(s16)uPlayerIndex];
-        gMPlayTrackTable[(s16)uPlayerIndex] = song;
-        gMPlayVolumeTable[(s16)uPlayerIndex] = 0x100;
-        m4aSongNumStart(song);
-    }
+    s16 mpIndex;
+    if ((mpIndex = getMusicPlayerIndex(song)) == -1) return;
+    
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = song;
+    gMPlayVolumeTable[mpIndex] = 0x100;
+    m4aSongNumStart(song);
 }
 
-extern "C" void sub_08003928(u16 trackID) {
-    s16 playerIndex = getMusicPlayerIndex(trackID);
-    u16 uPlayerIndex = (u16)playerIndex; // FAKEMATCH
+extern "C" void startSong_alt(u16 trackID) {
+    s16 mpIndex;
+    if ((mpIndex = getMusicPlayerIndex(trackID)) == -1) return;
     
-    if (playerIndex == -1) {
-        return;
-    }
-
-    gMPlayPrevTrackTable[(s16)uPlayerIndex] = gMPlayTrackTable[(s16)uPlayerIndex];
-    gMPlayTrackTable[(s16)uPlayerIndex] = trackID;
-    gMPlayVolumeTable[(s16)uPlayerIndex] = 0x100;
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = trackID;
+    gMPlayVolumeTable[mpIndex] = 0x100;
     m4aSongNumStartOrContinue(trackID);
-    struct MusicPlayerInfo* mplayInfo = gMPlayTable[(s16)uPlayerIndex].info;
-    m4aMPlayImmInit(mplayInfo);
-    m4aMPlayVolumeControl(mplayInfo, TRACKS_ALL, gMPlayVolumeTable[(s16)uPlayerIndex]);
-    
+    m4aMPlayImmInit(gMPlayTable[mpIndex].info);
+    m4aMPlayVolumeControl(gMPlayTable[mpIndex].info, TRACKS_ALL, gMPlayVolumeTable[mpIndex]);
 }
 
 extern "C" void play_sound(u16 sound) {
-    if (sound == NULL) { return; }
+    if (sound == SFX_NULL) return;
 
-    s16 playerIndex = getMusicPlayerIndex(sound);
-    u16 uPlayerIndex = (u16)playerIndex; // FAKEMATCH
-
-    if (playerIndex == -1) { return; }
-
-    if (sound == 0xF6) {
+    s16 mpIndex;
+    if ((mpIndex = getMusicPlayerIndex(sound)) == -1) return; 
+    
+    if (sound == SFX_VO_OK) {
         m4aSongNumStart(0x3DA);
     }
-
-    gMPlayPrevTrackTable[(s16)uPlayerIndex] = gMPlayTrackTable[(s16)uPlayerIndex];
-    gMPlayTrackTable[(s16)uPlayerIndex] = sound;
-    gMPlayVolumeTable[(s16)uPlayerIndex] = 0x100;
-
+    
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = sound;
+    gMPlayVolumeTable[mpIndex] = 0x100;
     m4aSongNumStart(sound);
 }
 
 extern "C" void musicPlayerFadeInIfPaused_mus(u16 mpIndex, u16 speed) {
     MusicPlayerInfo* mpInfo = getMusicPlayer_mus(mpIndex);
-
-    if (mpInfo != NULL) {
-        u16 currentTrack = gMPlayTrackTable[mpIndex];
-        if ((s32)mpInfo->status < 0) {
-            m4aMPlayImmInit(mpInfo);
-            m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, 0);
-            m4aSongNumStop(currentTrack);
-            m4aMPlayFadeIn(mpInfo, speed);
-            gMPlayVolumeTable[mpIndex] = 0x100;
-        }
+    if (!mpInfo) return;
+    
+    u16 currentTrack = gMPlayTrackTable[mpIndex];
+    if ((s32)mpInfo->status < 0) {
+        m4aMPlayImmInit(mpInfo);
+        m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, 0);
+        m4aSongNumStop(currentTrack);
+        m4aMPlayFadeIn(mpInfo, speed);
+        gMPlayVolumeTable[mpIndex] = 0x100;
     }
 }
 
 extern "C" void musicPlayerFadeIn_mus(u16 mpIndex, u16 speed) {
-    MusicPlayerInfo* mplayInfo = getMusicPlayer_mus(mpIndex);
-    if (!mplayInfo) { return; }
+    MusicPlayerInfo* mpInfo = getMusicPlayer_mus(mpIndex);
+    if (!mpInfo) return;
     
     u16 song = gMPlayTrackTable[mpIndex];
-    m4aMPlayImmInit(mplayInfo);
-    m4aMPlayVolumeControl(mplayInfo, TRACKS_ALL, 0);
+    m4aMPlayImmInit(mpInfo);
+    m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, 0);
     m4aSongNumStop(song);
-    m4aMPlayFadeIn(mplayInfo, speed);
+    m4aMPlayFadeIn(mpInfo, speed);
     gMPlayVolumeTable[mpIndex] = 0x100;
 }
 
 extern "C" void musicPlayerFadeOutTemp_mus(u16 mpIndex, u16 speed) {
     MusicPlayerInfo* mpInfo = getMusicPlayer_mus(mpIndex);
-    if (!mpInfo) { return; }
+    if (!mpInfo) return;
     
     if ((s32)mpInfo->status >= 0) {
         m4aMPlayFadeOutTemporarily(mpInfo, speed);
@@ -716,100 +704,96 @@ extern "C" void musicPlayerFadeOutTemp_mus(u16 mpIndex, u16 speed) {
 }
 
 extern "C" void musicPlayerFadeIn_sfx(u16 mpIndex, u16 speed) {
-    MusicPlayerInfo* mplayInfo = getMusicPlayer_sfx(mpIndex);
-    if (!mplayInfo) { return; }
+    MusicPlayerInfo* mpInfo = getMusicPlayer_sfx(mpIndex);
+    if (!mpInfo) return;
     
     u16 song = gMPlayTrackTable[mpIndex];
-    if ((s32) mplayInfo->status >= 0) {
-        m4aMPlayImmInit(mplayInfo);
-        m4aMPlayVolumeControl(mplayInfo, TRACKS_ALL, 0);
+    if ((s32) mpInfo->status >= 0) {
+        m4aMPlayImmInit(mpInfo);
+        m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, 0);
         m4aSongNumStop(song);
-        m4aMPlayFadeIn(mplayInfo, speed);
+        m4aMPlayFadeIn(mpInfo, speed);
     }
 }
 
 extern "C" void musicPlayerFadeOut_sfx(u16 idx, u16 speed) {
-    struct MusicPlayerInfo* mplayInfo = getMusicPlayer_sfx(idx);
-    if (!mplayInfo) { return; }
+    struct MusicPlayerInfo* mpInfo = getMusicPlayer_sfx(idx);
+    if (!mpInfo) return;
     
-    if ((s32) mplayInfo->status >= 0) {
-        m4aMPlayFadeOut(mplayInfo, speed);
+    if ((s32) mpInfo->status >= 0) {
+        m4aMPlayFadeOut(mpInfo, speed);
     }
 }
 
-extern "C" void musicPlayerStop_mus(u16 index) {
-    s32 signedIndex = (s32)index;
+extern "C" void musicPlayerStop_mus(u16 uidx) {
+    s32 mpIndex = uidx;
 
-    if (signedIndex > 1)
-        return;
-    if (signedIndex < 0)
-        return;
+    if (mpIndex > 1) return;
+    if (mpIndex < 0) return;
 
-    MPlayStop(gMPlayTable[index].info);
-    gMPlayPrevTrackTable[index] = gMPlayTrackTable[index];
-    gMPlayTrackTable[index] = 0;
-    gMPlayVolumeTable[index] = 0x100;
+    MPlayStop(gMPlayTable[mpIndex].info);
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = 0;
+    gMPlayVolumeTable[mpIndex] = 0x100;
 }
 
-extern "C" void musicPlayerStop_sfx(u16 index) {
-    s32 cmp = 9; // FAKEMATCH
-    if (index > cmp) { return; }
-    cmp = 2; // FAKEMATCH
-    if (index < cmp) { return; }
+extern "C" void musicPlayerStop_sfx(u16 uidx) {
+    s32 mpIndex = uidx;
     
-    MPlayStop(gMPlayTable[index].info);
-    gMPlayPrevTrackTable[index] = gMPlayTrackTable[index];
-    gMPlayTrackTable[index] = 0;
-    gMPlayVolumeTable[index] = 0x100;
+    if (mpIndex > 9) return;
+    s32 two = 2; // FAKEMATCH
+    if (mpIndex < two) return;
+    
+    MPlayStop(gMPlayTable[mpIndex].info);
+    gMPlayPrevTrackTable[mpIndex] = gMPlayTrackTable[mpIndex];
+    gMPlayTrackTable[mpIndex] = 0;
+    gMPlayVolumeTable[mpIndex] = 0x100;
 }
 
 extern "C" void musicPlayerPause_mus(u16 uidx) {
-    s32 idx = uidx; // FAKEMATCH
+    s32 mpIndex = uidx;
     
-    if (idx > 1) { return; }
-    if (idx < 0) { return; }
+    if (mpIndex > 1) return;
+    if (mpIndex < 0) return;
     
-    MPlayStop(gMPlayTable[idx].info);
+    MPlayStop(gMPlayTable[mpIndex].info);
 }
 
 extern "C" void musicPlayerContinue_mus(u16 uidx) {
-    s32 idx = uidx; // FAKEMATCH
+    s32 mpIndex = uidx;
     
-    if (idx > 1) { return; }
-    if (idx < 0) { return; }
+    if (mpIndex > 1) return;
+    if (mpIndex < 0) return;
 
-    m4aMPlayContinue(gMPlayTable[idx].info);
+    m4aMPlayContinue(gMPlayTable[mpIndex].info);
 }
 
 extern "C" void musicPlayerUpdateVolume(u16 uidx, u16 vol) {
-    s32 idx = (u16)uidx; // FAKEMATCH
+    s32 mpIndex = uidx;
     
-    if (idx > 9) { return; }
-    if (idx < 0) { return; }
+    if (mpIndex > 9) return;
+    if (mpIndex < 0) return;
     
-    MusicPlayerInfo* mplayInfo = gMPlayTable[idx].info;
-    m4aMPlayVolumeControl(mplayInfo, TRACKS_ALL, vol);
-    gMPlayVolumeTable[idx] = vol;
+    MusicPlayerInfo* mpInfo = gMPlayTable[mpIndex].info;
+    m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, vol);
+    gMPlayVolumeTable[mpIndex] = vol;
 }
 
-extern "C" void musicPlayerInitAndUpdateVolume(u16 playerIndex, u16 vol) {
-    s32 idx = (u16)playerIndex;
+extern "C" void musicPlayerInitAndUpdateVolume(u16 uidx, u16 vol) {
+    s32 mpIndex = uidx;
     
-    if (idx > 9) { return; }
-    if (idx < 0) { return; }
+    if (mpIndex > 9) return;
+    if (mpIndex < 0) return;
     
-    MusicPlayerInfo* mplayInfo = gMPlayTable[idx].info;
-    m4aMPlayImmInit(mplayInfo);
-    m4aMPlayVolumeControl(mplayInfo, TRACKS_ALL, vol);
-    gMPlayVolumeTable[idx] = vol;
+    MusicPlayerInfo* mpInfo = gMPlayTable[mpIndex].info;
+    m4aMPlayImmInit(mpInfo);
+    m4aMPlayVolumeControl(mpInfo, TRACKS_ALL, vol);
+    gMPlayVolumeTable[mpIndex] = vol;
 }
 
-extern "C" void setMPlayPanpotClamped(u16 index, s16 pan) {
-    MusicPlayerInfo* mpInfo = getMusicPlayer_sfx(index);
-
-    if (mpInfo == NULL) {
-        return;
-    }
+extern "C" void setMPlayPanpotClamped(u16 mpIndex, s16 pan) {
+    MusicPlayerInfo* mpInfo = getMusicPlayer_sfx(mpIndex);
+    if (!mpInfo) return;
 
     if (pan > 127) {
         pan = 127;
@@ -820,25 +804,23 @@ extern "C" void setMPlayPanpotClamped(u16 index, s16 pan) {
     m4aMPlayPanpotControl(mpInfo, TRACKS_ALL, pan);
 }
 
-extern "C" s16 getCurrentTrack(u16 playerIndex) {
-    if (!gMPlayTrackTable[playerIndex]) {
-        return -1;
-    }
-
-    return gMPlayTrackTable[playerIndex];
+extern "C" s16 getCurrentTrack(u16 mpIndex) {
+    if (!gMPlayTrackTable[mpIndex]) return -1;
+    
+    return gMPlayTrackTable[mpIndex];
 }
 
-extern "C" s16 getPrevTrack(u16 playerIndex) {
-    return gMPlayPrevTrackTable[playerIndex];
+extern "C" s16 getPrevTrack(u16 mpIndex) {
+    return gMPlayPrevTrackTable[mpIndex];
 }
 
-extern "C" u16 getMusicPlayerVolumePercent(u16 index) {
-    return MPlayVolumeToPercent(gMPlayVolumeTable[index]);
+extern "C" u16 getMusicPlayerVolumePercent(u16 mpIndex) {
+    return MPlayVolumeToPercent(gMPlayVolumeTable[mpIndex]);
 }
 
-extern "C" s32 isMusicPlayerPlaying_mus(u16 idx) {
-    MusicPlayerInfo* mPlayerInfo = getMusicPlayer_mus(idx);
-    if (!mPlayerInfo) { return 0; }
+extern "C" s32 isMusicPlayerPlaying_mus(u16 mpIndex) {
+    MusicPlayerInfo* mPlayerInfo = getMusicPlayer_mus(mpIndex);
+    if (!mPlayerInfo) return 0;
     
     return ((u32) mPlayerInfo->status >> 0x1F) ^ 1;
 }
@@ -847,55 +829,53 @@ extern "C" s16 getMusicPlayerIndex(u16 songID) {
     MusicPlayerInfo* mpInfo = gMPlayTable[gSongTable[songID].ms].info;
 
     for (u16 i = 0; i < 10; i++) {
-        if (mpInfo == gMPlayTable[i].info) {
-            return i;
-        }
+        if (mpInfo == gMPlayTable[i].info) return i;
     }
     return -1;
 }
 
-extern "C" MusicPlayerInfo* getMusicPlayer_mus(u16 arg0) {
-    s32 idx = arg0; // FAKEMATCH
+extern "C" MusicPlayerInfo* getMusicPlayer_mus(u16 uidx) {
+    s32 mpIndex = uidx;
     
-    if (idx > 1) { return 0; }
-    if (idx < 0) { return 0; }
+    if (mpIndex > 1) return 0;
+    if (mpIndex < 0) return 0;
     
-    return gMPlayTable[idx].info;
+    return gMPlayTable[mpIndex].info;
 }
 
-extern "C" MusicPlayerInfo* getMusicPlayer_sfx(u16 uindex) {
-    s32 idx = uindex; // FAKEMATCH
+extern "C" MusicPlayerInfo* getMusicPlayer_sfx(u16 uidx) {
+    s32 mpIndex = uidx;
     
-    if (idx > 9) { return 0; }
+    if (mpIndex > 9) return 0;
     s32 two = 2; // FAKEMATCH
-    if (idx < two) { return 0; }
+    if (mpIndex < two) return 0;
     
-    return gMPlayTable[idx].info;
+    return gMPlayTable[mpIndex].info;
 }
 
 extern "C" u16 percentToMPlayVolume(u16 percent) {
-    if (percent == 0) { return 4; }
-    if (percent == 100) { return 256; }
-    if (percent == 400) { return 1020; }
+    if (percent == 0) return 4;
+    if (percent == 100) return 256;
+    if (percent == 400) return 1020;
 
     return (u16) lerp(4, 1020, percent, 400);
 }
 
 extern "C" u16 MPlayVolumeToPercent(u16 volume) {
-    if (volume < 5) { return 0; }
-    if (volume == 256) { return 100; }
-    if (volume >= 1020) { return 400; }
+    if (volume < 5) return 0;
+    if (volume == 256) return 100;
+    if (volume >= 1020) return 400;
     
     return lerp(0, 400, volume, 1020);
 }
 
-extern "C" void storeMusicPlayerVolumes(void) {
+extern "C" void storeMusicPlayerVolumes() {
     for (u16 i = 0; i <= 9; i++) {
         gMPlayVolumeStorageTable[i] = gMPlayVolumeTable[i];
     }
 }
 
-extern "C" void retrieveMusicPlayerVolumes(void) {
+extern "C" void retrieveMusicPlayerVolumes() {
     for (u16 i = 0; i <= 9; i++) {
         gMPlayVolumeTable[i] = gMPlayVolumeStorageTable[i];
     }

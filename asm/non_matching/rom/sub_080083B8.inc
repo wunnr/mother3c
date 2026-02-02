@@ -33,7 +33,7 @@ sub_080083B8:
 	b _080086E8
 _080083FA:
 	movs r0, #0xac
-	bl sub_08003928
+	bl startSong_alt
 	cmp r4, #0
 	bne _08008420
 	movs r0, #1
@@ -91,7 +91,7 @@ _0800845C:
 	cmp r0, r5
 	beq _0800847C
 	adds r0, r5, #0
-	bl sub_08003928
+	bl startSong_alt
 _0800847C:
 	lsls r0, r6, #0x10
 	asrs r0, r0, #0x10
@@ -115,7 +115,7 @@ _08008486:
 	adds r4, r7, r3
 	ldrh r6, [r4]
 	adds r0, r5, #0
-	bl sub_08003928
+	bl startSong_alt
 	lsls r1, r6, #0x10
 	asrs r0, r1, #0x10
 	cmp r0, r8
@@ -158,7 +158,7 @@ _080084F8:
 	cmp r0, r8
 	beq _08008560
 	adds r0, r5, #0
-	bl sub_08003928
+	bl startSong_alt
 	lsls r0, r4, #0x10
 	adds r4, r0, #0
 	cmp r4, #0
@@ -292,7 +292,7 @@ _0800862E:
 	cmp r0, r5
 	beq _0800863E
 	adds r0, r5, #0
-	bl sub_08003928
+	bl startSong_alt
 _0800863E:
 	ldrh r0, [r7]
 	cmp r0, #0
