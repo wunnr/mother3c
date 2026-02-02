@@ -1,5 +1,7 @@
 // Auto-generated source file
+#include "battle.h"
 #include "battle/irc.h"
+#include "battle/monster.h"
 #include "enums.h"
 #include "functions.h"
 #include "gba/gba.h"
@@ -32,6 +34,7 @@ extern u8 gMenuTextPalette;
 extern const u8 gUnknown_09BCDD8C;
 extern InputState gInputState;
 extern MenuFunc gMenuFuncTable[0x13];
+extern MonsterData gMonsterData[];
 
 extern "C" void* Blob_GetEntry(const void* src, int index);
 extern "C" void LZ77UnCompVram(const void* src, const void* dest);
@@ -72,6 +75,9 @@ extern "C" s32 sub_08054FE0(u16);
 extern "C" void sub_080524EC();
 extern "C" void sub_080531C8(s32);
 extern "C" void sub_0804EF9C(MenuState*);
+extern "C" void startSong_battle(u16);
+extern "C" void startSong(u16);
+extern "C" void musicPlayerStop_mus(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -873,7 +879,15 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055D3C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055DA4.inc", void sub_08055DA4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055E00.inc", void sub_08055E00());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055F44.inc", void sub_08055F44());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08055FD4.inc", void sub_08055FD4());
+
+extern "C" void setup_battle_music() {
+    gUnknown_03004B00 = 1;
+    startSong_battle(0);
+    musicPlayerStop_mus(0);
+    musicPlayerStop_mus(1);
+    startSong(gMonsterData[(gEncounter._c + 0xFFFFFF00)].encounter_bgm);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0805601C.inc", void sub_0805601C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080560AC.inc", void sub_080560AC());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080560F8.inc", void sub_080560F8());
