@@ -35,7 +35,7 @@ sub_08014244:
 	lsls r6, r6, #1
 	adds r1, r6, #0
 	movs r2, #0xf0
-	bl sub_08001B54
+	bl memFill
 	ldr r1, _080142E4
 	adds r0, r4, r1
 	adds r1, r6, #0

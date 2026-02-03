@@ -40,7 +40,7 @@ typedef struct CharStats {
     u8 defense;
     u8 iq;
     u8 speed;
-    u8 _2c;
+    u8 kindness;
     u8 _2d;
     u8 _2e;
     u8 _2f;
@@ -185,6 +185,12 @@ typedef struct Object {
 
 extern Object gUnknown_0200C3C8[];
 
+typedef struct TileInfo {
+    u16 tile_num : 10;    // 0x04 bits 0-9 - Tile/character number
+    u16 priority : 2;     // 0x04 bits 10-11 - Priority vs BG
+    u16 palette_num : 4;  // 0x04 bits 12-15 - Palette number
+} TileInfo;
+
 /* size: 8 bytes */
 typedef struct OAMEntry {
     // Attribute 0 (0x00-0x01)
@@ -220,10 +226,10 @@ typedef struct Entry8Byte_Alt {
 static_assert(sizeof(OAMEntry) == 0x8);
 
 typedef struct Unknown_02016078 {
-    /* 0x0000 / 0x0050 */ u8 _0[0x800];
-    /* 0x0800 / 0x0850 */ u8 _800[0x800];
-    /* 0x1000 / 0x1050 */ u8 _1000[0x800];
-    /* 0x1800 / 0x1850 */ u8 _1800[0x800];
+    /* 0x0000 / 0x0050 */ u16 _0[0x400];
+    /* 0x0800 / 0x0850 */ u16 _800[0x400];
+    /* 0x1000 / 0x1050 */ u16 _1000[0x400];
+    /* 0x1800 / 0x1850 */ u16 _1800[0x400];
     /* 0x2000 / 0x2050 */ OAMEntry oam[128];
     /* 0x2400 / 0x2450 */ u8 pad_2400[0x2500 - 0x2400];
     /* 0x2500 / 0x2550 */ Entry8Byte_Alt entries_2500[32];
@@ -267,13 +273,14 @@ typedef struct Direction {
 } Direction;
 
 typedef struct MenuState {
-    u8 _0[2];
-    u16 _2;
+    u16 id;
+    u16 numItems;
     u16 cursorPos;
-    u16 _6;
-    u16 _8;
-    u16 _a;
-    u8 _c[0x20 - 0xC];
+    u16 numItemsVisible;
+    u16 scrollOffset;
+    u16 currentTab;
+    s16 prevMenuID;
+    u8 pad_e[0x20 - 0xE];
 } MenuState;
 static_assert(sizeof(MenuState) == 0x20);
 
@@ -285,6 +292,40 @@ typedef struct TransactionState {
     u16 transactionType;
 } TransactionState;
 static_assert(sizeof(TransactionState) == 0xC);
+
+typedef struct struct_2018D00 {
+    s32 _0;
+    s32 hpMod;
+    s32 _8;
+    s16 _c;
+    s16 ppMod;
+    s16 _10;
+    s16 _12;
+    s16 offenseMod;
+    u16 _16;
+    s16 _18;
+    s16 defenseMod;
+    u16 _1c;
+    s16 _1e;
+    s16 iqMod;
+    u16 _22;
+    s16 _24;
+    s16 speedMod;
+    u16 _28;
+    s16 _2a;
+    s16 kindnessMod;
+    u16 _2e;
+    u32 maxHP;
+    u16 maxPP;
+    u16 pad_36;
+} struct_2018D00;
+
+typedef struct MenuGoodsEntry {
+    u8 id;
+    u8 _1;
+    u16 _2_1 : 6;
+    u16 _2_40 : 1;
+} MenuGoodsEntry;
 
 typedef struct struct_02016028 {
     vu16 bldcnt;
@@ -317,24 +358,37 @@ typedef struct struct_02016028 {
     Unknown_02016078 _50;
     InputState input;
     void* _2CB0;
-    u16 _2CB4[0xA6];
+    u16 _2cb4[0x12];
+    struct_2018D00 _2cd8[5];
+    u32 _2df0[2];
+    u16 _2dfa;
+    u16 partyCount;
+    u16 playablePartyCount;
+    u16 _2dfe;
     MenuState menus[0x13];
-    u8 _3060;
-    u8 pad_3061[0x30B4 - 0x3061];
-    u8 pad_30B4[0x351B - 0x30B4];
+    MenuState _3060;
+    u8 pad_3080[0x30B4 - 0x3080];
+    u8 pad_30B4[0x3480 - 0x30B4];
+    MenuGoodsEntry _3480[0x10];
+    MenuGoodsEntry equippableItems[0x10];
+    u8 pad_3500[0x351C - 0x3500];
     u32 _351C;
     u32 _3520;
     u16 _3524;
     u16 _3526;
     u8 pad_3528[0x3530 - 0x3528];
     u8 _3530;
-    u8 pad_3531[0x35BA - 0x3531];
-    u8 _35ba;
+    u8 _3531;
+    u8 _3532;
+    u8 pad_3533[0x35BA - 0x3533];
+    u8 _35ba_1 : 1;
+    u8 _35ba_2 : 2;
+    u8 _35ba_8 : 1;
     u8 pad_35bb;
     TransactionState _35bc[7];
     u8 _3610[2];
     u16 _3612;
-    u8 pad_35b4[0x3668 - 0x3614];
+    u8 pad_3614[0x3668 - 0x3614];
     u8 _3668_1 : 1;
     u8 _3668_2 : 1;
     u8 _3668_4 : 1;
@@ -342,20 +396,65 @@ typedef struct struct_02016028 {
     u8 _3668_10 : 1;
     u8 _3668_20 : 1;
     u8 _3668_40 : 2;
-    u8 pad_3669[0x41C6 - 0x3669];
+    u8 pad_3669[0x3800 - 0x3669];
+    s32 _3800[0xFF];
+    s32 _3bfc[0x170];
+    u16 _41bc;
+    u8 pad_41be[0x41C6 - 0x41BE];
     u8 _41c6_1 : 1;
     u8 pad_41c7[0x41DA - 0x41C7];
     u8 _41da_1 : 1;
-    u8 pad_41db[0x4260 - 0x41DB];
+    u8 pad_41db[0x41E6 - 0x41DB];
+    u8 _41e6_1 : 1;
+    u8 pad_41e7[0x4234 - 0x41E7];
+    u16 _4234;
+    u16 _4236;
+    u8 pad_4237[0x423C - 0x4238];
+    u8 _423c;
+    u8 pad_423d[0x4244 - 0x423D];
+    u8 _4244;
+    u8 pad_4245[0x424C - 0x4245];
+    u8 _424c;
+    u8 pad_424d[0x4254 - 0x424D];
+    u8 _4254;
+    u8 pad_4255[0x4260 - 0x4255];
     u8 currentMenu;
-    u8 pad_4261[0x4264 - 0x4261];
+    u8 _4261;
+    s8 _4262;
+    u8 _4263;
     u8 _4264;
-    u8 pad_4265[0x4294 - 0x4265];
+    u8 pad_4265[0x426A - 0x4265];
+    u16 _426a;
+    u16 _426c;
+    u16 numEquippableItems;
+    u8 pad_4270[0x427A - 0x4270];
+    u16 _427a;
+    u16 _427c;
+    u16 _427e;
+    u16 _4280;
+    u8 pad_4282[0x4294 - 0x4282];
     u8 _4294;
-    u8 pad_4295[0x44F2 - 0x4295];
+    u8 pad_4295[0x43AC - 0x4295];
+    u16 memoTextBuffer[0xA0];
+    u8 pad_44ec[0x44F2 - 0x44EC];
     u8 _44f2_1 : 1;
     u8 _44f2_2 : 1;
-    u8 pad_44f3[0x4ad0 - 0x44F3];
+    u8 _44f2_4 : 1;
+    u8 _44f2_8 : 1;
+    u8 _44f2_10 : 1;
+    u8 _44f2_20 : 1;
+    u8 _44f2_40 : 1;
+    u8 _44f2_80 : 1;
+    u8 _44f3_1 : 3;
+    u8 _44f3_8 : 1;
+    u8 pad_44f4[0x44f8 - 0x44F4];
+    u8 _44f8;
+    u8 pad_44fa[0x4501 - 0x44F9];
+    u8 _4501_1 : 1;
+    u8 _4501_2 : 1;
+    u8 pad_4502[0x4a30 - 0x4502];
+    u8 _4a30;
+    u8 pad_4a31[0x4ad0 - 0x4A31];
     u32 char_names[0xd];
     u16 msg_type;
     u16 _4b06;
@@ -369,12 +468,33 @@ typedef struct struct_02016028 {
     u16 _4b16;
     u8 _4b18;
     u8 _4b19 : 2;
-    u8 _4b1a[0x566C - 0x4b1a];
+    u8 _4b1a[0x4DF4 - 0x4B1A];
+    u16* menuTextBuffer;
+    u8 _4df8[0x4ECE - 0x4DF8];
+    u8 menuTextCursorPos : 5;
+    u8 _4ece_20 : 3;
+    u8 _4ecf_1 : 4;
+    u8 _4ecf_10 : 1;
+    u8 _4ed0[0x566C - 0x4ED0];
     u8 _566c_1 : 1;
     u8 _566d[0x5778 - 0x566D];
-    u8 _5778[0xC620 - 0x5778];
+    u8 _5778[0xC5AD - 0x5778];
+    u8 _c5ad_1 : 1;
+    u8 _c5ae[0xC5B5 - 0xC5AE];
+    u8 _c5b5_1 : 2;
+    u8 _c5b5_4 : 1;
+    u8 _c5b5_8 : 2;
+    u8 _c5b5_20 : 1;
+    u8 _c5b5_40 : 1;
+    u8 _c5b5_80 : 1;
+    u8 _c5b6[0xC61C - 0xC5B6];
+    u32 _c61c;
     void* _C620;
-    u8 pad_C624[0x121b8 - 0xC624];
+    u8 pad_C624[0x121b6 - 0xC624];
+    u8 _121b6_1 : 1;
+    u8 _121b6_2 : 1;
+    u8 _121b6_4 : 6;
+    u8 _121b7;
     u8 _121b8_0 : 3;
     u8 _121b8_3 : 1;
     u8 _121b8_4 : 4;
@@ -514,11 +634,12 @@ typedef struct LevelStats {
     u8 overworld_playable;
     u8 battle_playable;
     u16 animal_value;
-    PsiLearnInfo psi_table[32];
+    PsiLearnInfo psi_learning_table[32];
     u32 attack_sounds;
 } LevelStats;
-extern const LevelStats gLevelStatTable[];
 static_assert(sizeof(LevelStats) == 0x144);
+
+extern const LevelStats gLevelStatTable[];
 
 typedef struct GoodsInfo {
     u8 item_id;
@@ -561,10 +682,10 @@ typedef struct SoundPlayerEntry {
 extern const SoundPlayerEntry gSoundPlayerTable[];
 
 typedef struct SystemEntry {
-    u8 data[0x2A];
+    u16 data[0x15];
     u8 _2A[8];
     u8 _32;
-    u8 padding[100 - 0x33];
+    u8 padding[0x64 - 0x33];
 } SystemEntry;
 
 typedef struct struct_020050C0 {
@@ -583,18 +704,19 @@ typedef struct StatMeter {
 } StatMeter;
 
 typedef struct struct_200D818 {
-    u8 _0[0x4];
+    s32 _0;
     s32 hp;
     s32 _8;
-    u8 _c[0xE - 0xC];
+    u16 _c;
     s16 pp;
     s16 _10;
-    u8 _12[0x14 - 0x12];
+    u16 _12;
     s16 offense;
-    u8 _16[0x1A - 0x16];
+    u16 _16;
+    u16 _18;
     s16 defense;
-    u8 _1c;
-    u8 _1d[0x20 - 0x1D];
+    u16 _1c;
+    u16 _1d;
     s16 iq;
     u16 _22;
     u16 _24;
@@ -613,6 +735,7 @@ typedef struct TownMapInfo {
     u16 bottomRightY;
     u16 _a;
 } TownMapInfo;
+
 typedef struct RhythmInfo {  // TODO: This should probably be part of a class?
     u16 id;                  // Entry ID (is there any point to this?)
     u16 songNum;             // Internal Song ID

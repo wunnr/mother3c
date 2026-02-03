@@ -31,7 +31,7 @@ sub_080415E4:
 	bl sub_08046A28
 _08041620:
 	movs r0, #0x45
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf

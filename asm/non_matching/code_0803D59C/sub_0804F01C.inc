@@ -3,14 +3,14 @@ sub_0804F01C:
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldrh r0, [r5, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F04E
 	adds r0, r4, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F04E
@@ -41,7 +41,7 @@ _0804F05C:
 	movs r0, #0xe7
 	bl play_sound
 	ldrb r0, [r4]
-	bl sub_08054BB8
+	bl buyItem
 	movs r0, #0
 	bl sub_08052F9C
 	bl sub_08046D90
@@ -64,7 +64,7 @@ _0804F090:
 	adds r0, r6, r2
 	strb r1, [r0]
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804F0C6

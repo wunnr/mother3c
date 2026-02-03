@@ -12,7 +12,7 @@ sub_08045F88:
 	adds r0, r0, r1
 	adds r4, r4, r0
 	movs r0, #0x3c
-	bl sub_080486A0
+	bl getMenuText
 	movs r7, #1
 	rsbs r7, r7, #0
 	movs r5, #0xf
@@ -29,7 +29,7 @@ sub_08045F88:
 	cmp r0, #0x20
 	bne _08046008
 	movs r0, #0x3e
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r6, [sp, #4]
 	movs r1, #0x18
@@ -37,7 +37,7 @@ sub_08045F88:
 	adds r3, r7, #0
 	bl sub_08047CDC
 	movs r0, #0x3f
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r6, [sp, #4]
 	movs r1, #0x18
@@ -45,7 +45,7 @@ sub_08045F88:
 	adds r3, r7, #0
 	bl sub_08047CDC
 	movs r0, #0x40
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r6, [sp, #4]
 	movs r1, #0x18
@@ -57,7 +57,7 @@ sub_08045F88:
 _08046004: .4byte gUnknown_02018E28
 _08046008:
 	movs r0, #0x3f
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r6, [sp, #4]
 	movs r1, #0x18
@@ -65,7 +65,7 @@ _08046008:
 	adds r3, r7, #0
 	bl sub_08047CDC
 	movs r0, #0x40
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r6, [sp, #4]
 	movs r1, #0x18
@@ -74,7 +74,7 @@ _08046008:
 	bl sub_08047CDC
 _08046030:
 	movs r0, #0x3d
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -95,9 +95,9 @@ _08046030:
 	mov r8, r0
 _0804605C:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	cmp r5, #0
@@ -131,7 +131,7 @@ _080460A2:
 	ldr r1, _080460C4
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	add sp, #8
 	pop {r3}
 	mov r8, r3

@@ -34,7 +34,7 @@ sub_08047B9C:
 	movs r0, #0xc
 	ldrsh r1, [r4, r0]
 	adds r0, r5, #0
-	bl sub_08048748
+	bl bufferedTextLength
 	strh r0, [r4, #0xe]
 	movs r0, #0xf
 	adds r1, r6, #0

@@ -16,7 +16,7 @@ sub_08047EA4:
 	rsbs r2, r2, #0
 	add r0, sp, #4
 	adds r1, r5, #0
-	bl sub_08002420
+	bl copyText
 	b _08047EEE
 _08047ECA:
 	adds r0, r5, #0
@@ -42,7 +42,7 @@ _08047EEE:
 	adds r0, r4, #0
 	movs r1, #0x58
 	adds r2, r5, #0
-	bl sub_08001B54
+	bl memFill
 	adds r0, r4, #0
 	add r1, sp, #4
 	bl sub_08048108

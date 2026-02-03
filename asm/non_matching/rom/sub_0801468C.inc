@@ -68,7 +68,7 @@ _0801470A:
 	lsls r4, r4, #1
 	adds r1, r4, #0
 	movs r2, #0xf0
-	bl sub_08001B54
+	bl memFill
 	ldr r3, _0801477C
 	adds r0, r6, r3
 	adds r1, r4, #0

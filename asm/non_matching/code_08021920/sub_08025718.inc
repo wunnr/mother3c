@@ -128,7 +128,7 @@ _08025810:
 	ldr r0, [r4]
 	ldrh r0, [r0, #0xc]
 	movs r1, #1
-	bl sub_080029F8
+	bl set_giftbox_flag
 	ldr r0, [r4]
 	ldrb r0, [r0]
 	lsls r0, r0, #0x1b

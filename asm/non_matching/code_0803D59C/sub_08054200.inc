@@ -45,7 +45,7 @@ _08054242:
 	orrs r2, r6
 	lsrs r2, r2, #0x1f
 	adds r0, r4, #0
-	bl sub_08055190
+	bl setEquipLyt
 _0805425C:
 	pop {r4, r5, r6, r7}
 	pop {r0}

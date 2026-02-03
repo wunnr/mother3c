@@ -10,7 +10,7 @@ sub_08021AFC:
 	movs r2, #1
 	rsbs r2, r2, #0
 	adds r0, r4, #0
-	bl sub_08001B54
+	bl memFill
 	ldrh r0, [r5]
 	ldr r1, _08021B48
 	cmp r0, r1

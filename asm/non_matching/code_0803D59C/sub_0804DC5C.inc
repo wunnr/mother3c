@@ -45,7 +45,7 @@ _0804DCAC:
 	ldr r0, [r0]
 	movs r1, #9
 _0804DCB4:
-	bl sub_08048748
+	bl bufferedTextLength
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	ldr r0, _0804DCDC
@@ -73,7 +73,7 @@ _0804DCE4:
 	ands r0, r1
 	cmp r0, #0
 	beq _0804DCF2
-	bl sub_08050628
+	bl backspaceMenuText
 	b _0804DDF4
 _0804DCF2:
 	movs r0, #8

@@ -13,7 +13,7 @@ sub_08040FE4:
 	orrs r0, r1
 	strb r0, [r6, #6]
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov sl, r0
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
@@ -88,7 +88,7 @@ _08041076:
 	bl sub_080430B4
 	bl sub_08044614
 	movs r0, #0x44
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -98,7 +98,7 @@ _08041076:
 	movs r2, #7
 	bl sub_08047CDC
 	mov r0, sl
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080410EC

@@ -10,7 +10,7 @@ sub_0803DDD8:
 	movs r1, #4
 _0803DDE8:
 	strb r1, [r2]
-	bl sub_0804C408
+	bl setMenuNewGame
 	bl sub_08049DC4
 	bl sub_08046D90
 	bl sub_0803DE38

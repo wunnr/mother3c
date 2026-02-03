@@ -27,7 +27,7 @@ _0804BDB4:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BE64
+	bl setMenuGoods
 	b _0804BE3A
 	.align 2, 0
 _0804BDC8: .4byte gSomeBlend
@@ -40,7 +40,7 @@ _0804BDD0:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BEB4
+	bl setMenuEquip
 	b _0804BE3A
 	.align 2, 0
 _0804BDE4: .4byte gSomeBlend
@@ -53,7 +53,7 @@ _0804BDEC:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BEFC
+	bl setMenuPSI
 	b _0804BE3A
 	.align 2, 0
 _0804BE00: .4byte gSomeBlend
@@ -66,7 +66,7 @@ _0804BE08:
 	movs r2, #0x80
 	orrs r1, r2
 	strb r1, [r0]
-	bl sub_0804BF34
+	bl setMenuStatus
 	b _0804BE3A
 	.align 2, 0
 _0804BE1C: .4byte gSomeBlend

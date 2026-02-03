@@ -14,7 +14,7 @@ sub_08040B58:
 	strb r0, [r6, #6]
 	mov r1, sl
 	ldrh r0, [r1, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	str r0, [sp, #0x18]
 	mov r2, sl
 	ldrh r0, [r2, #0xa]
@@ -90,7 +90,7 @@ _08040BEC:
 	bl sub_080430B4
 	bl sub_08044614
 	movs r0, #0x43
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -100,7 +100,7 @@ _08040BEC:
 	movs r2, #7
 	bl sub_08047CDC
 	ldr r0, [sp, #0x18]
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040C64
@@ -140,7 +140,7 @@ _08040C64:
 	ldr r0, _08040CC8
 	adds r4, r6, r0
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0
@@ -438,7 +438,7 @@ _08040EDC:
 	cmp r0, #0
 	bne _08040F18
 	movs r0, #0x57
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf

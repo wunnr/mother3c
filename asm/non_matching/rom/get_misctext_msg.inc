@@ -38,7 +38,7 @@ _08001C88:
 	rsbs r2, r2, #0
 	adds r0, r4, #0
 	movs r1, #0x19
-	bl sub_08001B54
+	bl memFill
 	movs r0, #0xeb
 	strh r0, [r4]
 	movs r0, #0xe6
@@ -47,7 +47,7 @@ _08001C88:
 	ldr r6, _08001D04
 	adds r1, r6, #0
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	movs r2, #0
 	ldrh r0, [r6]
 	ldr r1, _08001D08

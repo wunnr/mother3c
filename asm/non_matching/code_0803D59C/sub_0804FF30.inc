@@ -3,12 +3,12 @@ sub_0804FF30:
 	push {r4, r5, r6, r7, lr}
 	ldr r6, _0804FF80
 	ldrh r0, [r6, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldr r0, _0804FF84
 	adds r4, r6, r0
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0
@@ -26,7 +26,7 @@ sub_0804FF30:
 	cmp r0, #1
 	bne _0804FF94
 	adds r0, r5, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804FF94

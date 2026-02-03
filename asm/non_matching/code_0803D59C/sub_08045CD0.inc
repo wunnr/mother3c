@@ -6,7 +6,7 @@ sub_08045CD0:
 	ldr r0, _08045CFC
 	adds r4, r4, r0
 	ldrh r0, [r4]
-	bl sub_080486A0
+	bl getMenuText
 	adds r6, r0, #0
 	movs r3, #0xc
 	movs r5, #0x14

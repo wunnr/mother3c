@@ -2,11 +2,11 @@
 sub_08052FC8:
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08052678
+	bl condenseInventory
 	adds r0, r4, #0
 	bl sub_0805255C
 	adds r0, r4, #0
-	bl sub_080552B8
+	bl clearEquipForEmptyItems
 	ldr r4, _08052FF8
 	ldr r1, _08052FFC
 	adds r0, r4, r1

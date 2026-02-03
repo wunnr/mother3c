@@ -11,7 +11,7 @@ sub_0803F36C:
 	adds r6, r0, #0
 _0803F37E:
 	adds r0, r5, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r0, r5, #0
 	bl sub_08054FF0

@@ -34,7 +34,7 @@ _0804E020:
 	adds r0, r5, r2
 	ldr r0, [r0]
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	ldr r2, _0804E050
 	adds r1, r5, r2
 	lsls r0, r0, #0x10
@@ -61,7 +61,7 @@ _0804E054:
 	str r2, [sp, #8]
 	adds r1, r6, #0
 	movs r2, #0
-	bl sub_080534C8
+	bl navigate1DMenuChecked
 _0804E070:
 	add sp, #0xc
 	pop {r4, r5, r6}

@@ -183,25 +183,25 @@ gUnknown_09B8FE9C::
     .4byte sub_0804BA6C+1
 
 gMenuFuncTable::
-    .4byte sub_0804CAB0+1
-    .4byte sub_0804CC48+1
-    .4byte sub_0804CD04+1
-    .4byte sub_0804CE5C+1
-    .4byte sub_0804CF20+1
-    .4byte sub_0804D070+1
-    .4byte sub_0804D118+1
-    .4byte sub_0804D18C+1
-    .4byte sub_0804D394+1
-    .4byte sub_0804D3F4+1
-    .4byte sub_0804D474+1
-    .4byte sub_0804D5E0+1
-    .4byte sub_0804D704+1
-    .4byte sub_0804D764+1
-    .4byte sub_0804D7E4+1
-    .4byte sub_0804D8D4+1
-    .4byte sub_0804D9FC+1
-    .4byte sub_0804DB54+1
-    .4byte sub_0804DBE8+1
+    .4byte menuGoods+1
+    .4byte menuEquip+1
+    .4byte menuPSI+1
+    .4byte menuStatus+1
+    .4byte menuSkills+1
+    .4byte menuMemoSelect+1
+    .4byte menuMemoView+1
+    .4byte menuBattleMemory+1
+    .4byte menuShopTransactionSelect+1
+    .4byte menuShopCharacterSelect+1
+    .4byte menuShopItemSelectBuy+1
+    .4byte menuShopItemSelectSell+1
+    .4byte menuItemGuyTransactionSelect+1
+    .4byte menuItemGuyCharacterSelect+1
+    .4byte menuItemGuyItemSelectDeposit+1
+    .4byte menuItemGuyItemSelectWithdraw+1
+    .4byte menuSaveSelect+1
+    .4byte menuNewGame+1
+    .4byte menuTryAgain+1
 
 
 gUnknown_09B8FF14::

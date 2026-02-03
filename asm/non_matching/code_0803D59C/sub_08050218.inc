@@ -25,14 +25,14 @@ _08050248:
 	ldr r2, _0805028C
 	adds r4, r6, r2
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0
 	ldr r0, _08050290
 	adds r4, r6, r0
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080502A4
@@ -40,7 +40,7 @@ _08050248:
 	adds r6, r6, r1
 	ldrb r1, [r6]
 	adds r0, r5, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08050298
@@ -78,7 +78,7 @@ _080502B2:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _080502FC
-	bl sub_0804C228
+	bl setMenuShopCharacterSelect
 	adds r0, r4, #0
 	adds r0, #0x50
 	ldr r2, _080502F8

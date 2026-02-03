@@ -35,7 +35,7 @@ _0805496E:
 	b _08054A7E
 _0805497E:
 	mov r0, r8
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054996
@@ -83,7 +83,7 @@ _080549AC:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	str r3, [sp, #0x18]
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	ldr r3, [sp, #0x18]
 	cmp r0, #0
@@ -134,7 +134,7 @@ _08054A10:
 	mov r0, sl
 	lsrs r1, r0, #0x10
 	adds r0, r4, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054A5C
@@ -150,7 +150,7 @@ _08054A5C:
 	adds r0, r4, #0
 _08054A62:
 	movs r2, #0
-	bl sub_08055190
+	bl setEquipLyt
 	adds r0, r4, #0
 	add r1, sp, #4
 	bl sub_080551B0

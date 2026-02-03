@@ -55,7 +55,7 @@ _08052580:
 	strb r0, [r4, #2]
 	mov r0, r8
 	adds r1, r6, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #9
 	ldrb r1, [r4, #2]

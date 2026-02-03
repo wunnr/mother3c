@@ -31,7 +31,7 @@ _08048414:
 	ldr r1, _0804842C
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #2
 	movs r0, #6
 	b _0804845E

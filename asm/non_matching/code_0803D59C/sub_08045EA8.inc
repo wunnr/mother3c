@@ -5,7 +5,7 @@ sub_08045EA8:
 	push {r7}
 	sub sp, #8
 	movs r0, #0x3c
-	bl sub_080486A0
+	bl getMenuText
 	movs r6, #1
 	rsbs r6, r6, #0
 	movs r5, #0xf
@@ -17,7 +17,7 @@ sub_08045EA8:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #0x3e
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x18
@@ -25,7 +25,7 @@ sub_08045EA8:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #0x3f
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x18
@@ -33,7 +33,7 @@ sub_08045EA8:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #0x40
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x18
@@ -41,7 +41,7 @@ sub_08045EA8:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #0x3d
-	bl sub_080486A0
+	bl getMenuText
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x58
@@ -59,9 +59,9 @@ sub_08045EA8:
 	mov r8, r0
 _08045F2E:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	cmp r5, #0

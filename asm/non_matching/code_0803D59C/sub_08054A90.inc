@@ -12,7 +12,7 @@ sub_08054A90:
 	lsls r2, r2, #0x10
 	lsrs r4, r2, #0x10
 	adds r6, r4, #0
-	bl sub_080546B0
+	bl numItemsInInventory
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r8, r0
@@ -36,7 +36,7 @@ _08054AC6:
 	str r0, [r1]
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
@@ -49,12 +49,12 @@ _08054AC6:
 	strh r2, [r0]
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08055190
+	bl setEquipLyt
 	adds r0, r5, #0
 	mov r1, sp
 	bl sub_080551B0
 	adds r0, r5, #0
-	bl sub_08052678
+	bl condenseInventory
 	adds r0, r5, #0
 	mov r1, sb
 	movs r2, #1
@@ -65,7 +65,7 @@ _08054AC6:
 	lsrs r1, r1, #0x10
 	adds r0, r5, #0
 	adds r2, r4, #0
-	bl sub_08055190
+	bl setEquipLyt
 	movs r0, #1
 _08054B20:
 	add sp, #0x10

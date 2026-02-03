@@ -5,18 +5,18 @@ sub_0804F1D8:
 	push {r7}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0
 	mov r8, r0
 	adds r0, r5, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F226
 	adds r0, r5, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F226
@@ -57,7 +57,7 @@ _0804F238:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _0804F284
-	bl sub_0804C330
+	bl setMenuItemGuyCharacterSelect
 	ldr r2, _0804F27C
 	adds r0, r7, r2
 	ldr r2, _0804F280

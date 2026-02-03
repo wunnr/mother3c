@@ -13,7 +13,7 @@ sub_0805601C:
 	adds r7, r0, #0
 _08056032:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	ldrb r1, [r0]
 	ldrh r2, [r4]
 	cmp r1, r2
@@ -31,7 +31,7 @@ _08056050: .4byte gUnknown_0200F930
 _08056054: .4byte gSomeBlend
 _08056058: .4byte 0x00002DFA
 _0805605C:
-	bl sub_080546B0
+	bl numItemsInInventory
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	ldrh r0, [r4, #2]

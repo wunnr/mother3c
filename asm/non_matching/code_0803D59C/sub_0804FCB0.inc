@@ -7,12 +7,12 @@ sub_0804FCB0:
 	sub sp, #4
 	ldr r5, _0804FD28
 	ldrh r0, [r5, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov sb, r0
 	ldr r0, _0804FD2C
 	adds r4, r5, r0
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0

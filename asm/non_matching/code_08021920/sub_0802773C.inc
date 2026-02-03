@@ -63,7 +63,7 @@ _080277C8:
 	lsls r1, r1, #3
 	movs r2, #1
 	rsbs r2, r2, #0
-	bl sub_08001B54
+	bl memFill
 	ldr r1, _080277F8
 	ldr r2, _080277FC
 	adds r0, r1, r2

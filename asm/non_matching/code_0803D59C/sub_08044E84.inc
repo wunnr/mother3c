@@ -23,7 +23,7 @@ _08044EAC: .4byte 0x000044EE
 _08044EB0:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08055138
+	bl isItemIdEquipped
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08044EC2
@@ -38,7 +38,7 @@ _08044EC2:
 	cmp r4, #0
 	beq _08044EE8
 	movs r0, #0xb4
-	bl sub_080486A0
+	bl getMenuText
 	adds r1, r0, #0
 	ldr r2, _08044EE4
 	adds r0, r7, r2
@@ -49,7 +49,7 @@ _08044EE4: .4byte 0x000044F0
 _08044EE8:
 	movs r0, #0xb6
 _08044EEA:
-	bl sub_080486A0
+	bl getMenuText
 	adds r1, r0, #0
 _08044EF0:
 	adds r0, r1, #0

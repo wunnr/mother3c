@@ -4,7 +4,7 @@ sub_0803DD5C:
 	ldr r0, _0803DD80
 	movs r1, #3
 	strb r1, [r0]
-	bl sub_0804C3E0
+	bl setMenuSaveSelect
 	bl sub_08049DC4
 	bl sub_08046D90
 	ldr r0, _0803DD84

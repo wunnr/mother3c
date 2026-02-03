@@ -16,6 +16,7 @@ extern u16 gUnknown_020041EA;
 extern const u16 gSectorToDirection[];
 extern const u16 gSectorToDirectionExt[];
 extern const DebugModeFunc gDebugFuncTable[6];
+extern u8 gUnknown_080C1FF8[];
 
 extern "C" void sub_080012BC(void*, s32, s32, s32);
 extern "C" Object* get_obj_direct(u16 idx);
@@ -46,6 +47,9 @@ extern "C" void play_sound(u16);
 extern "C" void sub_08003BA8(s32);
 extern "C" s16 sub_08003D14(u16);
 extern "C" void sub_0803B278();
+extern "C" void sub_080381B0(MenuState*);
+extern "C" void sub_0800A480(void*);
+extern "C" void navigateWrapping2DMenu(u16*, InputState*, u16, u16, u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -475,7 +479,7 @@ extern "C" void sub_0802ABCC() {
 
     for (u16 i = 0; i < gGame.party_count; i++) {
         CharStats* stats = get_char_stats(i);
-        if (stats->charNo != 0 && isCharOverworldPlayable(stats->charNo)) {
+        if (stats->charNo != 0 && isCharIdOverworldPlayable(stats->charNo)) {
             stats->curHP = tickStatMeter(getStatMeter(i, HP));
             StatMeter* meter = getStatMeter(i, PP);
             if (meter->current != meter->target) {
@@ -1148,11 +1152,10 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A0C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037A7C.inc", void sub_08037A7C());
 
 extern "C" void sub_08037AF4() {
-    gGame.mode = gSomeBlend.pad_30B4[0x47e];
-    s8* tmp = (s8*)&gSomeBlend.pad_30B4[0x506];
-    *tmp &= -2;
-    gSomeBlend.pad_30B4[0x47c] = 0;
-    gSomeBlend.pad_30B4[0x47d] = 2;
+    gGame.mode = gSomeBlend._3532;
+    gSomeBlend._35ba_1 = 0;
+    gSomeBlend._3530 = 0;
+    gSomeBlend._3531 = 2;
     sub_080012BC(&gSomeBlend._50, 0, 0, 1);
 }
 
@@ -1164,12 +1167,46 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037C84.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/init_dp_transaction.inc", void init_dp_transaction());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037DB0.inc", void sub_08037DB0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037E54.inc", void sub_08037E54());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037ED0.inc", void sub_08037ED0());
+
+extern "C" void sub_08037ED0(InputState* input, MenuState* menu) {
+    if (!gSomeBlend._35ba_8) {
+        return;
+    }
+
+    if (menu->currentTab == 1) {
+        if (input->justPressed == 1) {
+            gGame._3_10 = 1;
+        }
+        return;
+    }
+
+    if (input->justPressed == A_BUTTON) {
+        if (menu->cursorPos == 0) {
+            menu->currentTab++;
+            gSomeBlend._121b6_2 = 1;
+            return;
+        }
+        play_sound(SFX_STAT_MENU_LEAVE);
+        sub_080381B0(menu);
+        sub_0800A480(gUnknown_080C1FF8);
+        return;
+    }
+
+    if (input->justPressed & (B_BUTTON | START_BUTTON)) {
+        play_sound(SFX_MENU_CANCEL);
+        sub_080381B0(menu);
+        sub_0800A480(gUnknown_080C1FF8);
+        return;
+    }
+
+    navigateWrapping2DMenu(&menu->cursorPos, input, 2, 1, 2, 1);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_41.inc", void nullsub_41());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08037F74.inc", void sub_08037F74());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080380C0.inc", void sub_080380C0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803817C.inc", void sub_0803817C());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080381B0.inc", void sub_080381B0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080381B0.inc", void sub_080381B0(MenuState*));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080381DC.inc", void sub_080381DC());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08038208.inc", void sub_08038208());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080382A0.inc", void sub_080382A0());
@@ -1195,11 +1232,59 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_71.inc", void nullsu
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_72.inc", void nullsub_72());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_73.inc", void nullsub_73());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_74.inc", void nullsub_74());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/menuTabNavigate.inc", void menuTabNavigate());
+
+extern "C" u16 navigate1DMenu(u16* cursor, InputState* input, u16 cursorMin, u16 cursorMax,
+                              u16 buttonUp, u16 buttonDown, vu16 canWrap) {
+    if (input->pressed & buttonDown) {
+        if (*cursor != cursorMin) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor -= 1;
+            return CURSOR_MOVED;
+        }
+        if (canWrap) {
+            if (buttonDown == DPAD_UP) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMax;
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+
+    if (input->pressed & buttonUp) {
+        if (*cursor != cursorMax) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor += 1;
+            return CURSOR_MOVED;
+        }
+        if (canWrap) {
+            if (buttonUp == DPAD_DOWN) {
+                play_sound(SFX_MENU_CURSOR_UD);
+            } else {
+                play_sound(SFX_MENU_CURSOR_LR);
+            }
+            *cursor = cursorMin;
+            return CURSOR_MOVED;
+        }
+        return CURSOR_NO_CHANGE;
+    }
+    return CURSOR_NO_CHANGE;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803960C.inc", void sub_0803960C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039694.inc", void sub_08039694());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039738.inc", void sub_08039738());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080397D0.inc", void sub_080397D0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/navigateWrapping2DMenu.inc", void navigateWrapping2DMenu(u16*, InputState*, u16, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039934.inc", void sub_08039934());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039A18.inc", void sub_08039A18());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08039A74.inc", void sub_08039A74());
@@ -1238,22 +1323,22 @@ extern "C" void mode_debug_menu(InputState* input) {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A0EC.inc", void sub_0803A0EC());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage1.inc", void debugMenuPage1());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A198.inc", void sub_0803A198());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A224.inc", void sub_0803A224());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A2D4.inc", void sub_0803A2D4());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage2.inc", void debugMenuPage2());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A3C8.inc", void sub_0803A3C8());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A458.inc", void sub_0803A458());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A4D0.inc", void sub_0803A4D0());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage3.inc", void debugMenuPage3());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A59C.inc", void sub_0803A59C());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A644.inc", void sub_0803A644());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A75C.inc", void sub_0803A75C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage4.inc", void debugMenuPage4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A830.inc", void sub_0803A830());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A844.inc", void sub_0803A844());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803A974.inc", void sub_0803A974());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage5.inc", void debugMenuPage5());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AA98.inc", void sub_0803AA98());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AAAC.inc", void sub_0803AAAC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AC9C.inc", void sub_0803AC9C());
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/debugMenuPage6.inc", void debugMenuPage6());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_19.inc", void nullsub_19());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/nullsub_20.inc", void nullsub_20());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0803AD50.inc", void sub_0803AD50());

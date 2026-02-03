@@ -5,7 +5,7 @@ sub_08052864:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	adds r0, r4, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	lsls r1, r4, #7
 	ldr r0, _0805289C

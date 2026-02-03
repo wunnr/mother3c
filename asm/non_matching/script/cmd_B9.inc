@@ -38,7 +38,7 @@ _08020876:
 	movs r1, #0x80
 	lsls r1, r1, #3
 	adds r2, r4, #0
-	bl sub_08001B54
+	bl memFill
 	b _080208C6
 	.align 2, 0
 _080208AC: .4byte gGame

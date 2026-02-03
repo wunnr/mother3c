@@ -13,7 +13,7 @@ sub_08041C5C:
 	orrs r0, r1
 	strb r0, [r6, #6]
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
 	ldr r1, _08041D9C
@@ -71,7 +71,7 @@ sub_08041C5C:
 	bl sub_08046A28
 _08041CEE:
 	movs r0, #0x78
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -136,7 +136,7 @@ _08041D72:
 	cmp r0, #0
 	bne _08041DBC
 	movs r0, #0x57
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -205,7 +205,7 @@ _08041E08:
 	adds r6, r1, r0
 _08041E1A:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08041E48

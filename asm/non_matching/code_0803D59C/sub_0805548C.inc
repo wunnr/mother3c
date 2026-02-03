@@ -6,7 +6,7 @@ sub_0805548C:
 	ldr r1, _080554B4
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	ldrb r0, [r4]
 	subs r0, #1
@@ -35,7 +35,7 @@ _080554D4:
 	adds r0, r4, #2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_08048748
+	bl bufferedTextLength
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r2, #1
@@ -92,7 +92,7 @@ _08055544: .4byte 0x0000C5D3
 _08055548:
 	movs r0, #0xa1
 _0805554A:
-	bl sub_080486A0
+	bl getMenuText
 	add sp, #4
 	pop {r4}
 	pop {r1}

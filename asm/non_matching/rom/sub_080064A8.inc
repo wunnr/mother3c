@@ -143,19 +143,19 @@ _080065CA:
 	ldr r2, _08006658
 	adds r0, r3, #0
 	movs r1, #0x20
-	bl sub_08001B54
+	bl memFill
 	ldr r4, _0800665C
 	mov r0, sb
 	movs r1, #0x80
 	adds r2, r4, #0
-	bl sub_08001B54
+	bl memFill
 	movs r0, #0xe0
 	lsls r0, r0, #2
 	add r0, sb
 	movs r1, #0xc0
 	lsls r1, r1, #1
 	adds r2, r4, #0
-	bl sub_08001B54
+	bl memFill
 	mov r0, sb
 	adds r0, #0x80
 	movs r1, #0xc0

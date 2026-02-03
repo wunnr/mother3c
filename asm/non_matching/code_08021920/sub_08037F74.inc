@@ -78,7 +78,7 @@ _08037FF0:
 	str r5, [sp, #8]
 	adds r1, r6, #0
 	movs r2, #0
-	bl menuTabNavigate
+	bl navigate1DMenu
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08038048

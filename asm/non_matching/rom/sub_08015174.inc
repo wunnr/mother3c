@@ -70,7 +70,7 @@ _080151F6:
 	lsls r4, r4, #1
 	adds r1, r4, #0
 	movs r2, #0xf0
-	bl sub_08001B54
+	bl memFill
 	ldr r1, _08015264
 	adds r0, r7, r1
 	adds r1, r4, #0

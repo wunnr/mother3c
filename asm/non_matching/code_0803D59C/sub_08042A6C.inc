@@ -7,7 +7,7 @@ sub_08042A6C:
 	sub sp, #8
 	mov sb, r0
 	movs r0, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	bl sub_080552E4
 	lsls r0, r0, #0x10
 	ldr r7, _08042AB8
@@ -56,7 +56,7 @@ _08042AC6:
 	mov r3, r8
 	strh r3, [r1, #4]
 	movs r0, #0x34
-	bl sub_080486A0
+	bl getMenuText
 	movs r6, #1
 	rsbs r6, r6, #0
 	movs r4, #7
@@ -68,7 +68,7 @@ _08042AC6:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #3
-	bl sub_080486A0
+	bl getMenuText
 	str r4, [sp]
 	str r5, [sp, #4]
 	movs r1, #0x50
@@ -76,7 +76,7 @@ _08042AC6:
 	adds r3, r6, #0
 	bl sub_08047CDC
 	movs r0, #4
-	bl sub_080486A0
+	bl getMenuText
 	str r4, [sp]
 	str r5, [sp, #4]
 	movs r1, #0x7e
