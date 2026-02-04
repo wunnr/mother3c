@@ -42,7 +42,7 @@ _08004168:
 	ldrh r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_080083B8
+	bl setup_overworld_music
 	ldr r0, _080041E8
 	adds r4, r4, r0
 	ldrb r0, [r4]

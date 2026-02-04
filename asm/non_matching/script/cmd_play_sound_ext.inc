@@ -59,7 +59,7 @@ _08020D6C:
 	ldrh r0, [r0]
 	lsls r1, r7, #0x10
 	asrs r1, r1, #0x10
-	bl sub_080083B8
+	bl setup_overworld_music
 	b _08020DEE
 	.align 2, 0
 _08020D8C: .4byte gGame

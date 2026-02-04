@@ -46,6 +46,10 @@ extern "C" void play_sound(u16);
 extern "C" void musicPlayerStop_sfx(u16);
 extern "C" s16 getCurrentTrack(u16);
 extern "C" void sub_0803B278();
+extern "C" void sub_08027B84(u16, u16, u16, u16);
+extern "C" u16 percentToMPlayVolume(u16);
+extern "C" u16 getMusicPlayerVolumePercent(u16);
+extern "C" void musicPlayerInitAndUpdateVolume(u16, u16);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -248,9 +252,37 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_0802781C.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027904.inc", void sub_08027904());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027940.inc", void sub_08027940());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_080279AC.inc", void sub_080279AC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027A28.inc", void sub_08027A28());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027AE0.inc", void sub_08027AE0());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027B84.inc", void sub_08027B84());
+
+extern "C" void sub_08027A28() {
+    u16 vol_pct_0 = getMusicPlayerVolumePercent(0);
+    u16 vol_pct_1 = getMusicPlayerVolumePercent(1);
+    u16 vol_pct_5 = getMusicPlayerVolumePercent(5);
+    
+    sub_08027B84(0, vol_pct_0, ((vol_pct_0 * 0x46) / 100), 2);
+    sub_08027B84(1, vol_pct_1, ((vol_pct_1 * 0x46) / 100), 2);
+    if (gGame._829b == 6) {
+        sub_08027B84(5, vol_pct_5, ((vol_pct_5 * 0x46) / 100), 2);
+    }
+    
+    gGame._847e = vol_pct_0;
+    gGame._8480 = vol_pct_1;
+    gGame._8482 = vol_pct_5;
+}
+
+extern "C" void sub_08027AE0() {
+    u16 vol_pct_847e = percentToMPlayVolume(gGame._847e);
+    u16 vol_pct_8480 = percentToMPlayVolume(gGame._8480);
+    sub_08027B84(0, getMusicPlayerVolumePercent(0), vol_pct_847e, 2);
+    sub_08027B84(1, getMusicPlayerVolumePercent(1), vol_pct_8480, 2);
+    
+    if (gGame._829b == 6) {
+        u16 vol_pct_8482 = percentToMPlayVolume(gGame._8482);
+        musicPlayerInitAndUpdateVolume(5, vol_pct_8482);
+        sub_08027B84(5, getMusicPlayerVolumePercent(5), vol_pct_8482, 2);
+    }
+}
+
+extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027B84.inc", void sub_08027B84(u16, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027BD0.inc", void sub_08027BD0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C20.inc", void sub_08027C20());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C40.inc", void sub_08027C40());

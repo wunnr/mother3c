@@ -12,6 +12,9 @@ extern const char _binary_build_mother3_assets_misctext_bin_start;
 extern const IrqTable gUnknown_080C1A58;
 extern const u8 gMapMusicTable[0x3E8];
 extern IrqTable gIntrHandlers;
+extern u8 gUnknown_02004100[0x10];
+extern u8 gUnknown_02005080;
+extern u8 gUnknown_020051E4;
 extern u8 gUnknown_03004B14;
 extern u16 gUnknown_03004B00;
 extern u16 gUnknown_03004B02;
@@ -53,6 +56,8 @@ extern "C" void sub_0802610C(s32);
 extern "C" s16 getMusicPlayerIndex(u16);
 extern "C" MusicPlayerInfo* getMusicPlayer_bgm(u16);
 extern "C" u16 MPlayVolumeToPercent(u16);
+extern "C" u8 getMusicIDForRoom(u16);
+extern "C" void sub_08027B84(u16, u16, u16, u16);   
 
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080012BC.inc", void sub_080012BC());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08001378.inc", void sub_08001378());
@@ -1104,9 +1109,227 @@ extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_4.inc", void nullsub_4());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_5.inc", void nullsub_5());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_61.inc", void nullsub_61());
 extern "C" ASM_FUNC("asm/non_matching/rom/nullsub_62.inc", void nullsub_62());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_080083B8.inc", void sub_080083B8());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08008704.inc", void sub_08008704());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_0800882C.inc", void sub_0800882C());
+
+extern "C" void setup_overworld_music(u16 room, s16 vol) {
+    s16 mpIndex, mpIndex_alt;
+    u16 track, track_alt, track_room;
+    s16 track_mplay0, track_mplay1;
+    s16 vol_alt;
+
+    track_room = getMusicIDForRoom(room);
+
+    if (gGame._829b == 6) {
+        track = SONG_PORK_BEAN;
+
+        if ((mpIndex = getMusicPlayerIndex(track)) != -1) {
+            startSong_alt(track);
+            
+            switch (mpIndex) {
+            case 0:
+                musicPlayerStop_bgm(1);
+                gGame.cur_track = track;
+                break;
+            default:
+                musicPlayerStop_bgm(0);
+                gGame.cur_track_alt = track;
+                break;
+            }
+        }
+
+        return;
+    }
+
+    if (gGame._847a != -1) {
+        if ((gGame.cur_room == 0x12D) || (gGame.cur_room == 0x13E)) {
+            track_mplay0 = getCurrentTrack(0);
+            track = gSave._482[track_room] & 0xFF;
+
+            if (track_mplay0 != track) {
+                startSong_alt(track);
+            }
+            if (vol == -1) {
+                vol = 100;
+            }
+
+            musicPlayerInitAndUpdateVolume(0, percentToMPlayVolume(vol));
+            gGame.cur_track = track;
+            track = gGame._847a;
+            vol = gGame._847c;
+            startSong_alt(track);
+
+            if (vol != -1) {
+                musicPlayerInitAndUpdateVolume(1, percentToMPlayVolume(vol));
+            }
+
+            gGame._847a = -1;
+            gGame._847c = -1;
+            return;
+        }
+
+        track = gGame._847a;
+        vol = gGame._847c;
+
+        if ((mpIndex = getMusicPlayerIndex(track)) != -1) {
+            startSong_alt(track);
+
+            switch (mpIndex) {
+            case 0:
+                musicPlayerStop_bgm(1);
+                gGame.cur_track = track;
+                break;
+            default:
+                musicPlayerStop_bgm(0);
+                gGame.cur_track_alt = track;
+                break;
+            }
+            
+            if (vol != -1) {
+                musicPlayerInitAndUpdateVolume(mpIndex, percentToMPlayVolume(vol));
+            }
+        }
+
+        gGame._847a = -1;
+        gGame._847c = -1;
+        return;
+    }
+
+    track_mplay0 = getCurrentTrack(0);  // sl
+    track_mplay1 = getCurrentTrack(1);  // sp+4
+    track = gSave._482[track_room] & 0xFF;
+    track_alt = gSave._482[track_room] >> 8;
+    vol_alt = gSave._582[track_room];
+    mpIndex = getMusicPlayerIndex(track);
+    mpIndex_alt = getMusicPlayerIndex(track_alt);
+
+    u16 flags[2];
+    u16* flagB;
+
+    u16 disable_collision = gGame.disable_collision;
+    if (disable_collision != 0) {
+        u16* flagA = &flags[0];  // FAKEMATCH
+        *flagA++ = gGame._8496_1;
+        *flagA = gGame._8496_2;
+        flagB = flagA;
+    } else {
+        u16* flagA = &flags[0];  // FAKEMATCH
+        *flagA++ = 0;
+        *flagA = 0;
+        flagB = flagA;
+    }
+
+    if (flags[0] == 0) {
+        if (track == 0) {
+            musicPlayerStop_bgm(0);
+        } else if (track_mplay0 != track) {
+            startSong_alt(track);
+        }
+    }
+    if (*flagB == 0) {
+        if (track_alt == 0) {
+            musicPlayerStop_bgm(1);
+        } else if (track_mplay1 != track_alt) {
+            startSong(track_alt);
+        } else {
+            u16 isPlaying = isMusicPlayerPlaying_bgm(mpIndex_alt);
+            if (isPlaying == 0) {
+                startSong(track_alt);
+            }
+        }
+    }
+
+    if (vol == -1) {
+        vol = 100;
+    }
+
+    if ((flags[0] == 0) && (mpIndex != -1)) {
+        musicPlayerInitAndUpdateVolume(mpIndex, percentToMPlayVolume(vol));
+    }
+    if ((*flagB == 0) && (mpIndex_alt != -1)) {
+        musicPlayerInitAndUpdateVolume(mpIndex_alt, percentToMPlayVolume(vol_alt));
+    }
+
+    gGame.cur_track = track;
+    gGame.cur_track_alt = track_alt;
+    startSong(0x3DC);
+}
+
+extern "C" void sub_08008704(u16 room, s16 vol) {
+    s16 mpIndex, mpIndex_alt;
+    u16 track, track_alt, track_room;
+    u16 vol_alt;
+
+    if ((gUnknown_02005080 != 1) || ((gGame.cur_room != 5) && (gGame.cur_room != 0x37))) {
+        track_room = getMusicIDForRoom(room);
+        track = gGame.cur_track;
+        track_alt = gGame.cur_track_alt;
+        mpIndex = getMusicPlayerIndex(track);
+        mpIndex_alt = getMusicPlayerIndex(track_alt);
+        vol_alt = gSave._582[track_room];
+        
+        if (track == 0) {
+            musicPlayerStop_bgm(0);
+        } else {
+            startSong(track);
+        }
+        
+        if (track_alt == 0) {
+            switch (mpIndex) {
+            case 0:
+                musicPlayerStop_bgm(1);
+                break;
+            case 1:
+                musicPlayerStop_bgm(0);
+                break;
+            }
+        } else {
+            startSong(track_alt);
+        }
+        
+        if (vol == -1) {
+            vol = 100;
+        }
+        
+        if (mpIndex != -1) {
+            musicPlayerInitAndUpdateVolume(mpIndex, percentToMPlayVolume(vol));
+        }
+        if (mpIndex_alt != -1) {
+            musicPlayerInitAndUpdateVolume(mpIndex_alt, percentToMPlayVolume(vol_alt));
+        }
+        
+        startSong(0x3DC);
+    }
+}
+
+extern "C" void sub_0800882C() {
+    u16 speed;
+    u16 vol_mplay0 = getMusicPlayerVolumePercent(0);
+    u16 vol_mplay1 = getMusicPlayerVolumePercent(1);
+    
+    if (gUnknown_020051E4 == 2) {
+        speed = 1;
+        if ((vol_mplay0 != 100) || (vol_mplay1 != 100)) {
+            gUnknown_02004100[2] = speed;
+            storeMusicPlayerVolumes();
+        }
+    } else {
+        speed = 2;
+    }
+    
+    if (vol_mplay0 == 100) {
+        musicPlayerFadeOutTemp_bgm(0, speed);
+    } else {
+        sub_08027B84(0, vol_mplay0, 0, speed);
+    }
+    
+    if (vol_mplay1 == 100) {
+        musicPlayerFadeOutTemp_bgm(1, speed);
+    } else {
+        sub_08027B84(1, vol_mplay1, 0, speed);
+    }
+    
+    musicPlayerFadeOut_sfx(8, 4);
+}
+
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080088AC.inc", void sub_080088AC());
 extern "C" ASM_FUNC("asm/non_matching/rom/draw_message.inc", void draw_message());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_080089E0.inc", void sub_080089E0());
