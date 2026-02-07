@@ -286,6 +286,16 @@ typedef struct TransactionState {
 } TransactionState;
 static_assert(sizeof(TransactionState) == 0xC);
 
+typedef struct SoundUnkInfo {
+    u16 _0;
+    u16 _2;
+    u16 _4;
+    u16 _6;
+    u8 _8_1 : 1;
+    u8 _8_2 : 3;
+} SoundUnkInfo;
+static_assert(sizeof(SoundUnkInfo) == 0xC);
+
 typedef struct struct_02016028 {
     vu16 bldcnt;
     vu16 bldalpha;
@@ -371,7 +381,9 @@ typedef struct struct_02016028 {
     u8 _4b19 : 2;
     u8 _4b1a[0x566C - 0x4b1a];
     u8 _566c_1 : 1;
-    u8 _566d[0x5778 - 0x566D];
+    u8 _566d[0x567c - 0x566D];
+    SoundUnkInfo _567c[20];
+    u8 _576c[0x5778 - 0x576c];
     u8 _5778[0xC620 - 0x5778];
     void* _C620;
     u8 pad_C624[0x121b8 - 0xC624];
