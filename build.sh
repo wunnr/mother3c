@@ -1,5 +1,3 @@
-rm -rf build mother3.elf mother3.map mother3.gba
-
 docker run --platform=linux/amd64 --rm -it \
   -v "$PWD":/work -w /work \
   -e DEVKITPRO=/opt/devkitpro \
