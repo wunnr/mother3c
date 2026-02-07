@@ -158,7 +158,7 @@ _08054E08:
 	movs r5, #0
 	strh r0, [r4, #0xc]
 	mov r0, r8
-	bl sub_08001D58
+	bl isLucasOrKumatora
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08054E1C

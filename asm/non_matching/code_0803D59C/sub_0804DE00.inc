@@ -94,7 +94,7 @@ _0804DEAC:
 	adds r1, r2, #0
 	movs r2, #0
 	movs r3, #2
-	bl sub_080534C8
+	bl navigate1DMenuChecked
 _0804DEC4:
 	add sp, #0xc
 	pop {r4}

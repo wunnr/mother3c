@@ -31,7 +31,7 @@ _0804C54E:
 	adds r0, r4, r2
 	movs r1, #0x20
 	adds r2, r7, #0
-	bl sub_08001B54
+	bl memFill
 	movs r1, #2
 	ldrsh r0, [r5, r1]
 	cmp r0, r7
@@ -43,7 +43,7 @@ _0804C54E:
 	mov r2, r8
 	adds r0, r4, r2
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 _0804C578:
 	adds r0, r6, #1
 	lsls r0, r0, #0x10

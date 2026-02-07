@@ -23,7 +23,7 @@ _08038620:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _08038642
-	bl isCharOverworldPlayable
+	bl isCharIdOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08038642
@@ -165,7 +165,7 @@ _08038744:
 	ldrb r0, [r4]
 	cmp r0, #0
 	beq _0803878C
-	bl isCharOverworldPlayable
+	bl isCharIdOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0803878C

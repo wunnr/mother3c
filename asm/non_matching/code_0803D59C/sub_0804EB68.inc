@@ -7,18 +7,18 @@ sub_0804EB68:
 	push {r5, r6, r7}
 	mov r8, r0
 	ldrh r0, [r0, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	mov r1, r8
 	ldrh r0, [r1, #0xa]
 	bl sub_08054FF0
 	adds r0, r7, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804EBD0
 	adds r0, r7, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sb, r0
@@ -92,7 +92,7 @@ _0804EBE0:
 	strb r2, [r0]
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl sub_08055098
+	bl getEquippedItemIndex
 	ldr r1, _0804ECB0
 	adds r2, r6, r1
 	ands r4, r0

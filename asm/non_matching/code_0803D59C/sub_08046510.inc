@@ -28,7 +28,7 @@ sub_08046510:
 	bl sub_08047CDC
 	adds r0, r7, #0
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
@@ -42,7 +42,7 @@ sub_08046510:
 	adds r0, r5, r2
 	strh r1, [r0]
 	movs r0, #0x7e
-	bl sub_080486A0
+	bl getMenuText
 	adds r7, r0, #0
 	ldr r0, _080465F4
 	adds r5, r5, r0
@@ -56,7 +56,7 @@ sub_08046510:
 	movs r2, #0x87
 	bl sub_08047F28
 	movs r0, #0x7f
-	bl sub_080486A0
+	bl getMenuText
 	movs r4, #1
 	rsbs r4, r4, #0
 	mov r1, sb
@@ -68,7 +68,7 @@ sub_08046510:
 	adds r3, r4, #0
 	bl sub_08047CDC
 	movs r0, #3
-	bl sub_080486A0
+	bl getMenuText
 	mov r1, sb
 	str r1, [sp]
 	mov r2, r8
@@ -78,7 +78,7 @@ sub_08046510:
 	adds r3, r4, #0
 	bl sub_08047CDC
 	movs r0, #4
-	bl sub_080486A0
+	bl getMenuText
 	mov r1, sb
 	str r1, [sp]
 	mov r2, r8

@@ -14,7 +14,7 @@ sub_0804EEE8:
 	bl set_event_flag
 	movs r0, #0xd2
 	bl play_sound
-	bl sub_0804C004
+	bl setMenuMemoView
 	ldr r1, _0804EF34
 	adds r0, r4, r1
 	movs r1, #0xca

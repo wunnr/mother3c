@@ -376,7 +376,7 @@ _080076E0:
 	rsbs r2, r2, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08001B54
+	bl memFill
 	b _08007720
 	.align 2, 0
 _08007700: .4byte gUnknown_03005314

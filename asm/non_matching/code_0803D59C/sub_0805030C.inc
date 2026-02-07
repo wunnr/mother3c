@@ -26,7 +26,7 @@ _08050340:
 	ldr r2, _080503B4
 	adds r4, r7, r2
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0
@@ -57,7 +57,7 @@ _08050340:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _080503CC
-	bl sub_0804C228
+	bl setMenuShopCharacterSelect
 	adds r0, r7, #0
 	adds r0, #0x50
 	ldr r2, _080503C8

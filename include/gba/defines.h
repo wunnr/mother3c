@@ -64,4 +64,6 @@
 
 #define WIN_RANGE(a, b) (((a) << 8) | (b))
 
+#define TWO_COLUMN_MENU_HEIGHT(numItems) (numItems >> 1) + (numItems & 1)
+
 #endif // GUARD_GBA_DEFINES

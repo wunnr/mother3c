@@ -15,7 +15,7 @@ sub_08045390:
 	cmp r0, #0
 	beq _080453C0
 	movs r0, #0xbc
-	bl sub_080486A0
+	bl getMenuText
 	b _080453C6
 	.align 2, 0
 _080453B4: .4byte gSomeBlend
@@ -23,7 +23,7 @@ _080453B8: .4byte 0x000044EE
 _080453BC: .4byte gGoodsInfo
 _080453C0:
 	movs r0, #0xbd
-	bl sub_080486A0
+	bl getMenuText
 _080453C6:
 	movs r1, #0x14
 	movs r2, #0x87

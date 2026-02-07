@@ -29,7 +29,7 @@ _0805003C:
 	adds r0, r0, r6
 	mov r8, r0
 	ldrh r0, [r0, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	mov r1, r8
 	ldrh r0, [r1, #0xa]
@@ -54,7 +54,7 @@ _0805003C:
 	bl sub_08046D90
 	bl nullsub_22
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080500BC

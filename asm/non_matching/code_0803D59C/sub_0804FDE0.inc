@@ -4,7 +4,7 @@ sub_0804FDE0:
 	sub sp, #4
 	ldr r4, _0804FE30
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
 	ldrh r0, [r4, #0xa]
 	bl sub_08054FF0
@@ -12,7 +12,7 @@ sub_0804FDE0:
 	ldr r1, _0804FE34
 	adds r0, r4, r1
 	ldrh r0, [r0]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r6, r0, #0
 	ldr r0, _0804FE38
 	adds r2, r4, r0

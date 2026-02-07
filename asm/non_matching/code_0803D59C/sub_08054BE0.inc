@@ -25,7 +25,7 @@ sub_08054BE0:
 	movs r1, #1
 	bl sub_08054558
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054C2C
@@ -66,7 +66,7 @@ _08054C48:
 	bne _08054C80
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_08055180
+	bl isEquipLytSet
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08054C80
@@ -81,7 +81,7 @@ _08054C80:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0
-	bl sub_08055190
+	bl setEquipLyt
 	adds r0, r4, #0
 	add r1, sp, #4
 	bl sub_080551B0

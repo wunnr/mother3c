@@ -41,7 +41,7 @@ _0803EED4:
 	.4byte _0803F018
 _0803EF0C:
 	movs r0, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	bl sub_080524EC
 	ldr r3, _0803EF3C
 	movs r1, #0xd2
@@ -68,7 +68,7 @@ _0803EF40: .4byte 0x0000C5B5
 _0803EF44: .4byte 0x0000C5BC
 _0803EF48:
 	movs r0, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r0, #0x34
 	ldrb r4, [r0]
 	cmp r4, #0

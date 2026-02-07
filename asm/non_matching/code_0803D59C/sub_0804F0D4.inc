@@ -3,14 +3,14 @@ sub_0804F0D4:
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldrh r0, [r5, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F106
 	adds r0, r4, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F106
@@ -43,7 +43,7 @@ _0804F114:
 	adds r0, r6, r2
 	strb r1, [r0]
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804F14A

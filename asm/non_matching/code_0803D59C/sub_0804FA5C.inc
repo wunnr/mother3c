@@ -20,7 +20,7 @@ sub_0804FA5C:
 	lsls r2, r2, #6
 	adds r7, r5, r2
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov sl, r0
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
@@ -76,7 +76,7 @@ _0804FAD0:
 	mov r2, sb
 	strb r0, [r2]
 	mov r0, sl
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0804FB4C

@@ -32,10 +32,10 @@ _0803F0D6:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0803F10E
-	bl sub_08054FCC
+	bl getCharStats
 	str r0, [r4]
 	ldrb r0, [r0]
-	bl isCharOverworldPlayable
+	bl isCharIdOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0803F0FE
@@ -47,7 +47,7 @@ _0803F0D6:
 	strh r0, [r1]
 _0803F0FE:
 	ldr r0, [r4]
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	ldrh r0, [r6]
 	adds r0, #1

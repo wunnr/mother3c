@@ -4,7 +4,7 @@ sub_0803DE08:
 	ldr r1, _0803DE30
 	movs r0, #6
 	strb r0, [r1]
-	bl sub_0804C4B4
+	bl setMenuTryAgain
 	bl sub_08049DC4
 	bl sub_08046D90
 	bl sub_0803DE38

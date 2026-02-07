@@ -131,7 +131,7 @@ _08051D56:
 	mov r8, r3
 _08051DF4:
 	adds r0, r6, #0
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r0, #0xe
@@ -258,11 +258,11 @@ _08051E1E:
 	rsbs r2, r2, #0
 	ldr r0, [sp, #0x34]
 	movs r1, #0x12
-	bl sub_08001B54
+	bl memFill
 	adds r1, r4, #2
 	ldr r0, [sp, #0x34]
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 _08051F12:
 	mov r0, sp
 	ldrh r0, [r0]

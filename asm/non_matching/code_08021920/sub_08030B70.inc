@@ -153,7 +153,7 @@ _08030C52:
 	ldr r0, [r6]
 	ldrh r0, [r0, #0xc]
 	movs r1, #0
-	bl sub_080029F8
+	bl set_giftbox_flag
 	b _08030D02
 	.align 2, 0
 _08030CB8: .4byte gUnknown_0200B6F0

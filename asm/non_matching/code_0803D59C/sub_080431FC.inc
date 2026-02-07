@@ -16,7 +16,7 @@ sub_080431FC:
 	lsrs r2, r2, #0x10
 	str r2, [sp, #0x44]
 	adds r0, r2, #0
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08043228
@@ -31,7 +31,7 @@ _08043228:
 	b _08043350
 _08043238:
 	ldr r0, [sp, #0x4c]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r7, r0, #0
 	ldr r0, [sp, #0x4c]
 	bl sub_08054FF0
@@ -83,7 +83,7 @@ _08043238:
 	bl sub_08046A28
 	adds r0, r7, #0
 	ldr r1, [sp, #0x44]
-	bl sub_08055138
+	bl isItemIdEquipped
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	cmp r5, #0

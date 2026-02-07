@@ -10,9 +10,9 @@
 #include "battle/unitTarget.h"
 #include "global.h"
 
-extern u32 gUnknown_02002134; // TODO: confirm type
-extern u32 gUnknown_02002128; // TODO: confirm type
-extern u32 gUnknown_0200211C; // TODO: confirm type
+extern u32 gUnknown_02002134;  // TODO: confirm type
+extern u32 gUnknown_02002128;  // TODO: confirm type
+extern u32 gUnknown_0200211C;  // TODO: confirm type
 extern Intr2 gUnknown_08105CD0;
 extern ClockData gUnknown_08105CD8;
 
@@ -21,10 +21,10 @@ extern "C" BattleFader* sub_08072568();
 extern "C" BattleFader* sub_08072588();
 extern "C" BattleFader* sub_080725A8();
 extern "C" Action* sub_08064574(u16 arg0);
-extern "C" void* sub_08061A4C(u16 arg0); // TODO: confirm return type
-extern "C" void* sub_08064950(u16 arg0); // TODO: confirm return type
-extern "C" void* sub_08065148(u16 arg0, u32 arg1, u16 arg2); // TODO: confirm return type
-extern "C" void* sub_08062368(u16 arg0); // TODO: confirm return type
+extern "C" void* sub_08061A4C(u16 arg0);                      // TODO: confirm return type
+extern "C" void* sub_08064950(u16 arg0);                      // TODO: confirm return type
+extern "C" void* sub_08065148(u16 arg0, u32 arg1, u16 arg2);  // TODO: confirm return type
+extern "C" void* sub_08062368(u16 arg0);                      // TODO: confirm return type
 
 extern "C" ASM_FUNC("asm/non_matching/rhythm/sub_080736F8.inc", void sub_080736F8());
 extern "C" ASM_FUNC("asm/non_matching/rhythm/hitPlayer.inc", void hitPlayer());

@@ -25,7 +25,7 @@ _080403A0:
 	strb r0, [r7, #6]
 	mov r2, sl
 	ldrh r0, [r2, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	str r0, [sp, #8]
 	mov r3, sl
 	ldrh r0, [r3, #0xa]
@@ -96,7 +96,7 @@ _0804041C:
 	bl sub_080430B4
 	bl sub_08044614
 	movs r0, #0x41
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -106,7 +106,7 @@ _0804041C:
 	movs r2, #7
 	bl sub_08047CDC
 	ldr r0, [sp, #8]
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040490
@@ -165,7 +165,7 @@ _080404D0:
 	ldr r2, _08040514
 	adds r4, r7, r2
 	ldrh r0, [r4]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r6, r0, #0
 	ldrh r0, [r4]
 	bl sub_08054FF0
@@ -227,7 +227,7 @@ _08040564:
 	b _080405B6
 _0804056E:
 	adds r0, r5, #0
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040586
@@ -279,7 +279,7 @@ _080405C0:
 	cmp r0, #0
 	bne _08040656
 	movs r0, #0x57
-	bl sub_080486A0
+	bl getMenuText
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #0xf
@@ -358,7 +358,7 @@ _08040664:
 	bhs _08040716
 _0804067E:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _080406AE
@@ -403,7 +403,7 @@ _080406AE:
 	bls _08040708
 _080406D8:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040708
@@ -459,7 +459,7 @@ _08040716:
 	bls _08040776
 _08040746:
 	ldrb r0, [r4]
-	bl sub_08054F34
+	bl isItemIdEquipment
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08040776

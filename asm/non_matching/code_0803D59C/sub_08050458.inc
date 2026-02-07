@@ -24,7 +24,7 @@ sub_08050458:
 	movs r2, #1
 	rsbs r2, r2, #0
 	movs r1, #0x12
-	bl sub_08001B54
+	bl memFill
 	ldrh r0, [r7, #2]
 	ldr r2, _080504E0
 	adds r2, r2, r5
@@ -42,7 +42,7 @@ sub_08050458:
 	lsls r0, r0, #5
 	adds r0, r0, r4
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	ldr r1, _080504E4
 	adds r0, r5, r1
 	ldr r0, [r0]
@@ -50,7 +50,7 @@ sub_08050458:
 	lsls r1, r1, #5
 	adds r1, r1, r4
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	mov r0, r8
 	ldrb r2, [r0]
 	b _0805056A
@@ -90,7 +90,7 @@ _080504FC:
 	movs r2, #1
 	rsbs r2, r2, #0
 	movs r1, #0x12
-	bl sub_08001B54
+	bl memFill
 	ldrh r0, [r7, #2]
 	ldr r2, _080505CC
 	adds r2, r2, r4
@@ -108,7 +108,7 @@ _080504FC:
 	lsls r0, r0, #5
 	adds r0, r0, r5
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	ldr r0, _080505D0
 	adds r4, r4, r0
 	ldr r0, [r4]
@@ -116,7 +116,7 @@ _080504FC:
 	lsls r1, r1, #5
 	adds r1, r1, r5
 	movs r2, #9
-	bl sub_08002420
+	bl copyText
 	ldrb r0, [r6]
 	cmp r0, #6
 	bne _08050590
@@ -148,7 +148,7 @@ _08050590:
 	adds r0, r4, r1
 	ldr r0, [r0]
 	movs r1, #9
-	bl sub_08048748
+	bl bufferedTextLength
 	ldr r2, _080505D4
 	adds r4, r4, r2
 	movs r1, #0x1f

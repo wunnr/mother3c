@@ -4,7 +4,8 @@
 #include "structs.h"
 
 typedef void (*DebugModeFunc)(InputState*, TransactionState*);
-typedef void (*MenuFunc)(InputState*, MenuState*);
+typedef void (*MenuHandlerFunc)(InputState*, MenuState*);
+typedef void (*Unk09B8FE24Func)();
 
 extern "C" {
 
@@ -40,7 +41,7 @@ void sub_0802AA78(u32);
 void sub_08033BCC(u32);
 void sub_0802B4D8();
 void sub_08028040();
-void sub_080029F8(u32, u32);
+void set_giftbox_flag(u32, u32);
 u32 get_giftbox_flag(u32);
 void sub_0802AF24(u32);
 void add_dp_to_bank(u32);
@@ -50,7 +51,7 @@ void set_ailment(u32, u32, u32);
 u16 sub_0802A124(u16);
 void sub_0802B094(u16, s16);
 void sub_0802B0D0(u32, u32, s16);
-u16 isCharOverworldPlayable(u32);
+u16 isCharIdOverworldPlayable(u32);
 void sub_0805BC8C(u64*, u32, u32);
 void heal_hp(u16, s16);
 u32 sub_0802AF88(s16);

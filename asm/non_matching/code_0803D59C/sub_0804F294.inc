@@ -3,14 +3,14 @@ sub_0804F294:
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r5, r0, #0
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F2D4
 	adds r0, r5, #0
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804F2D4
@@ -47,7 +47,7 @@ _0804F2E0:
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _0804F328
-	bl sub_0804C330
+	bl setMenuItemGuyCharacterSelect
 	ldr r2, _0804F324
 	adds r0, r6, r2
 	movs r2, #0x90

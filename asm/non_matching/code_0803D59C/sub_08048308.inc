@@ -48,7 +48,7 @@ _08048374:
 	bl sub_0804863C
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	adds r4, r0, #0
 	adds r4, #2
 	movs r0, #6

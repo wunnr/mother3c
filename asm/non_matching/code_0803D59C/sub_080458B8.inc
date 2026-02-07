@@ -37,7 +37,7 @@ _080458FC:
 	ldr r0, [r0]
 	movs r1, #9
 _08045904:
-	bl sub_08048748
+	bl bufferedTextLength
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	cmp r6, r4

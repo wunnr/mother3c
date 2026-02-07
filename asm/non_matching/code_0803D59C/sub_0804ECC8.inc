@@ -5,17 +5,17 @@ sub_0804ECC8:
 	push {r7}
 	adds r7, r0, #0
 	ldrh r0, [r7, #0xa]
-	bl sub_08054FE0
+	bl getBufferedCharStats
 	mov r8, r0
 	ldrh r0, [r7, #0xa]
 	bl sub_08054FF0
 	mov r0, r8
-	bl sub_08055038
+	bl isCharUnconscious
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _0804ECF8
 	mov r0, r8
-	bl sub_0805504C
+	bl isCharStatsOverworldPlayable
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	cmp r6, #0

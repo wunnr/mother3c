@@ -155,18 +155,18 @@ void sub_0805C458(CharStats* ch, s32 r1) {
         const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
-            if (ls->psi_table[i].psi_no != 0 && r1 >= ls->psi_table[i].level) {
-                sub_0805C548(gSave._720, ls->psi_table[i].psi_no, true);
-                sub_0805C548(gSave._710, ls->psi_table[i].psi_no, false);
+            if (ls->psi_learning_table[i].psi_no != 0 && r1 >= ls->psi_learning_table[i].level) {
+                sub_0805C548(gSave._720, ls->psi_learning_table[i].psi_no, true);
+                sub_0805C548(gSave._710, ls->psi_learning_table[i].psi_no, false);
             }
         }
     } else if (ch_is_kumatora(ch) == true) {
         const LevelStats* ls = &gLevelStatTable[ch->charNo];
         int i;
         for (i = 0; i < 32; i++) {
-            if (ls->psi_table[i].psi_no != 0 && r1 >= ls->psi_table[i].level) {
-                sub_0805C548(gSave._738 + 2, ls->psi_table[i].psi_no, true);
-                sub_0805C548(gSave._72a, ls->psi_table[i].psi_no, false);
+            if (ls->psi_learning_table[i].psi_no != 0 && r1 >= ls->psi_learning_table[i].level) {
+                sub_0805C548(gSave._738 + 2, ls->psi_learning_table[i].psi_no, true);
+                sub_0805C548(gSave._72a, ls->psi_learning_table[i].psi_no, false);
             }
         }
     }

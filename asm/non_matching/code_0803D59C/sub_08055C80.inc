@@ -74,7 +74,7 @@ _08055D10:
 	movs r1, #0x95
 _08055D12:
 	adds r0, r1, #0
-	bl sub_080486A0
+	bl getMenuText
 	pop {r4}
 	pop {r1}
 	bx r1

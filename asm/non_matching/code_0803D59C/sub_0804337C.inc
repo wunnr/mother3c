@@ -587,7 +587,7 @@ _08043800:
 	bl sub_08046BA8
 _08043832:
 	movs r0, #0x52
-	bl sub_080486A0
+	bl getMenuText
 	movs r5, #1
 	rsbs r5, r5, #0
 	movs r4, #1
@@ -598,7 +598,7 @@ _08043832:
 	adds r3, r5, #0
 	bl sub_08047CDC
 	movs r0, #0x54
-	bl sub_080486A0
+	bl getMenuText
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x86
@@ -606,7 +606,7 @@ _08043832:
 	adds r3, r5, #0
 	bl sub_08047CDC
 	movs r0, #0x53
-	bl sub_080486A0
+	bl getMenuText
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x86
@@ -614,7 +614,7 @@ _08043832:
 	adds r3, r5, #0
 	bl sub_08047CDC
 	movs r0, #0x55
-	bl sub_080486A0
+	bl getMenuText
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r1, #0x86

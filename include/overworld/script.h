@@ -9,9 +9,9 @@
 extern u16 (*gScriptCmdTable[])(s32* sp);
 
 enum Mode {
-    MODE_NORMAL,
-    MODE_SCRIPT = 1,
-    MODE_TITLE_CARD = 4,
+    MODE_NORMAL = 0x0,
+    MODE_SCRIPT = 0x1,
+    MODE_TITLE_CARD = 0x4,
     MODE_FADE_IN = 0x6,
     MODE_LOAD_ROOM = 0x7,
     MODE_PAUSE_MENU = 0xA,
@@ -41,8 +41,10 @@ struct Game {
     u8 _1_40 : 1;
     u8 _1_80 : 1;
     u32 _2_1 : 7;
-    u32 _2_2 : 4;
-    u32 _2_3 : 5;
+    u32 _2_40 : 4;
+    u32 _3_8 : 1;
+    u32 _3_10 : 1;
+    u32 _3_20 : 3;
     u32 _2_4 : 16;
     u16 _6[4];
     u8 _e;
