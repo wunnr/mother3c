@@ -43,13 +43,23 @@ extern "C" u16 sub_0801A7CC(s16, u32, s32);
 extern "C" u16 sub_0801A868(s16, u32, s32);
 extern "C" void sub_08034BAC();
 extern "C" void play_sound(u16);
+extern "C" void startSong(u16);
 extern "C" void musicPlayerStop_sfx(u16);
+extern "C" void musicPlayerFadeIn_bgm(u16, u16);
 extern "C" s16 getCurrentTrack(u16);
 extern "C" void sub_0803B278();
 extern "C" void sub_08027B84(u16, u16, u16, u16);
 extern "C" u16 percentToMPlayVolume(u16);
 extern "C" u16 getMusicPlayerVolumePercent(u16);
+extern "C" void musicPlayerUpdateVolume(u16, u16);
 extern "C" void musicPlayerInitAndUpdateVolume(u16, u16);
+extern "C" void setMPlayPanpotClamped(u16, s16);
+extern "C" s32 sub_08002E34(s32, s32, u16, u16);
+extern "C" s32 lerp(s32, s32, u16, u16);
+extern "C" u8 getMusicIDForRoom(u16 roomIndex);
+extern "C" void sub_08027C98(SoundUnkInfo* unk);
+extern "C" void sub_08027CD8(SoundUnkInfo* unk);
+extern "C" void sub_08027D1C(SoundUnkInfo* unk);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -285,10 +295,76 @@ extern "C" void sub_08027AE0() {
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027B84.inc", void sub_08027B84(u16, u16, u16, u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027BD0.inc", void sub_08027BD0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C20.inc", void sub_08027C20());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C40.inc", void sub_08027C40());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C98.inc", void sub_08027C98());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027CD8.inc", void sub_08027CD8());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027D1C.inc", void sub_08027D1C());
+
+extern "C" void sub_08027C40(SoundUnkInfo* unk_array) {
+    SoundUnkInfo* temp2;
+    u8 tmp;
+    
+    for (u16 i = 0; i <= 9; i++){
+        temp2 = &unk_array[i];
+        tmp = temp2->_8_1;
+        
+        if (tmp != 0){
+            sub_08027C98(temp2);
+        }
+        
+        // if (unk_array[i + 10]._8_1 != 0) {
+        if (*(u8*)((u8*)temp2 + 0x80) << 0x1f != 0){ // FAKEMATCH
+            sub_08027CD8(&unk_array[i + 10]);
+        }
+    }
+
+    // if (unk_array[20]._8_1 != 0) {
+    if (*(u8*)((u8*)&unk_array[0] + 0xf8) & 1) { // FAKEMATCH
+        sub_08027D1C(&unk_array[20]);
+    }
+}
+
+extern "C" void sub_08027C98(SoundUnkInfo* unk) {
+    u16 result = lerp(unk->_4, unk->_6, unk->_2, unk->_0);
+    musicPlayerUpdateVolume(unk->_8_2, result);
+    unk->_2++;
+    
+    if (unk->_2 > unk->_0) {
+        unk->_8_1 = 0;
+    }
+}
+
+extern "C" void sub_08027CD8(SoundUnkInfo* unk) {
+    u16 result = sub_08002E34((s16)unk->_4, (s16)unk->_6, unk->_2, unk->_0);
+    setMPlayPanpotClamped(unk->_8_2, result);
+    unk->_2++;
+    
+    if (unk->_2 > unk->_0) {
+        unk->_8_1 = 0;
+    }
+}
+
+void sub_08027D1C(SoundUnkInfo* unk) {
+    s16 track_room, track_mplay1;
+    
+    unk->_6++;
+    
+    if (unk->_2 == unk->_6) {
+        play_sound(unk->_0);
+    }
+    if (unk->_4 == unk->_6) {
+        unk->_8_1 = 0;
+        track_room = getMusicIDForRoom(gGame.cur_room);
+        track_mplay1 = getCurrentTrack(1);
+        
+        startSong(SONG_NONE_8B);
+        
+        if (track_mplay1 != -1) {
+            startSong(track_mplay1);
+            musicPlayerInitAndUpdateVolume(1, 0);
+        }
+        
+        musicPlayerFadeIn_bgm(0, 1);
+        sub_08027B84(1, 0, percentToMPlayVolume(gSave._582[track_room]), 4);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DC4.inc", void sub_08027DC4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DE4.inc", void sub_08027DE4());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027DF4.inc", void sub_08027DF4());
