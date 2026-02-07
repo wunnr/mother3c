@@ -4775,17 +4775,19 @@ extern "C" s32 cmd_disp_staffroll() {
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
 
 extern "C" s32 cmd_play_sound(s32* sp) {
+    s16 mpIndex;
     u16 sound = scriptstack_peek(sp, 1);
     s16 vol_percent = scriptstack_peek(sp, 0);
+    
     play_sound(sound);
 
-    if (vol_percent != -1) {
-        s16 playerIndex = getMusicPlayerIndex(sound);
-        u16 uPlayerIndex = (u16)playerIndex;
+    if (vol_percent == -1)
+        return 0;
 
-        if (playerIndex != -1)
-            musicPlayerInitAndUpdateVolume(uPlayerIndex, (u16)percentToMPlayVolume(vol_percent));
+    if ((mpIndex = getMusicPlayerIndex(sound)) != -1){
+        musicPlayerInitAndUpdateVolume(mpIndex, (u16)percentToMPlayVolume(vol_percent));
     }
+
     return 0;
 }
 
