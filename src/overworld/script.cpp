@@ -23,7 +23,7 @@ extern void sub_08004794();
 extern void musicPlayerContinue_bgm(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
-extern void startSong(s32);
+extern void startSong(u16);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
 extern void musicPlayerPause_bgm(u16);
@@ -39,10 +39,11 @@ extern s32 sub_08022354(s32);
 extern s32 sub_08039B24(s32);
 extern u16 sub_080031E0();
 extern void musicPlayerInitAndUpdateVolume(u16, u16);
-extern s32 percentToMPlayVolume(u16);
+extern u16 percentToMPlayVolume(u16);
 extern void DoReset();
 extern s16 getMusicPlayerIndex(u16);
 extern void play_sound(u16);
+extern void setup_overworld_music(u16, s16);
 
 // not functionally equivalent
 NONMATCH("asm/non_matching/script/exec_cmd.inc", void exec_cmd(void* script, u16* unk)) {
@@ -4772,7 +4773,48 @@ extern "C" s32 cmd_disp_staffroll() {
     return 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
+//extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
+extern "C" s32 cmd_play_sound_ext(s32* sp) {
+    s16 mpIndex;
+    s16 sound = scriptstack_peek(sp, 1);
+    s16 vol = scriptstack_peek(sp, 0);
+    s16 state1 = gGame.state_1;
+    
+    if (state1 <= 3) {
+        s32 cmp = 2; // FAKEMATCH
+        if (state1 >= cmp) {
+            gGame._847a = sound;
+            gGame._847c = vol;
+    
+            if (get_flag(0x410) != 0) {
+                startSong(sound);
+            }
+            return 0;
+        }
+    } 
+    
+    if (sound == -1) {
+        setup_overworld_music(gGame.cur_room, vol);
+    } else {
+        if ((mpIndex = getMusicPlayerIndex(sound)) != -1) {
+            startSong(sound);
+            
+            if (vol != -1) {
+                musicPlayerInitAndUpdateVolume(mpIndex, percentToMPlayVolume(vol));
+            }
+            switch (mpIndex) {
+            case 0:
+                gGame.cur_track = sound;
+                break;
+            case 1:
+                gGame.cur_track_alt = sound;
+                break;
+            }
+        }
+    }
+    
+    return 0;
+}
 
 extern "C" s32 cmd_play_sound(s32* sp) {
     s16 mpIndex;
