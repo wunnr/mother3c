@@ -4773,7 +4773,6 @@ extern "C" s32 cmd_disp_staffroll() {
     return 0;
 }
 
-//extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sound_ext.inc", void cmd_play_sound_ext());
 extern "C" s32 cmd_play_sound_ext(s32* sp) {
     s16 mpIndex;
     s16 sound = scriptstack_peek(sp, 1);
