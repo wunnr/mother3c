@@ -54,7 +54,7 @@ extern "C" u16 getMusicPlayerVolumePercent(u16);
 extern "C" void musicPlayerUpdateVolume(u16, u16);
 extern "C" void musicPlayerInitAndUpdateVolume(u16, u16);
 extern "C" void setMPlayPanpotClamped(u16, s16);
-extern "C" s32 sub_08002E34(s32, s32, u16, u16);
+extern "C" s32 lerp2(s32, s32, u16, u16);
 extern "C" s32 lerp(s32, s32, u16, u16);
 extern "C" u8 getMusicIDForRoom(u16 roomIndex);
 extern "C" void sub_08027C98(SoundUnkInfo* unk);
@@ -331,7 +331,7 @@ extern "C" void sub_08027C98(SoundUnkInfo* unk) {
 }
 
 extern "C" void sub_08027CD8(SoundUnkInfo* unk) {
-    u16 result = sub_08002E34((s16)unk->_4, (s16)unk->_6, unk->_2, unk->_0);
+    u16 result = lerp2((s16)unk->_4, (s16)unk->_6, unk->_2, unk->_0);
     setMPlayPanpotClamped(unk->_8_2, result);
     unk->_2++;
     

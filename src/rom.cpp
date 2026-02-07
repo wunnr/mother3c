@@ -515,7 +515,13 @@ extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002D98.inc", void sub_08002D98()
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002DB0.inc", void sub_08002DB0());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002DC8.inc", void sub_08002DC8());
 extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E00.inc", void sub_08002E00());
-extern "C" ASM_FUNC("asm/non_matching/rom/sub_08002E34.inc", void sub_08002E34());
+
+extern "C" s32 lerp2(s32 start, s32 end, u16 currentStep, u16 numSteps) {
+    if (numSteps == 0)
+        return start;
+
+    return Divide((start * (numSteps - currentStep)) + (end * currentStep), numSteps);
+}
 
 extern "C" s32 lerp(s32 start, s32 end, u16 currentStep, u16 numSteps) {
     if (numSteps == 0)
