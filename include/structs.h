@@ -488,8 +488,7 @@ typedef struct struct_02016028 {
     u8 _4ed0[0x566C - 0x4ED0];
     u8 _566c_1 : 1;
     u8 _566d[0x567c - 0x566D];
-    SoundUnkInfo _567c[20];
-    u8 _576c[0x5778 - 0x576c];
+    SoundUnkInfo _567c[21];
     u8 _5778[0xC5AD - 0x5778];
     u8 _c5ad_1 : 1;
     u8 _c5ae[0xC5B5 - 0xC5AE];

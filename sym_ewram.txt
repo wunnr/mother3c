@@ -392,9 +392,7 @@
 . = 0x0001B184; gUnknown_0201B184 = .;
 . = 0x0001B574; gUnknown_0201B574 = .;
 . = 0x0001B694; gUnknown_0201B694 = .;
-. = 0x0001B6A4; gUnknown_0201B6A4 = .;
-. = 0x0001B71C; gUnknown_0201B71C = .;
-. = 0x0001B794; gUnknown_0201B794 = .;
+. = 0x0001B6A4; gSoundUnkInfos = .;
 . = 0x0001B7A0; gUnknown_0201B7A0 = .;
 . = 0x0001D428; gUnknown_0201D428 = .;
 . = 0x0001E908; gUnknown_0201E908 = .;

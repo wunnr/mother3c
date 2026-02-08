@@ -296,9 +296,49 @@ extern "C" void sub_08027AE0() {
     }
 }
 
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027B84.inc", void sub_08027B84(u16, u16, u16, u16));
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027BD0.inc", void sub_08027BD0());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08027C20.inc", void sub_08027C20());
+extern "C" void sub_08027B84(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
+    if (arg0 > 9) 
+        return;
+    if (arg3 <= 1) {
+        musicPlayerInitAndUpdateVolume(arg0, arg2);
+        return;
+    }
+    
+    SoundUnkInfo* unk = &gSomeBlend._567c[arg0]; // gSoundUnkInfos
+    
+    unk->_8_1 = 1;
+    unk->_4 = arg1;
+    unk->_6 = arg2;
+    unk->_2 = 0;
+    unk->_0 = arg3;
+}
+
+extern "C" void sub_08027BD0(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
+    if (arg0 > 9) { return; }
+    
+    if (arg3 <= 1) {
+        setMPlayPanpotClamped(arg0, arg2);
+        return;
+    }
+    
+    SoundUnkInfo* unk = &gSomeBlend._567c[10 + arg0];
+    
+    unk->_8_1 = 1;
+    unk->_4 = arg1;
+    unk->_6 = arg2;
+    unk->_2 = 0;
+    unk->_0 = arg3;
+}
+
+extern "C" void sub_08027C20(u16 arg0, u16 arg1, u16 arg2) {
+    SoundUnkInfo* unk = &gSomeBlend._567c[20];
+
+    unk->_8_1 = 1;
+    unk->_0 = arg0;
+    unk->_2 = arg1;
+    unk->_4 = arg2;
+    unk->_6 = 0;
+}
 
 extern "C" void sub_08027C40(SoundUnkInfo* unk_array) {
     SoundUnkInfo* temp2;
@@ -326,6 +366,7 @@ extern "C" void sub_08027C40(SoundUnkInfo* unk_array) {
 
 extern "C" void sub_08027C98(SoundUnkInfo* unk) {
     u16 result = lerp(unk->_4, unk->_6, unk->_2, unk->_0);
+    
     musicPlayerUpdateVolume(unk->_8_2, result);
     unk->_2++;
     
@@ -336,6 +377,7 @@ extern "C" void sub_08027C98(SoundUnkInfo* unk) {
 
 extern "C" void sub_08027CD8(SoundUnkInfo* unk) {
     u16 result = lerp2((s16)unk->_4, (s16)unk->_6, unk->_2, unk->_0);
+    
     setMPlayPanpotClamped(unk->_8_2, result);
     unk->_2++;
     
