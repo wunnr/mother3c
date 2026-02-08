@@ -4,6 +4,7 @@
 #include "battle/guest.h"
 #include "enums.h"
 #include "functions.h"
+#include "rom_sound.h"
 
 extern "C" {
 
@@ -20,17 +21,11 @@ extern void sub_08037A7C();
 extern void sub_08019D04();
 extern void sub_0802781C();
 extern void sub_08004794();
-extern void musicPlayerContinue_bgm(u16);
 extern void sub_080052E4(s32);
 extern void sub_0803C4DC(s32);
-extern void startSong(u16);
 extern void sub_08026610(u8);
 extern void sub_08013EB8();
-extern void musicPlayerPause_bgm(u16);
-extern s16 getCurrentTrack(u16);
-extern u16 getMusicPlayerVolumePercent(u16);
 extern void sub_08033548(u8);
-extern u8 getMusicIDForRoom(u16);
 extern void sub_080274AC(s32, u16);
 extern u16 sub_08002FD4(u16, s32);
 extern s32 sub_08002474(s32, s32, s32);
@@ -38,14 +33,7 @@ extern void sub_080272F4(u16, u16, u16);
 extern s32 sub_08022354(s32);
 extern s32 sub_08039B24(s32);
 extern u16 sub_080031E0();
-extern void musicPlayerInitAndUpdateVolume(u16, u16);
-extern u16 percentToMPlayVolume(u16);
 extern void DoReset();
-extern s16 getMusicPlayerIndex(u16);
-extern void play_sound(u16);
-extern void setup_overworld_music(u16, s16);
-extern void sub_08027B84(u16, u16, u16, u16);                 /* extern */
-extern void sub_08027C20(u16, u16, u16);  
 
 // not functionally equivalent
 NONMATCH("asm/non_matching/script/exec_cmd.inc", void exec_cmd(void* script, u16* unk)) {
@@ -4828,17 +4816,76 @@ extern "C" s32 cmd_play_sound(s32* sp) {
         return 0;
 
     if ((mpIndex = getMusicPlayerIndex(sound)) != -1){
-        musicPlayerInitAndUpdateVolume(mpIndex, (u16)percentToMPlayVolume(vol_percent));
+        musicPlayerInitAndUpdateVolume(mpIndex, percentToMPlayVolume(vol_percent));
     }
 
     return 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_84.inc", void cmd_84());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_85.inc", void cmd_85());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_86.inc", void cmd_86());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_87.inc", void cmd_87());
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_88.inc", void cmd_88());
+extern "C" s32 cmd_fade_bgm(s32* sp) {
+    u16 fade_type = scriptstack_peek(sp, 2);
+    u16 mpIndex = scriptstack_peek(sp, 1);
+    u16 speed = scriptstack_peek(sp, 0);
+    
+    if (fade_type == 0) {
+        musicPlayerFadeInIfPaused_bgm(mpIndex, speed);
+    } else {
+        musicPlayerFadeOutTemp_bgm(mpIndex, speed);
+    }
+    
+    return 0;
+}
+
+extern "C" s32 cmd_fade_sfx(s32* sp) {
+    u16 fade_type = scriptstack_peek(sp, 2);
+    u16 mpIndex = scriptstack_peek(sp, 1);
+    u16 speed = scriptstack_peek(sp, 0);
+    
+    if (fade_type == 0) {
+        musicPlayerFadeIn_sfx(mpIndex, speed);
+    } else {
+        musicPlayerFadeOut_sfx(mpIndex, speed);
+    }
+    
+    return 0;
+}
+
+extern "C" s32 cmd_stop_bgm(s32* sp) {
+    s16 mpIndex = scriptstack_peek(sp, 0);
+    
+    if (mpIndex == -1) {
+        musicPlayerStop_bgm(0);
+        musicPlayerStop_bgm(1);
+    } else {
+        musicPlayerStop_bgm(mpIndex);
+    }
+    
+    return 0;
+}
+
+extern "C" s32 cmd_stop_sfx(s32* sp) {
+    s16 mpIndex = scriptstack_peek(sp, 0);
+    
+    if (mpIndex == -1) {
+        musicPlayerStop_sfx(3);
+        musicPlayerStop_sfx(4);
+        musicPlayerStop_sfx(5);
+    } else {
+        musicPlayerStop_sfx(mpIndex);
+    }
+    
+    return 0;
+}
+
+extern "C" s32 cmd_88(s32* arg0) {
+    u16 a = scriptstack_peek(arg0, 3);
+    u16 b = scriptstack_peek(arg0, 2);
+    u16 c = scriptstack_peek(arg0, 1);
+    u16 d = scriptstack_peek(arg0, 0);
+    
+    sub_08027BD0(a, b, c, d);
+    return 0;
+}
 
 extern "C" s32 cmd_set_bgm(s32* sp) {
     u16 lower;
@@ -4867,7 +4914,7 @@ extern "C" ASM_FUNC("asm/non_matching/script/cmd_set_bgm_other.inc", void cmd_se
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_8A.inc", void cmd_8A());
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_CB.inc", void cmd_CB());
 
-extern "C" s32 cmd_D0(s32* sp) {
+extern "C" s32 cmd_push_current_track(s32* sp) {
     scriptstack_push(getMusicPlayerVolumePercent(scriptstack_peek(sp, 0)));
     return 0;
 }
