@@ -7,6 +7,7 @@
 #include "functions.h"
 #include "gba/gba.h"
 #include "global.h"
+#include "rom_sound.h"
 #include "structs.h"
 
 typedef struct Struct_02015E00 {
@@ -140,12 +141,6 @@ extern "C" void memFill(void*, u16, s16);
 extern "C" u16* getMemoEntryText(u16);
 extern "C" u16* getNthMemoPage(u16*, u16);
 extern "C" void sub_08048108(void*, void*);
-extern "C" void startSong_battle(u16);
-extern "C" void startSong(u16);
-extern "C" void musicPlayerStop_bgm(u16);
-extern "C" void storeMusicPlayerVolumes();
-extern "C" void snd_vsync_on();
-extern "C" void snd_restart();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());

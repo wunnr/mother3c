@@ -5,6 +5,7 @@
 #include "gba/syscall.h"
 #include "global.h"
 #include "overworld/script.h"
+#include "rom_sound.h"
 #include "structs.h"
 
 extern StatMeter gHPStatMeters[5];
@@ -43,24 +44,9 @@ extern "C" void sub_08034EB8(Object*);
 extern "C" u16 sub_0801A7CC(s16, u32, s32);
 extern "C" u16 sub_0801A868(s16, u32, s32);
 extern "C" void sub_08034BAC();
-extern "C" void play_sound(u16);
-extern "C" void startSong(u16);
-extern "C" void musicPlayerStop_sfx(u16);
-extern "C" void musicPlayerFadeIn_bgm(u16, u16);
-extern "C" s16 getCurrentTrack(u16);
 extern "C" void sub_0803B278();
-extern "C" void sub_08027B84(u16, u16, u16, u16);
-extern "C" u16 percentToMPlayVolume(u16);
-extern "C" u16 getMusicPlayerVolumePercent(u16);
-extern "C" void musicPlayerUpdateVolume(u16, u16);
-extern "C" void musicPlayerInitAndUpdateVolume(u16, u16);
-extern "C" void setMPlayPanpotClamped(u16, s16);
 extern "C" s32 lerp2(s32, s32, u16, u16);
 extern "C" s32 lerp(s32, s32, u16, u16);
-extern "C" u8 getMusicIDForRoom(u16 roomIndex);
-extern "C" void sub_08027C98(SoundUnkInfo* unk);
-extern "C" void sub_08027CD8(SoundUnkInfo* unk);
-extern "C" void sub_08027D1C(SoundUnkInfo* unk);
 extern "C" void sub_080381B0(MenuState*);
 extern "C" void sub_0800A480(void*);
 extern "C" void navigateWrapping2DMenu(u16*, InputState*, u16, u16, u16, u16);
@@ -314,7 +300,7 @@ extern "C" void sub_08027B84(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
     unk->_0 = arg3;
 }
 
-extern "C" void sub_08027BD0(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
+extern "C" void sub_08027BD0(u16 arg0, s16 arg1, s16 arg2, u16 arg3) {
     if (arg0 > 9) { return; }
     
     if (arg3 <= 1) {
