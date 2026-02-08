@@ -44,6 +44,8 @@ extern void DoReset();
 extern s16 getMusicPlayerIndex(u16);
 extern void play_sound(u16);
 extern void setup_overworld_music(u16, s16);
+extern void sub_08027B84(u16, u16, u16, u16);                 /* extern */
+extern void sub_08027C20(u16, u16, u16);  
 
 // not functionally equivalent
 NONMATCH("asm/non_matching/script/exec_cmd.inc", void exec_cmd(void* script, u16* unk)) {
@@ -4913,7 +4915,66 @@ extern "C" s32 cmd_E1(s32* sp) {
     return 0;
 }
 
-extern "C" ASM_FUNC("asm/non_matching/script/cmd_play_sfx.inc", void cmd_play_sfx());
+extern "C" s32 cmd_play_sfx(s32* sp) {
+    u16 unk;
+
+    u16 sfx = scriptstack_peek(sp, 0); //r0 
+    switch (sfx) {
+    case 0:
+        sfx = 0x6D;
+        unk = 0x138;
+        break;
+    case 1:
+        sfx = 0x6E;
+        unk = 0x97;
+        break;
+    case 2:
+        sfx = 0x77;
+        unk = 0x174;
+        break;
+    case 3:
+        sfx = 0x78;
+        unk = 0xB4;
+        break;
+    case 4:
+        sfx = 0xC9;
+        unk = 0x5E;
+        break;
+    case 5:
+        sfx = 0x2B;
+        unk = 0xFC;
+        break;
+    case 6:
+        sfx = 0x1A4;
+        unk = 0xC8;
+        break;
+    case 7:
+        sfx = 0x72;
+        unk = 0xB8;
+        break;
+    case 8:
+        sfx = 0xCB;
+        unk = 0xB4;
+        break;
+    case 9:
+        sfx = 0x1B3;
+        unk = 0xB4;
+        break;
+    case 10:
+        sfx = 0x5EF;
+        unk = 0xA2;
+        break;
+    default:
+        return 0;
+    }
+
+    sub_08027C20(sfx, 0x50, unk + 0x50);
+    sub_08027B84(0, getMusicPlayerVolumePercent(0), 0, 0x20);
+    sub_08027B84(1, getMusicPlayerVolumePercent(1), 0, 0x20);
+    
+    return 0;
+}
+
 extern "C" ASM_FUNC("asm/non_matching/script/cmd_init_battle.inc", void cmd_init_battle());
 
 extern "C" s32 cmd_8D() {
