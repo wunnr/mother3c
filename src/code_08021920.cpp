@@ -64,6 +64,7 @@ extern "C" void sub_08027D1C(SoundUnkInfo* unk);
 extern "C" void sub_080381B0(MenuState*);
 extern "C" void sub_0800A480(void*);
 extern "C" void navigateWrapping2DMenu(u16*, InputState*, u16, u16, u16, u16);
+extern "C" u16 sub_0801A6D8(s32);
 
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021920.inc", u32 sub_08021920(u32));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08021930.inc", void sub_08021930());
@@ -983,7 +984,14 @@ extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B20.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B58.inc", void sub_08033B58(u16));
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033B90.inc", void sub_08033B90());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033BCC.inc", void sub_08033BCC());
-extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033C14.inc", void sub_08033C14());
+
+extern "C" void sub_08033C14() {
+    u16 unk = sub_0801A6D8(get_obj_direct(0)->_18);
+    if ((unk != 0) && (getCurrentTrack(5) == unk)) {
+        musicPlayerStop_sfx(5);
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033C44.inc", void sub_08033C44());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033CA0.inc", void sub_08033CA0());
 extern "C" ASM_FUNC("asm/non_matching/code_08021920/sub_08033CFC.inc", void sub_08033CFC());

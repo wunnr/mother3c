@@ -143,6 +143,9 @@ extern "C" void sub_08048108(void*, void*);
 extern "C" void startSong_battle(u16);
 extern "C" void startSong(u16);
 extern "C" void musicPlayerStop_bgm(u16);
+extern "C" void storeMusicPlayerVolumes();
+extern "C" void snd_vsync_on();
+extern "C" void snd_restart();
 
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D678.inc", void sub_0803D678());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0803D6C8.inc", void sub_0803D6C8());
@@ -358,7 +361,47 @@ extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08040024.inc", void sub_
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08040090.inc", void sub_08040090());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080400D4.inc", void sub_080400D4());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08040164.inc", void sub_08040164());
-extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080401BC.inc", void sub_080401BC());
+
+extern "C" void sub_080401BC() {
+    if (gUnknown_0200F920[0] == 6)
+        return;
+    
+    if (gUnknown_02004100[2] != 0) {
+        gUnknown_02004100[2] = 0;
+    } else {
+        storeMusicPlayerVolumes();
+    }
+    
+    gUnknown_03004B00 = 0;
+    snd_vsync_on();
+    
+    switch (gUnknown_0200F920[0]) {
+    case 0:
+    case 1:
+    case 2:
+        musicPlayerStop_bgm(0);
+        musicPlayerStop_bgm(1);
+        startSong(0x3D6);
+        startSong(0x3D7);
+        startSong(0x3D8);
+        startSong(0x3D9);
+        startSong(0x3DA);
+        startSong(0x3DB);
+        startSong(0x3DC);
+        startSong(0x3DD);
+        startSong(SONG_AS_YOU_WISH);
+        return;
+    case 3:
+        snd_restart();
+        startSong(SONG_SAVE);
+        return;
+    case 4:
+    case 5:
+        startSong(SONG_FUN_NAMING);
+        break;
+    }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_08040298.inc", void sub_08040298());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_0804037C.inc", void sub_0804037C());
 extern "C" ASM_FUNC("asm/non_matching/code_0803D59C/sub_080407AC.inc", void sub_080407AC());

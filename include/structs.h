@@ -104,7 +104,9 @@ typedef struct Object {
     s16 ypos;
     u8 _4_0 : 5;
     u8 _4_1 : 3;
-    u8 filler[0x1b];
+    u8 _5[0x13];
+    s32 _18;
+    u32 _1c;
     u16 _20;
     u16 _22;
     u8 _24[0x10];
